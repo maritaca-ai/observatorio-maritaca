@@ -3,7 +3,7 @@
 Na raiz do repositório:
 
 ```bash
-python -m pip install -r requirements.txt
+python -m pip install -r envs/requirements.txt
 python -m verifier
 python -m verifier --output .runs/verificacao.json
 ```
