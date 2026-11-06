@@ -12,6 +12,7 @@ reconstruir cada ambiente com as versões registradas na avaliação.
 | Arquivos | Finalidade | Preparação, a partir da raiz |
 |---|---|---|
 | `requirements.txt` | Verificador de notas, médias e rankings; somente NumPy. | `python -m pip install -r envs/requirements.txt` |
+| `requirements-observatory-qa.txt` | Testes de navegador do Observatório; usa Chrome local. | `python -m pip install -r envs/requirements-observatory-qa.txt` |
 | `requirements.in` e `requirements.lock` | Ambiente principal dos executores. | `bash scripts/setup.sh` |
 | `requirements-scorer.in` e `.lock` | Corretores com dependências linguísticas próprias. | Criado por `scripts/setup.sh`. |
 | `requirements-plus.in` e `.lock` | BrowseComp-Plus e sua busca BM25; Python 3.10 e Java 21. | `bash scripts/setup_plus.sh` |

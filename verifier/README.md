@@ -53,3 +53,14 @@ Testes de regressão, sem chamadas a modelos:
 ```bash
 python -m unittest discover -s verifier/tests -v
 ```
+
+Após conferir os resultados, atualize somente as tabelas do README com:
+
+```bash
+python -m verifier.export_readme
+python -m verifier.export_readme --check
+```
+
+As tabelas usam `reported.json`, mantêm Thinking e Instruct separados e ordenam
+pela média total. O restante do README, inclusive o espaço de citação, é
+preservado. `--check` apenas confere se as tabelas estão atualizadas.
