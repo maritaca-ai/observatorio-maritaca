@@ -270,6 +270,7 @@ def build(output, from_git=False, only=None, max_bytes=1_000_000_000, cache=None
                     notice='')
         for model in data['models']:
             model['result_count'] = sum(r['model_id'] == model['id'] for r in records)
+        data['models'] = [model for model in data['models'] if model['result_count'] > 0]
         directory = encoded(dict(schema_version=2, benchmarks=indexes))
         (output/'cases/index.json').write_bytes(directory)
         data['case_catalog'] = dict(benchmarks=counts, total=sum(counts.values()),
