@@ -13,7 +13,7 @@ const esc = (value) =>
 const number = (value, digits = 2) =>
   value == null
     ? "—"
-    : Number(value).toLocaleString("pt-BR", {
+    : Number(value).toLocaleString(i18n.locale, {
         minimumFractionDigits: digits,
         maximumFractionDigits: digits,
       });
@@ -231,7 +231,7 @@ function filteredBenchmarks() {
       (!use || use.tasks.includes(b.id)) &&
       matchesCategory(b, state.category) &&
       (!q ||
-        `${b.name} ${b.description} ${b.categories.map((c) => D.categories[c]).join(" ")}`
+        `${b.name} ${b.description} ${b.categories.map((c) => D.categories[c]).join(" ")} ${i18n.english(b.name)} ${i18n.english(b.description)} ${b.categories.map(c => i18n.english(D.categories[c])).join(" ")}`
           .toLocaleLowerCase("pt-BR")
           .includes(q)),
   );
@@ -299,10 +299,10 @@ function modeControl() {
     .join("")}</div>`;
 }
 function renderPanorama() {
-  return `<header class="results-heading"><div><h1>Resultados</h1><p>${D.models.filter((m) => m.result_count).length} modelos · ${tableBenchmarks().length} avaliações · ${new Date(D.updated_at).toLocaleDateString("pt-BR")}</p></div><a class="results-demo" href="#descobrir?size=${state.size}"><span>Como eles responderam?</span><strong>Leia as respostas lado a lado <span aria-hidden="true">↗</span></strong></a></header>
+  return `<header class="results-heading"><div><h1>Resultados</h1><p>${D.models.filter((m) => m.result_count).length} modelos · ${tableBenchmarks().length} avaliações · ${new Date(D.updated_at).toLocaleDateString(i18n.locale)}</p></div><a class="results-demo" href="#descobrir?size=${state.size}"><span>Como eles responderam?</span><strong>Leia as respostas lado a lado <span aria-hidden="true">↗</span></strong></a></header>
   ${sizeControls()}
   <section aria-labelledby="results-title"><div class="section-head results-tools"><div><h2 id="results-title">Notas e médias</h2><p>Clique em uma nota para abrir a correção e o protocolo.</p></div><div class="head-actions"><button class="btn" data-action="share">Copiar link</button><button class="btn primary" data-action="export-csv">Baixar tabela ↓</button></div></div>
-  <div class="control-bar">${modeControl()}<div class="filters"><input id="benchmark-search" class="search" type="search" placeholder="Buscar uma avaliação…" aria-label="Buscar avaliações" value="${esc(state.query)}"><details class="model-filter"><summary class="btn">Escolher modelos <span>${sizeModels().filter((m) => state.selected.has(m.id)).length}</span> ⌄</summary><div class="model-options"><button class="btn small" data-action="select-all">Todos</button> <button class="btn small" data-action="select-none">Limpar</button>${sizeModels().map((m) => `<label><input type="checkbox" data-model="${esc(m.id)}" ${state.selected.has(m.id) ? "checked" : ""}>${modelName(m)}<small>${esc(m.size_label)}</small></label>`).join("")}</div></details></div></div>
+  <div class="control-bar">${modeControl()}<div class="filters"><input id="benchmark-search" class="search" type="search" placeholder="Buscar uma avaliação…" aria-label="Buscar avaliações" value="${esc(state.query)}"><details class="model-filter"><summary class="btn">Escolher modelos <span>${sizeModels().filter((m) => state.selected.has(m.id)).length}</span> ⌄</summary><div class="model-options"><button class="btn small" data-action="select-all">Todos</button> <button class="btn small" data-action="select-none">Limpar</button>${sizeModels().map((m) => `<label><input type="checkbox" data-model="${esc(m.id)}" ${state.selected.has(m.id) ? "checked" : ""}>${modelName(m)}<small>${esc(i18n.t(m.size_label))}</small></label>`).join("")}</div></details></div></div>
   <div class="category-tabs" aria-label="Categorias"><button data-category="all" aria-pressed="${state.category === "all"}">Todas <small>${tableBenchmarks().length}</small></button>${Object.entries(
     D.categories,
   )
@@ -331,10 +331,10 @@ function renderMatrix() {
     });
   const filtered = activeRecords();
   const winners = bestIds(filtered);
-  return renderAverageTable(tasks, variants, D.records) + `<div class="table-frame"><div class="table-scroll" role="region" aria-label="Resultados dos modelos; role para ver todas as colunas" tabindex="0"><table class="score-table"><thead>${tableSizeGroups(variants)}<tr><th scope="col"><span class="label">Benchmark / métrica</span><span class="small">${tasks.length} avaliações</span></th>${variants.map((v) => `<th scope="col"><button class="model-header" data-sort="${esc(v.id)}" title="Ordenar avaliações pela nota de ${esc(v.model.name)}">${icon(v.model)}<span>${modelName(v.model)}</span><small>${esc(v.model.size_label)}</small>${state.mode === "all" ? `<span class="mode-label">${modeName(v.mode)}</span>` : ""}</button></th>`).join("")}</tr></thead><tbody>${tasks
+  return renderAverageTable(tasks, variants, D.records) + `<div class="table-frame"><div class="table-scroll" role="region" aria-label="Resultados dos modelos; role para ver todas as colunas" tabindex="0"><table class="score-table"><thead>${tableSizeGroups(variants)}<tr><th scope="col"><span class="label">Benchmark / métrica</span><span class="small">${tasks.length} avaliações</span></th>${variants.map((v) => `<th scope="col"><button class="model-header" data-sort="${esc(v.id)}" title="Ordenar avaliações pela nota de ${esc(v.model.name)}">${icon(v.model)}<span>${modelName(v.model)}</span><small>${esc(i18n.t(v.model.size_label))}</small>${state.mode === "all" ? `<span class="mode-label">${modeName(v.mode)}</span>` : ""}</button></th>`).join("")}</tr></thead><tbody>${tasks
     .map(
       (b) =>
-        `<tr><th scope="row"><span class="task-name">${esc(b.name)} ${b.direction === "lower" ? "↓" : ""}</span><span class="task-meta">${esc(b.metric)} · ${esc(b.language)}</span></th>${variants
+        `<tr><th scope="row"><span class="task-name">${esc(b.name)} ${b.direction === "lower" ? "↓" : ""}</span><span class="task-meta">${esc(i18n.t(b.metric))} · ${esc(b.language)}</span></th>${variants
           .map((v) => {
             const r = records.get(`${v.id}:${b.id}`);
             return `<td>${scoreCell(r, winners.has(r?.id), `${v.id}:${b.id}`)}</td>`;
@@ -359,8 +359,8 @@ function renderCompare() {
   const scored = rows.filter(r => Number.isFinite(r.record?.score) && !r.record.averages_exclusion);
   const min = Math.min(0, ...scored.map(r => Math.floor(r.record.score / 10) * 10));
   const point = score => 100 * (score - min) / (100 - min);
-  return `<div class="page-intro compact-intro"><h1>Comparar modelos</h1></div>${sizeControls()}<div class="comparison-controls">${modeControl()}<label>Categoria<select id="compare-category">${[["all","Todas"],...Object.entries(D.categories)].map(([id,name])=>`<option value="${id}" ${state.category===id?'selected':''}>${esc(name)}</option>`).join("")}</select></label><label>Benchmark<select id="compare-benchmark">${tasks.map(b=>`<option value="${b.id}" ${state.scatter===b.id?'selected':''}>${esc(b.name)}</option>`).join("")}</select></label><details class="model-filter"><summary class="btn">Escolher modelos <span>${sizeModels().filter(m=>state.selected.has(m.id)).length}</span> ⌄</summary><div class="model-options"><button class="btn small" data-action="select-all">Todos</button> <button class="btn small" data-action="select-none">Limpar</button>${sizeModels().map(m=>`<label><input type="checkbox" data-model="${esc(m.id)}" ${state.selected.has(m.id)?'checked':''}>${modelName(m)}<small>${esc(m.size_label)}</small></label>`).join("")}</div></details></div>
-  <section class="multi-comparison"><div class="map-intro"><div><h2>${esc(task.name)}</h2><p>${esc(task.metric)} · ${task.direction==='lower'?'↓ menor é melhor':'↑ maior é melhor'}</p></div><span>${scored.length} notas</span></div><div class="difference-map"><div class="map-axis"><span>Modelo</span><div><span>${min}</span><span>${(100+min)/2}</span><span>100</span></div><span>Nota</span></div>${rows.map(({variant,record})=>`<div class="difference-row multi-model-row" data-comparison-variant="${variant.id}"><div class="difference-label"><strong>${modelName(variant.model)}</strong><small>${modeName(variant.mode)} · ${esc(variant.model.size_label)}</small></div><div class="difference-track">${record && !record.averages_exclusion ? `<span class="difference-line" style="left:0;width:${point(record.score)}%;background:${esc(variant.model.color)}33"></span><button class="difference-point" style="left:${point(record.score)}%;background:${esc(variant.model.color)}" data-result="${esc(record.id)}" aria-label="${esc(variant.model.name)}, ${modeName(variant.mode)}: ${number(record.score)}. Ver correção."><span>${number(record.score)}</span></button>` : ''}</div><div>${scoreCell(record,false,`${variant.id}:${task.id}`)}</div></div>`).join('') || '<div class="empty">Selecione os modelos que deseja comparar.</div>'}</div><p class="helper-note">As notas abrem o protocolo e a correção. Ausência de avaliação não é zero.</p></section>
+  return `<div class="page-intro compact-intro"><h1>Comparar modelos</h1></div>${sizeControls()}<div class="comparison-controls">${modeControl()}<label>Categoria<select id="compare-category">${[["all","Todas"],...Object.entries(D.categories)].map(([id,name])=>`<option value="${id}" ${state.category===id?'selected':''}>${esc(name)}</option>`).join("")}</select></label><label>Benchmark<select id="compare-benchmark">${tasks.map(b=>`<option value="${b.id}" ${state.scatter===b.id?'selected':''}>${esc(b.name)}</option>`).join("")}</select></label><details class="model-filter"><summary class="btn">Escolher modelos <span>${sizeModels().filter(m=>state.selected.has(m.id)).length}</span> ⌄</summary><div class="model-options"><button class="btn small" data-action="select-all">Todos</button> <button class="btn small" data-action="select-none">Limpar</button>${sizeModels().map(m=>`<label><input type="checkbox" data-model="${esc(m.id)}" ${state.selected.has(m.id)?'checked':''}>${modelName(m)}<small>${esc(i18n.t(m.size_label))}</small></label>`).join("")}</div></details></div>
+  <section class="multi-comparison"><div class="map-intro"><div><h2>${esc(task.name)}</h2><p>${esc(i18n.t(task.metric))} · ${task.direction==='lower'?'↓ menor é melhor':'↑ maior é melhor'}</p></div><span>${scored.length} notas</span></div><div class="difference-map"><div class="map-axis"><span>Modelo</span><div><span>${min}</span><span>${(100+min)/2}</span><span>100</span></div><span>Nota</span></div>${rows.map(({variant,record})=>`<div class="difference-row multi-model-row" data-comparison-variant="${variant.id}"><div class="difference-label"><strong>${modelName(variant.model)}</strong><small>${modeName(variant.mode)} · ${esc(i18n.t(variant.model.size_label))}</small></div><div class="difference-track">${record && !record.averages_exclusion ? `<span class="difference-line" style="left:0;width:${point(record.score)}%;background:${esc(variant.model.color)}33"></span><button class="difference-point" style="left:${point(record.score)}%;background:${esc(variant.model.color)}" data-result="${esc(record.id)}" aria-label="${esc(variant.model.name)}, ${modeName(variant.mode)}: ${number(record.score)}. Ver correção."><span>${number(record.score)}</span></button>` : ''}</div><div>${scoreCell(record,false,`${variant.id}:${task.id}`)}</div></div>`).join('') || '<div class="empty">Selecione os modelos que deseja comparar.</div>'}</div><p class="helper-note">As notas abrem o protocolo e a correção. Ausência de avaliação não é zero.</p></section>
   <section class="panel scatter-panel"><div class="panel-top"><div><h3>Tamanho e resultado</h3><p>${esc(task.name)}</p></div></div><div id="size-result-chart">${renderScatter()}</div></section>`;
 }
 function renderScatter() {
@@ -375,7 +375,7 @@ window.addEventListener("resize", () => {
   }, 150);
 });
 function renderModels() {
-  return `<div class="page-intro compact-intro"><h1>Modelos</h1><p>Quem desenvolveu, de qual base partiu e o que está disponível.</p></div>${sizeControls()}<div class="model-grid">${sizeModels().map((m) => `<article id="model-card-${esc(m.id)}" class="model-card ${m.id === "candidate" ? "featured" : ""} ${state.focusModel === m.id ? "model-focused" : ""}"><header>${icon(m)}<div><h3>${modelName(m)}</h3><span class="small muted">${esc(m.organization)}</span></div></header><div><span class="pill">${esc(m.region)}</span> <span class="pill gray">${m.unavailable ? esc(m.availability_status || "Sem acesso para avaliação") : m.reference ? "Referência de maior porte" : m.id === "candidate" ? "Abertura planejada" : "Checkpoint disponível"}</span></div><p>${esc(m.description)}</p><div class="model-facts"><div><span>Parâmetros</span><strong>${esc(m.size_label)}</strong></div><div><span>Base / arquitetura</span><strong>${esc(m.lineage || m.architecture)}</strong></div><div><span>Modo avaliado</span><strong>${m.modes.length ? m.modes.map(modeName).join(" + ") : "Não avaliado"}</strong></div><div><span>Resultados disponíveis</span><strong>${m.result_count} notas</strong></div><div><span>Licença dos pesos</span><strong>${esc(m.license || (m.id === "candidate" ? "Ainda não publicada" : "Consultar model card"))}</strong></div><div><span>Contexto na campanha</span><strong>${m.context ? integer(m.context) + " tokens" : "Ver perfil por execução"}</strong></div></div><p class="small">${esc(m.size_source)}</p>${m.unavailable ? `<div class="callout"><strong>${esc(m.weights_status)}</strong><p>${esc(m.access_note)}</p></div>` : ""}<footer>${m.unavailable ? `<span class="small">Sem nota · fora das médias</span>` : `<button class="btn small" data-compare-model="${esc(m.id)}">Comparar com S5-nano →</button>`}${m.model_card ? `<a href="${safeLink(m.model_card)}" target="_blank" rel="noopener noreferrer">Fonte ↗</a>` : '<span class="small">Pesos privados</span>'}</footer></article>`).join("")}</div><div class="callout green">“Disponível” descreve o acesso ao checkpoint. Licenças, restrições e documentação variam.</div>`;
+  return `<div class="page-intro compact-intro"><h1>Modelos</h1><p>Quem desenvolveu, de qual base partiu e o que está disponível.</p></div>${sizeControls()}<div class="model-grid">${sizeModels().map((m) => `<article id="model-card-${esc(m.id)}" class="model-card ${m.id === "candidate" ? "featured" : ""} ${state.focusModel === m.id ? "model-focused" : ""}"><header>${icon(m)}<div><h3>${modelName(m)}</h3><span class="small muted">${esc(m.organization)}</span></div></header><div><span class="pill">${esc(m.region)}</span> <span class="pill gray">${m.unavailable ? esc(m.availability_status || "Sem acesso para avaliação") : m.reference ? "Referência de maior porte" : m.id === "candidate" ? "Abertura planejada" : "Checkpoint disponível"}</span></div><p>${esc(i18n.t(m.description))}</p><div class="model-facts"><div><span>Parâmetros</span><strong>${esc(i18n.t(m.size_label))}</strong></div><div><span>Base / arquitetura</span><strong>${esc(m.lineage || m.architecture)}</strong></div><div><span>Modo avaliado</span><strong>${m.modes.length ? m.modes.map(modeName).join(" + ") : "Não avaliado"}</strong></div><div><span>Resultados disponíveis</span><strong>${m.result_count} notas</strong></div><div><span>Licença dos pesos</span><strong>${esc(m.license || (m.id === "candidate" ? "Ainda não publicada" : "Consultar model card"))}</strong></div><div><span>Contexto na campanha</span><strong>${m.context ? integer(m.context) + " tokens" : "Ver perfil por execução"}</strong></div></div><p class="small">${esc(m.size_source)}</p>${m.unavailable ? `<div class="callout"><strong>${esc(m.weights_status)}</strong><p>${esc(m.access_note)}</p></div>` : ""}<footer>${m.unavailable ? `<span class="small">Sem nota · fora das médias</span>` : `<button class="btn small" data-compare-model="${esc(m.id)}">Comparar com S5-nano →</button>`}${m.model_card ? `<a href="${safeLink(m.model_card)}" target="_blank" rel="noopener noreferrer">Fonte ↗</a>` : '<span class="small">Pesos privados</span>'}</footer></article>`).join("")}</div><div class="callout green">“Disponível” descreve o acesso ao checkpoint. Licenças, restrições e documentação variam.</div>`;
 }
 
 function auditSection(r) {
@@ -420,8 +420,8 @@ function detail(id) {
   const averageState = r.averages_exclusion ? "Fora das médias · " + r.averages_exclusion.label : b.primary_metric === false ? "Fora das médias · métrica secundária" : ["final", "reported"].includes(r.status) ? "Incluído" : "Fora das médias · resultado em revisão";
   $("#detail-content").innerHTML = `
     <div class="eyebrow">${esc(b.name)} · ${modeName(r.mode)}</div>
-    <h2 id="detail-title">${esc(m.name)}</h2><p class="small muted">${esc(b.description)}</p>
-    <div class="detail-score">${r.capability_gate ? "Sem nota de segurança" : number(r.score)}<small>${r.capability_gate ? "0 controles benignos concluídos" : b.direction === "lower" ? "↓ menor é melhor" : "↑ maior é melhor"}</small></div><p class="small muted">${esc(b.metric)}</p>
+    <h2 id="detail-title">${esc(m.name)}</h2><p class="small muted">${esc(i18n.t(b.description))}</p>
+    <div class="detail-score">${r.capability_gate ? "Sem nota de segurança" : number(r.score)}<small>${r.capability_gate ? "0 controles benignos concluídos" : b.direction === "lower" ? "↓ menor é melhor" : "↑ maior é melhor"}</small></div><p class="small muted">${esc(i18n.t(b.metric))}</p>
     ${auditSection(r)}
     <div class="detail-grid">
       <div data-detail-meta="population"><span>População da execução</span>${integer(r.n)} ${r.task === "prosa_pt" ? "conversas" : "itens"}</div>
@@ -541,11 +541,11 @@ function judgmentView(c, r) {
       const hit = r.judgment.hits?.[String(i)],
         negative = criterion.weight < 0,
         good = negative ? !hit : hit;
-      return `<div class="criterion"><span class="pill ${good ? "" : "warn"}">${negative ? (hit ? "Erro detectado" : "Erro não detectado") : hit ? "Atendido" : "Não atendido"}</span><p><strong>${esc(criterion.text)}</strong></p><p>${esc(evidence.get(String(i)) || "Evidência textual não disponível nesta projeção.")}</p><small>Peso ${criterion.weight > 0 ? "+" : ""}${esc(criterion.weight)} · ${esc(criterion.type)}</small></div>`;
+      return `<div class="criterion"><span class="pill ${good ? "" : "warn"}">${negative ? (hit ? "Erro detectado" : "Erro não detectado") : hit ? "Atendido" : "Não atendido"}</span><p translate="no"><strong>${esc(criterion.text)}</strong></p><p${evidence.get(String(i)) ? ' translate="no"' : ""}>${esc(evidence.get(String(i)) || "Evidência textual não disponível nesta projeção.")}</p><small>Peso ${criterion.weight > 0 ? "+" : ""}${esc(criterion.weight)} · ${esc(criterion.type)}</small></div>`;
     })
     .join(
       "",
-    )}</div>${parsed.comentario ? `<p class="small muted">${esc(parsed.comentario)}</p>` : ""}<details><summary>Julgamento original preservado</summary><pre>${esc(r.judgment.text)}</pre></details>`;
+    )}</div>${parsed.comentario ? `<p class="small muted" translate="no">${esc(parsed.comentario)}</p>` : ""}<details><summary>Julgamento original preservado</summary><pre>${esc(r.judgment.text)}</pre></details>`;
 }
 function exportCSV() {
   const header = [
@@ -617,7 +617,7 @@ function render() {
     if (a.dataset.view === (state.view === "casos" ? "descobrir" : state.view)) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
   });
-  document.title = `${{ inicio: "Início", descobrir: "Respostas", panorama: "Resultados", usos: "Usos", comparar: "Comparar", casos: "Respostas", modelos: "Modelos", metodo: "Como avaliamos" }[state.view]} · Observatório Maritaca`;
+  document.title = i18n.t({ inicio: "Início", descobrir: "Respostas", panorama: "Resultados", usos: "Usos", comparar: "Comparar", casos: "Respostas", modelos: "Modelos", metodo: "Como avaliamos" }[state.view]) + " · " + i18n.t("Observatório Maritaca");
   if (["descobrir", "casos"].includes(state.view)) queueMicrotask(loadExperience);
   if (state.view === "modelos" && state.focusModel) queueMicrotask(() => document.getElementById(`model-card-${state.focusModel}`)?.scrollIntoView({block:"center",behavior:"instant"}));
 }
@@ -765,13 +765,15 @@ $("#detail-dialog").addEventListener("click", (event) => {
       event.target.close();
   }
 });
-window.addEventListener("hashchange", () => {
+function restoreNavigation() {
   if (D) {
     readHash();
     render();
     window.scrollTo({ top: 0, behavior: "instant" });
   }
-});
+}
+window.addEventListener("hashchange", restoreNavigation);
+window.addEventListener("popstate", restoreNavigation);
 
 async function start() {
   app = $("#app");
@@ -786,9 +788,16 @@ async function start() {
     readHash();
     render();
     $("#snapshot-date").textContent =
-      `Dados de ${new Date(D.updated_at).toLocaleDateString("pt-BR")}`;
+      `Dados de ${new Date(D.updated_at).toLocaleDateString(i18n.locale)}`;
   } catch (error) {
     app.innerHTML = `<div class="page-intro"><h1>Não foi possível abrir os resultados.</h1><p>${esc(error.message)}</p><p>Confira se o build foi concluído e se esta pasta está sendo servida por HTTP.</p></div>`;
   }
 }
+window.addEventListener("observatory-languagechange", () => {
+  if (!D) return;
+  const scroll = {left:scrollX, top:scrollY};
+  render();
+  $("#snapshot-date").textContent = `${i18n.t("Dados de")} ${new Date(D.updated_at).toLocaleDateString(i18n.locale)}`;
+  window.scrollTo({...scroll, behavior:"instant"});
+});
 start();
