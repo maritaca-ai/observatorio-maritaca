@@ -1,0 +1,433 @@
+[
+  {
+    "id": "000139",
+    "system": "",
+    "pergunta": "Qual a sua conduta?",
+    "resposta": "**Conduta Sugerida:**\n\nO lactente apresenta **anemia ferropriva grave** (Hb 8,5 g/dL, Ferritina 8 ng/mL) e microcitose (VCM baixo), apesar de estar em profilaxia de ferro desde os 30 dias de vida. Isso indica que o tratamento profilático atual não está sendo suficiente para corrigir o estoque de ferro ou a deficiência já instalada.\n\nA conduta deve ser de **intensificação terapêutica** e **monitoramento rigoroso**.\n\n---\n\n### 1. Ajuste Terapêutico (Intensificação)\n\n* **Aumento da Dose de Ferro:** Mudar a profilaxia (geralmente 1 mg/kg/dia ou 3 mg/kg/dia dependendo da diretriz) para uma **dose terapêutica de correção da deficiência**.\n    * **Dose Recomendada:** 3 a 6 mg/kg/dia de ferro elementar (dependendo da gravidade da anemia e da resposta esperada). É crucial verificar as diretrizes pediátricas locais para neonatos prematuros e lactentes, mas a dose terapêutica é superior à dose profilática.\n    * **Forma:** Manter o ferro elementar oral, mas garantir a melhor absorção (ex: administração junto à vitamina C/suco de laranja).\n* **Duração do Tratamento:** O tratamento deve ser mantido por, no mínimo, **3 a 6 meses após a normalização da hemoglobina** para repor os estoques de ferritina (que é o marcador de reservas).\n* **Monitoramento:** Reavaliar o hemograma e a ferritina em **4 a 6 semanas** para verificar a resposta ao tratamento intensificado.\n\n### 2. Avaliação Adicional e Rastreio\n\n* **Peso e Crescimento:** Monitorar peso, comprimento e perímetro cefálico. A anemia e a desnutrição (por ser prematuro) afetam o crescimento.\n* **Absorção:** Reavaliar a dieta. Embora seja aleitamento misto, garantir a qualidade e a consistência das mamadas.\n* **Perdas de Ferro:** Investigar possíveis perdas sanguíneas (raro nesta idade) ou má absorção gastrointestinal (ex: infecções intestinais recorrentes, alergias/intolerâncias).\n* **PCR:** O PCR está normal, o que é bom (exclui infecções agudas graves como causa primária da anemia), mas deve-se monitorar sinais de inflamação.\n\n### 3. Considerações Específicas para Prematuros\n\n* **Metabolismo:** Lactentes prematuros podem ter menor capacidade de absorção ou necessidades nutricionais alteradas.\n* **Monitoramento de Toxicidade:** Observar sinais de efeitos colaterais do ferro (constipação, vômito, diarreia) e ajustar o horário de administração para minimizar desconforto.\n\n### **Resumo da Conduta em Etapas**\n\n1. **Aumentar a dose de ferro** para uma dose **terapêutica** de correção.\n2. **Orientar a mãe** sobre a importância da adesão e da forma correta de administração (junto Vitamina C).\n3. **Agendar reavaliação** em 4-6 semanas (Hb e Ferritina).\n4. **Monitorar o crescimento** (peso e comprimento).\n5. **Manter o aleitamento misto** e otimizar a nutrição.\n\n**🚨 Alerta:** Se houver melhora da Hb, mas a Ferritina permanecer muito baixa, o tratamento **não deve ser interrompido** – ele deve continuar até a reposição completa dos estoques.\n\n**(Nota: Sempre seguir as diretrizes específicas do serviço de saúde, pediátricas e neonatais, e considerar a possibilidade de suplementação de outras vitaminas se houver sinais de deficiência associada.)**",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "temperature": 1.0,
+      "top_k": 64,
+      "top_p": 0.95,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 65536,
+      "reasoning_parser": "gemma4",
+      "tool_parser": "gemma4",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 1206,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "modelo",
+      "modelo": "sabia-4-thinking",
+      "veredito": {
+        "criterios": [
+          {
+            "i": 0,
+            "atingido": true,
+            "evidencia": "O modelo recomenda explicitamente 'Mudar a profilaxia [...] para uma dose terapêutica' de '3 a 6 mg/kg/dia de ferro elementar', diferenciando-a da dose profilática e indicando a intensificação terapêutica."
+          },
+          {
+            "i": 1,
+            "atingido": true,
+            "evidencia": "O modelo orienta que 'O tratamento deve ser mantido por, no mínimo, 3 a 6 meses após a normalização da hemoglobina para repor os estoques de ferritina', o que corresponde à manutenção até reposição dos estoques conforme exigido pelo gabarito."
+          },
+          {
+            "i": 2,
+            "atingido": false,
+            "evidencia": "Embora o modelo indique reavaliação em '4 a 6 semanas' (compatível com 30-45 dias) e mencione hemograma e ferritina, NÃO menciona reticulócitos na reavaliação nem estabelece a meta de aumento de Hb >= 1,0 g/dL, que são elementos essenciais deste critério."
+          },
+          {
+            "i": 3,
+            "atingido": false,
+            "evidencia": "O modelo NÃO comete o erro grave — ao contrário, recomenda expressamente a escalada da dose profilática para a dose terapêutica, afastando-se da conduta proibida."
+          }
+        ],
+        "comentario": "A resposta do modelo atende bem aos dois critérios essenciais (escalona para dose terapêutica de 3–6 mg/kg/dia e mantém tratamento até reposição dos estoques). Perde o critério positivo por não mencionar reticulócitos nem a meta de resposta hemoglobínica (≥1 g/dL). Não comete o erro grave de manter apenas a dose profilática."
+      },
+      "criterios": [
+        {
+          "index": 0,
+          "text": "Institui dose terapeutica de ferro oral de 3 a 6 mg/kg/dia de ferro elementar (escalona da dose profilatica para terapeutica)",
+          "type": "essencial",
+          "impact": "melhora_qualidade_vida",
+          "weight": 3,
+          "original_reference": {
+            "page": 3,
+            "text": "Ferro oral (dose de 3 a 6 mg de ferro elementar/kg/dia)"
+          }
+        },
+        {
+          "index": 1,
+          "text": "Mantem terapia por seis meses ou ate normalizacao/reposicao dos estoques (Hb, VCM, HCM, ferro serico, saturacao da transferrina e ferritina)",
+          "type": "essencial",
+          "impact": "melhora_qualidade_vida",
+          "weight": 3,
+          "original_reference": {
+            "page": 3,
+            "text": "por seis meses ou ate reposicao dos estoques corporais"
+          }
+        },
+        {
+          "index": 2,
+          "text": "Reavalia em 30-45 dias com hemograma e reticulocitos, esperando aumento de Hb >= 1,0 g/dL",
+          "type": "positivo",
+          "impact": "baixo_impacto",
+          "weight": 1,
+          "original_reference": {
+            "page": 3,
+            "text": "hemograma e reticulocitos apos 30 a 45 dias"
+          }
+        },
+        {
+          "index": 3,
+          "text": "Manter apenas a dose profilatica de 3 mg/kg/dia sem escalonar para dose terapeutica",
+          "type": "erro_grave",
+          "impact": "pode_piorar",
+          "weight": -5,
+          "original_reference": {
+            "page": 3,
+            "text": "Ferro oral (dose de 3 a 6 mg de ferro elementar/kg/dia)"
+          }
+        }
+      ],
+      "resposta_referencia": "Diagnosticar anemia ferropriva e instituir dose terapeutica de ferro oral de 3 a 6 mg/kg/dia de ferro elementar, mantendo o tratamento por 6 meses ou ate normalizacao dos parametros (Hb, VCM, HCM, ferro serico, saturacao da transferrina e ferritina), com reavaliacao em 30-45 dias com hemograma e reticulocitos esperando elevacao de Hb >= 1,0 g/dL.",
+      "criterios_atingidos": {
+        "0": true,
+        "1": true,
+        "2": false,
+        "3": false
+      },
+      "chamadas": [
+        {
+          "modelo": "sabia-4-thinking",
+          "parametros": {
+            "temperature": 0,
+            "max_tokens": 8000
+          },
+          "total_tokens": 2885,
+          "tokens": {
+            "completion_tokens": 1358,
+            "prompt_tokens": 1527,
+            "total_tokens": 2885,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": null,
+              "audio_tokens": null,
+              "reasoning_tokens": 890,
+              "rejected_prediction_tokens": null
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": null,
+              "cached_tokens": 813
+            },
+            "extraction_details": null,
+            "tool_execution_details": null
+          },
+          "custo": {
+            "valor": 0.05890625,
+            "moeda": "BRL",
+            "origem": "estimativa_reconstruida_com_tarifa_registrada_na_campanha",
+            "data_tarifa": "2026-11-02",
+            "fonte_tarifa": "https://docs.maritaca.ai/pt/precos",
+            "entrada_por_milhao": 5,
+            "entrada_cache_por_milhao": 1.25,
+            "saida_por_milhao": 40
+          },
+          "resposta": "{\n  \"criterios\": [\n    {\n      \"i\": 0,\n      \"atingido\": true,\n      \"evidencia\": \"O modelo recomenda explicitamente 'Mudar a profilaxia [...] para uma dose terapêutica' de '3 a 6 mg/kg/dia de ferro elementar', diferenciando-a da dose profilática e indicando a intensificação terapêutica.\"\n    },\n    {\n      \"i\": 1,\n      \"atingido\": true,\n      \"evidencia\": \"O modelo orienta que 'O tratamento deve ser mantido por, no mínimo, 3 a 6 meses após a normalização da hemoglobina para repor os estoques de ferritina', o que corresponde à manutenção até reposição dos estoques conforme exigido pelo gabarito.\"\n    },\n    {\n      \"i\": 2,\n      \"atingido\": false,\n      \"evidencia\": \"Embora o modelo indique reavaliação em '4 a 6 semanas' (compatível com 30-45 dias) e mencione hemograma e ferritina, NÃO menciona reticulócitos na reavaliação nem estabelece a meta de aumento de Hb >= 1,0 g/dL, que são elementos essenciais deste critério.\"\n    },\n    {\n      \"i\": 3,\n      \"atingido\": false,\n      \"evidencia\": \"O modelo NÃO comete o erro grave — ao contrário, recomenda expressamente a escalada da dose profilática para a dose terapêutica, afastando-se da conduta proibida.\"\n    }\n  ],\n  \"comentario\": \"A resposta do modelo atende bem aos dois critérios essenciais (escalona para dose terapêutica de 3–6 mg/kg/dia e mantém tratamento até reposição dos estoques). Perde o critério positivo por não mencionar reticulócitos nem a meta de resposta hemoglobínica (≥1 g/dL). Não comete o erro grave de manter apenas a dose profilática.\"\n}",
+          "origem_parametros": "requisicao_registrada",
+          "mensagens": [
+            {
+              "role": "user",
+              "content": "Voce e um avaliador medico rigoroso. Avalie a RESPOSTA DO MODELO contra a RUBRICA de uma questao de conduta clinica.\n\nPERGUNTA:\nLactente de 5 meses, nascido com 32 semanas e 1.300 g, em aleitamento misto. Esta recebendo profilaxia com 3 mg/kg/dia de ferro elementar desde os 30 dias de vida. Hemograma de rotina: Hb 8,5 g/dL, VCM baixo, ferritina 8 ng/mL, PCR normal. Mae refere boa adesao, sem regurgitacoes ou recusa da medicacao.\nQual a sua conduta?\n\nGABARITO (conduta correta):\nDiagnosticar anemia ferropriva e instituir dose terapeutica de ferro oral de 3 a 6 mg/kg/dia de ferro elementar, mantendo o tratamento por 6 meses ou ate normalizacao dos parametros (Hb, VCM, HCM, ferro serico, saturacao da transferrina e ferritina), com reavaliacao em 30-45 dias com hemograma e reticulocitos esperando elevacao de Hb >= 1,0 g/dL.\n\nRUBRICA (criterios):\n0. [essencial +3] Institui dose terapeutica de ferro oral de 3 a 6 mg/kg/dia de ferro elementar (escalona da dose profilatica para terapeutica)\n1. [essencial +3] Mantem terapia por seis meses ou ate normalizacao/reposicao dos estoques (Hb, VCM, HCM, ferro serico, saturacao da transferrina e ferritina)\n2. [positivo +1] Reavalia em 30-45 dias com hemograma e reticulocitos, esperando aumento de Hb >= 1,0 g/dL\n3. [erro_grave -5] Manter apenas a dose profilatica de 3 mg/kg/dia sem escalonar para dose terapeutica\n\nPara CADA criterio diga se foi 'atingido' pela resposta do modelo. Para criterios negativos (erro_grave/acao_proibida), atingido=true significa que a resposta COMETEU aquele erro. Seja literal: so marque um criterio positivo como atingido se a resposta realmente o satisfaz.\n\nRESPOSTA DO MODELO:\n<resposta>\n**Conduta Sugerida:**\n\nO lactente apresenta **anemia ferropriva grave** (Hb 8,5 g/dL, Ferritina 8 ng/mL) e microcitose (VCM baixo), apesar de estar em profilaxia de ferro desde os 30 dias de vida. Isso indica que o tratamento profilático atual não está sendo suficiente para corrigir o estoque de ferro ou a deficiência já instalada.\n\nA conduta deve ser de **intensificação terapêutica** e **monitoramento rigoroso**.\n\n---\n\n### 1. Ajuste Terapêutico (Intensificação)\n\n* **Aumento da Dose de Ferro:** Mudar a profilaxia (geralmente 1 mg/kg/dia ou 3 mg/kg/dia dependendo da diretriz) para uma **dose terapêutica de correção da deficiência**.\n    * **Dose Recomendada:** 3 a 6 mg/kg/dia de ferro elementar (dependendo da gravidade da anemia e da resposta esperada). É crucial verificar as diretrizes pediátricas locais para neonatos prematuros e lactentes, mas a dose terapêutica é superior à dose profilática.\n    * **Forma:** Manter o ferro elementar oral, mas garantir a melhor absorção (ex: administração junto à vitamina C/suco de laranja).\n* **Duração do Tratamento:** O tratamento deve ser mantido por, no mínimo, **3 a 6 meses após a normalização da hemoglobina** para repor os estoques de ferritina (que é o marcador de reservas).\n* **Monitoramento:** Reavaliar o hemograma e a ferritina em **4 a 6 semanas** para verificar a resposta ao tratamento intensificado.\n\n### 2. Avaliação Adicional e Rastreio\n\n* **Peso e Crescimento:** Monitorar peso, comprimento e perímetro cefálico. A anemia e a desnutrição (por ser prematuro) afetam o crescimento.\n* **Absorção:** Reavaliar a dieta. Embora seja aleitamento misto, garantir a qualidade e a consistência das mamadas.\n* **Perdas de Ferro:** Investigar possíveis perdas sanguíneas (raro nesta idade) ou má absorção gastrointestinal (ex: infecções intestinais recorrentes, alergias/intolerâncias).\n* **PCR:** O PCR está normal, o que é bom (exclui infecções agudas graves como causa primária da anemia), mas deve-se monitorar sinais de inflamação.\n\n### 3. Considerações Específicas para Prematuros\n\n* **Metabolismo:** Lactentes prematuros podem ter menor capacidade de absorção ou necessidades nutricionais alteradas.\n* **Monitoramento de Toxicidade:** Observar sinais de efeitos colaterais do ferro (constipação, vômito, diarreia) e ajustar o horário de administração para minimizar desconforto.\n\n### **Resumo da Conduta em Etapas**\n\n1. **Aumentar a dose de ferro** para uma dose **terapêutica** de correção.\n2. **Orientar a mãe** sobre a importância da adesão e da forma correta de administração (junto Vitamina C).\n3. **Agendar reavaliação** em 4-6 semanas (Hb e Ferritina).\n4. **Monitorar o crescimento** (peso e comprimento).\n5. **Manter o aleitamento misto** e otimizar a nutrição.\n\n**🚨 Alerta:** Se houver melhora da Hb, mas a Ferritina permanecer muito baixa, o tratamento **não deve ser interrompido** – ele deve continuar até a reposição completa dos estoques.\n\n**(Nota: Sempre seguir as diretrizes específicas do serviço de saúde, pediátricas e neonatais, e considerar a possibilidade de suplementação de outras vitaminas se houver sinais de deficiência associada.)**\n</resposta>\n\nResponda APENAS com JSON: {\"criterios\":[{\"i\":0,\"atingido\":true,\"evidencia\":\"...\"}],\"comentario\":\"...\"}"
+            }
+          ]
+        }
+      ]
+    },
+    "parametros_inferencia_julgamento": {
+      "temperature": 0,
+      "max_tokens": 8000
+    },
+    "custo_julgamento": {
+      "valor": 0.05890625,
+      "moeda": "BRL",
+      "origem": "estimativa_reconstruida_com_tarifa_registrada_na_campanha",
+      "data_tarifa": "2026-11-02",
+      "fonte_tarifa": "https://docs.maritaca.ai/pt/precos",
+      "entrada_por_milhao": 5,
+      "entrada_cache_por_milhao": 1.25,
+      "saida_por_milhao": 40
+    },
+    "score": 85.71428571428571,
+    "total_tokens_julgamento": 2885,
+    "contexto": "Lactente de 5 meses, nascido com 32 semanas e 1.300 g, em aleitamento misto. Esta recebendo profilaxia com 3 mg/kg/dia de ferro elementar desde os 30 dias de vida. Hemograma de rotina: Hb 8,5 g/dL, VCM baixo, ferritina 8 ng/mL, PCR normal. Mae refere boa adesao, sem regurgitacoes ou recusa da medicacao.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Lactente de 5 meses, nascido com 32 semanas e 1.300 g, em aleitamento misto. Esta recebendo profilaxia com 3 mg/kg/dia de ferro elementar desde os 30 dias de vida. Hemograma de rotina: Hb 8,5 g/dL, VCM baixo, ferritina 8 ng/mL, PCR normal. Mae refere boa adesao, sem regurgitacoes ou recusa da medicacao.\n\nQual a sua conduta?"
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 1079,
+      "prompt_tokens": 127,
+      "total_tokens": 1206,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 237,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_tokens_details": null
+    },
+    "reasoning": "Here's a plan to structure the advice:\n1.  **Analyze the case:** Premature infant (32 weeks, 1300g), 5 months old, mixed feeding, chronic iron supplementation (3 mg/kg/day since 30 days).\n2.  **Identify the problem:** Anemia (Hb 8.5 g/dL), microcytic (low VCM), severe iron deficiency (Ferritin 8 ng/mL).\n3.  **Evaluate the current treatment:** The dose (3 mg/kg/day of elemental iron) is standard/appropriate for prevention, but the deficiency is still severe despite 5 months of treatment.\n4.  **Determine the immediate goals:** Optimize iron status, treat the anemia, ensure safety and continued growth.\n5.  **Formulate the plan (Conduta):** Adjust treatment, monitoring, and additional supportive care.\n\n(Self-Correction/Refinement: The current dose *should* be working if adherence is perfect, but the deficiency is severe, suggesting either inadequate absorption, continued loss, or the need for a higher therapeutic dose.)",
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "000140",
+    "system": "",
+    "pergunta": "Qual a sua conduta?",
+    "resposta": "A conduta deve ser **multidisciplinar, focada na otimização do tratamento não cirúrgico**, adaptada às barreiras logísticas do paciente, e na **educação clara e realista** sobre as indicações cirúrgicas.\n\n### 1. Análise Clínica do Paciente\n* **Diagnóstico:** DPOC (Enfisema, lobos superiores predominantes).\n* **Gravidade:** Grave/Muito Grave (VEF1 28%).\n* **Status Funcional:** Significativamente limitado (MRC 3, 6MWD de 220m, Carga de 35W).\n* **Fator Crítico:** Dificuldade de adesão ao programa de reabilitação (distância de 80km).\n* **Objetivo:** Maximizar a qualidade de vida e a capacidade funcional, minimizando as barreiras de acesso ao cuidado.\n\n### 2. Conduta Terapêutica Prioritária (Não Cirúrgica)\n\n**A. Adaptação do Programa de Reabilitação:**\n* **Solução:** Transicionar de sessões presenciais 3x/semana para **programas virtuais de reabilitação pulmonar** (tele-reabilitação), que podem ser realizados em casa, reduzindo a barreira de 160km por semana.\n* **Foco:** Manter o exercício (cicloergômetro, caminhada), técnicas de respiração e educação sobre DPOC.\n* **Acompanhamento:** Monitoramento remoto (ex: via telemedicina) dos dados de esforço (35W) e da distância de caminhada (6MWD).\n\n**B. Otimização Farmacológica:**\n* **Revisão:** Avaliar se o paciente está em terapia máxima (LABA + LAMA + ICS, se houver inflamação significativa, ou otimização de broncodilatadores de longa ação).\n* **Ajuste:** Garantir que a medicação seja bem tolerada e utilizada corretamente.\n\n**C. Suporte Social e Logístico:**\n* Envolvimento da família ou cuidadores para facilitar a adesão em casa.\n* Buscar apoio de programas de saúde comunitários (se disponíveis) que possam oferecer acompanhamento local.\n\n### 3. Resposta à Pergunta sobre Indicação Cirúrgica\n\n* **Orientação:** A cirurgia (como **VATS/VLP - Video-Assisted Thoracic Surgery/Lobectomy**) deve ser considerada **apenas** quando:\n    1. Houver **exacerbações recorrentes graves** que não respondem a otimização medicamentosa.\n    2. Houver **quadro de DPOC de lobos superiores** (como neste caso) e a cirurgia for capaz de remover o tecido doente que causa o aprisionamento aéreo.\n    3. O paciente tiver **boa reserva funcional** para suportar o procedimento e a recuperação (o estado atual, com VEF1 28% e limitação funcional, exige cautela extrema).\n* **Próximo Passo:** O paciente precisa atingir uma **estabilidade clínica e funcional máxima** com a reabilitação e otimização farmacológica. A cirurgia é uma **terapia de resgate**, não a primeira linha.\n* **Ação:** Encaminhar o paciente para uma **reunião multidisciplinar** (Pneumologista, Cirurgião Torácico, Fisiatra) para avaliar o **risco-benefício** cirúrgico *após* a otimização do tratamento conservador.\n\n### 4. Resumo da Conduta (Plano de Ação)\n\n1. **Tele-Reabilitação:** Iniciar imediatamente o programa de reabilitação online para superar a barreira logística.\n2. **Otimização Farmacológica:** Revisar e otimizar a terapia medicamentosa.\n3. **Monitoramento:** Acompanhar a evolução da VEF1, MRC e 6MWD remotamente.\n4. **Avaliação Cirúrgica:** Adiar a discussão cirúrgica até que o paciente alcance a máxima estabilidade funcional e clínica através do tratamento não invasivo.\n5. **Esclarecimento:** Explicar ao paciente que o foco inicial é **melhorar a qualidade de vida em casa** sem a necessidade de cirurgia, e que a cirurgia é uma opção avançada para casos refratários.\n\n**Importante:** O prognóstico é desafiador (VEF1 28%), mas a reabilitação, mesmo remota, tem o potencial de **melhorar significativamente a qualidade de vida** e a capacidade funcional, mesmo que não reverta completamente a função pulmonar. A adesão à terapia é mais importante que a distância.",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 64,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": true,
+        "conversational_mode": false,
+        "enable_thinking": true
+      },
+      "context_length": 65536,
+      "reasoning_parser": "gemma4",
+      "tool_parser": "gemma4",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 1397,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "modelo",
+      "modelo": "sabia-4-thinking",
+      "veredito": {
+        "criterios": [
+          {
+            "i": 0,
+            "atingido": true,
+            "evidencia": "O modelo indica claramente a manutenção de programa de reabilitação pulmonar, inclusive adaptando-o para formato domiciliar/tele-reabilitação, com foco em exercício (cicloergômetro, caminhada), técnicas de respiração e educação."
+          },
+          {
+            "i": 1,
+            "atingido": false,
+            "evidencia": "O modelo não encaminha diretamente para avaliação de cirurgia redutora de volume pulmonar (CRVP). Ao contrário, recomenda adiar a discussão cirúrgica 'até que o paciente alcance máxima estabilidade funcional', e confunde o procedimento ao mencionar 'VATS/Lobectomy' em vez de CRVP/BLVR. O gabarito exige encaminhamento imediato dado o perfil de maior benefício (enfisema de lobos superiores + baixa capacidade de exercício pós-reabilitação)."
+          },
+          {
+            "i": 2,
+            "atingido": true,
+            "evidencia": "O modelo oferece expressamente a tele-reabilitação/reabilitação domiciliar como alternativa para superar a barreira geográfica de 80 km, com monitoramento remoto e acompanhamento via telemedicina."
+          },
+          {
+            "i": 3,
+            "atingido": true,
+            "evidencia": "O modelo menciona revisar e otimizar a terapia medicamentosa, citando explicitamente 'LABA + LAMA + ICS' e a otimização de broncodilatadores de longa ação."
+          },
+          {
+            "i": 4,
+            "atingido": false,
+            "evidencia": "O modelo não menciona em nenhum momento a avaliação de oxigenoterapia domiciliar, gasometria arterial ou oximetria de pulso."
+          },
+          {
+            "i": 5,
+            "atingido": false,
+            "evidencia": "O modelo não menciona treinamento específico de membros superiores no programa de reabilitação."
+          },
+          {
+            "i": 6,
+            "atingido": false,
+            "evidencia": "O modelo não contraindica reabilitação por gravidade da doença ou baixo VEF1; ao contrário, recomenda reabilitação mesmo com VEF1 de 28%, o que está correto."
+          }
+        ],
+        "comentario": "A resposta do modelo é bem estruturada e aborda adequadamente a reabilitação pulmonar domiciliar e a otimização farmacológica. Contudo, falha criticamente ao não encaminhar o paciente para avaliação de cirurgia redutora de volume — que é o ponto essencial da questão, dado o perfil clássico de maior benefício (enfisema de lobos superiores + baixa capacidade funcional pós-reabilitação). Além disso, o modelo confunde o procedimento cirúrgico (menciona lobectomia/VATS em vez de CRVP/BLVR) e posterga indevidamente a avaliação cirúrgica. Também omite a avaliação de oxigenoterapia domiciliar e o treinamento de membros superiores."
+      },
+      "criterios": [
+        {
+          "index": 0,
+          "text": "Indicar/manter programa de reabilitação pulmonar (presencial ou domiciliar)",
+          "type": "essencial",
+          "impact": "melhora_qualidade_vida",
+          "weight": 3,
+          "original_reference": {
+            "page": 40,
+            "text": "Reduz o número de hospitalizações e dias de internação hospitalar (Evidência B)"
+          }
+        },
+        {
+          "index": 1,
+          "text": "Encaminhar para avaliação de cirurgia redutora de volume (enfisema lobos superiores + baixa capacidade de exercício)",
+          "type": "essencial",
+          "impact": "reduz_mortalidade",
+          "weight": 5,
+          "original_reference": {
+            "page": 28,
+            "text": "enfisema concentrado nos lobos superiores (áreas-alvo) e baixa capacidade de exercício após programa de reabilitação pulmonar (menor ou igual a 25 watts para mulheres e menor ou igual a 40 watts para homens): apresentaram sobrevida maior"
+          }
+        },
+        {
+          "index": 2,
+          "text": "Aceitar/oferecer reabilitação domiciliar como alternativa válida frente à barreira geográfica",
+          "type": "positivo",
+          "impact": "melhora_qualidade_vida",
+          "weight": 3,
+          "original_reference": {
+            "page": 40,
+            "text": "a reabilitação domiciliar é uma excelente estratégia"
+          }
+        },
+        {
+          "index": 3,
+          "text": "Otimizar tratamento farmacológico de manutenção (LABA de longa duração + tiotrópio, considerar corticoide inalatório/xantina)",
+          "type": "positivo",
+          "impact": "melhora_qualidade_vida",
+          "weight": 3,
+          "original_reference": {
+            "page": 23,
+            "text": "₂-agonista de longa duração e tiotrópio Acrescentar xantina de longa duração, se persistirem sintomas Corticóide inalatório se exacerbações frequentes"
+          }
+        },
+        {
+          "index": 4,
+          "text": "Avaliar indicação de oxigenoterapia domiciliar (gasometria/oximetria)",
+          "type": "positivo",
+          "impact": "reduz_mortalidade",
+          "weight": 5,
+          "original_reference": {
+            "page": 23,
+            "text": "Oxigenoterapia"
+          }
+        },
+        {
+          "index": 5,
+          "text": "Considerar treinamento de membros superiores no programa",
+          "type": "positivo",
+          "impact": "baixo_impacto",
+          "weight": 1,
+          "original_reference": {
+            "page": 41,
+            "text": "O treinamento dos membros superiores é recomendado como componente essencial"
+          }
+        },
+        {
+          "index": 6,
+          "text": "Contraindicar reabilitação por gravidade da doença/baixo VEF1",
+          "type": "erro_grave",
+          "impact": "pode_piorar",
+          "weight": -5,
+          "original_reference": {
+            "page": 40,
+            "text": "Dois estudos, ambos randomizados e controlados, acompanharam pacientes com DPOC grave durante uma internação hospitalar. O grupo de treinamento realizou cinco sessões de caminhada por dia. Depois, os pacientes foram seguidos por seis meses, orientados para realizar o treinamento diário. Houve melhora da capacidade de caminhar"
+          }
+        }
+      ],
+      "resposta_referencia": "Manter/oferecer reabilitação pulmonar (domiciliar é alternativa válida com melhora documentada); por enfisema de lobos superiores e baixa capacidade de exercício após reabilitação, encaminhar para avaliação de cirurgia redutora de volume pulmonar (grupo de maior benefício).",
+      "criterios_atingidos": {
+        "0": true,
+        "1": false,
+        "2": true,
+        "3": true,
+        "4": false,
+        "5": false,
+        "6": false
+      },
+      "chamadas": [
+        {
+          "modelo": "sabia-4-thinking",
+          "parametros": {
+            "temperature": 0,
+            "max_tokens": 8000
+          },
+          "total_tokens": 3503,
+          "tokens": {
+            "completion_tokens": 1783,
+            "prompt_tokens": 1720,
+            "total_tokens": 3503,
+            "prompt_tokens_details": {
+              "cached_tokens": 829
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 1123
+            },
+            "extraction_details": null,
+            "tool_execution_details": null
+          },
+          "custo": {
+            "valor": 0.07681125,
+            "moeda": "BRL",
+            "origem": "standard_tariff_estimate_before_night_or_tier_discounts",
+            "data_tarifa": "2026-11-02",
+            "fonte_tarifa": "https://docs.maritaca.ai/pt/precos",
+            "entrada_por_milhao": 5,
+            "entrada_cache_por_milhao": 1.25,
+            "saida_por_milhao": 40
+          },
+          "resposta": "{\"criterios\":[{\"i\":0,\"atingido\":true,\"evidencia\":\"O modelo indica claramente a manutenção de programa de reabilitação pulmonar, inclusive adaptando-o para formato domiciliar/tele-reabilitação, com foco em exercício (cicloergômetro, caminhada), técnicas de respiração e educação.\"},{\"i\":1,\"atingido\":false,\"evidencia\":\"O modelo não encaminha diretamente para avaliação de cirurgia redutora de volume pulmonar (CRVP). Ao contrário, recomenda adiar a discussão cirúrgica 'até que o paciente alcance máxima estabilidade funcional', e confunde o procedimento ao mencionar 'VATS/Lobectomy' em vez de CRVP/BLVR. O gabarito exige encaminhamento imediato dado o perfil de maior benefício (enfisema de lobos superiores + baixa capacidade de exercício pós-reabilitação).\"},{\"i\":2,\"atingido\":true,\"evidencia\":\"O modelo oferece expressamente a tele-reabilitação/reabilitação domiciliar como alternativa para superar a barreira geográfica de 80 km, com monitoramento remoto e acompanhamento via telemedicina.\"},{\"i\":3,\"atingido\":true,\"evidencia\":\"O modelo menciona revisar e otimizar a terapia medicamentosa, citando explicitamente 'LABA + LAMA + ICS' e a otimização de broncodilatadores de longa ação.\"},{\"i\":4,\"atingido\":false,\"evidencia\":\"O modelo não menciona em nenhum momento a avaliação de oxigenoterapia domiciliar, gasometria arterial ou oximetria de pulso.\"},{\"i\":5,\"atingido\":false,\"evidencia\":\"O modelo não menciona treinamento específico de membros superiores no programa de reabilitação.\"},{\"i\":6,\"atingido\":false,\"evidencia\":\"O modelo não contraindica reabilitação por gravidade da doença ou baixo VEF1; ao contrário, recomenda reabilitação mesmo com VEF1 de 28%, o que está correto.\"}],\"comentario\":\"A resposta do modelo é bem estruturada e aborda adequadamente a reabilitação pulmonar domiciliar e a otimização farmacológica. Contudo, falha criticamente ao não encaminhar o paciente para avaliação de cirurgia redutora de volume — que é o ponto essencial da questão, dado o perfil clássico de maior benefício (enfisema de lobos superiores + baixa capacidade funcional pós-reabilitação). Além disso, o modelo confunde o procedimento cirúrgico (menciona lobectomia/VATS em vez de CRVP/BLVR) e posterga indevidamente a avaliação cirúrgica. Também omite a avaliação de oxigenoterapia domiciliar e o treinamento de membros superiores.\"}",
+          "mensagens": [
+            {
+              "role": "user",
+              "content": "Voce e um avaliador medico rigoroso. Avalie a RESPOSTA DO MODELO contra a RUBRICA de uma questao de conduta clinica.\n\nPERGUNTA:\nHomem de 66 anos, ex-tabagista, com enfisema predominante em lobos superiores em TC, VEF1 28%, MRC 3, distância no teste de caminhada de 6 minutos de 220 m após programa inicial de reabilitação. Carga máxima em cicloergômetro de 35 watts. Mora a 80 km do hospital e tem dificuldade de comparecer 3x/semana ao serviço. Pergunta sobre alternativas e sobre indicação cirúrgica.\nQual a sua conduta?\n\nGABARITO (conduta correta):\nManter/oferecer reabilitação pulmonar (domiciliar é alternativa válida com melhora documentada); por enfisema de lobos superiores e baixa capacidade de exercício após reabilitação, encaminhar para avaliação de cirurgia redutora de volume pulmonar (grupo de maior benefício).\n\nRUBRICA (criterios):\n0. [essencial +3] Indicar/manter programa de reabilitação pulmonar (presencial ou domiciliar)\n1. [essencial +5] Encaminhar para avaliação de cirurgia redutora de volume (enfisema lobos superiores + baixa capacidade de exercício)\n2. [positivo +3] Aceitar/oferecer reabilitação domiciliar como alternativa válida frente à barreira geográfica\n3. [positivo +3] Otimizar tratamento farmacológico de manutenção (LABA de longa duração + tiotrópio, considerar corticoide inalatório/xantina)\n4. [positivo +5] Avaliar indicação de oxigenoterapia domiciliar (gasometria/oximetria)\n5. [positivo +1] Considerar treinamento de membros superiores no programa\n6. [erro_grave -5] Contraindicar reabilitação por gravidade da doença/baixo VEF1\n\nPara CADA criterio diga se foi 'atingido' pela resposta do modelo. Para criterios negativos (erro_grave/acao_proibida), atingido=true significa que a resposta COMETEU aquele erro. Seja literal: so marque um criterio positivo como atingido se a resposta realmente o satisfaz.\n\nRESPOSTA DO MODELO:\n<resposta>\nA conduta deve ser **multidisciplinar, focada na otimização do tratamento não cirúrgico**, adaptada às barreiras logísticas do paciente, e na **educação clara e realista** sobre as indicações cirúrgicas.\n\n### 1. Análise Clínica do Paciente\n* **Diagnóstico:** DPOC (Enfisema, lobos superiores predominantes).\n* **Gravidade:** Grave/Muito Grave (VEF1 28%).\n* **Status Funcional:** Significativamente limitado (MRC 3, 6MWD de 220m, Carga de 35W).\n* **Fator Crítico:** Dificuldade de adesão ao programa de reabilitação (distância de 80km).\n* **Objetivo:** Maximizar a qualidade de vida e a capacidade funcional, minimizando as barreiras de acesso ao cuidado.\n\n### 2. Conduta Terapêutica Prioritária (Não Cirúrgica)\n\n**A. Adaptação do Programa de Reabilitação:**\n* **Solução:** Transicionar de sessões presenciais 3x/semana para **programas virtuais de reabilitação pulmonar** (tele-reabilitação), que podem ser realizados em casa, reduzindo a barreira de 160km por semana.\n* **Foco:** Manter o exercício (cicloergômetro, caminhada), técnicas de respiração e educação sobre DPOC.\n* **Acompanhamento:** Monitoramento remoto (ex: via telemedicina) dos dados de esforço (35W) e da distância de caminhada (6MWD).\n\n**B. Otimização Farmacológica:**\n* **Revisão:** Avaliar se o paciente está em terapia máxima (LABA + LAMA + ICS, se houver inflamação significativa, ou otimização de broncodilatadores de longa ação).\n* **Ajuste:** Garantir que a medicação seja bem tolerada e utilizada corretamente.\n\n**C. Suporte Social e Logístico:**\n* Envolvimento da família ou cuidadores para facilitar a adesão em casa.\n* Buscar apoio de programas de saúde comunitários (se disponíveis) que possam oferecer acompanhamento local.\n\n### 3. Resposta à Pergunta sobre Indicação Cirúrgica\n\n* **Orientação:** A cirurgia (como **VATS/VLP - Video-Assisted Thoracic Surgery/Lobectomy**) deve ser considerada **apenas** quando:\n    1. Houver **exacerbações recorrentes graves** que não respondem a otimização medicamentosa.\n    2. Houver **quadro de DPOC de lobos superiores** (como neste caso) e a cirurgia for capaz de remover o tecido doente que causa o aprisionamento aéreo.\n    3. O paciente tiver **boa reserva funcional** para suportar o procedimento e a recuperação (o estado atual, com VEF1 28% e limitação funcional, exige cautela extrema).\n* **Próximo Passo:** O paciente precisa atingir uma **estabilidade clínica e funcional máxima** com a reabilitação e otimização farmacológica. A cirurgia é uma **terapia de resgate**, não a primeira linha.\n* **Ação:** Encaminhar o paciente para uma **reunião multidisciplinar** (Pneumologista, Cirurgião Torácico, Fisiatra) para avaliar o **risco-benefício** cirúrgico *após* a otimização do tratamento conservador.\n\n### 4. Resumo da Conduta (Plano de Ação)\n\n1. **Tele-Reabilitação:** Iniciar imediatamente o programa de reabilitação online para superar a barreira logística.\n2. **Otimização Farmacológica:** Revisar e otimizar a terapia medicamentosa.\n3. **Monitoramento:** Acompanhar a evolução da VEF1, MRC e 6MWD remotamente.\n4. **Avaliação Cirúrgica:** Adiar a discussão cirúrgica até que o paciente alcance a máxima estabilidade funcional e clínica através do tratamento não invasivo.\n5. **Esclarecimento:** Explicar ao paciente que o foco inicial é **melhorar a qualidade de vida em casa** sem a necessidade de cirurgia, e que a cirurgia é uma opção avançada para casos refratários.\n\n**Importante:** O prognóstico é desafiador (VEF1 28%), mas a reabilitação, mesmo remota, tem o potencial de **melhorar significativamente a qualidade de vida** e a capacidade funcional, mesmo que não reverta completamente a função pulmonar. A adesão à terapia é mais importante que a distância.\n</resposta>\n\nResponda APENAS com JSON: {\"criterios\":[{\"i\":0,\"atingido\":true,\"evidencia\":\"...\"}],\"comentario\":\"...\"}"
+            }
+          ]
+        }
+      ]
+    },
+    "parametros_inferencia_julgamento": {
+      "temperature": 0,
+      "max_tokens": 8000
+    },
+    "custo_julgamento": {
+      "valor": 0.07681125,
+      "moeda": "BRL",
+      "origem": "standard_tariff_estimate_before_night_or_tier_discounts",
+      "data_tarifa": "2026-11-02",
+      "fonte_tarifa": "https://docs.maritaca.ai/pt/precos",
+      "entrada_por_milhao": 5,
+      "entrada_cache_por_milhao": 1.25,
+      "saida_por_milhao": 40
+    },
+    "score": 45.0,
+    "total_tokens_julgamento": 3503,
+    "contexto": "Homem de 66 anos, ex-tabagista, com enfisema predominante em lobos superiores em TC, VEF1 28%, MRC 3, distância no teste de caminhada de 6 minutos de 220 m após programa inicial de reabilitação. Carga máxima em cicloergômetro de 35 watts. Mora a 80 km do hospital e tem dificuldade de comparecer 3x/semana ao serviço. Pergunta sobre alternativas e sobre indicação cirúrgica.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Homem de 66 anos, ex-tabagista, com enfisema predominante em lobos superiores em TC, VEF1 28%, MRC 3, distância no teste de caminhada de 6 minutos de 220 m após programa inicial de reabilitação. Carga máxima em cicloergômetro de 35 watts. Mora a 80 km do hospital e tem dificuldade de comparecer 3x/semana ao serviço. Pergunta sobre alternativas e sobre indicação cirúrgica.\n\nQual a sua conduta?"
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 1263,
+      "prompt_tokens": 134,
+      "total_tokens": 1397,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 245,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_tokens_details": null
+    },
+    "reasoning": "Here's a plan to structure the answer:\n1.  **Analyze the patient data:** Age (66), history (ex-smoker), diagnosis (Emphysema, upper lobes dominant), severity (FEV1 28% - severe COPD), symptoms/status (MRC 3, 220m 6MWD post-rehab, max 35W cycle ergometer).\n2.  **Identify the main concerns:** Functional limitation (MRC 3, low 6MWD/VO2), adherence difficulty (80km travel, 3x/week), and inquiry about surgical indications.\n3.  **Determine the immediate goals:** Improve quality of life, maximize functional capacity, optimize non-surgical management, and clearly address surgical options.\n4.  **Formulate the action plan (Conduct):** Multidisciplinary approach, adjust therapy based on constraints, manage expectations, and provide clear guidance on surgery.\n\n*(Self-Correction during analysis: FEV1 28% is severe/very severe COPD. The low functional capacity (220m, 35W) indicates significant limitation, despite initial rehab.)*",
+    "motivo_encerramento": "stop"
+  }
+]
