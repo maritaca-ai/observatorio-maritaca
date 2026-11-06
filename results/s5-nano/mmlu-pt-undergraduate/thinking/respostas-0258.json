@@ -1,0 +1,2302 @@
+[
+  {
+    "id": "012851",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nDurante o processo de projeto de um banco de dados relacional, foram detectadas as seguintes dependências funcionais (atributos multivalorados estão marcados com *):\n\n(COL1) -> (COL2*, COL3)\n(COL3, COL4) -> (COL5)\n(COL5) -> (COL6, COL7, COL8)\n(COL1, COL9) -> (COL10*)\n(COL9) -> (COL11, COL12, COL13)\n\nSabendo-se que atributos identificadores estão sublinhados, e atributos marcados com * são multivalorados, qual a sequência em que as tabelas estão na Terceira Forma Normal e atendem às dependências funcionais especificadas?\nA. TAB1(COL1, COL2*, COL3)\\nTAB2(COL3, COL4, COL5)\\nTAB3(COL5,COL6, COL7, COL8)\\nTAB4(COL1, COL9, COL10*)\\nTAB5(COL9,COL11, COL12, COL13)\nB. TAB1(COL1, COL3)\\nTAB2(COL1, COL2)\\nTAB3(COL3, COL4, COL6, COL7, COL8)\\nTAB4(COL1, COL9, COL10)\\nTAB5(COL9,COL11, COL12, COL13)\nC. TAB1(COL1, COL2, COL3)\\nTAB2(COL3, COL4, COL5)\\nTAB3(COL5,COL6, COL7, COL8)\\nTAB4(COL1, COL9, COL10, COL11, COL12, COL13)\nD. TAB1(COL1, COL2)\\nTAB2(COL1, COL3)\\nTAB3(COL3, COL4, COL5)\\nTAB4(COL5,COL6, COL7, COL8)\\nTAB5(COL1, COL9, COL10)\\nTAB6(COL9,COL11, COL12, COL13)\nE. TAB1(COL1, COL2)\\nTAB2(COL1, COL3)\\nTAB3(COL3, COL4, COL5)\\nTAB4(COL5,COL6, COL7, COL8)\\nTAB5(COL1, COL9, COL10)\\nTAB6(COL9,COL11, COL12, COL13)",
+    "resposta": "\n\nA decomposição correta separa cada atributo multivalorado (`COL2*`, `COL10*`) junto aos seus determinantes principais e agrupa os determinantes com seus dependentes diretos conforme as dependências funcionais.  \nA alternativa que segue essa estrutura em 3NF é a **D**.\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "E",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012852",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConsidere o seguinte crime: \"Art. 205- Exercer atividade, de que está impedido por decisão administrativa.\"\nA. Trata-se de crime de mera conduta.\nB. Trata-se de crime de forma vinculada.\nC. Não se trata de crime próprio.\nD. Não é crime comissivo.",
+    "resposta": "\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012853",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nQUESTÃO 50 - Analise o código a seguir:\n```\nvoid thread ( void *ptr ) { while(1); }\nint main() {\nint i; pthread_t tid[10];\nfor(i=0;i<10;i++)\npthread_create (&tid[i], NULL, (void *) thread, NULL);\ngetchar();\n}\n```\nAo executar esse programa, o processo criado possuirá quantos fluxos de execução (threads) no instante em que finalizar o laço for(; ; )?\nA. A) Um.\nB. B) Dois.\nC. C) Nove.\nD. D) Dez.\nE. E) Onze.",
+    "resposta": "\n\nO programa cria inicialmente a thread principal e depois chama `pthread_create` dez vezes, criando mais dez threads. Assim, o processo terá 1 + 10 = **11 fluxos de execução** enquanto elas estiverem vivas. Como os threads entram em um `while(1)`, eles permanecem ativos.\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012854",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nCom relação aos direitos reais sobre coisas alheias, assinale a opção correta.\nA. O penhor comum ou convencional só pode ser instituído por escrito e completa-se com a entrega da coisa móvel de propriedade do devedor ou de terceiro garantidor ao credor pignoratício, com a finalidade de garantir o pagamento de um débito.\nB. O mesmo imóvel pode ser dado em garantia hipotecária a mais de uma dívida até o limite do valor venal do imóvel e exigindo-se para tanto que o credor originário e o da segunda hipoteca sejam a mesma pessoa e que haja sua concordância expressa com a divisibilidade da referida garantia.\nC. Extingue-se a hipoteca com a alienação da propriedade, transformando-se a obrigação real em obrigação pessoal do devedor originário que assumiu a dívida perante o credor hipotecário.\nD. A anticrese é um direito real de garantia com eficácia erga omnes em que o devedor ou um terceiro garantidor transmite a posse direta e indireta de bem móvel ao credor como garantia de uma dívida. Em hipótese de inadimplemento do débito garantido, poderá o credor promover a venda amigável do bem para o pagamento.",
+    "resposta": "\n\nA alternativa A está correta, pois o penhor convencional exige contrato escrito e tradição/entrega da coisa móvel empenhada, conforme os arts. 1.431 e 1.432 do Código Civil. As demais alternativas apresentam incorreções jurídicas.\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012855",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNa seqüência seguinte o número que aparece entre parênteses é obtido segundo uma lei de formação.\n63(21)9; 186(18)31; 85(?)17\nO número que está faltando é\nA. 15\nB. 17\nC. 19\nD. 23\nE. 25",
+    "resposta": "\n\nObservando os padrões:\n- \\(63 = 9 \\times 7\\) e \\(21 = 7 \\times 3\\)\n- \\(186 = 31 \\times 6\\) e \\(18 = 6 \\times 3\\)\n- Portanto, em \\(85(\\?)17\\), temos \\(85 = 17 \\times 5\\), então \\((?) = 5 \\times 3 = 15\\).\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012856",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nPrimigesta de 18 anos de idade, com 37 semanas de idade gestacional, chega ao pronto atendimento com queixa de cefaleia intensa. Refere também visualização de pontos pretos. Nega outras queixas. Pré-natal até o momento sem intercorrências. Ao exame encontra-se lúcida e orientada, com muita dor. A pressão arterial é de 160/100 mmHg, mantida após repouso em decúbito lateral esquerdo, a frequência cardíaca é de 90 batimentos por minuto. Sem dinâmica uterina, feto com movimentação normal. Batimentos cardíacos fetais = 144 bpm com variabilidade. Edema em membros inferiores de 3 cruzes em 4. Traz um exame de urina, coletado há 2 dias que mostra proteinúria 2 cruzes em 4, sem outras alterações significativas. Foi prescrita hidralazina endovenosa para controle de pressão arterial (PA). Que outra conduta seria necessária no momento e para quê?\nA. Prescrever sulfato de magnésio para prevenir convulsões.\nB. Prescrever sulfato de magnésio para controle de pressão arterial e dos sintomas maternos.\nC. Prescrever analgésicos e benzodiazepínicos para controle dos sintomas e prevenção de convulsões.\nD. Prescrever analgésicos e aguardar efeito do anti-hipertensivo.",
+    "resposta": "\n\nA paciente apresenta pré-eclâmpsia grave (cefaleia intensa e alterações visuais associadas a PA elevada e proteinúria). Além do controle pressórico com hidralazina, está indicada profilaxia de convulsões com sulfato de magnésio. O magnésio não é usado como anti-hipertensivo primário nesse caso, mas para prevenção de eclâmpsia.\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012857",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConceição promove ação possessória em face de vários réus que ocuparam imóvel sem construção, de sua propriedade, em área urbana. Houve a designação de audiência de conciliação, com a presença dos réus e dos seus advogados. Na audiência, visando organizar o ato, o magistrado proibiu que os advogados se mantivessem de pé, bem como saíssem do local durante a sua realização.Com base no que dispõe o Estatuto da Advocacia e as leis regentes, é correto afirmar que\nA. o advogado deve permanecer sentado na sala de audiências até o final do ato.\nB. caso o advogado necessite retirar-se do local, deve postular licença à autoridade.\nC. o advogado pode permanecer sentado ou de pé nos recintos do Poder Judiciário.\nD. pode permanecer de pé, caso autorizado pela autoridade competente.",
+    "resposta": "\n\nO art. 7º, XI, da Lei nº 8.906/1994 assegura ao advogado falar, sentado ou de pé, em juízo, tribunal ou audiência de conciliação. Assim, o magistrado não poderia proibir os advogados de permanecerem de pé.\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012858",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nQUESTÃO 51 - Sobre o controle de concorrência baseado na ordenação de timestamp (rótulo de tempo), considere $r_{-} t s(x)$ e $w_{-} t s(x)$ os timestamps da última transação a ler e a gravar o item de dados $x$, respectivamente. Considere que a transação T, cujo timestamp é $t s(T)$, precisa gravar o item de dados $x$, ou seja, $T$ emite a operação write $(x)$. Conforme o algoritmo de ordenação baseada em timestamp básica, para que as transações sejam serializáveis em conflito sem que haja o aborto e o reinício de T, o seguinte predicado precisa ser verdadeiro:\nA. A) $(r_{-} t s(x)>t s(T))$ or $(w_{-} t s(x)>t s(T))$\nB. B) $(r_{-} t s(x)>t s(T))$ and $(w_{-} t s(x)>t s(T))$\nC. C) (not $(r_{-} t s(x)>t s(T)))$ or $(w_{-} t s(x)>t s(T))$\nD. D) (not $(r_{-} t s(x)>t s(T)))$ or (not $(w_{-} t s(x)>t s(T)))$\nE. E) (not $(r_{-} t s(x)>t s(T)))$ and not $((w_{-} t s(x)>t s(T)))$",
+    "resposta": "\n\nNo algoritmo básico de ordenação por timestamps, uma transação T pode executar `write(x)` somente se não houver nenhuma transação **mais recente** que já tenha lido ou gravado o item x. Isso equivale a exigir:\n\n\\[\nr\\text{-}ts(x) \\leq ts(T) \\quad \\text{e} \\quad w\\text{-}ts(x) \\leq ts(T)\n\\]\n\nOu seja, tanto o último leitor quanto o último escritor devem ter timestamp menor ou igual ao de T. Nas alternativas, isso corresponde a:\n\n\\[\n\\neg (r\\text{-}ts(x) > ts(T)) \\;\\land\\; \\neg (w\\text{-}ts(x) > ts(T))\n\\]\n\nQue é exatamente a alternativa **E**.\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012859",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUm advogado, após duas horas aguardando o pregão de um ato judicial, recebe a informação de que a autoridade competente para a presidência do ato não está presente ao seu local de trabalho. Qual conduta poderá ser adotada pelo profissional?\nA. requerer a suspensão do referido ato mediante representação ao Tribunal de Justiça.\nB. retirar-se do recinto mediante comunicação protocolizada em juízo.\nC. retirar-se do recinto mediante representação do presidente da seccional.\nD. embargar o referido ato mediante moção de repúdio do presidente da seccional.",
+    "resposta": "\n\nO Estatuto da Advocacia (Lei nº 8.906/1994), em seu art. 7º, XV, garante ao advogado o direito de se retirar após 30 minutos do horário designado para audiência ou julgamento, sem necessidade de comunicação prévia. No caso, já tendo passado duas horas, é cabível sua retirada; a comunicação protocolizada ao juízo apenas documenta o fato. Não há previsão para suspensão do ato por representação ao Tribunal nem para retirada mediante atuação da seccional.\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012860",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nDestaque a assertiva correta:\nA. Pode-se exigir que cesse a ameaça, ou a lesão, a direito da personalidade, e reclamar perdas e danos, sem prejuízo de outras sanções previstas em lei, mas, em se tratando de morto, somente terá legitimação para requerer a medida prevista neste artigo o cônjuge sobrevivente, ou qualquer parente em linha reta, ou colateral até o quarto grau.\nB. Decorrido dois anos da arrecadação dos bens do ausente, ou, se ele deixou representante ou procurador, em se passando três anos, poderão os interessados requerer que se declare a ausência e se abra provisoriamente a sucessão.\nC. A sentença que determinar a abertura da sucessão provisória só produzirá efeito cento e vinte dias depois de publicada pela imprensa; mas, logo que passe em julgado, proceder-se-á à abertura do testamento, se houver, e ao inventário e partilha dos bens, como se o ausente fosse falecido.\nD. Os imóveis do ausente só se poderão alienar ou hipotecar, com o consentimento e intervenção de todos os herdeiros.",
+    "resposta": "\n\nA alternativa A transcreve corretamente o art. 12, parágrafo único, do Código Civil, que trata da legitimação para pleitear medidas relativas a direitos da personalidade em caso de morte.\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012861",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nEm uma mesma rua da cidade de Palmas, em dois imóveis diversos, moram Roberto e Mário. Roberto foi indiciado pela prática do crime de estelionato, razão pela qual o magistrado deferiu requerimento do Ministério Público de busca e apreensão de documentos em sua residência, sem estabelecer o horário em que deveria ser realizada. Diante da ordem judicial, a Polícia Civil compareceu à sua residência, às 04h da madrugada para cumprimento do mandado e ingressou no imóvel, sem autorização do indiciado, para cumprir a busca e apreensão.Após a diligência, quando deixavam o imóvel, policiais receberam informações concretas de popular, devidamente identificado, de que Mário guardava drogas para facção criminosa em seu imóvel e, para comprovar o alegado, o popular ainda apresentou fotografias. Diante disso, os policiais ingressaram na residência de Mário, sem autorização deste, onde, de fato, apreenderam 1 kg de droga.Sobre as diligências realizadas, com base na situação narrada, assinale a afirmativa correta.\nA. Nas residências de Roberto e Mário foram inválidas.\nB. Na residência de Roberto foi inválida, enquanto que, na residência de Mário, foi válida.\nC. Nas residências de Roberto e Mário foram válidas.\nD. Na residência de Roberto foi válida, enquanto que, na residência de Mário, foi inválida.",
+    "resposta": "\n\nA busca na residência de Roberto foi inválida, pois foi realizada em horário noturno (04h), sem consentimento do morador, contrariando o art. 5º, XI, da CF e o art. 245 do CPP. Já quanto a Mário, embora não houvesse mandado judicial, havia informações concretas, prestadas por pessoa identificada e corroboradas por fotografias, que podiam configurar fundadas razões/finalidade de flagrante, autorizando o ingresso sem autorização judicial.\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012862",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSendo considerados de valor permanente, os documentos relativos a material e patrimônio resguardam direitos patrimoniais. Dentre os documentos abaixo, quais estão nessa categoria?\nA. Acordos e dissídios\nB. Estímulos creditícios e programas\nC. Reivindicações de domínio e tombamento\nD. Tomada de contas e balancetes\nE. Propostas orçamentárias e ação disciplinar",
+    "resposta": "\n\nOs documentos que tratam diretamente de direitos sobre bens, como reivindicações de domínio e tombamento, são os relacionados ao patrimônio com valor permanente.\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012863",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nA crise global de 2008 e a crise da pandemia da covid-19, em 2020, foram, ambas, crises deflagradas por choques, que, posteriormente, acarretaram severa contração econômica e aumento das taxas de desemprego na maioria dos países. A principal característica que distingue ambas as crises econômicas é que a crise da pandemia da covid-19 teve como fator deflagrador original\nA. o estouro de bolhas especulativas no mercado de ações.\nB. o excesso de endividamento do setor privado.\nC. o excesso de endividamento do setor público.\nD. um choque inflacionário, causado por excesso de demanda agregada.\nE. um choque exógeno imprevisível, causado por fatores extraeconômicos.",
+    "resposta": "\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012864",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nÉ incorreto afirmar que:\nA. estado de sítio pode ser decretado em caso de comoção nacional;\nB. estado de defesa pode ser decretado em caso de calamidade natural;\nC. a Constituição poderá ser emendada na vigência de estado de defesa;\nD. direito de sigilo de correspondência pode ser restrito em caso de estado de defesa.",
+    "resposta": "\n\nA Constituição Federal proíbe emendas constitucionais durante o estado de defesa, conforme o art. 60, §1º. Portanto, a afirmação incorreta é a letra C.\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012865",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nAinda com relação às teorias que versam sobre o tratamento do erro que recai sobre as causas de justificação, qual delas preconiza a figura do chamado dolo normativo, situando o mesmo na culpabilidade, estando nele a consciência atual da ilicitude:\nA. A teoria extremada da culpabilidade.\nB. A teoria limitada do dolo.\nC. A teoria extremada do dolo.\nD. A teoria limitada da culpabilidade.",
+    "resposta": "\n\nA teoria extremada da culpabilidade trata o erro sobre causas de justificação como erro sobre a própria ilicitude, localizado na culpabilidade, razão pela qual se fala em dolo normativo, contendo a consciência atual da ilicitude.\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "C",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012866",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nCom relação ao Sistema Nacional de Unidades de Conservação, assinale a afirmativa correta.\nA. As unidades de conservação devem ser criadas por lei, exigindo-se para tal prévia consulta pública e elaboração de estudo prévio de impacto ambiental.\nB. São unidades de conservação do grupo de proteção integral a floresta nacional, o parque nacional, a área de proteção ambiental e a reserva de fauna.\nC. As unidades de conservação do grupo de proteção integral podem ter seus limites reduzidos, através de lei específica.\nD. São unidades de conservação do grupo de uso sustentável a estação ecológica, a reserva extrativista e a reserva particular do patrimônio natural.",
+    "resposta": "\n\nA alternativa correta é a letra C. Segundo o SNUC, nas unidades de conservação de proteção integral, a modificação de limites — inclusive redução — somente pode ocorrer por lei específica.\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012867",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nEm reunião de equipe da Estratégia de Saúde da Família, o médico expõe sua preocupação com o aumento no número de atendimentos de cuidadores de idosos, em virtude de problemas de saúde decorrentes de estresse físico e emocional. Sugere que seja realizada intervenção de apoio e suporte aos cuidadores e para isso propõe aplicar escala que tem por objetivo \"avaliar a sobrecarga dos cuidadores de idosos\". Trata-se da\nA. Escala de Zarit.\nB. Escala de Barthel.\nC. Escala de Desempenho de Karnofsky.\nD. Escala de Avaliação Multidimensional do Idoso.",
+    "resposta": "\n\nA Escala de Zarit é amplamente utilizada para avaliar a sobrecarga de cuidadores de idosos.\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012868",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO advogado militante, Augusto César, regularmente inscrito na OAB-RJ, foi eleito em assembléia de acionistas e empossado Presidente do Banco Bradesco S.A.- Pergunta-se: Como fica a situação de Augusto César junto a OAB-RJ e quanto ao exercício da Advocacia?\nA. Terá sua inscrição na OAB-RJ cancelada e, conseqüentemente não poderá mais exercer a advocacia.;\nB. Será licenciado pela OAB-RJ e, conseqüentemente, não poderá exercer a advocacia durante o tempo em que for Presidente do Banco Bradesco S.A..;\nC. Continuará inscrito na OAB-RJ e exercendo a advocacia, ficando porém impedido de advogar contra o Banco Bradesco, que o remunera.;\nD. Continuará inscrito na OAB-RJ e exercendo a advocacia normalmente sem qualquer restrição, por se tratar de Banco privado.;",
+    "resposta": "\n\nAugusto César permanecerá inscrito na OAB-RJ e poderá exercer a advocacia em geral, mas ficará impedido de atuar em causas contra o próprio Banco Bradesco, instituição que dirige e que o remunera, conforme o regime de impedimentos do Estatuto da Advocacia (Lei nº 8.906/94).\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "B",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012869",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nInterposto recurso erradamente por outro:\nA. A boa-fé do impetrante é de capital importância na solução do impasse processual;\nB. nunca se aproveita, pois é sempre erro grosseiro ;\nC. o aproveitamento é garantia constitucional do réu elevada a princípio processual;\nD. ao Ministério Público não aproveita o princípio, por ter obrigação de conhecer a lei .",
+    "resposta": "\n\nO aproveitamento do recurso interposto por um dos réus, quando fundado em motivos objetivos, é previsto no art. 580 do CPP e decorre de garantias constitucionais como a ampla defesa e a igualdade entre os acusados. Portanto, não se trata de erro sempre insanável, mas de hipótese de extensão subjetiva do recurso.\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "A",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012870",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSegundo as regras próprias do Processo do Trabalho, pode-se afirmar corretamente que:\nA. na exceção de incompetência, o excepto terá o prazo de 48 (quarenta e oito) horas para manifestar-se sobre as alegações do excipiente.\nB. a exceção de suspeição deve ser julgada dentro de 5 (cinco) dias de sua apresentação.\nC. a notificação do reclamado deverá ser recebida nos 8 (oito) dias anteriores à realização da audiência.\nD. as razões finais orais serão, por cada parte, oferecidas na audiência em 10 (dez) minutos, no máximo.\nE. o prazo limite para a contestação feita oralmente na audiência é de 10 (dez) minutos.",
+    "resposta": "\n\nA alternativa correta é a **D**, pois, nos termos do art. 850 da CLT, as alegações finais orais são feitas por cada parte, respectivamente, em até **10 minutos**.\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012871",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nJoel é Conselheiro do Tribunal de Contas do Município J, sendo proprietário de diversos imóveis. Em um deles, por força de contrato de locação residencial, verifica a falta de pagamentos dos alugueres devidos. O Conselheiro é Bacharel em Direito, tendo exercido a advocacia por vários anos na área imobiliária.Nesse caso, nos termos do Estatuto da Advocacia, o Conselheiro\nA. poderia atuar como advogado em causa própria.\nB. deverá contratar advogado para a causa diante da situação de incompatibilidade.\nC. poderia advogar; recomenda-se, contudo, a contratação de advogado.\nD. está com a sua inscrição como advogado suspensa.",
+    "resposta": "\n\nO Conselheiro de Tribunal de Contas possui incompatibilidade absoluta com o exercício da advocacia, inclusive em causa própria, nos termos do art. 27 do Estatuto da Advocacia (Lei nº 8.906/94). Portanto, não poderá atuar pessoalmente na cobrança dos aluguéis, devendo constituir advogado.\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012872",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nA Organização Mundial do Comércio (OMC) é uma instituição internacional multilateral, sediada em Genebra, com muitos países membros, inclusive o Brasil, os quais comerciam entre si. Essa organização exerce diversas funções, dentre as quais,\nA. manter um grande banco de dados com medidas e estatísticas sobre o comércio internacional.\nB. estabelecer direitos trabalhistas mínimos a serem respeitados pelos países membros.\nC. estabelecer controles de dano ambiental mínimos a serem respeitados pelos países membros.\nD. aprovar previamente as políticas cambiais de seus países membros.\nE. criar e administrar mecanismos de fiscalização do comércio internacional ilegal (contrabando).",
+    "resposta": "\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012873",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nQUESTÃO 27 - Assinale a alternativa correta sobre o Paradigma de Programação Imperativo.\nA. A) É baseado na arquitetura de Von Neumann.\nB. B) Nos métodos e nos atributos, também são definidas as formas de relacionamento com objetos.\nC. C) É baseada na arquitetura MVC (Model-View-Controller).\nD. D) Não existem procedimentos ou funções.\nE. E) Fácil legibilidade e manutenibilidade.",
+    "resposta": "\n\nO Paradigma Imperativo está associado à execução sequencial de instruções e modificação do estado, o que reflete a arquitetura de von Neumann (CPU, memória e execução sequencial).\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012874",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nA figura a seguir apresenta a mortalidade proporcional por alguns grupos de causa no sexo masculino e em grupos etários selecionados. Legenda: DIC - Doenças Isquêmicas do Coração DCV - Doenças Cerebrovasculares ODC - Outras Doenças Coronarianas IP - Influenza e Pneumonia ODR - Outras Doenças Respiratórias DF - Doenças do Fígado ATR - Acidentes de Transporte Ell - Eventos com intenção indeterminada AG - Agressões AS - Afogamentos e/ou submersões LAI - Lesões Autoinfligidas Fonte: DATASUS, MS, 2021. (acesso em 01/07/2021). Figura 1. Mortalidade proporcional (%) por grupos de causas e em faixas etárias selecionadas, no sexo masculino, Brasil, 2019. Com base nos dados demonstrados nos gráficos, conclui-se que\nA. as agressões e as causas externas de intenção indeterminada são responsáveis por pelo menos 50% dos óbitos ocorridos na faixa etária de 15 a 29 anos.\nB. na faixa etária dos 60 anos e mais, a mortalidade proporcional por doença isquêmica do coração é menor do que a faixa etária de 30 a 59 anos.\nC. as doenças respiratórias, na faixa etária de 60 anos e mais, causam mais óbitos do que as doenças do aparelho circulatório.\nD. atividades educativas visando reduzir o consumo excessivo de bebidas alcoólicas teria menor impacto nos indicadores de mortalidade relativos às faixas etárias de 15 a 59 anos que na faixa etária de 60 anos ou mais.",
+    "resposta": "\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "A",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012875",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUm gerente preocupado em estudar e otimizar recursos no composto logístico da empresa encontrou dificuldades na área de transporte no que dizia respeito à redução dos gastos da sua frota. Ao avaliar mais minuciosamente as condições de transporte, percebeu que, se passasse a adotar o transporte com transbordo, poderia reduzir consideravelmente os custos de manutenção e combustível. Indique qual das afirmativas abaixo sobre o uso do transporte com transbordo na logística **não** é correta.\nA. O transporte com transbordo implica a redução da quilometragem final rodada pela frota.\nB. O transporte com transbordo implica considerar fontes também como destinos e vice-versa.\nC. O transporte com transbordo implica a saída de carregamentos com volume acima do limite, permitindo economia no fim do período.\nD. Uma desvantagem do transporte com transbordo é a transferência de carga que pode gerar perdas.\nE. O transporte com transbordo pode reduzir o tempo de transporte por equipamento.",
+    "resposta": "\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012876",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSegundo a jurisprudência dominante do Supremo Tribunal Federal, o ato inconstitucional é:\nA. irregular;\nB. anulável;\nC. nulo;\nD. inexistente.",
+    "resposta": "\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012877",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nPaciente, com 55 anos de idade, procurou consultório médico referindo o aparecimento de nódulo na região cervical à direita. O exame físico constatou que o paciente apresentava nódulo tireoideano à direita, de aproximadamente 6 cm. A ultrassonografia revelou nódulo isoecogênico, de 6 cm, no lobo inferior da tireóide. O estudo citológico, realizado em material colhido por punção aspirativa de agulha fina, foi sugestivo de carcinoma papilífero. O paciente foi então submetido a tireoidectomia, sem registro de intercorrências no ato operatório. No pós-operatório imediato o paciente passou a apresentar rouquidão e a laringoscopia realizada revelou paralisia de prega vocal à direita.\r\nMediante o quadro clínico e considerando a anatomia cirúrgica, qual a causa prevalente de rouquidão nesses casos?\nA. Lesão do ramo tireoideano do gânglio simpático cervical durante o ato cirúrgico.\nB. Lesão da alça cervical do nervo parasimpático cervical durante o ato cirúrgico.\nC. Lesão do ramo inferior do nervo laríngeo superior durante o ato cirúrgico.\nD. Lesão do nervo laríngeo superior durante o ato cirúrgico.\nE. Lesão do nervo laríngeo recorrente durante o ato cirúrgico.",
+    "resposta": "\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012878",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nPara a obtenção da personalidade jurídica sindical, é imprescindível\nA. registro sindical no Ministério do Trabalho e Emprego.\nB. depósito dos atos constitutivos da entidade sindical na Delegacia Regional do Trabalho correspondente à região onde a entidade foi criada.\nC. registro dos estatutos sociais da entidade sindical no cartório de registro de títulos e documentos.\nD. registro dos atos constitutivos na Junta Comercial da cidade onde a entidade terá sede.",
+    "resposta": "\n\nA CLT estabelece que a personalidade jurídica sindical é adquirida por meio do registro sindical no órgão competente do Ministério do Trabalho e Emprego (art. 554 da CLT). Não se exige registro em cartório de títulos e documentos nem na Junta Comercial.\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012879",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO gráfico abaixo mostra o efeito, ao longo do tempo, de uma depreciação cambial da moeda do país, no tempo t, sobre seu balanço comercial. A partir de t e de uma situação inicial de equilíbrio no balanço comercial, há tendência ao deficit e, depois, ao superavit comercial. Este processo de ajuste dinâmico é chamado de\nA. senhoragem.\nB. bolha especulativa.\nC. ilusão monetária.\nD. overshoot cambial.\nE. curva em J.",
+    "resposta": "\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012880",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nAssinale a opção incorreta.\nA. Serão contados em dobro os prazos de prescrição se o agente for reincidente.\nB. No caso de concurso de crimes, a extinção da punibilidade pela prescrição incidirá sobre a pena de cada delito, isoladamente.\nC. A pena de multa prescreverá em dois anos se for a única cominada.\nD. Serão reduzidos de metade os prazos de prescrição se o agente era, ao tempo do crime, menor de 21 anos de idade.",
+    "resposta": "\n\nA opção incorreta é a letra A. A reincidência não dobra os prazos de prescrição; ela aumenta os prazos em um terço, nos termos do art. 110 do Código Penal.  \nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012881",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nA carta de crédito confirmada caracteriza-se por\nA. ter seu pagamento assegurado, adicionalmente, por um terceiro Banco.\nB. não poder ser alterada ou cancelada pelo importador.\nC. não permitir ao exportador a transferência de seu valor para outras empresas.\nD. definir especificamente qual o Banco negociador dos documentos de exportação.\nE. permitir a carga ou descarga da mercadoria para diferentes ou idênticos meios de transporte durante a viagem.",
+    "resposta": "\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012882",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nCom base na Instrução CVM N° 365/02, que dispõe sobre os critérios para registro e avaliação contábil de títulos e valores mobiliários e de instrumentos financeiros derivativos pelos fundos de investimentos financeiros e fundos de aplicações em quotas de fundos de investimentos, identifique entre as opções abaixo aquela que apresenta o correto registro contábil da receita financeira auferida com os títulos integrantes das carteiras dos citados fundos, classificados no grupo “Para Negociação”.\nA. No resultado do período de competência do fato gerador.\nB. Em conta específica do Patrimônio Líquido.\nC. No resultado do período, no momento do resgate do título.\nD. Como receita financeira a apropriar, retificando o saldo da conta da aplicação financeira.",
+    "resposta": "\n\nA receita financeira auferida com títulos classificados no grupo “Para Negociação” deve ser reconhecida pelo regime de competência, no período em que ocorre o fato gerador, conforme a Instrução CVM 365/02.\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012883",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNÃO está incluída entre as fontes supletivas ou subsidiárias mencionadas pelo art. 8o, da CLT:\nA. a analogia.\nB. o direito comparado.\nC. a jurisprudência.\nD. o acordo coletivo de trabalho.",
+    "resposta": "\n\nO art. 8º da CLT indica como critérios de integração a analogia, os costumes e os princípios gerais do direito. O acordo coletivo de trabalho, por sua vez, é fonte negocial/autônoma do Direito do Trabalho, e não fonte supletiva ou subsidiária para preenchimento de lacunas nos moldes do citado artigo.\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012884",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\n63. Os protocolos de transporte atribuem a cada serviço um identificador único, o qual é empregado para encaminhar uma requisição de um aplicativo cliente ao processo servidor correto. Nos protocolos de transporte TCP e UDP, como esse identificador se denomina?\nA. (a) Endereço IP.\nB. (b) Porta.\nC. (c) Conexão.\nD. (d) Identificador do processo (PID).\nE. (e) Protocolo de aplicação.",
+    "resposta": "\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012885",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNo modelo dimensional utilizado para a modelagem de Data Warehouses há dois tipos de tabelas chamadas de\nA. fato e dimensão.\nB. básica e secundária.\nC. dimensão e paralela.\nD. unificada e espelhada.\nE. principal e secundária.",
+    "resposta": "\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012886",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nQUESTÃO 55 - A paginação de sobra (shadow paging) é uma técnica útil na recuperação após falhas em sistemas de bancos de dados. Sobre essa técnica, assinale a alternativa INCORRETA.\nA. A) O uso de logs e checkpoints são dispensáveis no contexto multiusuário com transações concorrentes.\nB. B) Quando uma página é atualizada, essa página muda de local no disco, se não ocorrer falha na execução da transação.\nC. C) No início de uma transação, o diretório cujas entradas apontam para as páginas de dados mais recentes no disco (diretório atual) é copiado para um diretório de sombra.\nD. D) Durante a execução da transação, o diretório de sombra não é modificado.\nE. E) Na ocorrência de falha, o estado de banco de dados antes da execução da transação está disponível por meio do diretório de sombra.",
+    "resposta": "\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012887",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nJosé, brasileiro, casado no regime da separação absoluta de bens, professor universitário e plenamente capaz para os atos da vida civil, desapareceu de seu domicílio, estando em local incerto e não sabido, não havendo indícios ou notícias das razões de seu desaparecimento, não existindo, também, outorga de poderes a nenhum mandatário, nem feitura de testamento. Vera (esposa) e Cássia (filha de José e Vera, maior e capaz) pretendem a declaração de sua morte presumida, ajuizando ação pertinente, diante do juízo competente.De acordo com as regras concernentes ao instituto jurídico da morte presumida com declaração de ausência, assinale a opção correta.\nA. Na fase de curadoria dos bens do ausente, diante da ausência de representante ou mandatário, o juiz nomeará como sua curadora legítima Cássia, pois apenas na falta de descendentes, tal curadoria caberá ao cônjuge supérstite, casado no regime da separação absoluta de bens.\nB. Na fase de sucessão provisória, mesmo que comprovada a qualidade de herdeiras de Vera e Cássia, estas, para se imitirem na posse dos bens do ausente, terão que dar garantias da restituição deles, mediante penhores ou hipotecas equivalentes aos quinhões respectivos.\nC. Na fase de sucessão definitiva, regressando José dentro dos dez anos seguintes à abertura da sucessão definitiva, terá ele direito aos bens ainda existentes, no estado em que se encontrarem, mas não aos bens que foram comprados com a venda dos bens que lhe pertenciam.\nD. Quanto ao casamento de José e Vera, o Código Civil atual reconhece efeitos pessoais e não apenas patrimoniais ao instituto da ausência, possibilitando que a sociedade conjugal seja dissolvida como decorrência da morte presumida do ausente.",
+    "resposta": "\n\nA alternativa correta é a letra **D**. O Código Civil de 2002, em seu art. 1.571, parágrafo único, prevê que a presunção de morte do ausente também produz efeitos pessoais, permitindo a dissolução da sociedade conjugal.\n\nAs demais alternativas contrariam as regras da ausência:  \n- A curadoria cabe primeiramente ao cônjuge, não aos descendentes;  \n- cônjuge e descendentes são dispensados de garantir a restituição na sucessão provisória;  \n- o ausente que retorna nos 10 anos pode ter direito aos bens sub-rogados, não apenas aos existentes.\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012888",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\n## Questão 22. [FUN]\nDeseja-se efetuar uma busca para localizar uma certa chave fixa $x$, em uma tabela contendo $n$ elementos. A busca considerada pode ser a linear ou binária. No primeiro caso pode-se considerar que a tabela esteja ordenada ou não. No segundo caso a tabela está, de forma óbvia, ordenada.\n## Assinale a alternativa CORRETA:\nA. A) A busca binária sempre localiza $x$, efetuando menos comparações que a busca linear.\nB. B) A busca linear ordenada sempre localiza $x$, efetuando menos comparações que a não ordenada.\nC. C) A busca linear não ordenada sempre localiza $x$, com menos comparações que a ordenada.\nD. D) A busca binária requer $O(\\log n)$ comparações, no máximo, para localizar $x$.\nE. E) A busca linear ordenada nunca requer mais do que $n / 2$ comparações para localizar $x$.",
+    "resposta": "\n\nA busca binária, em tabela ordenada, tem complexidade de comparações do tipo \\(O(\\log n)\\) no pior caso. As demais alternativas apresentam afirmações não garantidas ou falsas.\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012889",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nÉ permitido ao contador no exercício da auditoria independente:\nA. Baseado no seu trabalho e julgamento, emitir Parecer de Auditoria sem ressalva, mesmo sendo sabedor da existência de outro Parecer de Auditoria com Ressalva.\nB. Defender os interesses do cliente, deixando de divulgar, no Parecer de Auditoria, o fato de a empresa apresentar situação financeira de risco.\nC. Utilizar os papéis de trabalho elaborados por outros auditores, mesmo sem autorização destes, para respaldar o seu parecer.\nD. Emitir o Parecer de Auditoria antes de realizar os exames e, em seguida, elaborar os papéis de trabalho para respaldar o Parecer.",
+    "resposta": "\n\nA alternativa A é a única que pode ser admitida, desde que o auditor baseie seu parecer no próprio trabalho e conclua, com evidências adequadas, não haver distorções relevantes. As demais alternativas configuram condutas antiéticas ou contrárias às normas de auditoria.\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012890",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nJorge trabalhou em uma sociedade empresária francesa, no Brasil. Entendendo que o valor das horas extras não lhe havia sido pago corretamente, ajuizou ação trabalhista. Como impugnara os controles de horário, necessitou apresentar prova testemunhal, porém, sua única testemunha, apesar de trabalhar a seu lado, não fala português. Diante disso, Jorge requereu ao juiz a nomeação de um intérprete.Nesse caso, nada mais estando em discussão no processo, assinale a opção que indica a quem caberá o custeio dos honorários do intérprete.\nA. A Jorge, que é a parte interessada no depoimento da testemunha.\nB. À União, porque Jorge é autor da ação.\nC. Ao réu, já que era empregador de Jorge e da testemunha, que era de nacionalidade igual à da sociedade empresária.\nD. O depoimento ocorrerá fora do processo, por tradutor juramentado, custeado pela parte requerente, que depois deverá juntá-lo ao processo.",
+    "resposta": "\n\nO intérprete é nomeado pelo juiz para viabilizar o depoimento da testemunha que não fala português, e o custeio cabe à parte que requereu/arrolou essa prova, nos termos do art. 819 da CLT.\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012891",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUma mulher de 45 anos de idade, portadora do vírus da hepatite C, genótipo 1b, compareceu à consulta para mostrar resultados de exames e definir continuidade de tratamento. Ela apresenta quadro de cirrose compensada (escore de Child-Pugh = 6 pontos) e critérios de fibrose hepática extensa, sem tratamento específico prévio. Na avaliação pré-tratamento, ela apresentava carga viral de 2 milhões de cópias/mL. Foi prescrita terapia tripla para o vírus C (interferon peguilado, ribavirina e telaprevir). A paciente está em uso da medicação há 12 semanas e a carga viral na semana 12 foi de 500 cópias/mL. A paciente não apresenta outras infecções. Com base nas Diretrizes Terapêuticas para Hepatite C do Ministério da Saúde de 2013, conclui-se que não houve resposta ao telaprevir. Em vista disso, qual é o esquema terapêutico recomendado para essa paciente?\nA. Substituir todo o esquema e repetir o exame da carga viral em 4 semanas.\nB. Substituir todo o esquema mantendo as novas medicações até completar 48 semanas de tratamento.\nC. Interromper todo o tratamento devido à falha de resposta ao telaprevir e realizar acompanhamento clínico da paciente.\nD. Manter o tratamento com interferon peguilado e ribavirina e repetir o exame da carga viral na semana 24 do tratamento.",
+    "resposta": "\n\nNo caso de falha inicial ao telaprevir na semana 12 em esquema triplo, a conduta prevista pelas diretrizes é suspender o telaprevir e manter a terapia com interferon peguilado e ribavirina até a semana 24, quando se avalia a carga viral para decidir sobre resposta virológica sustentada.\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012892",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO Imposto de Importação deve ser recolhido na importação de\nA. bens tangíveis utilizados na integralização de capital social de sociedade no Brasil.\nB. bens intangíveis, exceto se utilizado na integralização de capital social de sociedade no Brasil.\nC. serviços.\nD. bens segundo o regime de draw back.",
+    "resposta": "\n\nO Imposto de Importação incide sobre a entrada de produtos estrangeiros no território nacional, incluindo bens tangíveis destinados à integralização de capital social de sociedade brasileira. Não incide sobre serviços, tampouco, em regra, sobre bens intangíveis, e no regime de drawback normalmente há suspensão do recolhimento.\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012893",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\n10. Em relação à função $f(x, y)=x^{2}-2 x y+2 y$, definida no intervalo compacto $D=\\left\\{(x, y) \\in \\mathbb{R}^{2} \\mid\\right.$ $0 \\leq x \\leq 3$ e $\\left.0 \\leq y \\leq 2\\right\\}$, considere as afirmativas a seguir.\nI. $(1,1) \\in \\mathbb{R}^{2}$ é um ponto crítico de $f$, mas $f(1,1)$ não é nem um ponto de máximo nem um ponto de mínimo absoluto de $f$.\nII. $(1,1) \\in \\mathbb{R}^{2}$ é um ponto crítico de $f$ e $f(1,1)$ é um ponto de mínimo absoluto de $f$.\nIII. $f(0,0)$ e $f(0,2)$ são, respectivamente, mínimo e máximo absoluto de $f$.\nIV. $f(3,2)=f(1,1)$ não são nem ponto de máximo nem ponto de mínimo absoluto de $f$.\n# Assinale a alternativa correta.\nA. a) Somente as afirmativas I e II são corretas.\nB. b) Somente as afirmativas I e IV são corretas.\nC. c) Somente as afirmativas III e IV são corretas.\nD. d) Somente as afirmativas I, II e III são corretas.\nE. e) Somente as afirmativas II, III e IV são corretas.",
+    "resposta": "\n\nA função é  \n\\[\nf(x,y)=x^{2}-2xy+2y\n\\]\n\nDerivadas parciais:  \n\\[\nf_x=2x-2y,\\qquad f_y=-2x+2\n\\]\n\nIgualando a zero:\n\\[\n2x-2y=0\\Rightarrow x=y,\\qquad -2x+2=0\\Rightarrow x=1\n\\]\nLogo \\(x=1\\) e \\(y=1\\), ou seja \\((1,1)\\) é ponto crítico interno.\n\nO determinante Hessiano em \\((1,1)\\):\n\\[\nD=f_{xx}f_{yy}-f_{xy}^2=2\\cdot0-(-2)^2=-4<0\n\\]\nPortanto \\((1,1)\\) é ponto de sela, logo **não** é máximo nem mínimo absoluto. Assim:\n\n- **I verdadeira**: é crítico, mas não extremo absoluto.\n- **II falsa**: não é mínimo absoluto.\n- **III falsa**: o máximo absoluto ocorre em \\((3,0)\\), pois \\(f(3,0)=9\\); logo \\(f(0,2)=4\\) não é máximo absoluto.\n- **IV verdadeira**: \\(f(3,2)=f(1,1)=1\\), valor que não é máximo nem mínimo absoluto de \\(f\\).\n\nAssim, apenas **I e IV** estão corretas.\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012894",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nEm relação ao registro de um Ativo Contingente, assinale a opção **CORRETA**.\nA. Os ativos contingentes surgem normalmente de evento não planejado ou de outros não esperados que dão origem à possibilidade de entrada de benefícios econômicos para a entidade e não devem ser reconhecidos.\nB. Os ativos contingentes são reconhecidos nas demonstrações contábeis quando for provável a entrada de benefícios econômicos futuros.\nC. Se for praticamente certo que ocorrerá uma entrada de benefícios econômicos, o ativo e o correspondente ganho serão somente divulgados nas notas explicativas da Companhia.\nD. Os ativos contingentes, após serem contabilizados, somente serão avaliados quando da decisão judicial e finalização do processo.",
+    "resposta": "\n\nA alternativa correta é a **A**, pois ativos contingentes decorrem de situações incertas que podem gerar futuras entradas de benefícios econômicos e **não devem ser reconhecidas** no balanço patrimonial, podendo apenas ser divulgadas em notas explicativas.\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012895",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO mundo possui uma matriz energética composta, dentre outras fontes, por fontes não renováveis como o carvão mineral, o petróleo e o gás natural. A matriz energética do Brasil é\nA. diferente da mundial, pois o país usa mais fontes re- nováveis do que no resto do mundo.\nB. diferente da mundial, pois o país usa menos fontes renováveis do que no resto do mundo.\nC. igual à mundial, pois o país usa o mesmo percentual de fontes renováveis do que o resto do mundo.\nD. parecida com a mundial, pois o país usa muitas fontes renováveis.\nE. parecida com a mundial, pois o país usa poucas fon- tes renováveis.",
+    "resposta": "\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012896",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nDada a complexidade e a diversificação da estrutura produtiva do setor de bens de capital no Brasil, uma empresa de médio porte que pretende entrar nesse mercado deve adotar uma estratégia cuidadosamente planejada. Para evitar a forte concorrência estabelecida, a empresa deve priorizar a estratégia de\nA. depender de subsídios governamentais para sobreviver à concorrência.\nB. focar em produzir componentes de baixo valor agregado e alta demanda.\nC. entrar no mercado como fornecedora de matérias-primas para grandes empresas.\nD. concorrer diretamente com as grandes empresas estabelecidas em todos os segmentos.\nE. investir em inovação tecnológica e especializar-se em nichos de mercado de alta tecnologia.",
+    "resposta": "\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012897",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nToda pessoa que se acha no exercício dos seus direitos tem capacidade para estar em juízo, estabelece o Código de Processo Civil, e os incapazes serão assistidos ou representados por seus pais, tutores ou curadores.A respeito do tema estão corretas as afirmativas a seguir, à exceção de uma. Assinale-a.\nA. O curador especial, nomeado em caso de executado citado com hora certa revel, tem legitimidade para opor embargos à execução.\nB. Ao curador especial não se aplica o ônus da impugnação especificada dos fatos articulados pelo autor.\nC. O juiz dará curador especial ao réu revel citado por edital, mas não àquele citado com hora certa.\nD. O juiz dará curador especial ao incapaz, ainda que tenha representante legal, quando houver colisão de interesses entre este e o representado.",
+    "resposta": "\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012898",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSão princípios peculiares do Direito Processual do Trabalho, EXCETO:\nA. Princípio da oralidade.\nB. Princípio da identidade física do juiz.\nC. Princípio da conciliação.\nD. Princípio da concentração dos atos processuais.",
+    "resposta": "\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012899",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nA Cia. Ômega paga participação de lucros a seus empregados e administradores, com base em percentuais de 10% e 5%, respectivamente. Sabe-se que: Prejuízo contábil da companhia em 31.12.X0 R$ 100.000,00 Lucro Líquido de 31.12.X1, antes da CSLL e IRPJ R$ 500.000,00 Provisão para CSLL e IRPJ R$ 150.000,00 A participação dos empregados, relativa ao exercício de X1, será\nA. R$ 50.000,00.\nB. R$ 40.000,00.\nC. R$ 35.000,00.\nD. R$ 30.000,00.\nE. R$ 25.000,00.",
+    "resposta": "\n\nO lucro líquido após os tributos em X1 é:\n\nR$ 500.000,00 − R$ 150.000,00 = **R$ 350.000,00**\n\nA participação dos empregados corresponde a 10% desse valor:\n\n10% × R$ 350.000,00 = **R$ 35.000,00**\n\nO prejuízo do exercício anterior não interfere no lucro de X1 para esse cálculo.\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "E",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "012900",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUbirajara é membro de uma comunidade indígena situada em terras regularmente demarcadas, ali vivendo conforme as tradições dos seus ancestrais. Em determinado momento, ele resolveu tentar nova vida em uma cidade brasileira. Sem recursos para dar início a esse projeto, decidiu vender a terra em que habitava desde seu nascimento para um grupo de agricultores, que pretende ali se instalar definitivamente.  Sobre a hipótese narrada, segundo a ordem jurídico-constitucional brasileira, assinale a afirmativa correta.\nA. Ubirajara somente poderá dispor das terras se a alienação, comprovadamente, atender aos imperativos da ordem econômica brasileira.\nB. Ubirajara, caso figure como proprietário das terras no registro de imóveis da localidade, poderá aliená-las, assegurado o direito de participação da comunidade no valor da venda.\nC. Ubirajara não pode efetivar a venda almejada, pois as terras em questão não são passíveis de alienação e nem mesmo de disposição.\nD. Ubirajara somente poderia alienar as terras após a devida autorização por parte da comunidade indígena, que é a proprietária das terras.",
+    "resposta": "\n\nSegundo a Constituição Federal, as terras tradicionalmente ocupadas por indígenas são inalienáveis e indisponíveis, sendo nulos os atos de sua ocupação, domínio, posse ou exploração (art. 231, §4º, CF). Portanto, Ubirajara não pode efetivar a venda.\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  }
+]

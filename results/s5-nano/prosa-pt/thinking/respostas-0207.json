@@ -1,0 +1,261 @@
+[
+  {
+    "id": "000604",
+    "system": "A chat between a curious human and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the human's questions.",
+    "pergunta": "\n                        Usando o seguinte texto:\n                        O SECRETÁRIO-GERAL DO MINISTÉRIO PÚBLICO DA UNIÃO, no uso de suas atribuições, tendo em vista a competência que lhe foi delegada pela Portaria PGR nº 683, de 26 de setembro de 2013, e considerando o que consta do Processo nº 1.00.000.021213/2018-57, e no expediente PGR-00102816/2020 resolve: Tornar sem efeito a nomeação de ROBERTA FISCHER CASAGRANDE, constante da Portaria SG nº 259, de 02 de março de 2020, publicada no Diário Oficial da União de 03 de março de 2020, no cargo de TÉCNICO DO MPU/ADMINISTRAÇÃO, NÍVEL MÉDIO, classe \"A\", padrão 1, do Quadro de Pessoal do MPU, na Unidade da Federação: RIO GRANDE DO SUL, por ter desistido definitivamente da nomeação.\n                        Retorne os resultados da seguinte forma:\n                        [\n                            {\"ação\": \"ação realizada\",\"Nome\":\"Nome do servidor(se houver)\", \"Cargo\": \"Cargo do servidor (se houver)\"},{\"ação\": \"ação realizada\",\"Nome\":\"Nome do servidor(se houver)\", \"Cargo\": \"Cargo do servidor (se houver)\"},\n                        ] \n                        Repita o padrão se houver mais de uma ação.\n\n                        considere como ação somente os seguintes termos: Nomeado, Vacância, redistribuido, aposentadoria, Deixar Vago, Licença, Lotar, Afastamento,Reverter, Designar, Tornar sem efeito Nomeação, Tornar sem efeito vacância, Remover, Afastar, Demitir, Ceder, Remover, Ceder, Dispensa, Exonerar, Substituir, Reconduzir, Falecimento e Posse . Não considere como ação nenhum termo fora da lista especificada; se nenhum termo casar com os critérios da lista, deixe o campo em branco.\n\n                        Esses documentos serão utilizados em um projeto importante, portanto retorne somente os resultados solicitados corretos e nada mais.\n                    ",
+    "resposta": "\n\n[\n  {\n    \"ação\": \"Tornar sem efeito Nomeação\",\n    \"Nome\": \"ROBERTA FISCHER CASAGRANDE\",\n    \"Cargo\": \"TÉCNICO DO MPU/ADMINISTRAÇÃO\"\n  }\n]",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "n": 1,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 1231,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "modelo",
+      "modelo": "gpt-4.1-2025-04-14",
+      "veredito": {
+        "evaluations": [
+          "YES",
+          "YES",
+          "YES",
+          "YES",
+          "YES",
+          "YES",
+          "YES",
+          "NO",
+          "YES",
+          "YES"
+        ],
+        "checklist": "1. A saída é um JSON válido que consiste exclusivamente de um array (lista) no nível superior, sem qualquer texto fora do JSON.\n2. O array de saída contém exatamente 1 objeto (nem zero, nem mais de um), pois o texto descreve apenas um ato.\n3. O único objeto do array contém exatamente as três chaves: \"ação\", \"Nome\" e \"Cargo\" (sem chaves extras e sem ausência de alguma delas).\n4. O valor do campo \"ação\" é exatamente um dos termos permitidos na lista da consulta (não pode ser sinônimo, variação fora da lista, nem estar em branco).\n5. O valor do campo \"ação\" é exatamente \"Tornar sem efeito Nomeação\", correspondente ao trecho “Tornar sem efeito a nomeação”.\n6. O valor do campo \"Nome\" é exatamente \"ROBERTA FISCHER CASAGRANDE\" (mesma grafia e ordem do texto).\n7. O campo \"Cargo\" contém explicitamente \"TÉCNICO DO MPU/ADMINISTRAÇÃO\" (não pode substituir por outro cargo nem omitir essa identificação).\n8. O campo \"Cargo\" contém explicitamente a informação de escolaridade \"NÍVEL MÉDIO\" (não pode ser trocada por outra e não pode ser omitida).\n9. O objeto não inclui, dentro de \"Cargo\" ou em qualquer outro lugar, dados que não são cargo/nome/ação (por exemplo: “classe 'A'”, “padrão 1”, “Unidade da Federação: RIO GRANDE DO SUL”, números de portaria/processo, datas ou motivo).\n10. Os valores de \"ação\", \"Nome\" e \"Cargo\" são strings (textos) e não arrays/objetos/null.",
+        "selected_indices": [
+          3,
+          4,
+          5,
+          7,
+          8
+        ],
+        "excluded": false,
+        "original_judgment": "<EVALUATION_1> YES </EVALUATION_1>\n<EVALUATION_2> YES </EVALUATION_2>\n<EVALUATION_3> YES </EVALUATION_3>\n<EVALUATION_4> YES </EVALUATION_4>\n<EVALUATION_5> YES </EVALUATION_5>\n<EVALUATION_6> YES </EVALUATION_6>\n<EVALUATION_7> YES </EVALUATION_7>\n<EVALUATION_8> NO </EVALUATION_8>\n<EVALUATION_9> YES </EVALUATION_9>\n<EVALUATION_10> YES </EVALUATION_10>"
+      },
+      "chamadas": [
+        {
+          "modelo": "gpt-4.1-2025-04-14",
+          "parametros": {
+            "temperature": 0,
+            "max_tokens": 4096,
+            "n": 1
+          },
+          "total_tokens": 1361,
+          "tokens": {
+            "prompt_tokens": 1221,
+            "completion_tokens": 140,
+            "total_tokens": 1361,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "custo": {
+            "valor": 0.003562,
+            "moeda": "USD",
+            "origem": "estimate_from_reported_usage",
+            "data_tarifa": "2026-10-30",
+            "fonte_tarifa": "https://developers.openai.com/api/docs/models/gpt-4.1",
+            "entrada_por_milhao": 2,
+            "entrada_cache_por_milhao": 0.5,
+            "saida_por_milhao": 8
+          },
+          "resposta": "<EVALUATION_1> YES </EVALUATION_1>\n<EVALUATION_2> YES </EVALUATION_2>\n<EVALUATION_3> YES </EVALUATION_3>\n<EVALUATION_4> YES </EVALUATION_4>\n<EVALUATION_5> YES </EVALUATION_5>\n<EVALUATION_6> YES </EVALUATION_6>\n<EVALUATION_7> YES </EVALUATION_7>\n<EVALUATION_8> NO </EVALUATION_8>\n<EVALUATION_9> YES </EVALUATION_9>\n<EVALUATION_10> YES </EVALUATION_10>",
+          "mensagens": [
+            {
+              "role": "user",
+              "content": "Você é um juiz, avaliando se uma resposta satisfaz as rúbricas fornecidas. Para cada rúbrica, se a resposta satisfaz o critério da rúbrica, produza YES; caso contrário, produza NO.\n\nRequisito:\n- Você deve seguir cada rúbrica estritamente, e apenas considerar os critérios listados na rúbrica.\n- Você NÃO deve considerar quaisquer outros fatores, como suas próprias opiniões ou conhecimento externo.\n\n## Consulta Atual do Usuário\n<|begin_of_query|>\n\n\n                        Usando o seguinte texto:\n                        PORTARIA Nº 620, DE 10 DE AGOSTO DE 2023O DIRETOR-GERAL DA SECRETARIA DO TRIBUNAL SUPERIOR ELEITORAL, com base no disposto no caput do art. 38 da Lei nº 8.112, de 11 de dezembro de 1990, no inciso XVI do art. 116 do Regulamento Interno e na Portaria TSE nº 288, de 8 de maio de 2020, resolve:Art. 1º Ficam designados para substituir o titular da Secretaria de Modernização, Gestão Estratégica e Socioambiental, Nível CJ-3, da Secretaria do Tribunal, nos seus afastamentos e impedimentos legais ou regulamentares:I - Daniel Carlos Lima Corrêa, Analista Judiciário, Apoio Especializado, Análise de Sistemas, como 1º substituto; eII - Sônia Kill Camps, sem vínculo com a Administração Pública, como 2ª substituta.Art. 2º Fica revogado o art. 1º da Portaria TSE nº 556, de 24 de julho de 2020, publicada no Diário Oficial da União, do dia 28 subsequente, seção 2, página 41.Art. 3º Esta portaria entra em vigor na data de sua publicação.RUI MOREIRA DE OLIVEIRA\n                        Retorne os resultados da seguinte forma:\n                        [\n                            {\"ação\": \"ação realizada\",\"Nome\":\"Nome do servidor(se houver)\", \"Cargo\": \"Cargo do servidor (se houver)\"},{\"ação\": \"ação realizada\",\"Nome\":\"Nome do servidor(se houver)\", \"Cargo\": \"Cargo do servidor (se houver)\"},\n                        ] \n                        Repita o padrão se houver mais de uma ação.\n\n                        considere como ação somente os seguintes termos: Nomeado, Vacância, redistribuido, aposentadoria, Deixar Vago, Licença, Lotar, Afastamento,Reverter, Designar, Tornar sem efeito Nomeação, Tornar sem efeito vacância, Remover, Afastar, Demitir, Ceder, Remover, Ceder, Dispensa, Exonerar, Substituir, Reconduzir,Falecimento e Posse . Não considere como ação nenhum termo fora da lista especificada; se nenhum termo casar com os critérios da lista, deixe o campo em branco.\n\n                        Esses documentos serão utilizados em um projeto importante, portanto retorne somente os resultados solicitados corretos e nada mais.\n                    \n\n<|end_of_query|>\n\nAbaixo entre <RESPONSE> e </RESPONSE> está a resposta a ser avaliada:\n<RESPONSE>\n\n\n[\n  {\"ação\":\"Designar\",\"Nome\":\"Daniel Carlos Lima Corrêa\",\"Cargo\":\"Analista Judiciário, Apoio Especializado, Análise de Sistemas\"},\n  {\"ação\":\"Designar\",\"Nome\":\"Sônia Kill Camps\",\"Cargo\":\"\"}\n]\n</RESPONSE>\n\nAbaixo entre <RUBRIC_i> e </RUBRIC_i> estão as 10 rúbricas nas quais avaliar, numeradas de 1 até 10:\n<RUBRIC_1> A saída contém somente um array JSON (delimitado por [ e ]) e nenhum texto antes ou depois do JSON. </RUBRIC_1>\n<RUBRIC_2> O array JSON contém exatamente 2 objetos (nem mais nem menos). </RUBRIC_2>\n<RUBRIC_3> Cada objeto do array contém exatamente as três chaves: \"ação\", \"Nome\" e \"Cargo\" (sem chaves adicionais e sem ausência de alguma delas). </RUBRIC_3>\n<RUBRIC_4> Em ambos os objetos, o valor do campo \"ação\" é exatamente \"Designar\" (mesma grafia e capitalização). </RUBRIC_4>\n<RUBRIC_5> O campo \"Nome\" do primeiro objeto é exatamente \"Daniel Carlos Lima Corrêa\". </RUBRIC_5>\n<RUBRIC_6> O campo \"Cargo\" do primeiro objeto é exatamente \"Analista Judiciário, Apoio Especializado, Análise de Sistemas\". </RUBRIC_6>\n<RUBRIC_7> O campo \"Nome\" do segundo objeto é exatamente \"Sônia Kill Camps\". </RUBRIC_7>\n<RUBRIC_8> O campo \"Cargo\" do segundo objeto é exatamente \"sem vínculo com a Administração Pública\". </RUBRIC_8>\n<RUBRIC_9> Não existe nenhum objeto adicional no array para tratar a revogação (Art. 2º) ou a entrada em vigor (Art. 3º), pois esses atos não correspondem a nenhum termo da lista de ações permitidas. </RUBRIC_9>\n<RUBRIC_10> Nenhum objeto utiliza no campo \"ação\" um termo fora da lista de ações permitidas (se ocorrer, reprova mesmo que o restante esteja correto). </RUBRIC_10>\n\nProduza ESTRITAMENTE no formato abaixo, uma avaliação por rúbrica (numeradas de 1 até 10). Nenhum outro texto é permitido:\n<EVALUATION_1> YES/NO </EVALUATION_1>\n<EVALUATION_2> YES/NO </EVALUATION_2>\n...\n<EVALUATION_10> YES/NO </EVALUATION_10>"
+            }
+          ]
+        },
+        {
+          "modelo": "gpt-4.1-2025-04-14",
+          "parametros": {
+            "temperature": 0,
+            "max_tokens": 4096,
+            "n": 1
+          },
+          "total_tokens": 1738,
+          "tokens": {
+            "prompt_tokens": 1598,
+            "completion_tokens": 140,
+            "total_tokens": 1738,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "custo": {
+            "valor": 0.004316,
+            "moeda": "USD",
+            "origem": "estimate_from_reported_usage",
+            "data_tarifa": "2026-10-30",
+            "fonte_tarifa": "https://developers.openai.com/api/docs/models/gpt-4.1",
+            "entrada_por_milhao": 2,
+            "entrada_cache_por_milhao": 0.5,
+            "saida_por_milhao": 8
+          },
+          "resposta": "<EVALUATION_1> YES </EVALUATION_1>\n<EVALUATION_2> YES </EVALUATION_2>\n<EVALUATION_3> YES </EVALUATION_3>\n<EVALUATION_4> YES </EVALUATION_4>\n<EVALUATION_5> YES </EVALUATION_5>\n<EVALUATION_6> YES </EVALUATION_6>\n<EVALUATION_7> YES </EVALUATION_7>\n<EVALUATION_8> NO </EVALUATION_8>\n<EVALUATION_9> YES </EVALUATION_9>\n<EVALUATION_10> YES </EVALUATION_10>",
+          "mensagens": [
+            {
+              "role": "user",
+              "content": "Você é um juiz, avaliando se uma resposta satisfaz as rúbricas fornecidas. Para cada rúbrica, se a resposta satisfaz o critério da rúbrica, produza YES; caso contrário, produza NO.\n\nRequisito:\n- Você deve seguir cada rúbrica estritamente, e apenas considerar os critérios listados na rúbrica.\n- Você NÃO deve considerar quaisquer outros fatores, como suas próprias opiniões ou conhecimento externo.\n\n# Conversa entre Usuário e IA\n\n## Histórico\n<|begin_of_history|>\n\nUSER: Hi there\n\nASSISTANT: Hi! How can I assist you today?\n\nUSER: Você fala portugues\n\nASSISTANT: Sim, eu falo português! Como posso ajudar você hoje?\n\nUSER: Como o sistema de feedback negativo é importante na regulação da glicose no sangue?\n\nASSISTANT: O sistema nervoso central (SNC), que inclui o cérebro e a medula espinhal, desempenha um papel crítico na regulação do nível de glicose no sangue por meio de um mecanismo conhecido como feedback negativo. Quando os níveis de glicose no sangue aumentam, os receptores do SNC detectam e transmitem essa informação para o pâncreas, que secreta o hormônio insulina. A insulina funciona para diminuir o nível de glicose no sangue, permitindo que as células absorvam e utilizem a glicose como fonte de energia.\n\nPor outro lado, quando os níveis de glicose no sangue diminuem abaixo do normal, os receptores do SNC detectam e transmitem essa informação para o pâncreas, que secreta o hormônio glucagon. O glucagon aumenta a liberação de glicose pelo fígado, fazendo com que o nível de glicose no sangue volte ao normal.\n\nAssim, o feedback negativo é de extrema importância na regulação do nível de glicose no sangue, pois permite que o corpo mantenha um equilíbrio hormonal adequado e evita que os níveis de glicose se tornem muito altos ou muito baixos.\n\n\n\n<|end_of_history|>\n\n## Consulta Atual do Usuário\n<|begin_of_query|>\n\nComo o sistema de feedback positivo é importante durante o parto?\n\n<|end_of_query|>\n\nAbaixo entre <RESPONSE> e </RESPONSE> está a resposta a ser avaliada:\n<RESPONSE>\n\n\nSim. Durante o trabalho de parto, o **feedback positivo** é um mecanismo fisiológico essencial, principalmente na fase de dilatação. Ele funciona como um “círculo que se retroalimenta” até que o bebê nasça.\n\n### Como funciona\n1. As contrações uterinas comprime o colo do útero e a cabeça do bebê.\n2. Isso ativa receptores sensoriais de estiramento no colo uterino e no útero.\n3. Esses sinais chegam ao sistema nervoso central, que estimula a **neuro-hipófise** a liberar **ocitocina** no sangue.\n4. A ocitocina faz as contrações uterinas ficarem **mais fortes e mais frequentes**.\n5. Contrações mais fortes causam mais estiramento do colo e maior pressão sobre o bebê.\n6. Isso gera novos sinais nervosos → mais ocitocina → contrações ainda mais intensas.\n\nAssim, quanto mais o trabalho de parto avança, mais rápido ele tende a progredir, até a dilatação completa e a expulsão do bebê.\n\n### Participação de outros fatores\n- **Prostaglandinas:** ajudam a amolecer e dilatar o colo do útero.\n- **Estímulos mecânicos:** posição da mãe, esforço abdominal e compressão fetal também influenciam.\n- **Dor e percepção sensorial:** modulam a intensidade e a frequência das contrações.\n\n### Por que é importante\nEsse feedback positivo é o que **acelera e mantém o processo de dilatação** e facilita a descida e expulsão do feto. Sem ele, o trabalho de parto poderia ser muito mais lento e menos eficiente.\n\n### Limites e riscos\nEmbora seja normal, se o feedback positivo ficar descontrolado, pode causar **contrações muito rápidas e prolongadas**, chamado de hiperatividade uterina, aumentando o risco de sofrimento fetal. Por isso, em muitos casos o trabalho de parto é monitorado.\n\nNa obstetrícia, a **ocitocina sintética** é frequentemente usada justamente para replicar ou potencializar esse feedback positivo de forma controlada.\n\nResumindo: o feedback positivo no parto é o ciclo “contração → estiramento do colo → mais ocitocina → contração mais forte”, que garante que o trabalho de parto avance até o nascimento.\n</RESPONSE>\n\nAbaixo entre <RUBRIC_i> e </RUBRIC_i> estão as 10 rúbricas nas quais avaliar, numeradas de 1 até 10:\n<RUBRIC_1> A resposta define feedback positivo como um mecanismo que amplifica/auto-reforça uma resposta fisiológica (em vez de reverter a mudança para manter homeostase). </RUBRIC_1>\n<RUBRIC_2> A resposta identifica como estímulo inicial do ciclo no parto a distensão/estiramento do colo do útero (cérvix) causada pela pressão da cabeça do bebê. </RUBRIC_2>\n<RUBRIC_3> A resposta menciona que receptores de estiramento e/ou sinais nervosos do colo do útero enviam informação ao cérebro (pelo menos “hipotálamo” ou “SNC/cérebro” deve ser citado). </RUBRIC_3>\n<RUBRIC_4> A resposta afirma que a liberação de ocitocina ocorre como parte do mecanismo e cita “ocitocina” explicitamente. </RUBRIC_4>\n<RUBRIC_5> A resposta atribui a liberação de ocitocina à hipófise posterior (neuro-hipófise) e/ou descreve o papel do hipotálamo em estimular essa liberação. </RUBRIC_5>\n<RUBRIC_6> A resposta afirma que a ocitocina aumenta a força e/ou a frequência das contrações uterinas (deve citar “contrações uterinas”). </RUBRIC_6>\n<RUBRIC_7> A resposta descreve explicitamente o ciclo de reforço: contrações mais fortes → mais pressão/distensão do colo → mais ocitocina → contrações ainda mais fortes (ou equivalente causal em loop). </RUBRIC_7>\n<RUBRIC_8> A resposta indica que o ciclo termina quando o estímulo desaparece, mencionando que após o nascimento (e/ou saída da placenta) a distensão do colo diminui e o loop se encerra. </RUBRIC_8>\n<RUBRIC_9> A resposta explica a importância funcional do feedback positivo no parto como garantir a progressão do trabalho de parto (ex.: dilatação do colo e/ou expulsão do bebê) por intensificar as contrações até a conclusão do processo. </RUBRIC_9>\n<RUBRIC_10> A resposta não atribui a regulação do parto a hormônios de glicemia (ex.: insulina ou glucagon) nem descreve o mecanismo principal como feedback negativo. </RUBRIC_10>\n\nProduza ESTRITAMENTE no formato abaixo, uma avaliação por rúbrica (numeradas de 1 até 10). Nenhum outro texto é permitido:\n<EVALUATION_1> YES/NO </EVALUATION_1>\n<EVALUATION_2> YES/NO </EVALUATION_2>\n...\n<EVALUATION_10> YES/NO </EVALUATION_10>"
+            }
+          ]
+        },
+        {
+          "modelo": "gpt-4.1-2025-04-14",
+          "parametros": {
+            "temperature": 0,
+            "max_tokens": 4096,
+            "n": 1
+          },
+          "total_tokens": 1373,
+          "tokens": {
+            "prompt_tokens": 1233,
+            "completion_tokens": 140,
+            "total_tokens": 1373,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "custo": {
+            "valor": 0.003586,
+            "moeda": "USD",
+            "origem": "estimate_from_reported_usage",
+            "data_tarifa": "2026-10-30",
+            "fonte_tarifa": "https://developers.openai.com/api/docs/models/gpt-4.1",
+            "entrada_por_milhao": 2,
+            "entrada_cache_por_milhao": 0.5,
+            "saida_por_milhao": 8
+          },
+          "resposta": "<EVALUATION_1> YES </EVALUATION_1>\n<EVALUATION_2> YES </EVALUATION_2>\n<EVALUATION_3> YES </EVALUATION_3>\n<EVALUATION_4> YES </EVALUATION_4>\n<EVALUATION_5> YES </EVALUATION_5>\n<EVALUATION_6> YES </EVALUATION_6>\n<EVALUATION_7> YES </EVALUATION_7>\n<EVALUATION_8> NO </EVALUATION_8>\n<EVALUATION_9> YES </EVALUATION_9>\n<EVALUATION_10> YES </EVALUATION_10>",
+          "mensagens": [
+            {
+              "role": "user",
+              "content": "Você é um juiz, avaliando se uma resposta satisfaz as rúbricas fornecidas. Para cada rúbrica, se a resposta satisfaz o critério da rúbrica, produza YES; caso contrário, produza NO.\n\nRequisito:\n- Você deve seguir cada rúbrica estritamente, e apenas considerar os critérios listados na rúbrica.\n- Você NÃO deve considerar quaisquer outros fatores, como suas próprias opiniões ou conhecimento externo.\n\n## Consulta Atual do Usuário\n<|begin_of_query|>\n\n\n                        Usando o seguinte texto:\n                        O SECRETÁRIO-GERAL DO MINISTÉRIO PÚBLICO DA UNIÃO, no uso de suas atribuições, tendo em vista a competência que lhe foi delegada pela Portaria PGR nº 683, de 26 de setembro de 2013, e considerando o que consta do Processo nº 1.00.000.021213/2018-57, e no expediente PGR-00102816/2020 resolve: Tornar sem efeito a nomeação de ROBERTA FISCHER CASAGRANDE, constante da Portaria SG nº 259, de 02 de março de 2020, publicada no Diário Oficial da União de 03 de março de 2020, no cargo de TÉCNICO DO MPU/ADMINISTRAÇÃO, NÍVEL MÉDIO, classe \"A\", padrão 1, do Quadro de Pessoal do MPU, na Unidade da Federação: RIO GRANDE DO SUL, por ter desistido definitivamente da nomeação.\n                        Retorne os resultados da seguinte forma:\n                        [\n                            {\"ação\": \"ação realizada\",\"Nome\":\"Nome do servidor(se houver)\", \"Cargo\": \"Cargo do servidor (se houver)\"},{\"ação\": \"ação realizada\",\"Nome\":\"Nome do servidor(se houver)\", \"Cargo\": \"Cargo do servidor (se houver)\"},\n                        ] \n                        Repita o padrão se houver mais de uma ação.\n\n                        considere como ação somente os seguintes termos: Nomeado, Vacância, redistribuido, aposentadoria, Deixar Vago, Licença, Lotar, Afastamento,Reverter, Designar, Tornar sem efeito Nomeação, Tornar sem efeito vacância, Remover, Afastar, Demitir, Ceder, Remover, Ceder, Dispensa, Exonerar, Substituir, Reconduzir, Falecimento e Posse . Não considere como ação nenhum termo fora da lista especificada; se nenhum termo casar com os critérios da lista, deixe o campo em branco.\n\n                        Esses documentos serão utilizados em um projeto importante, portanto retorne somente os resultados solicitados corretos e nada mais.\n                    \n\n<|end_of_query|>\n\nAbaixo entre <RESPONSE> e </RESPONSE> está a resposta a ser avaliada:\n<RESPONSE>\n\n\n[\n  {\n    \"ação\": \"Tornar sem efeito Nomeação\",\n    \"Nome\": \"ROBERTA FISCHER CASAGRANDE\",\n    \"Cargo\": \"TÉCNICO DO MPU/ADMINISTRAÇÃO\"\n  }\n]\n</RESPONSE>\n\nAbaixo entre <RUBRIC_i> e </RUBRIC_i> estão as 10 rúbricas nas quais avaliar, numeradas de 1 até 10:\n<RUBRIC_1> A saída é um JSON válido que consiste exclusivamente de um array (lista) no nível superior, sem qualquer texto fora do JSON. </RUBRIC_1>\n<RUBRIC_2> O array de saída contém exatamente 1 objeto (nem zero, nem mais de um), pois o texto descreve apenas um ato. </RUBRIC_2>\n<RUBRIC_3> O único objeto do array contém exatamente as três chaves: \"ação\", \"Nome\" e \"Cargo\" (sem chaves extras e sem ausência de alguma delas). </RUBRIC_3>\n<RUBRIC_4> O valor do campo \"ação\" é exatamente um dos termos permitidos na lista da consulta (não pode ser sinônimo, variação fora da lista, nem estar em branco). </RUBRIC_4>\n<RUBRIC_5> O valor do campo \"ação\" é exatamente \"Tornar sem efeito Nomeação\", correspondente ao trecho “Tornar sem efeito a nomeação”. </RUBRIC_5>\n<RUBRIC_6> O valor do campo \"Nome\" é exatamente \"ROBERTA FISCHER CASAGRANDE\" (mesma grafia e ordem do texto). </RUBRIC_6>\n<RUBRIC_7> O campo \"Cargo\" contém explicitamente \"TÉCNICO DO MPU/ADMINISTRAÇÃO\" (não pode substituir por outro cargo nem omitir essa identificação). </RUBRIC_7>\n<RUBRIC_8> O campo \"Cargo\" contém explicitamente a informação de escolaridade \"NÍVEL MÉDIO\" (não pode ser trocada por outra e não pode ser omitida). </RUBRIC_8>\n<RUBRIC_9> O objeto não inclui, dentro de \"Cargo\" ou em qualquer outro lugar, dados que não são cargo/nome/ação (por exemplo: “classe 'A'”, “padrão 1”, “Unidade da Federação: RIO GRANDE DO SUL”, números de portaria/processo, datas ou motivo). </RUBRIC_9>\n<RUBRIC_10> Os valores de \"ação\", \"Nome\" e \"Cargo\" são strings (textos) e não arrays/objetos/null. </RUBRIC_10>\n\nProduza ESTRITAMENTE no formato abaixo, uma avaliação por rúbrica (numeradas de 1 até 10). Nenhum outro texto é permitido:\n<EVALUATION_1> YES/NO </EVALUATION_1>\n<EVALUATION_2> YES/NO </EVALUATION_2>\n...\n<EVALUATION_10> YES/NO </EVALUATION_10>"
+            }
+          ]
+        },
+        {
+          "modelo": "gpt-4.1-2025-04-14",
+          "parametros": {
+            "temperature": 0,
+            "max_tokens": 4096,
+            "n": 1
+          },
+          "total_tokens": 1386,
+          "tokens": {
+            "prompt_tokens": 1246,
+            "completion_tokens": 140,
+            "total_tokens": 1386,
+            "prompt_tokens_details": {
+              "cached_tokens": 1024,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "custo": {
+            "valor": 0.002076,
+            "moeda": "USD",
+            "origem": "estimate_from_reported_usage",
+            "data_tarifa": "2026-10-30",
+            "fonte_tarifa": "https://developers.openai.com/api/docs/models/gpt-4.1",
+            "entrada_por_milhao": 2,
+            "entrada_cache_por_milhao": 0.5,
+            "saida_por_milhao": 8
+          },
+          "resposta": "<EVALUATION_1> YES </EVALUATION_1>\n<EVALUATION_2> YES </EVALUATION_2>\n<EVALUATION_3> YES </EVALUATION_3>\n<EVALUATION_4> YES </EVALUATION_4>\n<EVALUATION_5> YES </EVALUATION_5>\n<EVALUATION_6> YES </EVALUATION_6>\n<EVALUATION_7> YES </EVALUATION_7>\n<EVALUATION_8> NO </EVALUATION_8>\n<EVALUATION_9> YES </EVALUATION_9>\n<EVALUATION_10> YES </EVALUATION_10>",
+          "mensagens": [
+            {
+              "role": "user",
+              "content": "Você é um juiz, avaliando se uma resposta satisfaz as rúbricas fornecidas. Para cada rúbrica, se a resposta satisfaz o critério da rúbrica, produza YES; caso contrário, produza NO.\n\nRequisito:\n- Você deve seguir cada rúbrica estritamente, e apenas considerar os critérios listados na rúbrica.\n- Você NÃO deve considerar quaisquer outros fatores, como suas próprias opiniões ou conhecimento externo.\n\n## Consulta Atual do Usuário\n<|begin_of_query|>\n\nparafraseie várias vezes \" \"Não aparentava estar tão deserto. Tinha gente ali, e algumas casas não estavam vazias. Geralmente, por aqui, ficava assim, diferente de onde eu estudava, do bairro onde meus pais residiam e do complexo habitacional. \"\n\n<|end_of_query|>\n\nAbaixo entre <RESPONSE> e </RESPONSE> está a resposta a ser avaliada:\n<RESPONSE>\n\n\nAqui vão algumas paráfrases dessa passagem:\n\n1. Ali não transmitia tanta solidão: havia pessoas por perto, e vários imóveis ainda tinham moradores. No geral, aquele era o cenário comum naquela região, bem diferente do que eu via na escola, no bairro onde meus pais moravam e no conjunto habitacional.\n\n2. Nada naquele lugar parecia totalmente abandonado. Dava para perceber a presença de gente, e certas casas não estavam desocupadas. Costumava mesmo ser assim por aquelas redondezas, ao contrário do colégio, do bairro da família e do complexo residencial.\n\n3. Parecia haver vida ali, não um completo silêncio. Existia população circulando, e algumas residências seguiam ocupadas. Era normal encontrar esse quadro por ali — diferente do ambiente escolar, da vizinhança onde meus pais viviam e do complexo habitacional.\n\n4. Embora não parecesse tão despovoado, o local apresentava sinais de ocupação: havia gente e nem todas as casas estavam vazias. Normalmente era essa a situação por aquelas terras, muito distinta da escola, do bairro onde meus pais residiam e do conjunto habitacional.\n\n5. Não dava impressão de desolação total. Havia pessoas nas proximidades, e diversos imóveis continuavam habitados. Em geral, aquele era o retrato cotidiano daquele lugar, o que contrastava com o que se observava na minha escola, no bairro dos meus pais e no complexo de moradias.\n\n6. Havia algo de vivo naquele espaço; não parecia um território completamente esquecido. Existiam indivíduos por ali, e algumas casas ainda abrigavam moradores. Esse era, aliás, o modo comum como o local surgia, muito diferente do que eu enxergava no estudo, no bairro em que meus pais moravam e no conjunto habitacional.\n\n7. Aquele trecho não suscitava ideia de abandono extremo. Havia gente passando, e certos imóveis não estavam desertos. Comumente era assim por ali, o que mudava completamente quando comparado à escola, ao bairro onde meus pais viviam e ao complexo habitacional.\n</RESPONSE>\n\nAbaixo entre <RUBRIC_i> e </RUBRIC_i> estão as 10 rúbricas nas quais avaliar, numeradas de 1 até 10:\n<RUBRIC_1> A resposta apresenta pelo menos 5 paráfrases distintas do trecho solicitado (por exemplo, em itens numerados ou linhas separadas), e não apenas uma ou duas reformulações. </RUBRIC_1>\n<RUBRIC_2> Cada paráfrase está integralmente em português (sem trechos em outro idioma). </RUBRIC_2>\n<RUBRIC_3> Cada paráfrase preserva a ideia de que o lugar NÃO parecia tão deserto/vazio/abandonado quanto poderia aparentar. </RUBRIC_3>\n<RUBRIC_4> Cada paráfrase menciona a presença de pessoas no local (ex.: “havia gente”, “via-se pessoas”, “movimento de pessoas”). </RUBRIC_4>\n<RUBRIC_5> Cada paráfrase inclui a informação de que algumas casas/residências não estavam vazias/estavam ocupadas (mantendo o sentido de “algumas”, não “todas”). </RUBRIC_5>\n<RUBRIC_6> Cada paráfrase preserva a noção de habitualidade no local (ex.: “geralmente/normalmente/por aqui costumava ser assim”). </RUBRIC_6>\n<RUBRIC_7> Cada paráfrase explicita o contraste com os três referentes do original: (1) onde o narrador estudava/escola; (2) o bairro/casa onde os pais residiam; (3) o complexo/conjunto habitacional. </RUBRIC_7>\n<RUBRIC_8> Cada paráfrase mantém o ponto de vista em primeira pessoa (uso de “eu”, “meu/minha”, ou equivalente que indique narrador em 1ª pessoa). </RUBRIC_8>\n<RUBRIC_9> Nenhuma paráfrase altera fatos centrais do original ao afirmar, por exemplo, que o lugar estava completamente deserto/sem ninguém ou que todas as casas estavam ocupadas (deve manter a nuance de “não tão deserto” e “algumas casas”). </RUBRIC_9>\n<RUBRIC_10> A resposta não reproduz literalmente o trecho original: não deve conter a frase completa original nem copiar longas sequências contínuas (ex.: 8 ou mais palavras seguidas) do texto fornecido. </RUBRIC_10>\n\nProduza ESTRITAMENTE no formato abaixo, uma avaliação por rúbrica (numeradas de 1 até 10). Nenhum outro texto é permitido:\n<EVALUATION_1> YES/NO </EVALUATION_1>\n<EVALUATION_2> YES/NO </EVALUATION_2>\n...\n<EVALUATION_10> YES/NO </EVALUATION_10>"
+            }
+          ]
+        }
+      ]
+    },
+    "parametros_inferencia_julgamento": {
+      "temperature": 0,
+      "max_tokens": 4096,
+      "n": 1
+    },
+    "custo_julgamento": {
+      "valor": 0.01354,
+      "moeda": "USD",
+      "origem": "soma_dos_julgamentos_selecionados"
+    },
+    "score": 80.0,
+    "total_tokens_julgamento": 5858,
+    "mensagens_enviadas": [
+      {
+        "role": "system",
+        "content": "A chat between a curious human and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the human's questions."
+      },
+      {
+        "role": "user",
+        "content": "\n                        Usando o seguinte texto:\n                        O SECRETÁRIO-GERAL DO MINISTÉRIO PÚBLICO DA UNIÃO, no uso de suas atribuições, tendo em vista a competência que lhe foi delegada pela Portaria PGR nº 683, de 26 de setembro de 2013, e considerando o que consta do Processo nº 1.00.000.021213/2018-57, e no expediente PGR-00102816/2020 resolve: Tornar sem efeito a nomeação de ROBERTA FISCHER CASAGRANDE, constante da Portaria SG nº 259, de 02 de março de 2020, publicada no Diário Oficial da União de 03 de março de 2020, no cargo de TÉCNICO DO MPU/ADMINISTRAÇÃO, NÍVEL MÉDIO, classe \"A\", padrão 1, do Quadro de Pessoal do MPU, na Unidade da Federação: RIO GRANDE DO SUL, por ter desistido definitivamente da nomeação.\n                        Retorne os resultados da seguinte forma:\n                        [\n                            {\"ação\": \"ação realizada\",\"Nome\":\"Nome do servidor(se houver)\", \"Cargo\": \"Cargo do servidor (se houver)\"},{\"ação\": \"ação realizada\",\"Nome\":\"Nome do servidor(se houver)\", \"Cargo\": \"Cargo do servidor (se houver)\"},\n                        ] \n                        Repita o padrão se houver mais de uma ação.\n\n                        considere como ação somente os seguintes termos: Nomeado, Vacância, redistribuido, aposentadoria, Deixar Vago, Licença, Lotar, Afastamento,Reverter, Designar, Tornar sem efeito Nomeação, Tornar sem efeito vacância, Remover, Afastar, Demitir, Ceder, Remover, Ceder, Dispensa, Exonerar, Substituir, Reconduzir, Falecimento e Posse . Não considere como ação nenhum termo fora da lista especificada; se nenhum termo casar com os critérios da lista, deixe o campo em branco.\n\n                        Esses documentos serão utilizados em um projeto importante, portanto retorne somente os resultados solicitados corretos e nada mais.\n                    "
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 714,
+      "prompt_tokens": 517,
+      "total_tokens": 1231,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 654,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_tokens_details": null
+    },
+    "reasoning": "We need answer in Portuguese? Need parse text. Need return JSON array only likely. We need identify action(s) from list applied. Text: \"Tornar sem efeito a nomeação de ROBERTA FISCHER CASAGRANDE, constante da Portaria SG nº 259... no cargo de TÉCNICO DO MPU/ADMINISTRAÇÃO...\" Action list includes \"Tornar sem efeito Nomeação\" (case maybe). So ação = \"Tornar sem efeito Nomeação\", Nome = ROBERTA FISCHER CASAGRANDE, Cargo = TÉCNICO DO MPU/ADMINISTRAÇÃO, NÍVEL MÉDIO, classe \"A\", padrão 1? The instruction says Cargo do servidor (se houver). Could include full cargo or just \"TÉCNICO DO MPU/ADMINISTRAÇÃO\". Need decide. They said consider cargo as e.g. \"Cargo do servidor\". The text has cargo: TÉCNICO DO MPU/ADMINISTRAÇÃO, NÍVEL MÉDIO, classe \"A\", padrão 1, do Quadro de Pessoal do MPU. I can output cargo as exactly \"TÉCNICO DO MPU/ADMINISTRAÇÃO\" perhaps enough. But if they expect complete? Let's read prompt.\n\nThey ask: Usando texto... Retorne resultados forma:\n[\n    {\"ação\": \"ação realizada\",\"Nome\":\"Nome do servidor(se houver)\", \"Cargo\": \"Cargo do servidor (se houver)\"},\n...]\nRepeat pattern if more than one action.\nconsidere como ação somente os seguintes termos: ... \"Tornar sem efeito Nomeação\", ...\nNão considere como ação nenhum termo fora da lista; se nenhum termo casar, deixe campo em branco.\n\nDocument will be used in project, return only requested results correct and nothing more.\n\nThus final should be a JSON array with one object. Need no markdown? \"retorne somente os resultados solicitados\" likely pure JSON. Could include accents. Need ensure valid JSON (escape quotes? class \"A\" inside string needs escape). Better avoid quote by not including classe/padrão? Cargo field could be \"TÉCNICO DO MPU/ADMINISTRAÇÃO\". If include class etc, need escape quotes around A. Maybe simpler: Cargo: \"TÉCNICO DO MPU/ADMINISTRAÇÃO\". That is the core.\n\nAction exact from list: \"Tornar sem efeito Nomeação\". Note text says \"Tornar sem efeito a nomeação\". List term is \"Tornar sem efeito Nomeação\". Use exactly as listed.\n\nNome: ROBERTA FISCHER CASAGRANDE. All caps. Could preserve.\n\nFinal:\n[\n  {\"ação\": \"Tornar sem efeito Nomeação\", \"Nome\": \"ROBERTA FISCHER CASAGRANDE\", \"Cargo\": \"TÉCNICO DO MPU/ADMINISTRAÇÃO\"}\n]\n\nNeed check if multiple actions? Only one act. No other action term matches? \"desistiu definitivamente\" not in list. The action is tornar sem efeito nomeação due to desistência. It's exactly. So only one.\n\nNeed ensure no extra commentary. Final only JSON.\n",
+    "motivo_encerramento": "stop"
+  }
+]

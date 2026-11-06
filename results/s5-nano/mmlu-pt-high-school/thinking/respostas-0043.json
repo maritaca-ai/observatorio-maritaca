@@ -1,0 +1,2302 @@
+[
+  {
+    "id": "002101",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nMaratona de Programação Uma nova competição de programação vai ser realizada. A competição terá a duração de sete horas, e será feita por equipes. Cada equipe será composta por sete alunos e terá à sua disposição um único computador. As sete horas de competição são divididas em sete turnos de uma hora cada, numerados de 1 a 7. Durante a competição, os competidores se revezarão no uso do computador, sendo que a cada cada turno um único competidor poderá utilizar o computador da equipe. Cada competidor deve usar o computador uma única vez (um único turno) durante a competição. Na sua escola foram escolhidos os alunos F, G, H, J, K, L e M para comporem uma equipe. As seguintes restrições devem ser obedecidas para decidir a ordem de utilização do computador por essa equipe: • F deve usar o computador no turno 3 ou no turno 5. • L não pode usar o computador nem no turno 4 nem no turno 6. • Se J usa o computador no turno 1, H deve usar o computador no turno 2. • Se K usa o computador no turno 4, L deve usar o computador no turno 5. • G usa o computador no turno imediatamente após o turno em que H usa o computador. Qual das seguintes é uma ordem em que a equipe poderia usar o computador durante a competição?\nA. H, G, F, M, K, L, J\nB. H, G, L, F, M, K, J\nC. L, G, H, M, F, J, K\nD. L, J, F, K, H, G, M\nE. L, J, K, M, F, H, G",
+    "resposta": "\n\nVerificando a opção **E**:  \n**L, J, K, M, F, H, G**\n\n- F está no turno 5 ✅  \n- L não está nos turnos 4 nem 6 ✅  \n- G fica imediatamente após H: H no turno 6 e G no turno 7 ✅  \n- A condição “se J no turno 1...” não é acionada ✅  \n- A condição “se K no turno 4...” não é acionada ✅  \n\nTodas as restrições são satisfeitas.\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002102",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nJogo Flávia e André inventaram um jogo para passar o tempo: Inicialmente, Flávia escolhe um número secreto x de 5 dígitos (ou seja, 10.000 ≤ x ≤ 99.999). O objetivo de André é descobrir o valor de x. Para isto, ele pode fazer perguntas a Flávia. Cada pergunta consiste em um inteiro y, também com 5 dígitos, e, em resposta, Flávia escreve uma sequência de cinco caracteres, indicando para cada dígito em x, se o dígito correspondente em y é maior, igual, ou menor que ele. Por exemplo, se x = 28.410 e y = 38.108, Flávia responderia ‘< = > > <'. Imagine que após fazer 3 perguntas, com os números 12.345, 14.972 e 88.658, e analisar as respostas, André afirma que já é capaz de concluir o valor de x. Qual das alternativas seguintes poderia ser o valor de x?\nA. 83.969\nB. 83.469\nC. 14.973\nD. 14.974\nE. 82.992",
+    "resposta": "\n\nApós três comparações, as respostas de Flávia devem permitir que André identifique **unicamente** o número \\(x\\). Isso significa que a sequência de símbolos \\((<,=,>)\\) nas três perguntas precisa ser única para o valor de \\(x\\).\n\nVerificando as alternativas:\n\n- **83.469** tem a mesma “assinatura” de comparação que 83.569 contra as três perguntas. Logo, André não conseguiria diferenciá-los.\n- **14.973** e **14.974** geram exatamente as mesmas respostas às três perguntas, pois diferem só na última casa e ambas são maiores que os respectivos dígitos das perguntas.\n- **82.992** admite outros números que produziriam as mesmas respostas.\n- **83.969** é o único que possui uma combinação de respostas impossível de ocorrer para outro número de 5 dígitos, dada essas três perguntas.\n\nPortanto, o único valor possível é **83.969**.\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002103",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nAlguns brasileiros têm o hábito de trocar de carro a cada um ou dois anos, mas essa prática nem sempre é um bom negócio, pois o veículo desvaloriza com o uso. Esse fator é chamado de depreciação, sendo maior nos primeiros anos de uso. Uma pessoa realizou uma pesquisa sobre o valor de mercado dos dois veículos (X e Y) que possui. Colocou os resultados obtidos em um mesmo gráfico, pois os veículos foram comprados juntos. Após a pesquisa, ela decidiu vender os veículos no momento em que completarem quatro anos de uso. Disponível em: www.carrosnaweb.com.br. Acesso em: 3 ago. 2012 (adaptado). Considerando somente os valores de compra e de venda dos veículos por essa pessoa, qual a perda, em reais, que ela terá?\nA. 10 000,00\nB. 15 000,00\nC. 25 000,00\nD. 35 000,00\nE. 45 000,00",
+    "resposta": "\n\nPelo gráfico, os valores iniciais somam R$ 150.000,00 e, após 4 anos, R$ 125.000,00.  \nPerda total = 150.000 − 125.000 = **R$ 25.000,00**.\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002104",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nAssinale a sentença cuja figura de linguagem foi indicada corretamente entre parênteses.\nA. \"Gates e Jobs – Quando as órbitas se cruzam.\" (comparação)\nB. \"Jobs encarava as pessoas com uma intensidade cáustica e ardente;\" (catacrese)\nC. \"...ora no modo de dizer que você era um merda, ora no de tentar seduzi-lo\". (metáfora)\nD. \"...Jobs, por sua vez, via em Gates uma estreiteza enervante.\" (metonímia)",
+    "resposta": "\n\nA expressão “você era um merda” usa uma associação figurada para caracterizar alguém de forma depreciativa, configurando metáfora. As demais alternativas não correspondem às figuras indicadas.\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002105",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTEXTO:\nTEXTO III\nSermão da Planície\n(para não ser escutado)\nBem-aventurados os que não entendem nem aspiram a entender de futebol, pois deles é o reino da tranquilidade.\nBem-aventurados os que, por entenderem de futebol, não se expõem ao risco de assistir às partidas, pois não voltam com decepção ou enfarte.\n(...) \nBem-aventurados os que não escalam, pois não terão suas mães agravadas, seu sexo contestado e sua integridade física ameaçada, ao saírem do estádio.\nBem-aventurados os que não são escalados, pois escapam das vaias, projéteis, contusões, fraturas, e mesmo da glória precária de um dia.\nBem-aventurados os que não são cronistas esportivos, pois não carecem de explicar o inexplicável e racionalizar a loucura.\n(...) \nBem-aventurados os surdos, pois não os atinge o estrondar das bombas da vitória, que fabricam os surdos, nem o matraquear dos locutores, carentes de exorcismo.\n(...) \nBem-aventurados os que, depois de escutar esse sermão, aplicarem todo o ardor infantil no peito maduro para desejar a vitória do selecionado brasileiro nesta e em todas as futuras Copas do Mundo, como faz o velho sermoneiro desencantado, mas torcedor assim mesmo, pois para o diabo vá a razão quando o futebol invade o coração.\n(Carlos Drummond de Andrade. Jornal do Brasil, 18/06/1974.)\n\nMarque em cada item a seguir V para verdadeiro ou F para falso. ( ) No texto III, a expressão “matraquear dos locutores” (l. 18) permite identificar uma crítica semelhante à realizada no seguinte trecho do texto I: “fala-se e grita-se demais” (l. 15 e 16) ( ) Pode-se afirmar que o 5º parágrafo do texto III (l. 13 a 15) tem por objetivo desqualificar a argumentação do cronista esportivo Tostão, autor do texto I. ( ) A construção do sentido do parágrafo final do texto III faz uso de relações de antítese, encaminhando a conclusão para a ideia de que, apesar dos problemas racionais, o que move o torcedor é a paixão. ( ) O significado das afirmações “a multidão o devora aos pedaços” (l. 39, texto II) e “sua integridade física ameaçada” (l. 8 e 9 texto III) é o mesmo em ambos os contextos, pois, conforme demonstram os pronomes destacados, têm o mesmo referente: o jogador. A sequência correta é:\nA. V, V, V, F\nB. F, V, F, F\nC. F, F, F, V\nD. V, F, V, F",
+    "resposta": "\n\nA sequência correta é **V, F, V, F**, portanto a alternativa **D**.\n\n**Resposta: D**",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": null,
+        "gold": "D",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002106",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConsidere z os números complexos da forma x + yi, com x, y $\\in \\mathbb{R}$ e i a unidade imaginária, que possuem módulo igual a $2\\sqrt{5}$ e encontram-se sobre a reta de equação $2x - y = 0$. O quociente do número z de menor argumento principal pelo número z de maior argumento principal, nessa ordem, vale\nA. $-\\frac{1}{2}$\nB. -1\nC. $\\frac{1}{2}$\nD. 1",
+    "resposta": "\n\nOs pontos sobre a reta \\(y=2x\\) com módulo \\(2\\sqrt{5}\\) são \\(z_1=2+4i\\) e \\(z_2=-2-4i\\).\n\nSeus argumentos principais são:\n- \\(\\arg(2+4i)=\\arctan 2\\)\n- \\(\\arg(-2-4i)=-\\pi+\\arctan 2\\)\n\nLogo, o de menor argumento é \\(-2-4i\\) e o de maior é \\(2+4i\\).\n\nCalculando a razão:\n\n\\[\n\\frac{-2-4i}{2+4i}\n= \\frac{(-2-4i)(2-4i)}{(2+4i)(2-4i)}\n= \\frac{-20}{20}\n= -1\n\\]\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002107",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nJogos Demais! Cada dia da semana, de segunda a sexta-feira, após a escola e os deveres de casa, João entra na Internet para jogar um de três jogos, X, Y e Z. Um dos jogos custa R$ 1,00 por dia jogado, outro custa R$ 1,20 por dia jogado, e o outro custa R$ 1,50 por dia jogado. João joga exatamente um jogo por dia, e joga cada um desses três jogos ao menos uma vez por semana. Ele também obedece às seguintes restrições: • Às quintas-feiras, João joga o jogo que custa R$ 1,50. • O jogo X custa mais do que o jogo Z. • O jogo que João joga às quartas-feiras é mais caro do que o jogo que ele joga às sextas-feiras. • João joga o jogo Z mais vezes por semana do que ele joga o jogo X. João não pode jogar o jogo que custa R$ 1,50 em qual dos seguintes dias?\nA. Segunda-feira\nB. Terça-feira\nC. Quarta-feira\nD. Quinta-feira\nE. Sexta-feira",
+    "resposta": "\n\nSe na sexta-feira fosse jogado o jogo de R$ 1,50, então na quarta-feira precisaria ser jogado um jogo mais caro que R$ 1,50. Mas o preço máximo entre os jogos é justamente R$ 1,50. Portanto, **sexta-feira não pode** ser o dia desse jogo.\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002108",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nMeu primeiro computador Daniel ganhou seu primeiro computador pessoal e está aprendendo a trabalhar com ele. Seu computador possui uma tela de exibição de resultados e um peculiar teclado composto de cinco teclas nomeadas \"A\", \"B\", \"C\", \"D\"e \"E\". Existe ainda uma memória interna, chamada \"NUM\", que armazena apenas um número inteiro e possui inicialmente o valor zero. Pode ser pressionada qualquer combinação de teclas e o efeito resultante dependerá da seqüência digitada. As ações associadas a cada uma são: • Se \"A\" é pressionada: \"NUM\" é inicializado com o valor dez, independente do que se tinha antes. • Se \"B\" é pressionada: É armazenado em \"NUM\" o valor que ele possuía subtraído um. • Se \"C\" é pressionada: É armazenado em \"NUM\" o valor que ele possuía subtraído dois. • Se \"D\" é pressionada: É armazenado em \"NUM\" o valor que ele possuía somado um. • Se \"E\" é pressionada: É impresso na tela o valor contido em \"NUM\". Se a tecla \"B\" tiver um problema e não puder ser usada, como pode ser impressa na tela a sequência \"10 9 8 7\"?\nA. \"E-E-D-C-E-D-C-E-D-C-E\".\nB. \"A-E-D-D-E-D-D-E-D-D-E\".\nC. \"A-E-D-C-A-D-C-A-D-C-E\".\nD. \"A-E-D-C-E-D-C-E-D-C-E\".\nE. \"A-E-C-C-E-C-C-E-C-C-E\".",
+    "resposta": "\n\nCom a tecla B indisponível, podemos diminuir o valor em 1 combinando **C** (−2) com **D** (+1), obtendo uma redução líquida de −1.\n\nSequência necessária:\n- `A`: FIXA NUM = 10  \n- `E`: imprime **10**  \n- `D C E`: 10 → 11 → 9 → imprime **9**  \n- `D C E`: 9 → 10 → 8 → imprime **8**  \n- `D C E`: 8 → 9 → 7 → imprime **7**\n\nEssa sequência corresponde a:  \n**A-E-D-C-E-D-C-E-D-C-E**\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002109",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTroco de bits No reino de Bitlândia há moedas de B$ 2 (dois bits), B$ 1 (um bit), B$ 0,50 (cinquenta centavos de bit), B$ 0,25 (vinte e cinco centavos de bit), B$ 0,10 (dez centavos de bit) e B$ 0,5 (cinco centavos de bit). Qual o menor número de moedas que um comerciante pode dar como troco, usando apenas moedas, para um cliente que pagou com cinco moedas de B$ 2 uma mercadoria que custa B$ 8,05?\nA. 3\nB. 4\nC. 5\nD. 6\nE. 7",
+    "resposta": "\n\nPara pagar B$ 8,05 com cinco moedas de B$ 2, o comerciante deve devolver:\n\n\\[\n10 - 8{,}05 = 1{,}95\n\\]\n\nUma forma com o menor número de moedas é:\n\n\\[\n1 + 0{,}50 + 0{25} + 0{,}10 + 0{,}10 = 1{,}95\n\\]\n\nIsso usa **5 moedas**.\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002110",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nBicho-preguiça O Zoológico de São Paulo fez uma pesquisa pela internet para escolher o nome de seu mais novo habitante, recém-nascido: um lindo e simpático bicho-preguiça. Sete nomes foram colocados na pesquisa: Buda, Fofo, Pingo, Rock, Samba, Teco e Zorro. O Zoológico ordenou os nomes de acordo com o número de votos recebidos, do mais votado para o menos votado. O ganhador ainda não foi anunciado, mas alguns dados da pesquisa foram divulgados: • Cada nome recebeu um número diferente de votos. • Buda recebeu mais votos do que Teco. • Teco recebeu mais votos do que Fofo. • Fofo recebeu mais votos do que Rock. • Samba não recebeu o menor número de votos. • Zorro recebeu menos votos do que Pingo. • Zorro recebeu mais votos do que Samba e mais votos do que Teco. Qual das seguintes alternativas é necessariamente verdadeira?\nA. Buda recebeu mais votos do que Samba.\nB. Fofo recebeu mais votos do que Samba.\nC. Pingo recebeu mais votos do que Buda.\nD. Samba recebeu mais votos do que Teco.\nE. Zorro recebeu mais votos do que Fofo.",
+    "resposta": "\n\nDa cadeia de desigualdades:\n\n- Buda > Teco  \n- Teco > Fofo  \n- Fofo > Rock  \n- Zorro > Teco  \n\ntemos necessariamente:\n\n**Zorro > Teco > Fofo**\n\nLogo, Zorro recebeu mais votos do que Fofo.\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002111",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nRevezamento Oito alunos – Beto, Dulce, Guto, Júlia, Kelly, Neto, Silvia e Vivian decidiram tentar quebrar o recorde da tradicional prova de revezamento e resistência de natação que acontece todos os anos na escola. Nessa prova, cada um dos oito competidores da equipe deve nadar mil metros, em estilo livre, na forma de revezamento: cada nadador cai na piscina para nadar apenas uma vez, um de cada vez. O objetivo é que todos nadem no menor tempo possível. Depois de muita discussão, os competidores decidiram que a ordem em que cairão na piscina deve obedecer às seguintes condições: • Silvia não nada por último. • Vivian nada após Júlia e Neto nadarem. • O primeiro a nadar é ou Beto ou Dulce. • Guto nada antes de Júlia, com exatamente uma pessoa nadando entre eles. • Kelly nada antes de Neto, com exatamente duas pessoas nadando entre eles. Qual das seguintes alternativas é necessariamente verdadeira?\nA. O mais cedo que Vivian pode nadar é em oitavo lugar.\nB. O mais cedo que Júlia pode nadar é em quinto lugar.\nC. O mais cedo que Kelly pode nadar é em terceiro lugar.\nD. O mais cedo que Silvia pode nadar é em terceiro lugar.\nE. O mais cedo que Neto pode nadar é em quinto lugar.",
+    "resposta": "\n\nAnalisando as restrições:\n\n- Kelly nada antes de Neto com **duas pessoas entre eles**, logo a posição de Neto é sempre `posição de Kelly + 3`.\n- O primeiro a nadar é Beto ou Dulce, então Kelly não pode ser primeira. Assim, Kelly ≥ 2.\n- Portanto, **Neto ≥ 5**.\n- É possível construir uma ordem válida com Neto em 5º lugar:\n  1. Beto  \n  2. Kelly  \n  3. Guto  \n  4. Silvia  \n  5. Neto  \n  6. Júlia  \n  7. Vivian  \n  8. Dulce  \n\nEssa ordem satisfaz todas as condições. Logo, o mais cedo que Neto pode nadar é realmente em 5º lugar.\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002112",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nDe 15% a 20% da área de um canavial precisa ser renovada anualmente. Entre o período de corte e o de plantação de novas canas, os produtores estão optando por plantar leguminosas, pois elas fixam nitrogênio no solo, um adubo natural para a cana. Essa opção de rotação é agronomicamente favorável, de forma que municípios canavieiros são hoje grandes produtores de soja, amendoim e feijão. As encruzilhadas da fome. Planeta. São Paulo, ano 36, nº. 430, jul. 2008 (adaptado). A rotação de culturas citada no texto pode beneficiar economicamente os produtores de cana porque\nA. a decomposição da cobertura morta dessas culturas resulta em economia na aquisição de adubos industrializados.\nB. o plantio de cana-de-açúcar propicia um solo mais adequado para o cultivo posterior da soja, do amendoim e do feijão.\nC. as leguminosas absorvem do solo elementos químicos diferentes dos absorvidos pela cana, restabelecendo o equilíbrio do solo.\nD. a queima dos restos vegetais do cultivo da cana-de-açúcar transforma-se em cinzas, sendo reincorporadas ao solo, o que gera economia na aquisição de adubo.\nE. a soja, o amendoim e o feijão, além de possibilitarem a incorporação ao solo de determinadas moléculas disponíveis na atmosfera, são grãos comercializados no mercado produtivo.",
+    "resposta": "\n\nA rotação com leguminosas fornece nitrogênio natural ao solo, diminuindo custos com adubos nitrogenados, e ainda gera renda extra com a venda de grãos como soja, amendoim e feijão.  \nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002113",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nA figura abaixo ilustra um campo elétrico uniforme, de módulo E, que atua na direção da diagonal BD de um quadrado de lado l. Se o potencial elétrico é nulo no vértice D, pode-se afirmar que a ddp entre o vértice A e o ponto O, intersecção das diagonais do quadrado, é\nA. nula\nB. $\\frac{\\sqrt{2}}{2}E$\nC. $\\sqrt{2}E$\nD. E",
+    "resposta": "\n\nComo o campo elétrico é uniforme e paralelo à diagonal \\(BD\\), as linhas equipotenciais são perpendiculares a \\(BD\\). A outra diagonal do quadrado, \\(AC\\), é perpendicular a \\(BD\\) e passa pelos pontos \\(A\\), \\(O\\) e \\(C\\). Logo, \\(A\\) e \\(O\\) estão no mesmo equipotencial e têm o mesmo potencial.\n\n\\[\nV_A - V_O = 0\n\\]\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002114",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTEXTO:\nMAIS QUE ORWELL, HUXLEY PREVIU NOSSO TEMPO\nHélio Gurovitz\nPublicado em 1948, o livro 1984, de George Orwell,\nsaltou para o topo da lista dos mais vendidos (...) A\ndistopia de Orwel, mesmo situada no futuro, tinha um\nendereço certo em seu tempo: o stalinismo. (...) Ο\n5 mundo da \"pós-verdade\", dos \"fatos alternativos\" e da\nanestesia intelectual nas redes sociais mais parece outra\ndistopia, publicada em 1932: Admirável mundo novo, de\nAldous Huxley.\nNão se trata de uma tese nova. Ela foi levantada\n10 pela primeira vez em 1985, num livreto do teórico da\ncomunicação americano Neil Postman: Amusing\nourselves to death (Nos divertindo até morrer),\nrelembrado por seu filho Andrew em artigo recente no\nThe Guardian. \"Na visão de Huxley, não é necessário\n15 nenhum Grande Irmão para despojar a população de\nautonomia, maturidade ou história\", escreveu Postman.\n\"Ela acabaria amando sua opressão, adorando as\ntecnologias que destroem sua capacidade de pensar.\nOrwell temia aqueles que proibiriam os livros. Huxley\n20 temia que não haveria motivo para proibir um livro, pois\nnão haveria ninguém que quisesse lê-los. Orwell temia\naqueles que nos privariam de informação. Huxley,\naqueles que nos dariam tanta que seríamos reduzidos à\npassividade e ao egoísmo. Orwell temia que a verdade\n25 fosse escondida de nós. Huxley, que fosse afogada num\nmar de irrelevância.\"\nNo futuro pintado por Huxley, (...) não há mães,\npais ou casamentos. O sexo é livre. A diversão está\ndisponível na forma de jogos esportivos, cinema\n30 multissensorial e de uma droga que garante o bem-estar\nsem efeito colateral: o soma. Restaram na Terra dez\náreas civilizadas e uns poucos territórios selvagens,\nonde grupos nativos ainda preservam costumes e\ntradições primitivos, como família ou religião. “O mundo\n35 agora é estável\", diz um líder civilizado. \"As pessoas\nsão felizes, têm o que desejam e nunca desejam o que\nnão podem ter. Sentem-se bem, estão em segurança;\nnunca adoecem; não têm medo da morte; vivem na\nditosa ignorância da paixão e da velhice; não se acham\n40 sobrecarregadas de pais e mães; não têm esposas, nem\nfilhos, nem amantes por quem possam sofrer emoções\nviolentas; são condicionadas de tal modo que\npraticamente não podem deixar de se portar como\ndevem. E se, por acaso, alguma coisa andar mal, há o\n45 soma.\"\nPara chegar à estabilidade absoluta, foi\nnecessário abrir mão da arte e da ciência. \"A felicidade\nuniversal mantém as engrenagens em funcionamento\nregular; a verdade e a beleza são incapazes de fazê-lo\",\n50 diz o líder. \"Cada vez que as massas tomavam o poder\npúblico, era a felicidade, mais que a verdade e a beleza,\no que importava.\" A verdade é considerada uma\nameaça; a ciência e a arte, perigos públicos. Mas não é\nnecessário esforço totalitário para controlá-las. Todos\n55 aceitam de bom grado, fazem \"qualquer sacrifício em\ntroca de uma vida sossegada\" e de sua dose diária de\nsoma. \"Não foi muito bom para a verdade, sem dúvida.\nMas foi excelente para a felicidade.\"\nNo universo de Orwell, a população é controlada\n60 pela dor. No de Huxley, pelo prazer. \"Orwell temia que\nnossa ruína seria causada pelo que odiamos. Huxley,\npelo que amamos\", escreve Postman. Só precisa haver\ncensura, diz ele, se os tiranos acreditam que o público\nsabe a diferença entre discurso sério e entretenimento.\n65 (...) O alvo de Postman, em seu tempo, era a televisão,\nque ele julgava ter imposto uma cultura fragmentada e\nsuperficial, incapaz de manter com a verdade a relação\nreflexiva e racional da palavra impressa. O computador\nsó engatinhava, e Postman mal poderia prever como\n70 celulares, tablets e redes sociais se tornariam bem\nmais que a TV - o soma contemporâneo. Mas suas\npalavras foram prescientes: \"O que afligia a população\nem Admirável mundo novo não é que estivessem rindo\nem vez de pensar, mas que não sabiam do que estavam\n75 rindo, nem tinham parado de pensar\".\n(Adaptado, Revista Época nº 973 – 13 de fevereiro de 2017, p.67)\nDistopia = Pensamento, filosofia ou processo discursivo\ncaracterizado pelo totalitarismo, autoritarismo e opressivo controle da\nsociedade, representando a antítese de utopia. (BECHARA, E.\nDicionário da língua portuguesa. 1ª ed. Rio de Janeiro: Editora Nova\nFronteira, 2011, p.533)\n\nLeia as afirmações feitas acerca do texto e julgue-as como VERDADEIRAS (V) ou FALSAS (F).\n() As obras citadas, \"1984\", \"Admirável mundo novo\" e \"Nos divertindo até morrer\" se assemelham por serem obras que tratam de teoria da comunicação.\n() Há dois meios de controle ou de ruína social: a dor ou o prazer.\n( ) A censura tirana é necessária porque o público sabe a diferença entre discurso sério e entretenimento.\n( ) A televisão é incapaz de manter com a verdade a mesma relação reflexiva e racional da palavra impressa.\n( ) Tal qual a TV, os celulares, tabletes e redes se prestam a funcionar como o soma: garantir o bem-estar social.\n( ) Na obra de Huxley, as pessoas não pensavam, mas riam, mesmo não sabendo de quê.\nAssinale a alternativa que contém a sequência correta.\nA. F-F-V-V-F-V\nB. V-F-F-F-V-F\nC. F-V-F-V-F-V\nD. V-V-V-F-V-F",
+    "resposta": "\n\n1. **Falsa** — Não são todas obras de teoria da comunicação; apenas *Nos divertindo até morrer* aborda diretamente esse tema.  \n2. **Verdadeira** — No texto, Orwell representa o controle pela **dor**; Huxley, pelo **prazer**.  \n3. **Falsa** — A censura seria justificada pelos tiranos *acreditarem* que o público sabe distinguir discurso sério de entretenimento, não que o público realmente saiba.  \n4. **Verdadeira** — O texto afirma que a TV é incapaz de manter com a verdade a mesma relação reflexiva e racional da palavra impressa.  \n5. **Falsa** — Celulares, tablets e redes são apresentados como “soma contemporâneo”, isto é, fonte de distração/anestesia, não necessariamente como garantia de bem-estar social.  \n6. **Verdadeira** — Na visão crítica apresentada, os personagens de Huxley vivem uma condição de passividade e alienação, rindo sem consciência crítica do que fazem.\n\nSequência: **F – V – F – V – F – V** → alternativa **C**.\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002115",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nPrópria dos festejos juninos, a quadrilha nasceu como dança aristocrática, oriunda dos salões franceses, depois difundida por toda a Europa. No Brasil, foi introduzida como dança de salão e, por sua vez, apropriada e adaptada pelo gosto popular. Para sua ocorrência, é importante a presença de um mestre “marcante” ou “marcador”, pois é quem determina as figurações diversas que os dançadores desenvolvem. Observa-se a constância das seguintes marcações: “Tour”, “En avant”, “Chez des dames”, “Chez des chevaliê”, “Cestinha de flor”, “Balancê”, “Caminho da roça”, “Olha a chuva”, “Garranchê”, “Passeio”, “Coroa de flores”, “Coroa de espinhos” etc. No Rio de Janeiro, em contexto urbano, apresenta transformações: surgem novas figurações, o francês aportuguesado inexiste, o uso de gravações substitui a música ao vivo, além do aspecto de competição, que sustenta os festivais de quadrilha, promovidos por órgãos de turismo. CASCUDO, L. C. Dicionário do folclore brasileiro. Rio de Janeiro: Melhoramentos, 1976. As diversas formas de dança são demonstrações da diversidade cultural do nosso país. Entre elas, a quadrilha é considerada uma dança folclórica por\nA. possuir como característica principal os atributos divinos e religiosos e, por isso, identificar uma nação ou região.\nB. abordar as tradições e costumes de determinados povos ou regiões distintas de uma mesma nação.\nC. apresentar cunho artístico e técnicas apuradas, sendo, também, considerada dança-espetáculo.\nD. necessitar de vestuário específico para a sua prática, o qual define seu país de origem.\nE. acontecer em salões e festas e ser influenciada por diversos gêneros musicais.",
+    "resposta": "\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002116",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nDona Minhoca Dona Minhoca construiu quatro túneis - Q, R, S e T - embaixo da terra, ligando os quadro cômodos A, B, C e D – da sua residência. Cada tunel tem exatamente o mesmo comprimento e conecta exatamente dois cômodos diferentes, da seguinte forma: • Q conecta A e C • R conecta B e C • S conecta A e B • T conecta B e D Qual das seguintes alternativas é uma ordem correta de cômodos num passeio em que Dona Minhoca visita todos os cômodos de sua residência, partindo do cômodo A, usando apenas os túneis e nunca usando um túnel mais de uma vez?\nA. A, B, C, D\nB. A, C, B, D\nC. A, C, D, B\nD. A, D, B, C\nE. A, D, C, B",
+    "resposta": "\n\nPrecisamos usar cada túnel exatamente uma vez e visitar todos os cômodos. O único caminho possível é:\n\nA → C (túnel Q) → B (túnel R) → D (túnel T).\n\nIsso corresponde à alternativa E.\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "B",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002117",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nText 1: Why we should eat less meat Why we should eat less meat Eating less meat is good for the planet, good (21) animals, and good for (22) health. It's not all or (23) . While adopting a vegan or vegetarian diet is commendable, it (24) not be possible for everyone. The current demand for animal protein (meat, dairy, and eggs) is unsustainable. It enforces the (25) for intensive farming methods, (26) animals are inhumanely caged in small spaces that restrict their natural behaviours, selectively bred to grow (27) and pumped full of antibiotics unnecessarily. Of the 70+ billion animals farmed globally (28) year, an estimated 50 billion of them will spend their entire lives on these factory farms where (29) like commodities. A substantial reduction in animal protein consumption across the globe (30) free up land and other resources, making room for higher welfare, more sustainable production systems, that would benefit both the animals and humans. Factory farming fuels climate change, pollutes landscapes and waterways, and wastefully uses precious resources. Animal agriculture is estimated to account for nearly 15% of global greenhouse gas emissions, (31) more than all the cars, planes, and other forms of transport put together. Decreasing the demand for animal products will help conserve water, save vital habitats, reduce greenhouse gas emissions and help conserve our Earth. Industrial animal agriculture is the (32) largest driver of habitat loss and deforestation worldwide. Adapted from: World Animal Protection in: https://www.worldanimalprotection.ca/news/why-we-should-eat-less-meat [Accessed on March 06th, 2023]. NAS QUESTÕES DE 21 A 32, ESCOLHA A OPÇÃO QUE COMPLETA O TEXTO 1 CORRETAMENTE. Eating less meat is good for the planet, good (21) animals, and good for\nA. to the\nB. at\nC. by\nD. to\nE. for",
+    "resposta": "\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002118",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTendo em vista que $a$ e $b$ são números reais positivos,\n$a \\neq b$, considere a função $f(x) = ab^x$, definida para todo\nnúmero real $x$. Logo, $f(2)$ é igual a\nA. √(𝑓(1)𝑓(3)).\nB. 𝑓(3)/𝑓(0).\nC. 𝑓(0)𝑓(1).\nD. 𝑓(0)^3.",
+    "resposta": "\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002119",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nEscalonador de Programas O Sistema Operacional (S.O.) de um computador é quem controla todos os programas que estão sendo executados. O S.O. executa vários programas “ao mesmo tempo”: leitor de correio eletrônico, navegador, editor de texto. Como em geral o computador tem apenas um processador, na verdade o S.O. executa cada programa por uma pequena fração de tempo, em turnos, continuamente, o que nos dá a impressão de que todos estão sendo executados “ao mesmo tempo”. Inicialmente, o computador organiza os programas a serem executados em uma fila. A cada turno, cada programa da fila é executado por uma fração fixa de tempo. Ao final de sua fração de tempo, o programa é colocado novamente na fila. Se o programa termina sua execução durante sua fração de tempo, ele não é colocado de volta na fila, e a fila fica com um programa a menos. No computador desta tarefa, quatro programas estão sendo executados: P, Q, R e S. Ao final de cada turno, a ordem dos programas na fila é alterada de acordo com UMA das seguintes regras: • Regra 1: o programa em terceiro lugar na fila é colocado na posição imediatamente à frente do programa que estava em segundo lugar na fila. • Regra 2: o programa em terceiro lugar na fila é colocado na posição imediatamente à frente do programa que estava em primeiro lugar na fila. • Regra 3: o programa em último lugar na fila é colocado em primeiro lugar na fila. A regra a ser utilizada a cada turno é decidida pelo S.O., mas se a regra envolve o movimento de um programa que terminou durante esse turno, essa regra não é utilizada (por exemplo, se o programa P é o terceiro da fila em um turno e termina nesse turno, a regra 1 não é utilizada pelo S.O.). Se a ordem em um turno é P, R, S e Q, e se nenhum programa termina nesse turno, qual das alternativas seguintes poderia ser a ordem do próximo turno?\nA. P, Q, S, R\nB. Q, P, S, R\nC. Q, S, P, Q\nD. R, P, S, Q\nE. S, P, R, Q",
+    "resposta": "\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002120",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nObserve as alternativas abaixo e assinale a correta.\nA. O petróleo é um líquido escuro, oleoso, formado pela mistura de milhares de compostos orgânicos com grande predominância de hidrocarbonetos. Nas refinarias, o petróleo bruto é aquecido e, em seguida, passa por torres de destilação. Nessas torres são separadas, em ordem crescente de peso molecular médio, as seguintes frações: gás liquefeito, gasolina, querosene, óleo diesel, óleos lubrificantes, óleos combustíveis, hulha e asfalto.\nB. Dois importantes processos realizados nas refinarias de petróleo são o craqueamento catalítico e a reforma catalítica. O craqueamento catalítico tem por objetivo transformar frações pesadas de petróleo em frações mais leves, como a gasolina, por exemplo. Já a reforma catalítica tem por objetivo a diminuição da octanagem da gasolina, através da transformação de hidrocarbonetos de cadeia normal em hidrocarbonetos de cadeia ramificada, cíclicos e aromáticos.\nC. Poliamidas são polímeros de cadeia heterogênea que podem ser formados a partir da reação de adição entre moléculas de diaminas e moléculas de diácidos. Dentre as propriedades marcantes das poliamidas, destaca-se a elevada resistência mecânica, fato que se deve às interações intermoleculares por ligações de hidrogênio.\nD. Copolímeros são polímeros obtidos a partir de dois ou mais monômeros diferentes. Um importante exemplo de copolímero é o copolímero poli(metacrilato de metila), conhecido como Buna-S, utilizado na fabricação de pneus.\nE. Polímeros diênicos são aqueles formados a partir de monômeros contendo em sua estrutura dienos conjugados. Esses polímeros são constituídos de cadeias poliméricas flexíveis, com uma dupla ligação residual passível de reação posterior. Um exemplo de polímero diênico é o polibutadieno. Na reação de síntese do polibutadieno, pode-se ter a adição do tipo 1,4 ou a adição do tipo 1,2.",
+    "resposta": "\n\nA alternativa **E** está correta: o polibutadieno é obtido a partir do 1,3-butadieno (dieno conjugado), podendo formar adições 1,4 ou 1,2, e suas cadeias possuem dupla ligação residual.\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002121",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nA usina hidrelétrica de Belo Monte será construída no rio Xingu, no município de Vitória de Xingu, no Pará. A usina será a terceira maior do mundo e a maior totalmente brasileira, com capacidade de 11,2 mil megawatts. Os índios do Xingu tomam a paisagem com seus cocares, arcos e flechas. Em Altamira, no Pará, agricultores fecharam estradas de uma região que será inundada pelas águas da usina. BACOCCINA, D.; QUEIROZ, G.; BORGES, R. Fim do leilão, começo da confusão. Istoé Dinheiro. Ano 13, n.º 655, 28 abr. 2010 (adaptado). Os impasses, resistências e desafios associados à construção da Usina Hidrelétrica de Belo Monte estão relacionados\nA. ao potencial hidrelétrico dos rios no norte e nordeste quando comparados às bacias hidrográficas das regiões Sul, Sudeste e Centro-Oeste do país.\nB. à necessidade de equilibrar e compatibilizar o investimento no crescimento do país com os esforços para a conservação ambiental.\nC. à grande quantidade de recursos disponíveis para as obras e à escassez dos recursos direcionados para o pagamento pela desapropriação das terras.\nD. ao direito histórico dos indígenas à posse dessas terras e à ausência de reconhecimento desse direito por parte das empreiteiras.\nE. ao aproveitamento da mão de obra especializada disponível na região Norte e o interesse das construtoras na vinda de profissionais do Sudeste do país.",
+    "resposta": "\n\nA construção de Belo Monte envolve conflitos entre os impactos socioambientais — como alagamento de áreas indígenas e agrícolas — e a busca por expansão energética e desenvolvimento econômico, exigindo equilíbrio entre esses objetivos.  \nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002122",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTEXTO:\nA FAVOR DA DIFERENÇA, CONTRA TODA DESIGUALDADE *\nA maioria das pessoas acredita que está isenta\nde preconceitos. No entanto até sua linguagem contradiz\nesta crença. De modo especial, o corpo, que deveria ser\num elemento de agregação e de comunicação, se torna\n5 elemento de discriminação.\nCoube-me fazer uma pesquisa com dez\nadolescentes sobre a presença da violência na escola\natravés da palavra. Todos afirmaram que já agrediram e\nforam agredidos com palavras. Surpreende que os\n10 adolescentes veem no corpo um elemento de\ndiscriminação. A obesidade, a altura, pequenos defeitos\nfísicos são motivos de preconceito.\nAcontece que nossa sociedade seleciona um\ndeterminado corpo como modelo e quem não obedece a\n15 este padrão está fora de cogitação. Num país de pobres\nque não conseguem ter uma alimentação equilibrada e\nnem os cuidados mínimos com a saúde, a consequência\né a marginalização.\nAs pessoas com necessidades especiais\n20 também são consideradas anormais. É muito comum\nagredir verbalmente as pessoas chamando-as de\nretardadas. Até os pobres entram na dança da agressão.\nUm xingamento comum é o de vileiro ou favelado. E o\nque dizer dos adolescentes homossexuais?\n25\nDiferença x desigualdade\nExiste a visão de que a diferença se identifica\ncom a desigualdade. Há um padrão de ser humano\n30 estandardizado e único que deve servir de metro para o\njulgamento das pessoas. O grande desafio para a\neducação é descobrir este currículo oculto verdadeiro e\nforte para enfrentá-lo adequadamente.\nHá pessoas que dizem que só a educação é\n35 capaz de salvar e desenvolver um país. Até aqui todos\nestão de acordo. Contudo é importante se perguntar\nqual é o tipo de educação necessária para um país\ncomo o Brasil, que tem uma das maiores concentrações\nde renda do mundo. Há pessoas que tiveram acesso a\n40 todos os estudos possíveis e, no entanto, continuam\ndefendendo uma sociedade livre sem ser justa, o que,\nconvenhamos é uma grande possibilidade.\nPesquisa realizada pela Fundação Instituto de\nPesquisas Econômicas (Fipe), a pedido do MEC,\n45 demonstrou que quanto mais preconceito e práticas\ndiscriminatórias existem numa escola, pior é 0\ndesempenho de seus estudantes. Foram entrevistadas\n18.500 pessoas entre alunos, pais, diretores,\nprofessores e funcionários de 501 escolas de todo o\n50 Brasil. Do total de estudantes entrevistados, 70% têm\nmenos de 20 anos.\nEsta pesquisa revela que praticamente todos os\nentrevistados (99,3%) têm preconceito em algum nível.\nSobre contra quem eles admitem ter preconceito,\n55 revelaram: homossexual, deficiente mental, cigano,\ndeficiente físico.\nEnquanto a educação não enfrentar essas\nquestões, o que está acontecendo em nossas escolas é\napenas uma transmissão de conteúdos, um verniz\n60 colorido que não penetra o profundo, a consciência e o\ncoração das pessoas. (...)\nSANDRINI, Marcos. Mundo jovem. Realidade brasileira Fevereiro de 2013.\n*O texto foi reproduzido na íntegra, respeitando-se todas as construções\nsintáticas da forma como nele apareceram.\n\nNa norma padrão da língua, há casos de regência e concordância que admitem duas construções, mantendo o mesmo sentido. I. \"A maioria das pessoas acredita que está isenta...\" (l.1) A maioria das pessoas acreditam que estão isentas... II. \"Há pessoas que tiveram acesso a todos os estudos possíveis ...\" (l. 39 e 40) Há pessoas que tiveram acesso por todos os estudos possíveis III. “É muito comum agredir verbalmente as pessoas chamando-as de retardadas ...\" (l. 20 e 21) É muito comum agredir verbalmente as pessoas chamando-as retardadas... Exemplificam corretamente essa proposição:\nA. I e III apenas.\nB. II e III apenas.\nC. I, II e III.\nD. I apenas.",
+    "resposta": "\n\nI e III admitem as duas construções indicadas, mantendo o sentido original, pois se trata de concordância com expressão partitiva (“a maioria das pessoas”) e de regência aceita do verbo “chamar” com ou sem a preposição “de”.  \nEm II, “acesso a” não pode ser substituído por “acesso por” sem alteração indevida de sentido.\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002123",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nBolsa de estudo Exatamente sete alunas - Fafá, Gal, Hebe, Isa, Juju, Kia e Lia concorrem por uma bolsa de estudos para um Curso de Programação de Computadores e vão ser entrevistadas pela Diretora. Cada aluna será entrevistada exatamente uma vez, uma de cada vez, obedecendo as seguintes condições: • Isa é a primeira ou última aluna a ser entrevistada. • A quarta aluna a ser entrevistada deve ser ou Gal ou Juju. • Hebe é entrevistada imediatamente antes de Lia. • Gal é entrevistada em algum momento antes de de Kia. • Juju não é entrevistada imediatamente antes ou imediatamente após Kia. Se Gal é entrevistada imediatamente após Lia, então qual das seguintes alternativas poderia ser verdadeira?\nA. Hebe é a quinta entrevistada.\nB. Fafá é a segunda entrevistada.\nC. Gal é a última entrevistada.\nD. Juju é a primeira entrevistada.\nE. Gal é a segunda entrevistada.",
+    "resposta": "\n\nUma possibilidade válida é:  \n**Juju, Hebe, Lia, Gal, Kia, Fafá, Isa**\n\nVerificando:\n- Isa é a última ✔️  \n- A quarta é Gal ✔️  \n- Hebe está imediatamente antes de Lia ✔️  \n- Gal está antes de Kia ✔️  \n- Juju não está imediatamente antes nem depois de Kia ✔️  \n- Gal está imediatamente depois de Lia ✔️  \n\nLogo, **Juju pode ser a primeira entrevistada**.\n\nAs demais alternativas são incompatíveis com as condições dadas.\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002124",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTexto 2 COULD EARTH BE FRIED BY A 'SUPERFLARE' FROM THE SUN? Daniel Clery Solar flares on the sun frequently shower Earth with high-energy particles causing the Aurora Borealis and, occasionally, less-welcome disruptions to power networks and communications. But researchers say that there is a chance—though small—that the sun could one day blast us with a solar flare thousands of times as powerful, potentially frying our atmosphere and obliterating life. Other stars occasionally produce such “superflares,” some up to 10,000 times the power of the largest solar flare ever detected. To see whether these are generated by the same process as happens on the sun—the breaking and reconnection of magnetic fields—astronomers studied light from 100,000 stars using China's Guo Shouiing Telescope. As they report online in Nature Communications, superflares do seem to be produced by the same process, but they usually occur in stars with much stronger magnetic fields than the sun's. Still, the researchers found that about 10% of the superflaring stars had magnetic fields similar to or weaker than the sun's. From evidence in tree rings, the researchers say, it looks like Earth suffered small superflares—10 to 100 times bigger than normal—in 775 C.E. and 993 C.E. We can expect more, they conclude, once per millennium. (As for the chances of an Earth-frying flare, they don't say.) So, back up your data and stock up on candles. C.E. = Common Era, the same as A.D., Anno Domini. CLERY, D. Could earth be fried by a 'superflare' from the sun?. In: Science, AAAS, 2016. Disponível em: <http://www.sciencemag.org/news/2016/03/could-earth-be-fried-superflare-sun>. Acesso em: 15/06/2016. Choose the correct option.\nA. Researches are disrupted since a solar flare will obliterate life.\nB. Sun eruptions could wipe out all life on Earth.\nC. The Aurora Borealis is as welcome as disruptions.\nD. Power networks frequently benefit from solar flares.\nE. Whenever Aurora Borealis can be seen, there will not be any power network.",
+    "resposta": "\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002125",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nBanda de Música A professora de música vai escolher alunos para formar uma banda de música, entre sete alunos numerados de 1 a 7. A banda vai ser formada obedecendo às seguintes restrições: • Se o aluno 3 é escolhido, então o aluno 1 não é escolhido. • Se o aluno 5 é escolhido, então o aluno 1 não é escolhido. • Se o aluno 4 é escolhido, então nem o aluno 2 é escolhido nem o aluno 5 é escolhido. • O aluno que tem o número igual ao número de membros da banda é escolhido. Questão 20. Se exatamente dois alunos são escolhidos para a banda, então qual dos seguintes alunos não pode ser escolhido?\nA. aluno 3\nB. aluno 4\nC. aluno 5\nD. aluno 6\nE. aluno 7",
+    "resposta": "\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "C",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002126",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nCombate à Dengue Uma força-tarefa para combater a dengue precisa visitar sete casas em busca de focos do mosquito. As casa são denominadas F, G, H, L, M, P e T. Deve ser feito um plano de ação determinando a ordem em que as casas são visitadas. Para isso considera-se as seguintes condições: • A casa F deve ser uma das três primeiras a serem visitadas. • A casa H deve ser visitada imediatamente antes da casa G. • A casa L não pode ser a primeira nem a sétima casa a ser visitada. • A casa M deve ser a primeira ou a sétima a ser visitada. • A casa P deve ser uma das três últimas a serem visitadas. Se a casa H é a primeira a ser visitada, qual a quarta casa a ser visitada?\nA. F.\nB. G.\nC. L.\nD. M.\nE. P.",
+    "resposta": "\n\nCom H na 1ª posição, G vem em 2ª (pois H é imediatamente antes). F deve estar entre as três primeiras, logo ocupa a 3ª posição. M deve ser 1ª ou 7ª; como H é 1ª, M fica na 7ª. P, sendo das três últimas, não pode ser 4ª. Assim, a 4ª casa só pode ser L.\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002127",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nQuadrinho quadrado XAVIER, C. Disponível em: www.releituras.com. Acesso em: 24 abr. 2010. Os objetivos que motivam os seres humanos a estabelecer comunicação determinam, em uma situação de interlocução, o predomínio de uma ou de outra função de linguagem. Nesse texto, predomina a função que se caracteriza por\nA. tentar persuadir o leitor acerca da necessidade de se tomarem certas medidas para a elaboração de um livro.\nB. enfatizar a percepção subjetiva do autor, que projeta para sua obra seus sonhos e histórias.\nC. apontar para o estabelecimento de interlocução de modo superficial e automático, entre o leitor e o livro.\nD. fazer um exercício de reflexão a respeito dos princípios que estruturam a forma e o conteúdo de um livro.\nE. retratar as etapas do processo de produção de um livro, as quais antecedem o contato entre leitor e obra.",
+    "resposta": "\n\nO quadrinho trabalha com a criação artística e com a reflexão sobre a estrutura e o conteúdo da obra literária, característica da função poética da linguagem.\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002128",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nLâmpadas André tem uma caixa com 8 lâmpadas. Ele lembra que 6 lâmpadas estão funcionando e 2 lâmpadas estão queimadas, mas ele não sabe quais são as lâmpadas que estão funcionando. Ele precisa de uma lâmpada que esteja funcionando e vai tirar lâmpadas da caixa uma a uma e testá-las até que uma delas funcione. Qual é o número máximo de testes que ele irá realizar?\nA. 2 testes\nB. 3 testes\nC. 4 testes\nD. 6 testes\nE. 8 testes",
+    "resposta": "\n\nNo pior caso, ele pode tirar primeiro as duas lâmpadas queimadas. Depois disso, qualquer outra será funcionando.  \nAssim: 1º teste (queima), 2º teste (queima), 3º teste (funciona).\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002129",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nÉ possível considerar as modalidades esportivas coletivas dentro de uma mesma lógica, pois possuem uma estrutura comum: seis princípios operacionais divididos em dois grupos, o ataque e a defesa. Os três princípios operacionais de ataque são: conservação individual e coletiva da bola, progressão da equipe com a posse da bola em direção ao alvo adversário e finalização da jogada, visando a obtenção de ponto. Os três princípios operacionais da defesa são: recuperação da bola, impedimento do avanço da equipe contrária com a posse da bola e proteção do alvo para impedir a finalização da equipe adversária. DAOLIO, J. Jogos esportivos coletivos: dos princípios operacionais aos gestos técnicos — modelo pendular a partir das ideias de Claude Bayer. Revista Brasileira de Ciência e Movimento, out. 2002 (adaptado). Considerando os princípios expostos no texto, o drible no handebol caracteriza o princípio de\nA. recuperação da bola.\nB. progressão da equipe.\nC. finalização da jogada.\nD. proteção do próprio alvo.\nE. impedimento do avanço adversário.",
+    "resposta": "\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002130",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTrilha no bosque Exatamente seis postes sinalizadores, numerados de 1 a 6, marcam o trajeto de uma trilha no Parque Nacional do Jari. Cada poste é pintado com o desenho de um animal diferente, entre seis animais: Furão, Gambá, Jiboia, Lontra, Mico e Paca. As seguintes condições são obedecidas: • O Gambá é pintado no poste 3 ou no poste 4. • O número do poste pintado com o Mico é menor do que o número do poste pintado com a Jiboia. • O número do poste pintado com a Lontra é menor do que o número do poste pintado com o Mico, mas maior do que o número do poste pintado com o Furão. Qual das seguintes alternativas é uma lista correta dos animais pintados em cada poste, do poste 1 ao poste 6?\nA. Furão, Lontra, Mico, Jiboia, Gambá, Paca\nB. Furão, Lontra, Gambá, Paca, Mico, Jiboia\nC. Furão, Mico, Gambá, Lontra, Jiboia, Paca\nD. Lontra, Furão, Mico, Gambá, Jiboia, Paca\nE. Paca, Furão, Jiboia, Gambá, Lontra, Mico",
+    "resposta": "\n\nAs condições impõem a ordem crescente de números:  \nFurão < Lontra < Mico < Jiboia, e o Gambá deve estar nos postes 3 ou 4.\n\nA única alternativa que satisfaz todas as condições é a **B**:  \nFurão(1), Lontra(2), Gambá(3), Paca(4), Mico(5), Jiboia(6).\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002131",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSr. José deseja guardar 4 bolas – uma azul, uma branca, uma vermelha e uma preta – em 4 caixas numeradas: O número de maneiras de Sr. José guardar todas as 4 bolas de forma que uma mesma caixa **NÃO** contenha mais do que duas bolas, é igual a\nA. 24\nB. 36\nC. 144\nD. 204",
+    "resposta": "\n\nPodemos contar por tipos de distribuição das bolas nas caixas:\n\n1. **Uma bola em cada caixa:**  \n   \\(4! = 24\\) maneiras.\n\n2. **Duas caixas com 2 bolas e duas vazias:**  \n   - Escolher as 2 caixas duplas: \\(\\binom{4}{2}=6\\)  \n   - Distribuir as 4 bolas em dois grupos de 2: \\(\\binom{4}{2}=6\\)  \n   Total: \\(6 \\times 6 = 36\\)\n\n3. **Uma caixa com 2 bolas, outra com 1 bola e duas vazias:**  \n   - Escolher a caixa dupla: \\(4\\)  \n   - Escolher a caixa simples: \\(3\\)  \n   - Escolher as 2 bolas da caixa dupla: \\(\\binom{4}{2}=6\\)  \n   - Escolher a bola da caixa simples: \\(\\binom{2}{1}=2\\)  \n   Total: \\(4 \\times 3 \\times 6 \\times 2 = 144\\)\n\nSoma total:  \n\\[\n24 + 36 + 144 = 204\n\\]\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002132",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTEXTO:\nTwilight\nTwilight is a 2008 American romantic vampire film based Stephenie Meyer's popular novel of the same name. It is the first film in The Twilight Saga film series. This film focuses on the development of the relationship between Bella Swan and Edward Cullen (a vampire), and the subsequent efforts of Cullen and his family to keep Swan safe a coven of evil vampires.\nThe project was in development for approximately 3 years Paramount Pictures, during which time a screen adaptation that differed significantly from the novel was written. Principal photography took 44 days and the film was primarily shot in Oregon.\nTwilight was theatrically released November 21 2010, grossing over US$392 million worldwide and became the most purchased DVD of the year. The soundtrack was released in the same year. Following the success of the film, New Moon and Eclipse, the next two novels in the series, were produced as films the following year.\nAdapted from Wikipedia\n\nConsidering the **boldfaced** adverb in the text, mark the sentence in which the underlined word has the function of an adverb.\nA. Laura seems to be such a lovely person!\nB. I won't stay _long_, I promise.\nC. Chess isn't a very fast game.\nD. Baseball is a _hard_ game to understand.",
+    "resposta": "\n\nEm B, **“long”** modifica o verbo *stay*, indicando circunstância de tempo/duração; portanto, funciona como advérbio.  \nEm D, **hard** modifica o substantivo *game*, sendo adjetivo.  \nAssim, a única palavra sublinhada que atua como advérbio é *long*.\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002133",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTEXTO:\nLeia o Texto II para responder as questões de 30 a 40.\nTexto II\nDesconforto com a Escravidão\nNas últimas horas de viagem a cavalo, Darwin relata que \"o caminho ficou cada vez mais difícil, porque atravessa uma terra selvagem e pantanosa\". (...)\nDarwin fica profundamente impressionado com a fecundidade da região e imagina a quantidade de alimentos que poderá produzir num futuro distante. A selva o fascina e as nuvens de vapor d'água que sobem das matas o deixam extasiado, mas daí também irá emergir uma imagem do terror.\nNa fazenda, junto ao rio Macaé, Darwin relata um desencontro, que não detalha, e que, por pouco, não dividiu pelo menos 30 famílias de escravos, levando filhos e mulheres para a venda no mercado carioca, depois de uma convivência de anos. Diz que interesses estritamente financeiros, e não humanistas, evitaram essa cruel separação. Ele suspeita que o proprietário da fazenda nem sequer possa ter se dado conta da brutalidade de seu ato \"infame\".\nO grupo cruzava um rio, provavelmente, o rio Macaé, conduzido por um negro, quando outra cena relacionada à escravidão chocou Darwin profundamente. O negro tinha alguma dificuldade de comunicação, o que fez com que Darwin tentasse comunicar-se com ele por mímica e outros sinais. Num desses movimentos, conta ele, suas mãos passaram próximo ao rosto do homem, levando-o a acreditar que Darwin estava enraivecido por alguma razão e iria golpeá-lo. O negro abaixou imediatamente as mãos, semicerrou os olhos e dirigiu-lhe um olhar temeroso. Darwin relata o profundo sentimento de surpresa, desconforto e vergonha que se apoderara dele e que jamais iria esquecer.\n(...)\nO retorno ao Rio marca uma nova fase de êxtase com a Natureza e coleta de espécimes animais e vegetais. Nesse período, Darwin ficara hospedado em uma casa à beira-mar (cottage) em Botafogo. Sobre essas semanas diz que é \"impossível sonhar com algo mais delicioso que essa estada de algumas semanas num país tão impressionante\". \"Na Inglaterra\", continua Darwin, \"os interessados em história natural têm vantagem no sentido de que sempre descobrem alguma coisa que lhes chama a atenção, mas nesses climas tão férteis, repletos de seres animados, para fazer uma caracterização, descobertas novas são feitas a cada instante e são tão numerosas que só se pode avançar com dificuldade\".\n(...)\nEm 5 de julho, Darwin deixa definitivamente o Rio de Janeiro e o Brasil rumo à Patagônia e à passagem que o levará a Galápagos e às observações que o conduzirão ao evolucionismo. Ainda que a um enorme custo pessoal e ao receio desesperado de, literalmente, implodir os valores de sua época, como se constata nas cartas angustiadas que trocou com sua prima e futura esposa, Emma Wedgwood. No final de 2008, o tetraneto de Darwin, Randal Keynes, conheceu a rota percorrida pelo naturalista.\nCAPAZZOLI, Ulisses. Scientfic American Brasil. Fev. 2009, nº 81, ano 7. Edição Especial - Pág.92-93 (Adaptado)\n\nO título do texto remete-nos à ideia de que\nA. o Brasil, apesar de ser um país livre, ainda permitia a escravidão em alguns momentos.\nB. Darwin ficou incomodado com algumas cenas presenciadas por ocasião de sua estada no Brasil.\nC. no Brasil, a natureza foi o único aspecto apreciado por Darwin.\nD. os negros participaram da expedição como simples carregadores do material necessário para a pesquisa de Darwin.",
+    "resposta": "\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002134",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTEXTO:\nTEXTO II\nA VERDADEIRA LEI DE GÉRSON\nRaul Marinho Gregorin\nVocê se lembra daquele célebre comercial do\ncigarro Vila Rica, onde nosso tricampeão Gérson falava\na famosa frase: \"...Porque você tem que levar\nvantagem em tudo, cerrrto?\". A frase teve tanto\nimpacto que acabou sendo criada a \"Lei de Gérson\", que\nsimboliza o oportunismo e a falta de escrúpulos típicas de\numa grande parcela de nossa sociedade. (...)\nConcordo que nossa postura oportunista\nrealmente contribui para nos manter neste estado de\natraso econômico e cultural em que vivemos. Só que a\n\"Lei de Gérson\", na verdade é muito mais antiga que o\npróprio. No excelente livro “Mauá, Empresário do\nimpério\", de Jorge Caldeira (Ed. Companhia das Letras),\npercebe-se que há quase duzentos anos atrás esta lei já\nera cumprida. Aliás, essa deve ser a lei mais antiga do\nBrasil, pois desde as capitanias hereditárias nossa\nhistória é pontilhada de exemplos de oportunismo e falta\nde escrúpulos. A própria escravidão não deixa de ser\numa mostra do viés ético de nossa sociedade desde\ntempos imemoriais, mas isso já é outra história.\nEu não conheço a biografia do Gérson, muito\nmenos do publicitário que criou a frase e o comercial do\nVila Rica. Mas acho muito improvável que o Gérson real\nseja um oportunista sanguinário como ficou sendo sua\nimagem. Nem acredito que o diretor de criação da\nagência poderia imaginar que esta frase seria usada mais\nde vinte anos depois para designar esta nossa\ncaracterística.\nNossa língua é ferina. Quando a Volkswagen\nlançou o Fusca com teto solar no final da década de '60',\nas vendas despencaram depois que passou a ter a\nconotação de \"carro de chifrudo\". A VASP na década de\n70 criou um voo noturno ligando São Paulo ao Guarujá\npara atender aos executivos que deixavam suas famílias\nno balneáreo e passavam a semana trabalhando na\ncapital. O nome do voo era \"Corujão” devido ao horário.\nNão demorou muito, o voo passou a ser apelidado de\n\"Cornudão\", pelo fato das esposas ficarem na praia\nenquanto os maridos ficavam na cidade. A VASP teve\nque cancelar a linha por falta de passageiros.\nE óbvio que a VW tinha introduzido o teto solar\nbaseado no fato do Brasil ser um país quente e\nensolarado, perfeito para aquele opcional. Só que o\nconsumidor preferia ficar passando calor a ser visto\ndirigindo um carro com um buraco no teto para \"deixar os\nchifres de fora\". Ο voo corujão era perfeito,\nespecialmente na época em que não havia Piaçaguera e,\npara chegar ao Guarujá de carro na alta temporada, o\nmotorista tinha que enfrentar horas de fila na balsa. Mas\nera melhor demorar oito ou dez horas de carro do que ir\nde avião, em meia hora, num voo chamado \"Cornudão\"...\nCom o comercial do Gérson foi a mesma coisa.\nLevar vantagem em tudo não significa que os outros tem\nque levar desvantagem. O oportunismo foi incorporado à\nfrase por quem a leu/ouviu, não por quem\nescreveu/disse. O problema é que passou a ficar (para\nusar um conceito atual) \"politicamente incorreto\" levar\nvantagem em alguma coisa.\nNa verdade, parece que nossa sociedade se\ndivide em dois grandes blocos: um que leva vantagem\nem tudo (no sentido pejorativo) e outro que não pode\nlevar vantagem em nada. Acontece que dá para levar\nvantagem em tudo sem fazer com que os outros saiam\nem desvantagem. Você não precisa esmagar a outra\nparte para sair ganhando.\n(http://www.geocities.ws/cp_adhemar/leidegerson.html. Acesso em: 10\nabril 2017. Texto revisado conforme a nova ortografia.)\n\nO texto II com o objetivo de empregar uma linguagem mais cotidiana e próxima do leitor comum, em alguns trechos desvia-se das regras da norma padrão da gramática. Assinale a alternativa em que **NÃO** se encontra esse tipo de desvio.\nA. \"...que simboliza o oportunismo e a falta de escrúpulo típicas de uma grande parcela da sociedade.\" (l. 5 a 7)\nB. \"...percebe-se que há quase duzentos anos atrás esta lei já era cumprida.\" (l. 14 e 15)\nC. \"Só que a 'Lei de Gérson', na verdade é muito mais antiga que o próprio.\" (l. 10 a 12)\nD. \"Só que o consumidor preferia ficar passando calor a ser visto dirigindo...\" (l. 43 a 45)",
+    "resposta": "\n\nA alternativa D apresenta construção gramatical adequada à norma padrão quanto à regência verbal (“preferir X a Y”), ainda que use expressões cotidianas. Já A, B e C contêm erros de concordância, redundância ou pontuação.\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002135",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTEXTO:\nTEXTO II\nEm 1934, um redator de Nova York chamado Robert Pirosh largou o emprego bem remunerado numa agência de publicidade e rumou para Hollywood, decidido a trabalhar como roteirista. Lá chegando, anotou o nome e o endereço de todos os diretores, produtores e executivos que conseguiu encontrar e enviou-lhes o que certamente é o pedido de emprego mais eficaz que alguém já escreveu, pois resultou em três entrevistas, uma das quais lhe rendeu o cargo de roteirista assistente na MGM.\nPrezado senhor:\nGosto de palavras. Gosto de palavras gordas, untuosas, como lodo, torpitude, glutinoso, bajulador. Gosto de palavras solenes, como pudico, ranzinza, pecunioso, valetudinário. Gosto de palavras espúrias, 5 enganosas, como mortiço, liquidar, tonsura, mundana. Gosto de suaves palavras com \"V\", como Svengali, avesso, bravura, verve. Gosto de palavras crocantes, quebradiças, crepitantes, como estilha, croque, esbarrão, crosta. Gosto de palavras emburradas, carrancudas, 10 amuadas, como furtivo, macambúzio, escabioso, sovina. Gosto de palavras chocantes, exclamativas, enfáticas, como astuto, estafante, requintado, horrendo. Gosto de palavras elegantes, rebuscadas, como estival, peregrinação, Elísio, Alcíone. Gosto de palavras 15 vermiformes, contorcidas, farinhentas, como rastejar, choramingar, guinchar, gotejar. Gosto de palavras escorregadias, risonhas, como topete, borbulhão, arroto. Gosto mais da palavra roteirista que da palavra redator, e por isso resolvi largar meu emprego numa 20 agência de publicidade de Nova York e tentar a sorte em Hollywood, mas, antes de dar o grande salto, fui para a Europa, onde passei um ano estudando, contemplando e perambulando.\nAcabei de voltar e ainda gosto de palavras.\n25 Posso trocar algumas com o senhor?\nRobert Pirosh\nMadison Avenue, 385\nQuarto 610\nNova York\nEldorado 5-6024.\n(USHER, Shaun (Org) Cartas extraordinárias: a correspondência inesquecível de pessoas notáveis. Trad. de Hildegard Feist. São Paulo: Companhia das Letras, 2014.p.48.)\n\nAssinale a alternativa que apresenta uma afirmação verdadeira sobre o contexto da carta.\nA. A eficiência do pedido de emprego está menos na competência curricular do remetente do que no uso criativo das palavras.\nB. Percebe-se que o remetente despreza a carreira de redator e, por isso, busca ser roteirista.\nC. Pode-se afirmar que, por meio da carta, Robert conquistou três empregos, mas optou por trabalhar no cargo de roteirista assistente na MGM.\nD. A simples leitura da carta, desvinculada do contexto apresentado, impossibilita qualquer compreensão da mensagem.",
+    "resposta": "\n\nA eficácia da carta está justamente no estilo inventivo e expressivo das palavras escolhidas pelo remetente, e não em qualificações curriculares explícitas.  \nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002136",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nRonaldo é um garoto que adora brincar com números. Numa dessas brincadeiras, empilhou caixas numeradas de acordo com a sequência conforme mostrada no esquema a seguir. Ele percebeu que a soma dos números em cada linha tinha uma propriedade e que, por meio dessa propriedade, era possível prever a soma de qualquer linha posterior às já construídas. A partir dessa propriedade, qual será a soma da 9ª linha da sequência de caixas empilhadas por Ronaldo?\nA. 9\nB. 45\nC. 64\nD. 81\nE. 285",
+    "resposta": "\n\nA observação que Ronaldo faz é que, em cada linha, os números vão de 1 até o número de caixas daquela linha. Assim, a soma da n-ésima linha é a soma dos primeiros n naturais:  \n\\(S_n = \\frac{n(n+1)}{2}\\).  \n\nPara a 9ª linha:  \n\\(S_9 = \\frac{9 \\times 10}{2} = 45\\).\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "D",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002137",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTEXTO:\nTEXT\nWHY DO SUPERVILLAINS FASCINATE US? A\nPSYCHOLOGICAL PERSPECTIVE\nWhy are we fascinated by supervillains? Posing\nthe question is much like asking why evil itself intrigues\nus, but there's much more to our continued interest in\nsupervillains than meets the eye.\nNot only do Lex Luthor, Dracula and the Red Skull\nrun unconstrained by conventional morality, they exist\noutside the limits of reality itself. Their evil, even at its\nmost realistic, retains a touch of the unreal.\nBut is our fascination with fantastic fiends¹\nhealthy? From a psychological perspective, views vary\non what drives our enduring interest in superhuman bad\nguys.\nShadow confrontation: Psychiatrist Carl Jung\nbelieved we need to confront and understand our own\nhidden nature to grow as human beings. Healthy\nconfrontation with our shadow selves can unearth new\nstrengths (e.g., Bruce Wayne creating his Dark Knight\npersona to fight crime), whereas unhealthy attempts at\nconfrontation may involve dwelling on or unleashing the\nworst parts of ourselves.\nWish fulfillment: Sigmund Freud viewed human\nnature as inherently antisocial, biologically driven by the\nundisciplined id's pleasure principle to get what we\nwant when we want it - born to be bad but held back by\nsociety. Even if the psyche fully develops its ego\n(source of self-control) and superego (conscience),\nFreudians say the id still dwells² underneath, and it\nwishes for many selfish things so it would love to be\nsupervillainous.\nHierarchy of needs: Humanistic psychologist\nAbraham Maslow held that people who haven't met\ntheir most basic needs will have difficulty maturing. If\nstarved for food, you're unlikely to feel secure. If\nstarved for love and companionship, you'll have trouble\nbuilding self-esteem. People who dwell on their deficits\nmay envy and resent others who have more than they\ndo. Some people who are unable to overcome social\nshortcomings fantasize about obtaining any means,\ngood or bad, to satisfy every need and greed.\nConditioning: Ivan Pavlov would say we can learn\nto associate supervillains with other things we value\nlike entertainment, strength, freedom or the heroes\nthemselves. Behaviorist B.F. Skinner would likely argue\nthat we can find it reinforcing to watch or read about\nsupervillains, but without knowing what's reinforcing\nabout them, that's a bit like saying it's rewarding\nbecause it's rewarding.\nOur Motivations for Seeking Out Supervillains\nThroughout history, humans have been captivated\nby stories of heroes facing off against superhuman\nfoes. But what specific rewards, needs, wishes and\ndark dreams do supervillains satisfy?\nFreedom: Superpowered characters enjoy\nfreedoms the rest of us don't. Nobody can arrest\nSuperman unless he lets them (at least not without\nkryptonite handcuffs). As much time as supervillains\nspend locked up, they seem to escape as often as they\nplease, to run unconstrained by rules and regulations.\nCosplayers who dress like Wonder Woman and\nCaptain America can't do any crazy thing that crosses\ntheir minds without seeming to mock and insult our\nheroes, whereas those dressed as villains get to go\nwild. Supervillainy feels liberating.\nPower: Maybe you envy the power these evil\ncharacters wield. While that's also a reason to adore\nsuperheroes, good guys don't ache to dominate.\nStories like Watchmen and Kingdom Come show how\nheroes become menaces when they try to take over.\nSo when dreaming of superpowers, maybe you relate\nto characters who dream of power as well, from the\nScarecrow (who controls individuals' fears) to Doctor\nDoom (who's perpetually out to dominate the world).\nBetter villain than victim: Physiologically, anger\nactivates us and feels better than anxiety or fear. One\nwho feels victimized and cannot figure out constructive\nways to stand up, be strong or become heroic might\ntwist the need for self-assertion into destruction.\nAlternately, a healthy person simply might focus on how\nall characters assert themselves in any given story.\nBetter villain equals better hero: A hero only\nappears as heroic as the challenge he or she must\novercome. Great heroes require great villains. Without\nsupercriminals, the world's finest heroes seem like\noverpowered brutes nabbing thugs unworthy of them.\nThrough myths, legends and lore across time, we have\nneeded heroes who rise to the occasion, overcome\ngreat odds and take down giants.\nFacing our fears: Instead of dreading the\ndarkness, you might reduce that dread by shining a\nlight and seeing what's out there. Fiction can help us\nfeel empowered and enlightened without literally\ntraipsing into mob hangouts and poorly lit alleyways.\nExploring the unknown: Our need to challenge\nthe unknown has driven the human race to cover the\nglobe. This powerful curiosity makes us wonder about\neverything that baffles 10 us, including the world's worst\nfiends. Knowledge is power, or at least feels like it.\nWhen gritty details repulse us, exploring evil through the\nfilter of fiction can help us contemplate humanity's\nworst without turning away or dwelling almost\nvoyeuristically on real human tragedy. Even when the\nfiction is about improbable people doing impossible\nthings, the story's fantastic nature reassures us that this\ncannot happen and therefore we don't have to turn\naway.\nSupervillains' Ultimate Purpose\nIn the end, our interest in supervillains can be\nhealthy or unhealthy. Even the more maladaptive\nreasons for such fascination tend to arise from\nmotivations that were originally healthy and natural\nfrustrated drives that went the wrong way.\nRemember, though, that superheroic fiction\nultimately begins and ends with the heroes. Comic book\nwriters and artists create supervillains, who move in and\nout as guest stars and supporting cast, first and\nforemost to reveal how heroic the comics' stars can be.\n(Adapted from https://www.wired.com/2012/07/why-do-supervillains-\nfascinate-us/)\nGlossary:\n1. fiend an evil and cruel person\n2. to dwell - remain\n3. foe an enemy\n4. to wield - influence, use power\n5. menace - threat\n6. to nab thugs - arrest criminals\n7. odds probability\n8. to traipse into mob hangouts walk among places where\ngangs, criminals meet\n9. poorly lit alleyways - narrow road or path with little light\n10. to baffle confuse somebody completely\n\nOne of the statements below **LACKS** the content of the text. Mark it.\nA. Our curiosity makes us wonder what we've already understood.\nB. According to the author's perspective on superheroes, they can be both heroes and fiends.\nC. Heroes depend on villains to succeed.\nD. A part of our unconscious mind would desire to be a villain.",
+    "resposta": "\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "B",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002138",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nPeruas da prefeitura A cada dia, cinco meninas – Fernanda, Giulia, Helena, Joice e Karina – e quatro meninos – Alberto, Bernardo, Caio e Davi vão para a escola em três peruas diferentes da prefeitura. Apenas essas crianças vão para a escola nessas peruas. As seguintes condições são obedecidas: • O número máximo de crianças em qualquer perua é quatro. • Meninos não podem ser a maioria das crianças em qualquer das peruas. • Davi sempre vai na perua com o menor número de crianças. • Joice e Karina nunca vão na mesma perua. • Giulia e Helena sempre vão na mesma perua. • Alberto e Fernanda sempre vão na mesma perua. Cada uma das alternativas seguintes é uma criança que pode ir junto com Bernardo na mesma perua exceto:\nA. Alberto\nB. Caio\nC. Davi\nD. Fernanda\nE. Helena",
+    "resposta": "\n\nCom as restrições dadas, a única distribuição possível de tamanhos das peruas é 4, 3 e 2 crianças. Como Davi está sempre na perua com menos crianças, ele deve estar sozinho com uma menina na perua de 2 lugares.  \nSe Bernardo fosse na mesma perua que Davi, haveria 2 meninos nessa perua de 2, o que viola a regra de que meninos não podem ser a maioria.\n\nPortanto, Davi **não pode** ir junto com Bernardo.\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002139",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConheço um povo sem poligamia: o povo macua. Este\npovo deixou as suas raízes e apoligamou-se por influência\nda religião. Islamizou-se. (...) Conheço um povo de tradi-\nção poligâmica: o meu, do sul do meu país. Inspirado\nno papa, nos padres e nos santos, disse não à poligamia.\nCristianizou-se. Jurou deixar os costumes bárbaros de casar\ncom muitas mulheres para tornar-se monógamo ou celibatá-\nrio. (...) Um dia dizem não aos costumes, sim ao cristianismo\ne à lei. No momento seguinte, dizem não onde disseram sim,\nou sim onde disseram não.\n(CHIZIANE, Paulina. Niketche. Uma história de poligamia. São Paulo: Companhia das\nLetras, 2004, p. 92.)\nBaseando-se no excerto e na leitura da obra, é correto afirmar\nque\nA. a organização familiar é fruto da vida religiosa dos povos, cabendo assim a monogamia aos povos cristãos e a poliga-mia aos povos islâmicos.\nB. os costumes culturais no modo de organizar os arranjos fa-miliares são colocados em xeque por novas estruturas de poder, as quais transmitem outros valores.\nC. a monogamia aparece como evolução natural aos costumes supostamente bárbaros de os homens se casarem com mui-tas mulheres em determinadas culturas africanas.\nD. o povo macua tornou-se monogâmico depois de abraçar a fé cristã trazida pelo papa e padres, o que pode ser conside-rado um aprimoramento social.",
+    "resposta": "\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002140",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nBicicletaria Para ajudar nas despesas da casa, Pedro resolveu montar uma bicicletaria na garagem de casa. Pedro conserta uma bicicleta por vez, sempre terminando o conserto de uma bicicleta antes de iniciar o conserto de outra. As bicicletas são consertadas na ordem de chegada na bicicletaria. Num sábado, seis bicicletas chegaram para conserto, de cores: roxa, verde, azul, prata, branca e marrom. • A bicicleta branca chegou algum tempo depois da bicicleta verde e algum tempo depois da bicicleta marrom. • A bicicleta prata chegou algum tempo depois da bicicleta branca. • A bicicleta roxa chegou algum tempos antes da bicicleta prata. Questão 25. Qual das seguintes poderia ser a ordem em que as bicicletas chegaram na bicicletaria, da primeira à última a chegar?\nA. verde, roxa, marrom, prata, branca, azul\nB. verde, marrom, branca, prata, roxa, azul\nC. azul, verde, marrom, roxa, branca, prata\nD. verde, azul, branca, roxa, marrom, prata\nE. marrom, branca, roxa, verde, prata, azul",
+    "resposta": "\n\nAs restrições exigem:\n\n- marrom < branca  \n- verde < branca  \n- branca < prata  \n- roxa < prata  \n\nA alternativa **C** satisfaz todas:\n\n**azul, verde, marrom, roxa, branca, prata**\n\nVerificando:  \n- marrom está antes da branca ✔  \n- verde está antes da branca ✔  \n- branca está antes da prata ✔  \n- roxa está antes da prata ✔  \n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002141",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nDisponível em: http://www.wordinfo.info. Acesso em: 27 abr. 2010. O argumento presente na charge consiste em uma metáfora relativa à teoria evolucionista e ao desenvolvimento tecnológico. Considerando o contexto apresentado, verifica-se que o impacto tecnológico pode ocasionar\nA. - o surgimento de um homem dependente de um novo modelo tecnológico.\nB. a mudança do homem em razão dos novos inventos que destroem sua realidade.\nC. a problemática social de grande exclusão digital a partir da interferência da máquina.\nD. a invenção de equipamentos que dificultam o trabalho do homem, em sua esfera social.\nE. o retrocesso do desenvolvimento do homem em face da criação de ferramentas como lança, máquina e computador.",
+    "resposta": "\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002142",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nWhatsapp Durante as férias Sílvia recebe várias mensagens de Whatsapp, cada mensagem de um de três colegas de escola: Heitor, Júlia e Lia. Sílvia recebe ao menos uma e no máximo duas mensagens de cada colega. No máximo uma mensagem é enviada por dia. Sílvia recebe cada mensagem no mesmo dia em que foi enviada. As mensagens são recebidas de maneira consistente com as seguintes condições: • A primeira mensagem não é de Lia. • A primeira e a útima mensagem são ambas da mesma pessoa. • Exatamente uma vez Sílvia recebe uma mensagem de Júlia no dia seguinte ao dia em que recebe uma mensagem de Heitor. • Das três primeiras mensagens, exatamente uma é de Júlia. Se Sílvia recebe exatamente quatro mensagens, então qual das seguintes alternativas é sempre verdadeira?\nA. Exatamente uma mensagem é de Lia.\nB. Exatamente duas mensagens são de Júlia.\nC. A segunda mensagem é de Lia.\nD. A terceira mensagem é de Heitor.\nE. A quarta mensagem é de Júlia.",
+    "resposta": "\n\nComo há exatamente 4 mensagens e cada colega recebeu pelo menos 1, no máximo 2, então apenas um colega aparece duas vezes; os outros aparecem uma vez. Como a primeira não é da Lia e a primeira e última são da mesma pessoa, a Lia só pode aparecer uma vez. Logo, sempre há exatamente uma mensagem de Lia.\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002143",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nJardim da escola Para deixar a escola mais bonita professores e alunos vão criar um jadim, plantando flores no terreno ao lado da entrada. O jardim vai ter no máximo cinco das seguintes flores: acácia, begônia, cravo, dália, lírio, rosa e violeta, obedecendo às seguintes condições: • Se o jardim tem cravo, então o jardim não tem violeta. • Se o jardim tem acácia, então o jardim não tem lírio. • Se o jardim não tem violeta, então o jardim tem begônia ou dália, mas não ambos. • Se o jardim não tem begônia ou não tem dália, então o jardim tem acácia e rosa. Qual das seguintes alternativas poderia ser uma lista completa e correta das flores que o jardim tem?\nA. acácia, cravo\nB. acácia, begônia, dália\nC. acácia, begônia, lírio, rosa\nD. acácia, begônia, rosa, violeta\nE. acácia, cravo, dália, rosa, violeta",
+    "resposta": "\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002144",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTimes de Programação A Maratona de Programação é uma competição promovida, como a OBI, pela Sociedade Brasileira de Computação. Na Maratona, times compostos por três alunos competem resolvendo tarefas de programação. Três times são formados pelos alunos Ana, Bia, Chico, Deco, Eva, Fábio, Gui, Heitor e Iara. Os times são formados obedecendo aos seguintes critérios: • Deco está no time 3. • Eva está no mesmo time que Fábio. • Se Ana está no time 1, então Eva está no time 2 e Chico no time 3. • Se Bia está no time 2, então Gui e Chico estão no time 1. • Gui não está no mesmo time que Deco. Qual das seguintes é uma distribuição correta dos alunos entre os times?\nA. 1: Deco, Gui, Heitor; 2: Ana, Bia, Iara; 3: Chico, Eva, Fábio\nB. 1: Ana, Bia, Gui; 2: Eva, Heitor, Iara; 3: Chico, Deco, Fábio\nC. 1: Bia, Fábio, Eva; 2: Ana, Heitor, Iara; 3: Deco, Chico, Gui\nD. 1: Ana, Bia, Gui; 2: Eva, Fábio, Iara; 3: Chico, Deco, Heitor\nE. 1: Ana, Bia, Gui; 2: Chico, Deco, Heitor; 3: Eva, Fábio, Iara",
+    "resposta": "\n\nVerificando cada alternativa com as condições dadas:\n\n- **Deco** deve estar no time 3.\n- **Eva** e **Fábio** devem estar no mesmo time.\n- Se **Ana** estiver no time 1, então **Eva** no time 2 e **Chico** no time 3.\n- Se **Bia** estiver no time 2, então **Gui** e **Chico** no time 1.\n- **Gui** não pode estar no mesmo time que **Deco**.\n\nA alternativa **D** satisfaz todas as condições:\n- Time 1: Ana, Bia, Gui  \n- Time 2: Eva, Fábio, Iara → Eva e Fábio juntos ✅  \n- Time 3: Chico, Deco, Heitor → Deco no time 3 ✅  \n- Ana no time 1 ⇒ Eva no time 2 e Chico no time 3 ✅  \n- Gui no time 1 e Deco no time 3 ⇒ não estão juntos ✅  \n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002145",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUm produtor de maracujá usa uma caixa-d’água, com volume V, para alimentar o sistema de irrigação de seu pomar. O sistema capta água através de um furo no fundo da caixa a uma vazão constante. Com a caixa-d’água cheia, o sistema foi acionado às 7 h da manhã de segunda-feira. Às 13 h do mesmo dia, verificou-se que já haviam sido usados 15% do volume da água existente na caixa. Um dispositivo eletrônico interrompe o funcionamento do sistema quando o volume restante na caixa é de 5% do volume total, para reabastecimento. Supondo que o sistema funcione sem falhas, a que horas o dispositivo eletrônico interromperá o funcionamento?\nA. Às 15 h de segunda-feira.\nB. Às 11 h de terça-feira.\nC. Às 14 h de terça-feira.\nD. Às 4 h de quarta-feira.\nE. Às 21 h de terça-feira.",
+    "resposta": "\n\nEm 6 horas foram usados 15% do volume total, então a vazão é de:\n\n\\[\n\\frac{15\\%}{6}=2{,}5\\% \\text{ do volume por hora}\n\\]\n\nÀs 13 h restavam \\(100\\%-15\\%=85\\%\\). O sistema para quando restarem 5%, ou seja, ainda falta drenar:\n\n\\[\n85\\%-5\\%=80\\%\n\\]\n\nTempo adicional para isso:\n\n\\[\n\\frac{80\\%}{2{,}5\\%\\text{ por hora}}=32\\text{ horas}\n\\]\n\nAssim, \\(13\\text{ h de segunda} + 32\\text{ h}\\) cai em **21 h de terça-feira**.\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002146",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUm paciente necessita de reidratação endovenosa feita por meio de cinco frascos de soro durante 24 h. Cada frasco tem um volume de 800 mL de soro. Nas primeiras quatro horas, deverá receber 40% do total a ser aplicado. Cada mililitro de soro corresponde a 12 gotas. O número de gotas por minuto que o paciente deverá receber após as quatro primeiras horas será\nA. 16.\nB. 20.\nC. 24.\nD. 34.\nE. 40.",
+    "resposta": "\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002147",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO princípio básico do Estado de direito é o da eliminação do arbítrio no exercício dos poderes públicos, com a consequente garantia de direitos dos indivíduos perante esses poderes. Estado de direito significa que nenhum indivíduo, presidente ou cidadão comum está acima da lei. Os governos democráticos exercem a autoridade por meio da lei e estão eles próprios sujeitos aos constrangimentos impostos pela lei.\nNas sociedades contemporâneas, consiste em violação do princípio básico enunciado no texto:\nA. Supressão de eleições de representantes políticos.\nB. Intervenção em áreas de vulnerabilidade pela Igreja.\nC. Disseminação de projetos sociais em universidades.\nD. Ampliação dos processos de concentração de renda.\nE. Regulamentação das relações de trabalho pelo Legislativo.",
+    "resposta": "\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002148",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTEXTO:\nTEXT\nWhen making a decision, it is a common impulse\nto look and see what others are doing. Nevertheless, it is\noften unclear whether the path that everyone else may\nbe following is good for us as well. After all, sometimes\nfollowing the crowd has merit - at other times, it is simply\npeer pressure blinding us.\nThe phenomenon of looking to others and\nfollowing the crowd by social science for a long\ntime. Nevertheless, those findings do not always make\ntheir way to individual decision-makers. Therefore, let's\nreview why people conform to the crowd - and under\nwhat conditions it is a god idea to go your own way\ninstead.\nTo start, individuals tend to look to the opinions of\nothers, especially when they are unsure and lack\ninformation from other sources. This dynamic was\nsupported by classic research from Sherif (1937), who\nexplored how a person's perception of a very ambiguous\nstimuli can be influenced by the opinion of others. Sherif\n(1937) asked participants to watch a small light in a dark\nand featureless room and evaluate how much that light\nmoved around. In actuality, however, the light never\nmoved at all - but the way our perception works in that\nsituation gives the possible illusion of movement (called\nthe Autokinetic Effect). In this uncertain and ambiguous\nperceptual situation, Sherif (1937) found that individuals\nwere quite susceptible to the influence of the opinions of\nothers when trying to decide how much light was\n\"moving\".\nUnfortunately, this phenomenon also extends to\nindividuals following the crowd, even when they can\nclearly see that others are wrong. This was first\nevaluated by Asch (1955), who asked participants to\npick a line from a few choices of varying lengths that\nmatched up with another example line given to them.\nFrom a perceptual standpoint, the task was easy - as\nthe correct choice of which lines were actually similar to\none another was clear. Nevertheless, when participants\nwere surrounded by other individuals giving the wrong\nanswer, they often conformed and made the wrong\nchoice as well. Thus, even when the correct choice is\nclear, and what others are doing is wrong, that peer\npressure can still cause us to doubt ourselves and follow\nthe crowd.\nWhy is it that we are so compelled to follow the\ncrowd, even when it is objectively clear that they are\nwrong? According to more recent research, we may\nsimply be wired that way. Specifically, these social\ninfluences can actually change our perceptions and\nmemories (Edelson, Sharot, Dolan, & Dudai, 2011).\nTherefore, rather than knowingly making the wrong\nchoice just to conform to peer pressure, the influence of\nothers may actually change what we see as the correct\nchoice in the moment and remember as the right thing\nafter the fact. Beyond that, we might just have \"herding\nbrains\" with built-in components that monitor our social\nalignments and make us feel good when we follow the\ncrowd too (Shamay-Tsoory, Saporta, Marton-Alper, &\nGvirts, 2019).\nFortunately, this effect has good points as well. In\nmany cases, group decision-making can help individuals\nlook beyond their own private perspectives and make\nmore rational decisions (Fahr & Irlenbusch, 2011).\nFurthermore, pro-social and altruistic behaviors can be\ninfluenced and shared through such conformity as well\n(Nook, Ong, Morelli, Mitchell, & Zaki, 2016). Therefore,\nsometimes following the crowd helps people get along\nand make better decisions too.\nGiven the above, when making a decision, it is\nimportant to consider whether following others is a good\nidea or is leading you astray instead. Some simple\nsteps can help you figure it out.\nGetting swept away by what everyone else is\ndoing is often an emotional and thoughtless process. We\nare conforming simply because we have not given\nsufficient attention and effort toward considering any\nother options. Therefore, unless you are in an\nemergency situation and need to immediately follow\neveryone else toward the nearest exit, it might be a good\nidea to switch to more deliberate thinking processes,\nrather than just going with your initial reaction.\nSome choices and decision-making situations\nare more individual, while others are more social.\nTherefore, it is important to consider the specific\nsituation. Is this an individual choice, or does it involve\nothers? If you have sufficient information to make a clear\nchoice on your own, and you do not need group\napproval, then you might want to make up your own\nmind. If you are personally unsure, or you need the\nsupport of others to make something happen, then\ntaking the opinion of others into consideration might be a\ngood idea instead.\nIt is generally a good idea to evaluate your\nchoices and decisions from multiple perspectives. The\nsame is true for following the opinion of others too.\nAlthough it might not feel that way at times, especially in\nthe modern day of media coverage and social\nnetworking, everyone is not doing it whatever \"it\" is\nthat you are considering. Given that, before you follow\nthe advice or choices of any particular group of people, it\nmight be a good idea to look at what other groups of\npeople are doing or choosing too. In addition, we can\nlearn a lot from people making choices contrary to\nourselves or our preferred group, particularly about\npotential down-sides to choices we might not be seeing.\nTherefore, if you do need to look to others to help\nprovide information regarding a particular choice or\ndecision, then it might help to seek out people with a few\ndifferent opinions, weigh your options among them, and\nfigure out what will work best for you.\n(Adapted from https://www.psychologytoday.com. Access on\nMarch 25th, 2021)\n\n**Therefore** (line 51) is closest in meaning to\nA. **nevertheless**. (line 2)\nB. **however**. (line 22)\nC. **thus**. (line 41)\nD. **furthermore**. (line 64)",
+    "resposta": "\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002149",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nEm 2011, um terremoto de magnitude 9,0 na escala Richter causou um devastador tsunami no Japão, provocando um alerta na usina nuclear de Fukushima. Em 2013, outro terremoto, de magnitude 7,0 na mesma escala, sacudiu Sichuan (sudoeste da China), deixando centenas de mortos e milhares de feridos. A magnitude de um terremoto na escala Richter pode ser calculada por <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>M</mi><mo>=</mo><mfrac><mn>2</mn><mn>3</mn></mfrac><mi>log</mi><mfenced><mfrac><mi>E</mi><msub><mi>E</mi><mn>0</mn></msub></mfrac></mfenced></math> sendo E a energia, em kWh, liberada pelo terremoto e <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msub><mi>E</mi><mn>0</mn></msub></math> uma constante real positiva. Considere que <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msub><mi>E</mi><mn>1</mn></msub></math> e <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msub><mi>E</mi><mn>2</mn></msub></math> representam as energias liberadas nos terremotos ocorridos no Japão e na China, respectivamente. Disponível em: www.terra.com.br. Acesso em: 15 ago. 2013 (adaptado). Qual a relação entre <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msub><mi>E</mi><mn>1</mn></msub></math> e <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msub><mi>E</mi><mn>2</mn></msub></math>?\nA. <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msub><mi>E</mi><mn>1</mn></msub><mo>=</mo><msub><mi>E</mi><mn>2</mn></msub><mo>+</mo><mn>2</mn></math>\nB. <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msub><mi>E</mi><mn>1</mn></msub><mo>=</mo><msup><mn>10</mn><mn>2</mn></msup><mo>&#xD7;</mo><msub><mi>E</mi><mn>2</mn></msub></math>\nC. <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msub><mi>E</mi><mn>1</mn></msub><mo>=</mo><msup><mn>10</mn><mn>3</mn></msup><mo>&#xD7;</mo><msub><mi>E</mi><mn>2</mn></msub></math>\nD. <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msub><mi>E</mi><mn>1</mn></msub><mo>=</mo><msup><mn>10</mn><mfrac><mn>9</mn><mn>7</mn></mfrac></msup><mo>&#xD7;</mo><msub><mi>E</mi><mn>2</mn></msub></math>\nE. <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><msub><mi>E</mi><mn>1</mn></msub><mo>=</mo><mfrac><mn>9</mn><mn>7</mn></mfrac><mo>&#xD7;</mo><msub><mi>E</mi><mn>2</mn></msub></math>",
+    "resposta": "\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "002150",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTEXTO:\nFOOD SHORTAGE CAUSES, EFFECTS AND SOLUTIONS\nFood shortage is a serious problem facing the\nworld and is prevalent in sub-Saharan Africa. The\nscarcity of food is caused by economic, environmental\nand social factors such as crop failure, overpopulation\n5 and poor government policies are the main cause of food\nscarcity in most countries. Environmental factors\ndetermine the kind of crops to be produced in a given\nplace, economic factors determine the buying and\nproduction capacity and socio-political factors determine\n10 distribution of food to the masses. Food shortage has far\nreaching long and short term negative impacts which\ninclude starvation, malnutrition, increased mortality and\npolitical unrest¹. There is need to collectively address the\nissue of food insecurity using both emergency and long\n15 term measures.\nCauses of food shortages\nThere are a number of social factors causing\nfood shortages. The rate of population increase is higher\nthan increase in food production. The world is consuming\n20 more than it is producing, leading to decline in food stock\nand storage level and increased food prices due to\nsoaring demand. Increased population has led to\nclearing of agricultural land for human settlement\nreducing agricultural production (Kamdor, 2007).\n25 Overcrowding of population in a given place results in\nurbanization of previously rich agricultural fields.\nDestruction of forests for human settlement, particularly\ntropical rain forest has led to climatic changes, such as\nprolonged droughts and desertification.\nPopulation\n30 increase means more pollution as people use more fuel\nin cars, industry, domestic cooking. The resultant effect\nis increased air and water pollution which affect the\nclimate and food production.\nEnvironmental factors have greatly contributed\n35 to food shortage. Climatic change has reduced\nagricultural production. The change in climate is majorly\ncaused by human activities and to some small extent\nnatural activities. Increased combustion of fossil fuels\ndue to increasing population through power plant, motor\n40 transport and mining of coal and oil emits green house\ngases which have continued to affect world climate.\nDeforestation of tropical forest due to human pressure\nhas changed climatic patterns and rainfall seasons, and\nled to desertification which cannot support a crop\n45 production. Land degradation due to increased human\nactivities has impacted negatively on agricultural\nproduction (Kamdor, 2007). Natural disasters such as\nfloods, tropical storms and prolonged droughts are on the\nincrease and have devastating impacts on food security\n50 particularly in developing countries. There are several\neconomic factors that contribute to food shortage.\nEconomic factors affect the ability of farmers to engage\nin agricultural production. Poverty situation in developing\nnations have reduced their capacity to produce food, as\n55 most farmers cannot afford seed and fertilizers. They use\npoor farming methods that cannot yield³ enough, even\nsubstantial use. Investments in agricultural research and\ndeveloping are very low in developing nations. Recent\nglobal financial crisis have led to increase in food prices\n60 and reduced investments in agriculture by individuals\nand governments in developed nations resulting in\nreduced food production.\nEffects of food shortage\nThere are a number of short term effects of food\n65 shortage. The impact on children, mothers and elderly\nare very evident as seen in malnutrition and hunger\nrelated deaths. Children succumb to hunger within short\nperiod as they cannot stand long period of starvation and\nthey die even before the arrival of emergency\n70 assistance.\nThere are also long term effects of food\nshortage. These include increase in the price of food as\na result demand and supply forces. Increasing cost of\nfood production due to the increase in fuel prices coupled\n75 with persistent drought in grain producing regions has\ncontributed to the increase in the price of food in the\nworld. Increase in oil price led to increase in the price of\nfertilizers, transportation of food and also industrial\nagriculture. Increasing food prices culminated in political\n80 instability and social unrest in several nations across the\nglobe in 2007, in countries of Mexico, Cameroon, Brazil,\nBurkina Faso, Pakistan, Egypt and Bangladesh among\nother nations (Kamdor, 2007).\nSolution to problem of food shortage\n85 There are some solutions to the problem of food\nshortage. There is need to reduce production of carbon\nemissions and pollution to reduce the resultant climatic\nchange through concerted and individual efforts. There\nis need to invest in clean energy such as solar, nuclear,\n90 and geothermal power in homes and industries, because\nthey don't have adverse effects on the environment\n(Kamdor, 2007). Rich nations should help poor nations to\ndevelop and use clean and renewable energy in order to\nstabilize green house emissions into the atmosphere\n95 (Watson, nd). Government need to work in consultation\nwith climatic bodies, World Bank and the UN to engage\nin projects aimed at promoting green environment.\nConclusion\nCauses of food shortage are well known and\n100 can be solved if appropriate measures to solve the\nproblem are taken and effectively implemented.\nEnvironmental causes of food shortages are changes in\nclimatic and pollution due to human activities such\novergrazing and deforestation which can be controlled\n105 through legislation.\n(Adapted from http://www.paypervids.com/food-shortage-causes-\neffects-solutions/Acesso em:14 fev 2017)\nGlossary:\n1. unrest – disagreement or fighting between different\ngroups of people\n2. soaring – something that increases rapidly above the\nusual level\n3. yield – to supply or produce something such as profit or\nan amount or food\n4. overgrazing – excessive use of land where animals feed\non grass\n\nThe text conclusion seems to be\nA. logical and sharp.\nB. nonsense and worn out.\nC. controversial and useful.\nD. excessive and repeated.",
+    "resposta": "\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  }
+]

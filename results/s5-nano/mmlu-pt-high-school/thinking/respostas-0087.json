@@ -1,0 +1,2302 @@
+[
+  {
+    "id": "004301",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nLoja de departamentos Uma nova loja de departamentos foi inaugurada. A loja tem seis andares, numerados de 1 a 6, e cada andar é ocupado por exatamente um departamento: Brinquedos, Cosméticos, Decoração, Eletrônicos, Roupas e Sapatos. Não há elevadores; para ir de um andar a outro é necessário usar escadas rolantes. A loja é organizada obedecendo às seguintes restrições: • Cada escada rolante leva ao andar imediatamente acima ou imediatamente abaixo do andar corrente. • O departamento Brinquedos é imediatamente abaixo do departamento Decoração. • Não há escada rolante conectando o departamento Eletrônicos ao departamento Sapatos. • O departamento Cosméticos é num andar mais alto do que o departamento Decoração mas num andar mais baixo do que o departamento Sapatos. Se o departamento Decoração ocupa o andar 3, então qual das seguintes é a lista completa dos andares que o departamento Eletrônicos poderia ocupar?\nA. 1\nB. 4\nC. 1,4\nD. 1, 2\nE. 2,4",
+    "resposta": "\n\nCom \\(D=3\\) e Brinquedos imediatamente abaixo, temos \\(B=2\\).  \nComo Cosméticos fica acima de Decoração, \\(C\\ge 4\\), e Sapatos fica acima de Cosméticos, \\(S>C\\). Além disso, Eletrônicos não pode ser adjacente a Sapatos.\n\nAnalisando os casos:\n- Se \\(C=4\\): \\(S\\) pode ser \\(5\\) ou \\(6\\). Em ambos os casos, \\(E\\) só pode ficar no andar \\(1\\) (pois os demais ficam adjacentes a \\(S\\)).\n- Se \\(C=5\\): \\(S=6\\), sobrando andares \\(1\\) e \\(4\\). \\(E\\) pode ocupar \\(1\\) ou \\(4\\).\n\nPortanto, os possíveis andares para Eletrônicos são **1** e **4**.\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004302",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUma fábrica de fórmicas produz placas quadradas de lados de medida igual a y centímetros. Essas placas são vendidas em caixas com N unidades e, na caixa, é especificada a área máxima S que pode ser coberta pelas N placas. Devido a uma demanda do mercado por placas maiores, a fábrica triplicou a medida dos lados de suas placas e conseguiu reuni-las em uma nova caixa, de tal forma que a área coberta S não fosse alterada. A quantidade X, de placas do novo modelo, em cada nova caixa será igual a:\nA. <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mfrac><mi>N</mi><mn>9</mn></mfrac></math>\nB. <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mfrac><mi>N</mi><mn>6</mn></mfrac></math>\nC. <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mfrac><mi>N</mi><mn>3</mn></mfrac></math>\nD. <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>3</mn><mi>N</mi></math>\nE. <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>9</mn><mi>N</mi></math>",
+    "resposta": "\n\nCada placa original tem área \\(y^2\\).  \nA caixa comporta \\(N\\) placas, então:\n\n\\[\nS = N \\cdot y^2\n\\]\n\nAs novas placas têm lado \\(3y\\), logo cada uma tem área:\n\n\\[\n(3y)^2 = 9y^2\n\\]\n\nPara manter a mesma área máxima \\(S\\):\n\n\\[\nX \\cdot 9y^2 = N \\cdot y^2\n\\]\n\nAssim:\n\n\\[\nX = \\frac{N}{9}\n\\]\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004303",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nQuem se mete pelo caminho do pedido de perdão deve estar pronto a escutar uma palavra de recusa. Entrar na atmosfera do perdão é aceitar medir-se com a possibilidade sempre aberta do imperdoável. Perdão pedido não é perdão a que se tem direito [devido]. É com o preço destas reservas que a grandeza do perdão se manifesta.\nA reflexão sobre o perdão apresentada no texto encontra fundamento na(s)\nA. rejeição particular amparada pelo desejo de poder.\nB. decisão subjetiva determinada pela vontade divina.\nC. liberdade mitigada pela predestinação do espírito.\nD. escolhas humanas definidas pelo conhecimento empírico.\nE. relações interpessoais mediadas pela autonomia dos indivíduos.",
+    "resposta": "\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004304",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nMP3 na Cabeça Clara está carregando músicas em seu prendedor de cabelo, que funciona também como um tocador MP3. O tocador é capaz de armazenar exatamente três músicas longas – entre C, D e F – ou exatamente seis músicas curtas – entre H, J, K, L, P e Q. Cada música curta ocupa exatamente a metade da memória de uma música longa. Clara usa toda a memória disponível. As seguintes restrições devem ser obedecidas: • Se J é carregada, então L é carregada. • Se C é carregada, então K não é carregada. • Se L é carregada, então C é carregada. • Se ou P ou D são carregadas, então ambas são carregadas. • Se C é carregada, então Q é carregada. • Se F é carregada, então D não é carregada. Se H não é carregada, qual dos seguintes pares de músicas poderia ser carregado?\nA. J, Q\nB. F, P\nC. D, L\nD. C, P\nE. K, P",
+    "resposta": "\n\nAs restrições permitem que, se **P** é carregada, então **D** também é carregada.  \nEm **D**:  \n- **C** → **Q**  \n- **P** → **D**  \n- Sem **J**, **K**, **L**, **F** para evitar contradições  \n\nAssim teríamos: longas **C** e **D**; curtas **P** e **Q**.  \nIsso equivale exatamente à capacidade total do toca-fitas:  \n2 longas + 2 curtas = 4 “metades” + 2 “metades” = 6 “metades” = capacidade máxima.\n\nOutras alternativas geram contradições:\n- **A**: J, L e C forçam pelo menos Q além delas, estourando a capacidade.\n- **B**: P exige D, mas F exige que D não esteja carregada.\n- **C**: D força P, e junto com L já seriam pelo menos 3 curtas, excedendo a capacidade com C e D.\n- **E**: Com K e P verdadeiras, D seria verdadeiro; isso não permite preencher a memória sem violar regras ou o limite.\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004305",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUma partícula eletricamente carregada está presa a um carrinho que se move com velocidade de módulo constante por uma trajetória no plano XY definida pela parábola $y = x^2 - 9x + 3$. Sabe-se que, em XY, um campo magnético uniforme paralelo ao vetor $(3B, B)$ provoca força sobre a partícula. O ponto onde a partícula é submetida ao maior módulo de força magnética é\nA. (-6, 93)\nB. (-3, 39)\nC. (1,-5)\nD. (2, -2)\nE. (3,−15)",
+    "resposta": "\n\nA força magnética é máxima quando a velocidade é perpendicular ao campo magnético.\n\nO vetor do campo é paralelo a \\((3,1)\\). A reta tangente à parábola \\(y=x^{2}-9x+3\\) tem direção dada por \\((1,y')\\), com \\(y'=2x-9\\).\n\nImpondo perpendicularidade:\n\\[\n1\\cdot 3+(2x-9)\\cdot 1=0\n\\]\n\\[\n2x-6=0 \\Rightarrow x=3\n\\]\n\nNesse ponto:\n\\[\ny=3^{2}-9(3)+3=9-27+3=-15\n\\]\n\nPortanto, o ponto de maior força é \\((3,-15)\\), que corresponde à alternativa E.\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004306",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSegundo quadro Uma sala da prefeitura. O ambiente é modesto. Durante a mutação, ouve-se um dobrado e vivas a Odorico, “viva o prefeito” etc. Estão em cena Dorotéa, Juju, Dirceu, Dulcinéa, o vigário e Odorico. Este último, à janela, discursa. ODORICO — Povo sucupirano! Agoramente já investido no cargo de Prefeito, aqui estou para receber a confirmação, a ratificação, a autenticação e por que não dizer a sagração do povo que me elegeu. Aplausos vêm de fora. ODORICO — Eu prometi que o meu primeiro ato como prefeito seria ordenar a construção do cemitério. Aplausos, aos quais se incorporam as personagens em cena. ODORICO — (Continuando o discurso:) Botando de lado os entretantos e partindo pros finalmente, é uma alegria poder anunciar que prafrentemente vocês já poderão morrer descansados, tranquilos e desconstrangidos, na certeza de que vão ser sepultados aqui mesmo, nesta terra morna e cheirosa de Sucupira. E quem votou em mim, basta dizer isso ao padre na hora da extrema-unção, que tem enterro e cova de graça, conforme o prometido. GOMES, D. O bem amado. Rio de Janeiro: Ediouro, 2012. O gênero peça teatral tem o entretenimento como uma de suas funções. Outra função relevante do gênero, explícita nesse trecho de O bem amado, é\nA. criticar satiricamente o comportamento de pessoas públicas.\nB. denunciar a escassez de recursos públicos nas prefeituras do interior.\nC. censurar a falta de domínio da língua padrão em eventos sociais.\nD. despertar a preocupação da plateia com a expectativa de vida dos cidadãos.\nE. questionar o apoio irrestrito de agentes públicos aos gestores governamentais.",
+    "resposta": "\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004307",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTorneio Seis jogadores – A, B, C, D, E e F estão participando do Torneio Estadual de Jogos de Baralho. O Torneio é realizado em dois turnos. Os jogadores disputam o torneio em times formados por um par de jogadores, sendo que os mesmos times disputam os dois turnos. Nenhum jogador está em mais de um time. Em cada turno, cada time deve ocupar exatamente uma mesa, entre as mesas 1, 2 e 3. As seguintes restrições adicionais devem ser obedecidas: • Nenhum time ocupa a mesma mesa nos dois turnos. • B e C não podem estar no mesmo time. • D e F estão no mesmo time. • Se E ocupa a mesa 3 em algum turno, então seu parceiro no time deve ser B. • A ocupa a mesa 1 no segundo turno. Questão 24. Se E ocupa a mesa 3 no primeiro turno, então qual das seguintes alternativas é um par de jogadores que poderiam ocupar a mesa 3 no segundo turno?\nA. A e B\nB. A e C\nC. B e D\nD. B e E\nE. D e F",
+    "resposta": "\n\nCom E na mesa 3 do 1º turno, seu parceiro obrigatório é B. Assim, o time {E,B} já usou a mesa 3 no 1º turno.\n\nComo D e F formam um time e sobram A e C, os times são:\n- {E,B}\n- {D,F}\n- {A,C}\n\nNo 2º turno, A deve estar na mesa 1, então o time {A,C} fica na mesa 1. Restam as mesas 2 e 3 para {E,B} e {D,F}. Como {E,B} não pode repetir a mesa 3, a mesa 3 do 2º turno pode ser ocupada por {D,F}.\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004308",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSabendo que $c$ é um número real, considere, no plano\ncartesiano, a circunferência de equação $x^2 + y^2 = 2cx$. Se\no centro dessa circunferência pertence à reta de equação\n$x+2y=3$, então seu raio é igual a\nA. √2.\nB. √3.\nC. 2.\nD. 3.",
+    "resposta": "\n\nA equação da circunferência é \\((x-c)^2+y^2=c^2\\).  \nLogo, o centro é \\((c,0)\\) e o raio é \\(|c|\\).\n\nComo o centro pertence à reta \\(x+2y=3\\):\n\n\\[\nc+2\\cdot0=3 \\Rightarrow c=3\n\\]\n\nPortanto, o raio é:\n\n\\[\n|c|=3\n\\]\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004309",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nFérias Seis amigos, A, B, C, D, E e F, querem aproveitar suas férias escolares jogando video-game. Eles vão se reunir cada dia na casa de um deles, durante seis dias seguidos da semana. Eles não podem se reunir mais de uma vez na casa da mesma pessoa, e as seguintes condições são também aplicadas: • A reunião na casa de A deve ser imediatamente antes ou imediatamente depois da reunião na casa de E. • Existe exatamente um dia entre os dias das reuniões nas casas de A e B, independentemente se a reunião na casa de A ocorre antes ou depois da reunião da casa de B. • Se a reunião na casa de D ocorre antes da reunião na casa de C, então a sexta reunião é na casa de F. • A quarta reunião é na casa de C. Qual das seguintes opções é uma lista completa e correta da ordem das reuniões da primeira a sexta?\nA. A, F, B, C, D, E\nB. B, E, A, C, F, D\nC. D, B, C, A, E, F\nD. E, A, D, C, B, F\nE. F, D, B, C, A, E",
+    "resposta": "\n\nVamos fixar que a 4ª reunião é na casa de **C**.  \nAs condições dizem que **A** e **B** têm exatamente um dia entre eles, ou seja, distância de 2 posições. Também **A** e **E** devem ser vizinhos.\n\nTestando a alternativa **B**:  \nOrdem: **B, E, A, C, F, D**\n\n- A está na posição 3 e E na posição 2 → são vizinhas ✅  \n- A está na posição 3 e B na posição 1 → há exatamente um dia entre eles ✅  \n- A 4ª reunião é C ✅  \n- D está após C, então a condição sobre a sexta reunião em F não se aplica ✅  \n\nPortanto, essa é uma sequência válida.\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004310",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUma esfera homogênea, rígida, de densidade $\\mu_1$ e de volume V se encontra apoiada e em equilíbrio na superfície inferior de um recipiente, como mostra a figura 1. Nesta situação a superfície inferior exerce uma força $N_1$ sobre a esfera. A partir dessa condição, o recipiente vai sendo preenchido lentamente por um líquido de densidade $\\mu$, de tal forma que esse líquido esteja sempre em equilíbrio hidrostático. Num determinado momento, a situação de equilíbrio do sistema, no qual a esfera apresenta metade de seu volume submerso, é mostrada na figura 2. Quando o recipiente é totalmente preenchido pelo líquido, o sistema líquido-esfera se encontra em uma nova condição de equilíbrio com a esfera apoiada na superfície superior do recipiente (figura 3), que exerce uma força de reação normal $N_2$ sobre a esfera. Nessas condições, a razão $\\frac{N_2}{N_1}$ é dada por\nA. $\\frac{1}{2}$\nB. $1$\nC. $\\frac{3}{2}$\nD. $2$",
+    "resposta": "\n\nNo instante em que a esfera está com metade do volume submerso e em equilíbrio sem apoio do fundo, o empuxo iguala o peso:\n\n\\[\n\\mu g \\frac{V}{2} = \\mu_1 g V \\implies \\mu = 2\\mu_1.\n\\]\n\nAo preencher totalmente o recipiente, a esfera, sendo menos densa que o líquido, é mantida em contato com a superfície superior. Nesse caso, o empuxo sobre ela é maior que o peso, e a superfície superior exerce uma força de reação \\(N_2\\) de módulo:\n\n\\[\nN_2 = \\mu g V - \\mu_1 g V = 2\\mu_1 g V - \\mu_1 g V = \\mu_1 g V.\n\\]\n\nComo inicialmente \\(N_1 = \\mu_1 g V\\), temos:\n\n\\[\n\\frac{N_2}{N_1} = \\frac{\\mu_1 g V}{\\mu_1 g V} = 1.\n\\]\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004311",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nQuanto à precipitação do hidróxido férrico ($K_{ps} = 1,0 \\cdot 10^{-36}$) em uma solução 0,001 molar de $Fe^{3+}$, é correto afirmar que\nA. independe do pH.\nB. ocorre somente na faixa de pH alcalino.\nC. ocorre somente na faixa de pH ácido.\nD. não ocorre para pH < 3\nE. ocorre somente para pH $\\geq 12$.",
+    "resposta": "\n\nPara o precipitado \\(Fe(OH)_3\\):\n\n\\[\nK_{ps}=[Fe^{3+}][OH^-]^3\n\\]\n\nCom \\([Fe^{3+}]=0{,}001\\ \\text{M}\\):\n\n\\[\n[OH^-]=\\left(\\frac{1{,}0\\times10^{-36}}{1{,}0\\times10^{-3}}\\right)^{1/3}=1{,}0\\times10^{-11}\\ \\text{M}\n\\]\n\nEntão:\n\n\\[\npOH=-\\log(1{,}0\\times10^{-11})=11\n\\]\n\n\\[\npH=14-11=3\n\\]\n\nAssim, a precipitação começa quando \\(pH \\ge 3\\). Para \\(pH<3\\), não ocorre precipitação de \\(Fe(OH)_3\\) nas condições dadas.\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004312",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNão estou mais pensando como costumava pensar. Percebo isso de modo mais acentuado quando estou lendo. Mergulhar num livro, ou num longo artigo, costumava ser fácil. Isso raramente ocorre atualmente. Agora minha atenção começa a divagar depois de duas ou três páginas. Creio que sei o que está acontecendo. Por mais de uma década venho passando mais tempo on-line, procurando e surfando e algumas vezes acrescentando informação à grande biblioteca da internet. A internet tem sido uma dádiva para um escritor como eu. Pesquisas que antes exigiam dias de procura em jornais ou na biblioteca agora podem ser feitas em minutos. Como disse o teórico da comunicação Marshall McLuhan nos anos 60, a mídia não é apenas um canal passivo para o tráfego de informação. Ela fornece a matéria, mas também molda o processo de pensamento. E o que a net parece fazer é pulverizar minha capacidade de concentração e contemplação. CARR, N. Is Google making us stupid? Disponível em: www.theatlantic.com. Acesso em: 17 fev. 2013 (adaptado). Em relação à internet, a perspectiva defendida pelo autor ressalta um paradoxo que se caracteriza por\nA. associar uma experiência superficial à abundância de informações.\nB. condicionar uma capacidade individual à desorganização da rede.\nC. agregar uma tendência contemporânea à aceleração do tempo.\nD. aproximar uma mídia inovadora à passividade da recepção.\nE. equiparar uma ferramenta digital à tecnologia analógica.",
+    "resposta": "\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004313",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nVocê pode adaptar as atividades do seu dia a dia de uma forma que possa queimar mais calorias do que as gastas normalmente, conforme a relação seguinte: - Enquanto você fala ao telefone, faça agachamentos: 100 calorias gastas em 20 minutos. - Meia hora de supermercado: 100 calorias. - Cuidar do jardim por 30 minutos: 200 calorias. - Passear com o cachorro: 200 calorias em 30 minutos. - Tirar o pó dos móveis: 150 calorias em 30 minutos. - Lavar roupas por 30 minutos: 200 calorias. Disponível em: http://cyberdiet.terra.com.br. Acesso em: 27 abr. 2010 (adaptado). Uma pessoa deseja executar essas atividades, porém, ajustando o tempo para que, em cada uma, gaste igualmente 200 calorias. A partir dos ajustes, quanto tempo a mais será necessário para realizar todas as atividades?\nA. 50 minutos.\nB. 60 minutos.\nC. 80 minutos.\nD. 120 minutos.\nE. 170 minutos.",
+    "resposta": "\n\nPara gastar **200 calorias** em cada atividade:\n\n- Falar ao telefone fazendo agachamentos:  \n  \\(100 \\text{ cal} / 20 \\text{ min} = 5 \\text{ cal/min}\\) → \\(200/5 = 40 \\text{ min}\\) (a mais: **+20 min**)\n\n- Supermercado:  \n  \\(100 \\text{ cal} / 30 \\text{ min}\\) → para 200 cal, dobrou o tempo = **60 min** (a mais: **+30 min**)\n\n- Jardim: já são **30 min com 200 cal** → sem alteração.\n\n- Passear com cachorro: já são **30 min com 200 cal** → sem alteração.\n\n- Tirar pó:  \n  \\(150 \\text{ cal} / 30 \\text{ min} = 5 \\text{ cal/min}\\) → \\(200/5 = 40 \\text{ min}\\) (a mais: **+10 min**)\n\n- Lavar roupas: já são **30 min com 200 cal** → sem alteração.\n\nTempo adicional total:  \n\\(20 + 30 + 10 = 60\\) minutos.\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004314",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO jogo da Mina Pedro está se divertindo no computador com um jogo em que seu personagem entra em uma mina com muitos tesouros. Numa gruta escondida Pedro encontrou quatro enormes pedras preciosas: Diamante, Safira, Esmeralda e Rubi (listadas da mais preciosa, Diamante, para a menos preciosa, Rubi). Cada uma das pedras preciosas pesa dois quilos. Pedro pode retirar as pedras preciosas da mina usando uma bolsa que pode carregar no máximo cinco quilos. Além disso, as pedras devem ser carregadas inteiras, ou então não são carregadas. Quantas viagens são necessárias para Pedro retirar todas as pedras preciosas da mina?\nA. 1\nB. 2\nC. 3\nD. 4\nE. 5",
+    "resposta": "\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "B",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004315",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNum sistema de freio convencional, as rodas do carro travam e os pneus derrapam no solo, caso a força exercida sobre o pedal seja muito intensa. O sistema ABS evita o travamento das rodas, mantendo a força de atrito no seu valor estático máximo, sem derrapagem. O coeficiente de atrito estático da borracha em contato com o concreto vale 1,0 e o coeficiente de atrito cinético para o mesmo par de materiais é 0,75. Dois carros, com velocidades iniciais iguais a 108 km/h, iniciam a frenagem numa estrada perfeitamente horizontal de concreto no mesmo ponto. O carro 1 tem sistema ABS e utiliza a força de atrito estática máxima para a frenagem; já o carro 2 trava as rodas, de maneira que a força de atrito efetiva é a cinética. Considere g = 10 m/s². As distâncias, medidas a partir do ponto em que iniciam a frenagem, que os carros 1 (d) e 2 (f) percorrem até parar são, respectivamente,\nA. d = 45 m e f = 60 m.\nB. d = 60 m e f = 45 m.\nC. d = 90 m e f = 120 m.\nD. d = <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mfenced><mrow><mn>5</mn><mo>,</mo><mn>8</mn></mrow></mfenced><mo>&#xD7;</mo><msup><mn>10</mn><mn>2</mn></msup></math> m e f = <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mfenced><mrow><mn>7</mn><mo>,</mo><mn>8</mn></mrow></mfenced><mo>&#xD7;</mo><msup><mn>10</mn><mn>2</mn></msup></math> m.\nE. d = <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mfenced><mrow><mn>7</mn><mo>,</mo><mn>8</mn></mrow></mfenced><mo>&#xD7;</mo><msup><mn>10</mn><mn>2</mn></msup></math> m e f = <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mfenced><mrow><mn>5</mn><mo>,</mo><mn>8</mn></mrow></mfenced><mo>&#xD7;</mo><msup><mn>10</mn><mn>2</mn></msup></math> m.",
+    "resposta": "\n\nO carro 1 usa atrito estático máximo:  \n\\(a_1 = \\mu_e g = 1,0 \\cdot 10 = 10\\ \\text{m/s}^2\\)\n\nA distância de frenagem é dada por:  \n\\(d = \\frac{v^2}{2a}\\)\n\nCom \\(v = 108\\ \\text{km/h} = 30\\ \\text{m/s}\\):\n\n\\[\nd = \\frac{30^2}{2 \\cdot 10} = \\frac{900}{20} = 45\\ \\text{m}\n\\]\n\nPara o carro 2, com rodas travadas, vale o atrito cinético:  \n\\(a_2 = \\mu_c g = 0,75 \\cdot 10 = 7,5\\ \\text{m/s}^2\\)\n\n\\[\nf = \\frac{30^2}{2 \\cdot 7,5} = \\frac{900}{15} = 60\\ \\text{m}\n\\]\n\nPortanto: \\(d = 45\\ \\text{m}\\) e \\(f = 60\\ \\text{m}\\).\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004316",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nMeu primeiro computador Daniel ganhou seu primeiro computador pessoal e está aprendendo a trabalhar com ele. Seu computador possui uma tela de exibição de resultados e um peculiar teclado composto de cinco teclas nomeadas \"A\", \"B\", \"C\", \"D\"e \"E\". Existe ainda uma memória interna, chamada \"NUM\", que armazena apenas um número inteiro e possui inicialmente o valor zero. Pode ser pressionada qualquer combinação de teclas e o efeito resultante dependerá da seqüência digitada. As ações associadas a cada uma são: • Se \"A\" é pressionada: \"NUM\" é inicializado com o valor dez, independente do que se tinha antes. • Se \"B\" é pressionada: É armazenado em \"NUM\" o valor que ele possuía subtraído um. • Se \"C\" é pressionada: É armazenado em \"NUM\" o valor que ele possuía subtraído dois. • Se \"D\" é pressionada: É armazenado em \"NUM\" o valor que ele possuía somado um. • Se \"E\" é pressionada: É impresso na tela o valor contido em \"NUM\". Qual ordem de digitação exibe na tela a sequência \"1 3 5\"?\nA. \"D-E-D-D-E-D-D-E\".\nB. \"C-E-C-C-E-C-C-E\".\nC. \"A-C-C-C-C-E-D-D-E-D-E\".\nD. \"D-E-D-E-D-E\".\nE. \"A-D-E-D-D-E-D-D-E\".",
+    "resposta": "\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004317",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nRevezamento Oito alunos – Beto, Dulce, Guto, Júlia, Kelly, Neto, Silvia e Vivian decidiram tentar quebrar o recorde da tradicional prova de revezamento e resistência de natação que acontece todos os anos na escola. Nessa prova, cada um dos oito competidores da equipe deve nadar mil metros, em estilo livre, na forma de revezamento: cada nadador cai na piscina para nadar apenas uma vez, um de cada vez. O objetivo é que todos nadem no menor tempo possível. Depois de muita discussão, os competidores decidiram que a ordem em que cairão na piscina deve obedecer às seguintes condições: • Silvia não nada por último. • Vivian nada após Júlia e Neto nadarem. • O primeiro a nadar é ou Beto ou Dulce. • Guto nada antes de Júlia, com exatamente uma pessoa nadando entre eles. • Kelly nada antes de Neto, com exatamente duas pessoas nadando entre eles. Guto pode nadar em qualquer das ordens abaixo, exceto:\nA. sexto lugar\nB. quinto lugar\nC. quarto lugar\nD. terceiro lugar\nE. segundo lugar",
+    "resposta": "\n\nSe Guto nadasse em **sexto lugar**, Júlia teria que nadar em oitavo, pois precisaria dele antes com exatamente uma pessoa entre os dois. Assim, não haveria vaga para Vivian depois de Júlia e Neto. Logo, Guto não pode ser sexto.\n\nAs posições 2º, 3º, 4º e 5º são possíveis de satisfazer todas as condições.\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "E",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004318",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nA soma dos termos de uma progressão aritmética é 244. O primeiro termo, a razão e o número de termos formam, nessa ordem, outra progressão aritmética de razão 1. Determine a razão da primeira progressão aritmética.\nA. 7\nB. 8\nC. 9\nD. 10\nE. 11",
+    "resposta": "\n\nSe os termos \\(a,\\;r,\\;n\\) formam uma PA de razão 1, então:\n\n\\[\nr-a=1 \\quad\\text{e}\\quad n-r=1\n\\]\n\nLogo:\n\n\\[\na=r-1 \\qquad n=r+1\n\\]\n\nA soma dos termos da primeira PA é:\n\n\\[\nS_n=\\frac{n(a_1+a_n)}{2}=244\n\\]\n\nCom \\(a_1=a=r-1\\) e \\(a_n=a_{n-1}=a+(n-1)r\\), mas mais facilmente usamos:\n\n\\[\n\\frac{(r+1)[(r-1)_2+(n-1)r]}{2}=244\n\\]\n\nCalculando:\n\n\\[\n(r+1)(r^2+2r-2)=488\n\\]\n\nTestando as alternativas, para \\(r=7\\):\n\n\\[\n(7+1)(49+14-2)=8\\cdot61=488\n\\]\n\nConfere com a soma 244. Portanto, a razão da primeira PA é:\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004319",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nBolo da Vó Vó Zinha faz um delicioso bolo gelado com exatamente seis camadas de sabores: abacaxi, baunilha, coco, limão, morango e nozes. Há exatamente uma camada inicial (a primeira), abaixo de todas as outras, e cada uma das camadas seguintes (da segunda à sexta) cobre completamente a camada imediatamente abaixo. Ao montar o bolo Vó Zinha obedece às seguintes condições: • A camada de limão não colocada é imediatamente acima nem imediatamente abaixo da camada de morango. • A camada de baunilha é colocada imediatamente acima da camada de abacaxi. • A camada de coco é colocada em alguma posição acima da camada de baunilha. • A camada de morango é colocada em alguma posição acima da camada de coco. Qual das seguintes alternativas poderia ser a primeira e a segunda camada, de baixo para cima, respectivamente?\nA. abacaxi, limão\nB. nozes, limão\nC. baunilha, limão\nD. limão, baunilha\nE. limão, morango",
+    "resposta": "\n\nAnalisando as condições:  \n- “Baunilha imediatamente acima do abacaxi” ⇒ elas ocupam posições consecutivas.  \n- “Coco acima da baunilha” e “morango acima do coco”.  \n- “Limão não pode ficar logo acima nem logo abaixo do morango”.\n\nUma ordem válida de baixo para cima é:  \n**nozes, limão, abacaxi, baunilha, coco, morango**\n\nVerifica-se que todas as condições são atendidas.  \nAs demais alternativas contradizem alguma condição.\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004320",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nCantinas A escola é enorme e tem quatro cantinas, A, B, C e D, onde os alunos podem almoçar. Numa certa semana, de segunda-feira a sexta-feira, quatro estudantes, Edu, Jéssica, Marisa e Rui, vão almoçar em uma das quatro cantinas. Nenhum par desses quatro estudantes almoça na mesma cantina no mesmo dia e as seguintes restrições devem ser obedecidas: • Nenhum estudante pode almoçar na mesma cantina mais do que duas vezes durante a semana. • Marisa é a única estudante que almoça na cantina A em dois dias da semana, e um dos dias em que ela almoça na cantina A é quinta-feira. • Rui almoça na cantina B na segunda-feira e na terça-feira. • Jéssica almoça na cantina D na terça-feira e na quarta-feira. • Edu almoça na cantina A na sexta-feira. Qual das seguintes alternativas é sempre verdadeira?\nA. Rui não almoça na cantina C.\nB. Marisa almoça apenas nas cantinas A, C e D.\nC. Todos os estudantes almoçam na cantina D.\nD. Todos os estudantes almoçam na cantina C.\nE. Todos os estudantes almoçam na cantina A.",
+    "resposta": "\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "E",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004321",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nDesde dezoito anos que o tal patriotismo lhe absorvia e por ele fizera a tolice de estudar inutilidades. Que lhe importavam os rios? Eram grandes? Pois que fossem... Em que lhe contribuiria para a felicidade saber o nome dos heróis do Brasil? Em nada... O importante é que ele tivesse sido feliz. Foi? Não. Lembrou-se das coisas do tupi, do folk-lore, das suas tentativas agrícolas... Restava disso tudo em sua alma uma satisfação? Nenhuma! Nenhuma! O tupi encontrou a incredulidade geral, o riso, a mofa, o escárnio; e levou-o à loucura. Uma decepção. E a agricultura? Nada. As terras não eram ferazes e ela não era fácil como diziam os livros. Outra decepção. E, quando o seu patriotismo se fizera combatente, o que achara? Decepções. Onde estava a doçura de nossa gente? Pois ele não a viu combater como feras? Pois não a via matar prisioneiros, inúmeros? Outra decepção. A sua vida era uma decepção, uma série, melhor, um encadeamento de decepções. A pátria que quisera ter era um mito; um fantasma criado por ele no silêncio de seu gabinete. BARRETO, L. Triste fim de Policarpo Quaresma. Disponível em: www.dominiopublico.gov.br. Acesso em: 8 nov. 2011. O romance Triste fim de Policarpo Quaresma, de Lima Barreto, foi publicado em 1911. No fragmento destacado, a reação do personagem aos desdobramentos de suas iniciativas patrióticas evidencia que\nA. a dedicação de Policarpo Quaresma ao conhecimento da natureza brasileira levou-o a estudar inutilidades, mas possibilitou-lhe uma visão mais ampla do país.\nB. a curiosidade em relação aos heróis da pátria levou-o ao ideal de prosperidade e democracia que o personagem encontra no contexto republicano.\nC. a construção de uma pátria a partir de elementos míticos, como a cordialidade do povo, a riqueza do solo e a pureza linguística, conduz à frustração ideológica.\nD. a propensão do brasileiro ao riso, ao escárnio, justifica a reação de decepção e desistência de Policarpo Quaresma, que prefere resguardar-se em seu gabinete.\nE. a certeza da fertilidade da terra e da produção agrícola incondicional faz parte de um projeto ideológico salvacionista, tal como foi difundido na época do autor.",
+    "resposta": "\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004322",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nMarque a alternativa **INCORRETA** a respeito do trecho abaixo destacado. \"Gates era mais metódico; as reuniões para exame dos produtos tinham horário rígido, e ele chegava ao cerne das questões com uma habilidade ímpar.\" (l. 26 a 28)\nA. O ponto e vírgula foi utilizado para separar orações coordenadas que mantêm entre si uma relação de explicação.\nB. O verbo _chegar_, nesse contexto, admite dupla regência, logo a reescrita _chegava no cerne da questão_ atende à norma padrão da língua.\nC. O termo _para exame dos produtos_ especifica o substantivo _reuniões_ e mantém com esse termo uma relação semântica de finalidade.\nD. O termo _com uma habilidade ímpar_ subordina-se ao verbo da oração ao qual acrescenta uma circunstância de modo.",
+    "resposta": "\n\nA alternativa **B** está incorreta, pois, segundo a norma padrão, o verbo “chegar”, no sentido de atingir determinado ponto/fim, pede a preposição **a** (“chegava **ao** cerne”), e não “em” (“chegava no cerne”). A construção “chegava no cerne da questão” é considerada coloquial/incorreta pela norma culta.\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004323",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nBolsa de estudo Exatamente sete alunas - Fafá, Gal, Hebe, Isa, Juju, Kia e Lia concorrem por uma bolsa de estudos para um Curso de Programação de Computadores e vão ser entrevistadas pela Diretora. Cada aluna será entrevistada exatamente uma vez, uma de cada vez, obedecendo as seguintes condições: • Isa é a primeira ou última aluna a ser entrevistada. • A quarta aluna a ser entrevistada deve ser ou Gal ou Juju. • Hebe é entrevistada imediatamente antes de Lia. • Gal é entrevistada em algum momento antes de de Kia. • Juju não é entrevistada imediatamente antes ou imediatamente após Kia. Qual das alternativas seguintes poderia ser uma lista completa e correta da ordem em que as alunas são entrevistadas, da primeira à última?\nA. Hebe, Lia, Kia, Gal, Fafá, Juju, Isa\nB. Isa, Fafá, Gal, Juju, Kia, Hebe, Lia\nC. Isa, Hebe, Lia, Gal, Juju, Fafá, Kia\nD. Isa, Hebe, Gal, Juju, Fafá, Kia, Lia\nE. Gal, Hebe, Lia, Juju, Isa, Kia, Fafá",
+    "resposta": "\n\nTestando as condições:\n\n- **C:** Isa primeira; quarta é Gal; Hebe e Lia consecutivas; Gal antes de Kia; Juju não está ao lado de Kia.  \nToda a sequência satisfaz as regras.\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004324",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nPlantação de Verduras Otávio possui quatro áreas destinadas a plantação, e precisa decidir qual hortaliça plantar em cada uma delas. As opções a serem plantadas são: Alface, Batata, Cenoura, Ervilha, Feijão e Repolho. Otávio pretende plantar um único tipo de hortaliça em cada área e se um determinado tipo for plantado numa área, não será plantado esse mesmo tipo em nenhuma das outras três. Devido a custos e a preferência de Otávio, ele estabeleceu algumas restrições: • Deve ser escolhido Batata ou Cenoura, mas não ambas. • Se for escolhido Repolho, então Alface também deve ser escolhida. • Se Repolho e Batata forem escolhidos, Ervilha não será escolhida. • Se Ervilha e Feijão forem escolhidos, Cenoura não será escolhida. Se Otávio decidir que Batata não será escolhida, quantas formas ele pode escolher o que plantar?\nA. 2\nB. 3\nC. 4\nD. 5\nE. 6",
+    "resposta": "\n\nComo a Batata não será escolhida, a Cenoura é obrigatória. Restam 3 vagas para Alface, Ervilha, Feijão e Repolho.\n\nPelos critérios:\n- Se houver Repolho, deve haver Alface.\n- Como a Cenoura está presente, não podemos ter ao mesmo tempo Ervilha e Feijão.\n\nOs conjuntos possíveis são apenas:\n1. Alface, Cenoura, Ervilha, Repolho  \n2. Alface, Cenoura, Feijão, Repolho  \n\nPortanto, há **2** formas.\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "D",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004325",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nAssinale a opção correspondente ao valor da soma das raízes da equação: $y^{\\frac{3}{2}} + 5y + 2y^{\\frac{1}{2}} + 8 = 0$\nA. 5\nB. 2\nC. 21\nD. 52\nE. 0,5",
+    "resposta": "\n\nSubstituindo \\(y=x^2\\), a equação fica:\n\n\\[\nx^{\\frac{3}{2}} \\rightarrow x^{3/2}=x^3,\\qquad \ny^{1/2}=x\n\\]\n\nLogo:\n\n\\[\nx^3+5x^2+2x+8=0\n\\]\n\nSejam \\(r_1,r_2,r_3\\) as raízes dessa equação. Por Vieta:\n\n\\[\nr_1+r_2+r_3=-5,\\qquad r_1r_2+r_2r_3+r_3r_1=2\n\\]\n\nA soma das raízes em \\(y\\) é:\n\n\\[\nr_1^2+r_2^2+r_3^2=(r_1+r_2+r_3)^2-2(r_1r_2+r_2r_3+r_3r_1)\n\\]\n\n\\[\n=(-5)^2-2(2)=25-4=21\n\\]\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004326",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSenha Vó Chica guardou suas jóias em um cofre com senha eletrônica. O cofre somente pode ser aberto com uma senha de nove dígitos. Vó Chica quer abrir o cofre, mas não se lembra da senha. Ela se lembra, entretanto, de alguns fatos sobre a senha: • Os únicos dígitos usados na senha são 2, 6, 7 e 9. • O dígito com o maior valor é o dígito usado menos vezes na senha. • O dígito com o menor valor é o dígito usado mais vezes na senha. • A senha é a mesma se lida da direita para a esquerda ou da esquerda para a direita. • Dígitos vizinhos na senha são diferentes. • O dígito mais à direita é ímpar. Qual das alternativas abaixo é a senha do cofre de Vó Chica?\nA. 262792627\nB. 269272962\nC. 722696227\nD. 726292627\nE. 927262729",
+    "resposta": "\n\nA senha é um palíndromo de 9 dígitos, usa apenas 2, 6, 7 e 9, tem último dígito ímpar, não repete dígitos vizinhos, e o 9 aparece menos vezes que o 2 (menor valor). Verificando as opções, **726292627** satisfaz todas as condições.\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004327",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUm estudante dispõe de 40 pilhas, sendo que cada uma delas possui fem igual a 1,5 V e resistência interna de 0,25 $\\Omega$. Elas serão associadas e, posteriormente, ligadas num resistor de imersão de resistência elétrica igual a 2,5 $\\Omega$. Desejando-se elevar a temperatura em 10°C de 1000 g de um líquido cujo calor específico é igual a 4,5 J/g°C, no menor tempo possível, este estudante montou uma associação utilizando todas as pilhas. Sendo assim, o tempo de aquecimento do líquido, em minutos, foi, aproximadamente, igual a\nA. 5\nB. 8\nC. 12\nD. 15",
+    "resposta": "\n\nPara aquecer o líquido no menor tempo, devemos maximizar a potência dissipada no resistor de imersão.\n\nConsiderando \\(p\\) grupos em paralelo, cada um com \\(q\\) pilhas em série, temos:\n\\[\np \\cdot q = 40\n\\]\n\nA fem equivalente:\n\\[\nE = q \\cdot 1{,}5\n\\]\nA resistência interna equivalente:\n\\[\nr_{eq} = \\frac{q \\cdot 0{,}25}{p}\n\\]\n\nPara máxima potência no resistor, queremos \\(r_{eq}=R=2{,}5\\,\\Omega\\):\n\\[\n\\frac{q \\cdot 0{,}25}{p}=2{,}5 \\Rightarrow \\frac{q}{p}=10 \\Rightarrow q=10p\n\\]\nComo \\(pq=40\\):\n\\[\n10p^2=40 \\Rightarrow p=2,\\quad q=20\n\\]\n\nLogo, usamos 2 grupos de 20 pilhas em paralelo.\n\nFem equivalente:\n\\[\nE=20\\times1{,}5=30\\,\\text{V}\n\\]\nResistência interna equivalente:\n\\[\nr_{eq}=2{,}5\\,\\Omega\n\\]\nCorrente:\n\\[\ni=\\frac{30}{2{,}5+2{,}5}=6\\,\\text{A}\n\\]\nPotência no resistor:\n\\[\nP=Ri^2=2{,}5\\times36=90\\,\\text{W}\n\\]\n\nEnergia necessária para aquecer o líquido:\n\\[\nQ=mc\\Delta T=1000\\times4{,}5\\times10=45000\\,\\text{J}\n\\]\n\nTempo:\n\\[\nt=\\frac{Q}{P}=\\frac{45000}{90}=500\\,\\text{s}=\\frac{500}{60}\\approx8{,}33\\,\\text{min}\n\\]\n\nPortanto, aproximadamente 8 minutos.\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004328",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTorneio Seis jogadores – A, B, C, D, E e F estão participando do Torneio Estadual de Jogos de Baralho. O Torneio é realizado em dois turnos. Os jogadores disputam o torneio em times formados por um par de jogadores, sendo que os mesmos times disputam os dois turnos. Nenhum jogador está em mais de um time. Em cada turno, cada time deve ocupar exatamente uma mesa, entre as mesas 1, 2 e 3. As seguintes restrições adicionais devem ser obedecidas: • Nenhum time ocupa a mesma mesa nos dois turnos. • B e C não podem estar no mesmo time. • D e F estão no mesmo time. • Se E ocupa a mesa 3 em algum turno, então seu parceiro no time deve ser B. • A ocupa a mesa 1 no segundo turno. Se E ocupa a mesa 2 no primeiro turno, qual das seguintes alternativas é uma lista completa e correta dos jogadores que poderiam ser parceiros de E no time?\nA. A, B\nB. A, B, C\nC. A, C\nD. B\nE. B, C",
+    "resposta": "\n\nAnalisando as restrições:\n\n- Como cada time tem exatamente dois jogadores, **D e F devem ser parceiros**, logo E não pode ter D ou F como parceiro.\n- Se E fosse parceiro de **C**, então, para A ficar na mesa 1 no segundo turno, o time E-C teria de ocupar a mesa 3 no segundo turno. Isso obrigaria E a ter **B** como parceiro, contrariando ser parceiro de C. Portanto C não serve.\n- Se E fosse parceiro de **A**, restariam apenas B e C, que ficariam no mesmo time — proibido. Portanto A não serve.\n- Sendo assim, o único parceiro possível é **B**. Uma distribuição válida é:\n\n1º turno:  \nE-B → mesa 2  \nD-F → mesa 1  \nA-C → mesa 3  \n\n2º turno:  \nA-C → mesa 1  \nD-F → mesa 2  \nE-B → mesa 3  \n\nTodas as condições são satisfeitas, inclusive a de que, quando E está na mesa 3, seu parceiro é B.\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "E",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004329",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNovo combustível O prof. José é um inventor muito inventivo. Seu último invento é um combustível produzido a partir de bananas. Ele produziu 10 litros do combustível, que está armazenado em um vasilhame de exatamente 10 litros. Ele tem dois outros vasilhames vazios, de exatamente 7 litros e 3 litros. Para conseguir exatamente 8 litros de combustível (em qualquer vasilhame), qual o número mínimo de vezes o professor deve derramar o conteúdo de um vasilhame para outro?\nA. 4\nB. 5\nC. 6\nD. 7\nE. 8",
+    "resposta": "\n\nUma sequência mínima com 5 transvasamentos é:\n\n1. Do recipiente de 10 L para o de 7 L: deixa 3 L no primeiro.  \n   Estados: 3 | 7 | 0  \n2. Do recipiente de 7 L para o de 3 L até encher:  \n   Estados: 3 | 4 | 3  \n3. Todo o conteúdo do recipiente de 3 L vai para o de 10 L:  \n   Estados: 6 | 4 | 0  \n4. Restam 4 L no de 7 L; transfira 3 L para o vazio de 3 L:  \n   Estados: 6 | 1 | 3  \n5. Do recipiente de 3 L transfira 2 L para o de 10 L, que já tinha 6 L:  \n   Fica 8 L no recipiente maior.  \n   Estados finais: 8 | 1 | 1  \n\nLogo, o mínimo é **5** transvasamentos.\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "D",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004330",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNo texto de Sarapalha, constitui exemplo de personificação o seguinte trecho:\nA. \"No rio ninguém não anda\" (L. 10).\nB. \"só a maleita é quem sobe e desce\" (L. 10-11).\nC. \"O senhor já sabe as palavras todas de cabeça\" (L. 17).\nD. \"e com a viola enfeitada de fitas\" (L. 19).\nE. \"ajuntou suas roupinhas melhores numa trouxa\" (L. 32)",
+    "resposta": "\n\nA personificação consiste em atribuir características ou ações humanas a seres inanimados ou abstratos. Em **“só a maleita é quem sobe e desce”**, a doença (“maleita”) é tratada como alguém que age de forma autônoma, subindo e descendo, o que configura personificação.\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004331",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO mecanismo qu e permite articular uma porta (de um móvel ou de acesso) é a dobradiça. Normalmente, são necessárias duas ou mais dobradiças para que a porta seja fixada no móvel ou no portal, permanecendo em equilíbrio e podendo ser articulada com facilidade. No plano, o diagrama vetorial das forças que as dobradiças exercem na porta está representado em\nA. \nB. C- D- E-\nC. \nD. \nE. ",
+    "resposta": "\n\nA análise estática mostra que, para a porta em equilíbrio, as linhas de ação das forças exercidas pelas duas dobradiças, juntamente com a linha de ação do peso (vertical pelo centro de gravidade), devem se intersectar. O diagrama correto representa forças obliquas com componentes horizontais opostas (uma para cima e para a esquerda na dobradiça superior, outra para cima e para a direita na inferior), de modo que suas prolongações passam pelo centro de gravidade da porta.\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "D",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004332",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nCifra Secreta Alice e Beto são um casal de espiões que vivem em constante perigo. Para se comunicarem secretamente em caso de necessidade, combinaram de aplicar uma série de transformações em cada palavra da mensagem. Usando como exemplo a palavra PERIGO, as trasformações combinadas entre eles foram: PERIGO => OERIGP => PGIREO QHJSFP Ou seja, na mensagem, eles usariam a palavra cifrada QHJSFP para representar a palavra PERIGO. Um outro exemplo: FUGA => AUGF => FGUA => GHVB Ou seja, eles usariam a palavra cifrada GHVB para representar a palavra FUGA. Questão 1. Qual das alternativas seguintes seria usada para representar a palavra NAVIO?\nA. OBUBM\nB. OBWBM\nC. OJWBP\nD. MBUBO\nE. MBWBO",
+    "resposta": "\n\nA regra obtida dos exemplos é:\n\n1. Trocar a **primeira** e a **última** letras da palavra;\n2. Inverter a ordem das letras;\n3. Deslocar cada letra uma posição adiante no alfabeto.\n\nAplicando em **NAVIO**:\n\n1. NAVIO → OAVIN  \n2. OAVIN → NIVAO  \n3. NIVAO → OJWBP  \n\nPortanto, a palavra cifrada de **NAVIO** é **OJWBP**.\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004333",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nJogos de Futebol No período de um mês o time de futebol da escola vai jogar exatamente sete jogos. Cada um dos jogos será contra o time de uma seguintes escolas: Franciscano, Marista, Rumo, Salesiano ou Terra. As seguintes restrições governam a escolha dos jogos: • Haverá três jogos contra o Franciscano, e exatamente um jogo contra cada um dos outros times. • Não haverá dois jogos consecutivos contra o Franciscano. • O jogo contra o Salesiano é o jogo imediatamente seguinte ao jogo contra o Terra. • Nem o primeiro jogo nem o último jogo são contra o Marista. Se o último jogo é contra o Rumo, qual das seguintes alternativas poderia ser verdadeira?\nA. O segundo jogo é contra o Salesiano.\nB. O terceiro jogo é contra o Marista.\nC. O quarto jogo é contra o Salesiano.\nD. O quinto jogo é contra o Marista.\nE. O sexto jogo é contra o Salesiano.",
+    "resposta": "\n\nAnalisando as restrições, como o último jogo é contra o Rumo e existem três jogos contra o Franciscano sem dois consecutivos, apenas poucas sequências são possíveis. Uma delas satisfaz todas as condições com o quinto jogo contra o Marista:\n\n1. Franciscano  \n2. Terra  \n3. Salesiano  \n4. Franciscano  \n5. **Marista**  \n6. Franciscano  \n7. Rumo  \n\nVerifica-se: três Franciscanos, Salesiano seguido imediatamente de Terra, nenhum Franciscano consecutivo, primeiro e último não são Marista, e último é Rumo.\n\nPortanto, a alternativa que poderia ser verdadeira é a D.\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004334",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nEm um blog de variedades, músicas, mantras e informações diversas, foram postados “Contos de Halloween”. Após a leitura, os visitantes poderiam opinar, assinalando suas reações em: “Divertido”, “Assustador” ou “Chato”. Ao final de uma semana, o blog registrou que 500 visitantes distintos acessaram esta postagem. O gráfico a seguir apresenta o resultado da enquete. CONTOS DE HALLOWEEN opinião dos visitantes O administrador do blog irá sortear um livro entre os visitantes que opinaram na postagem “Contos de Halloween”. Sabendo que nenhum visitante votou mais de uma vez, a probabilidade de uma pessoa escolhida ao acaso entre as que opinaram ter assinalado que o conto “Contos de Halloween” é “Chato” é mais aproximada por\nA. 0,09.\nB. 0,12.\nC. 0,14.\nD. 0,15.\nE. 0,18.",
+    "resposta": "\n\nPela enquete, as respostas “Chato” correspondem a 15% de 500 votos, isto é, 75 pessoas.\n\n\\[\nP=\\frac{75}{500}=0,15\n\\]\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004335",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nAdmitindo que a solubilidade da azida de chumbo $\\text{Pb}(\\text{N}_3)_2$ em água seja 29,1 g/L, pode-se dizer que o produto de solubilidade (Kps) para esse composto é: (Dados: N = 14 g/mol, Pb = 207 g/mol)\nA. $4,0 \\cdot 10^{-3}$\nB. $1,0 \\cdot 10^{-4}$\nC. $2,0 \\cdot 10^{-4}$\nD. $1,0 \\cdot 10^{-3}$\nE. $3,0 \\cdot 10^{-4}$",
+    "resposta": "\n\nA dissociação é:\n\n\\[\n\\text{Pb(N}_3)_2(s) \\rightleftharpoons \\text{Pb}^{2+}(aq) + 2\\,\\text{N}_3^-(aq)\n\\]\n\nSolubilidade \\(s = 29,1\\ \\text{g/L}\\).  \nMassa molar do \\(\\text{Pb(N}_3)_2\\):\n\n\\[\n207 + 2(14 \\times 3) = 207 + 84 = 291\\ \\text{g/mol}\n\\]\n\nEntão:\n\n\\[\ns = \\frac{29,1}{291} = 0{,}1\\ \\text{mol/L}\n\\]\n\nLogo:\n\n\\[\n[\\text{Pb}^{2+}] = 0{,}1\\ \\text{M}, \\qquad [\\text{N}_3^-] = 2s = 0{,}2\\ \\text{M}\n\\]\n\n\\[\nK_{ps} = [\\text{Pb}^{2+}][\\text{N}_3^-]^2 = (0{,}1)(0{,}2)^2 = 0{,}1 \\cdot 0{,}04 = 4{,}0 \\times 10^{-3}\n\\]\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004336",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTEXTO:\nTEXTO III\nJanela sobre a palavra (V)\nJavier Villafañe busca em vão a palavra que deixou escapar bem quando ia pronunciá-la. Onde terá ido essa palavra, que ele tinha na ponta da língua?\nHaverá algum lugar onde se juntam todas as palavras 5 que não quiseram ficar? Um reino das palavras perdidas? As palavras que você deixou escapar, onde estarão à sua espera?\n(GALEANO, Eduardo. As palavras andantes. Porto Alegre: L&PM, 2017, p. 222)\n\nSobre o texto III, é correto afirmar que\nA. utiliza a metalinguagem para reforçar a ideia de que a poesia só existe quando se consegue usar a palavra certa, exata.\nB. se assemelha ao texto II, pois ambos são do gênero carta.\nC. nele o escritor se refere às palavras que escaparam antes de serem pronunciadas; elas estariam, talvez, em um \"Reino das palavras perdidas\".\nD. a expressão \"na ponta da língua\" equivale à expressão do texto I \"é fonte de todas as intrigas\".",
+    "resposta": "\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004337",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nA calda bordalesa é uma das formulações mais antigas e mais \neficazes que se conhece. Ela foi descoberta na França no final \ndo século XIX, quase por acaso, por um agricultor que \naplicava água de cal nos cachos de uva para evitar que \nfossem roubados; a cal promovia uma mudança na aparência \ne no sabor das uvas. O agricultor logo percebeu que as \nplantas assim tratadas estavam livres de antracnose. \nEstudando-se o caso, descobriu-se que o efeito estava \nassociado ao fato de a água de cal ter sido preparada em \ntachos de cobre. Atualmente, para preparar a calda bordalesa, \ncoloca-se o sulfato de cobre em um pano de algodão que é \nmergulhado em um vasilhame plástico com água morna. \nParalelamente, coloca-se cal em um balde e adiciona-se água \naos poucos. Após quatro horas, adiciona-se aos poucos, e \nmexendo sempre, a solução de sulfato de cobre à água de cal. \n \n(Adaptado de Gervásio Paulus, André Muller e Luiz Barcellos, Agroecologia \naplicada: práticas e métodos para uma agricultura de base ecológica. Porto \nAlegre: EMATER-RS, 2000, p. 86.)\nNa formulação da calda bordalesa fornecida pela EMATER, \nrecomenda-se um teste para verificar se a calda ficou ácida: \ncoloca-se uma faca de aço carbono na solução por três \nminutos. Se a lâmina da faca adquirir uma coloração marrom \nao ser retirada da calda, deve-se adicionar mais cal à mistura. \nSe não ficar marrom, a calda está pronta para o uso. De \nacordo com esse teste, conclui-se que a cal deve promover\nA. uma diminuição do pH, e o sulfato de cobre(II), por sua vez, um aumento do pH da água devido à reação SO4^(-2) + H2O -> HSO4^(-) + OH^(-).\nB. um aumento do pH, e o sulfato de cobre(II), por sua vez, uma diminuição do pH da água devido à reação Cu^(+2) + H2O -> Cu(OH)^(+) + H^(+).\nC. uma diminuição do pH, e o sulfato de cobre(II), por sua vez, um aumento do pH da água devido à reação Cu^(+2) + H2O -> Cu(OH)^(+) + H^(+).\nD. um aumento do pH, e o sulfato de cobre(II), por sua vez, uma diminuição do pH da água devido à reação SO4^(-2) + H2O -> HSO4^(-) + OH^(-).",
+    "resposta": "\n\nA cal (CaO/Ca(OH)₂) é básica e eleva o pH da solução. Já o sulfato de cobre(II) sofre hidrólise do cátion Cu²⁺, liberando H⁺ e tornando a solução ácida:\n\n**Cu²⁺ + H₂O ⇌ Cu(OH)⁺ + H⁺**\n\nQuando há excesso de ácido na calda, a lâmina de aço reage e adquire cor marrom por deposição de cobre metálico; adicionar cal neutraliza o excesso de acidez e precipita o cobre como hidroxo-composto.\n\n**Resposta: B**",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": null,
+        "gold": "B",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004338",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nDiferente do que o senso comum acredita, as lagartas de borboletas não possuem voracidade generalizada. Um estudo mostrou que as borboletas de asas transparentes da família Ithomiinae, comuns na Floresta Amazônica e na Mata Atlântica, consomem, sobretudo, plantas da família Solanaceae, a mesma do tomate. Contudo, os ancestrais dessas borboletas consumiam espécies vegetais da família Apocinaceae, mas a quantidade dessas plantas parece não ter sido suficiente para garantir o suprimento alimentar dessas borboletas. Dessa forma, as solanáceas tornaram-se uma opção de alimento, pois são abundantes na Mata Atlântica e na Floresta Amazônica. Cores ao vento. Genes e fósseis revelam origem e diversidade de borboletas sul-americanas. Revista Pesquisa FAPESP. N° 170, 2010 (adaptado). Nesse texto, a ideia do senso comum é confrontada com os conhecimentos científicos, ao se entender que as larvas das borboletas Ithomiinae encontradas atualmente na Mata Atlântica e na Floresta Amazônica, apresentam\nA. facilidade em digerir todas as plantas desses locais.\nB. interação com as plantas hospedeiras da família Apocinaceae.\nC. adaptação para se alimentar de todas as plantas desses locais.\nD. voracidade indiscriminada por todas as plantas existentes nesses locais.\nE. especificidade pelas plantas da família Solanaceae existentes nesses locais.",
+    "resposta": "\n\nO texto afirma que essas borboletas atuais consomem principalmente plantas da família Solanaceae, e não todas as plantas do ambiente. Isso indica preferência ou especificidade alimentar por esse grupo vegetal.\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004339",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nDona Minhoca Dona Minhoca construiu quatro túneis - Q, R, S e T - embaixo da terra, ligando os quadro cômodos A, B, C e D – da sua residência. Cada tunel tem exatamente o mesmo comprimento e conecta exatamente dois cômodos diferentes, da seguinte forma: • Q conecta A e C • R conecta B e C • S conecta A e B • T conecta B e D Se Dona Minhoca está no cômodo D e deseja ir para o cômodo C por uma sequência de túneis que não é mais longa do que o necessário, quantos túneis ela deve percorrer?\nA. 1\nB. 2\nC. 3\nD. 4\nE. 5",
+    "resposta": "\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004340",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTEXTO:\nTEXTO I\nAs mulheres são vítimas de violência porque são mulheres\nWânia Pasinato\nNos últimos anos, a violência contra as\nmulheres no Brasil vem se tornando assunto público e\nreconhecido como problema ao qual qualquer mulher,\nindependentemente de raça, cor, etnia, idade ou classe\n05 social pode estar sujeita. Trata-se de reconhecer que a\nviolência não é um infortúnio pessoal, mas tem origem\nna constituição desigual dos lugares de homens e\nmulheres nas sociedades a desigualdade de gênero -,\nque tem implicações não apenas nos papéis sociais do\n10 masculino e feminino e nos comportamentos sexuais,\nmas também em uma relação de poder. Em outras\npalavras, significa dizer que a desigualdade é estrutural.\nOu seja, social, histórica e culturalmente a sociedade\ndesigna às mulheres um lugar de submissão e menor\n0\n15 poder em relação aos homens. Qualquer outro fator\ndesemprego, o alcoolismo, o ciúme, o comportamento\nda mulher, seu jeito de vestir ou exercer sua\nsexualidade não são causas, mas justificativas\nsocialmente aceitas para que as mulheres continuem a\n20 sofrer violência.\n(...) Em anos recentes, esse reconhecimento foi\nacompanhado por mudanças na forma como devemos\nresponder a essa violência, atacando não as\njustificativas, mas as causas. O país tornou-se\n25 referência internacional com a Lei 11.340/2006 a Lei\nMaria da Penha, cujo diferencial é a forma de abordar o\nproblema, propondo a criminalização e a aplicação de\npenas para os agressores, mas também medidas que\nsão dirigidas às mulheres para a proteção de sua\n30 integridade física e de seus direitos, além de medidas\nde prevenção destinadas a modificar as relações entre\nhomens e mulheres na sociedade, campo no qual a\neducação desempenha papel estratégico. Apesar de\ntudo, o Brasil segue sendo um país violento para as\n35 mulheres. Anualmente são registradas centenas de\nocorrências de violência doméstica, de violência sexual,\nalém das elevadas taxas de homicídios de mulheres\nque, quando motivadas pelas razões de gênero, são\ntipificadas como feminicídios. Esses números\n40 expressam uma parte do problema e comumente\ndizemos que a subnotificação é uma característica\ndessas situações.\nO medo, a dúvida, a vergonha são algumas\nexplicações para esse silêncio, mas novamente nos\n45 contentamos em olhar para as justificativas e não para\nas causas. (...)\nDe modo geral, mudamos as leis, mas não a\nforma como as instituições funcionam. O Sistema de\nJustiça segue atuando de forma seletiva e distribuindo\n50 de forma desigual o acesso à Justiça. Existem poucos\nserviços especializados para atender as mulheres em\nsituação de violência. Faltam protocolos que orientem o\natendimento. Falta capacitação para os profissionais\ncuja atuação é muitas vezes balizada por convicções\n55 pessoais e julgamentos de valor que nada têm a ver\ncom os direitos humanos. (...)\nDisponível em: https://revistagalileu.globo.com/Sociedade/notícia/2018/02/\nviolencia-contra-mulher-wania-pasinato.html - Acesso em 30/06/2020\n\nNo texto I (l. 41 a 47) foram empregados verbos na 1ª pessoa do plural. Essa utilização pode ser justificada porque\nA. o objetivo central é enfatizar o canal comunicativo entre os agentes da interlocução.\nB. o propósito primordial é criar uma relação de total intimidade com o interlocutor, facilitando a montagem da tese demonstrada.\nC. o texto almeja envolver o leitor na construção do ponto de vista defendido.\nD. a função principal do texto é impor postura consensual em torno de um tema.",
+    "resposta": "\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004341",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO café tem origem na região onde hoje se encontra a Etiópia, mas seu cultivo e consumo se disseminaram a partir da Península Árabe. Aportou à Europa por Constantinopla e, finalmente, em 1615, ganhou a cidade de Veneza. Quando o café chegou à região europeia, alguns clérigos sugeriram que o produto deveria ser excomungado, por ser obra do diabo. O papa Clemente VIII (1592-1605), contudo, resolveu provar a bebida. Tendo gostado do sabor, decidiu que ela deveria ser batizada para que se tornasse uma “bebida verdadeiramente cristã”. THORN, J. Guia do café. Lisboa: Livros e livros, 1998 (adaptado). A postura dos clérigos e do papa Clemente VIII diante da introdução do café na Europa Ocidental pode ser explicada pela associação dessa bebida ao\nA. ateísmo.\nB. judaísmo.\nC. hinduísmo.\nD. islamismo.\nE. protestantismo.",
+    "resposta": "\n\nA associação inicial do café ao **islamismo** explica a desconfiança dos clérigos católicos, já que a bebida foi introduzida na Europa pelo mundo islâmico. O papa Clemente VIII, ao aprovar e batizar o café, tentou afastá-lo da má reputação associada aos muçulmanos.\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004342",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConsidere os compostos abaixo enumerados. I. Acetona; II. Neopentano; III. Fluoreto de lítio; IV. Etanamida; V. Pentano. Assinale a alternativa que apresenta a sequência correta, conforme a ordem crescente de ponto de ebulição.\nA. III, I, IV, II, V.\nB. V, II, I, IV, III.\nC. II, V, I, IV, III.\nD. II, V, IV, I, III.\nE. V, II, III, IV, I.",
+    "resposta": "\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004343",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nBrasília 50 anos. Veja. Nº 2138, nov. 2009. Utilizadas desde a Antiguidade, as colunas, elementos verticais de sustentação, foram sofrendo modificações e incorporando novos materiais com ampliação de possibilidades. Ainda que as clássicas colunas gregas sejam retomadas, notáveis inovações são percebidas, por exemplo, nas obras de Oscar Niemeyer, arquiteto brasileiro nscido no Rio de Janeiro em 1907. No desenho de Niemeyer, das colunas do Palácio da Alvorada, observa-se\nA. a presença de um capitel muito simples, reforçando a sustenção.\nB. o traçado simples de amplas linhas curvas opostas, resultando em formas marcantes.\nC. a disposição simétrica das curvas, conferindo saliência e distorção à base.\nD. a oposição de curvas em concreto, configurando certo peso e rebuscamento.\nE. o excesso de linhas curvas, levando a um exagero na ornamentação.",
+    "resposta": "\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004344",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nMeninas cantoras Oito amigas - Edna, Flora, Guga, Hilda, Quésia, Rute, Sol e Taís vão se apresentar no show de final de ano da escola. Cada amiga vai cantar exatamente uma vez, uma de cada vez (duas amigas não vão cantar ao mesmo tempo). Apenas as oito amigas vão cantar no show. A ordem em que vão se apresentar deve obedecer às seguintes restrições: • Taís canta em algum momento antes de Rute. • Tanto Flora como Quésia cantam em algum momento antes de Guga. • Tanto Sol como Edna cantam em algum momento antes de Hilda. • Hilda canta em algum momento antes de Rute mas em algum momento após Quésia. Questão 7. Se Guga é a terceira a cantar, então qual das seguintes alternativas não pode ser falsa?\nA. Hilda é a sétima a cantar.\nB. Rute é a oitava a cantar.\nC. Flora é a segunda a cantar.\nD. Quésia é a primeira a cantar.\nE. Taís é a quarta a cantar.",
+    "resposta": "\n\nComo Guga é a 3ª, Flora e Quésia ocupam as posições 1 e 2.  \nAs amigas S, E, H e T precisam cantar antes de Rute:  \n- S e E antes de Hilda;  \n- Hilda antes de Rute;  \n- Taís antes de Rute.  \n\nAssim, Rute deve vir depois de pelo menos 4 pessoas específicas: S, E, H e T. Essas pessoas precisam estar entre as posições 4 a 8, pois as posições 1–3 já foram ocupadas por Flora, Quésia e Guga. Logo, Rute é obrigatoriamente a última das oito, ou seja, a 8ª cantora.\n\nPortanto, a alternativa que não pode ser falsa é a **B**.\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004345",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSó há uma saída para a escola se ela quiser ser mais bem-sucedida: aceitar a mudança da língua como um fato. Isso deve significar que a escola deve aceitar qualquer forma da língua em suas atividades escritas? Não deve mais corrigir? Não! Há outra dimensão a ser considerada: de fato, no mundo real da escrita, não existe apenas um português correto, que valeria para todas as ocasiões: o estilo dos contratos não é o mesmo do dos manuais de instrução; o dos juízes do Supremo não é o mesmo do dos cordelistas; o dos editoriais dos jornais não é o mesmo do dos cadernos de cultura dos mesmos jornais. Ou do de seus colunistas. POSSENTI, S. Gramática na cabeça. Língua Portuguesa, ano 5, n. 67, maio 2011 (adaptado). Sírio Possenti defende a tese de que não existe um único “português correto”. Assim sendo, o domínio da língua portuguesa implica, entre outras coisas, saber\nA. descartar as marcas de informalidade do texto.\nB. reservar o emprego da norma padrão aos textos de circulação ampla.\nC. moldar a norma padrão do português pela linguagem do discurso jornalístico.\nD. adequar as formas da língua a diferentes tipos de texto e contexto.\nE. desprezar as formas da língua previstas pelas gramáticas e manuais divulgados pela escola.",
+    "resposta": "\n\nResposta: D",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004346",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSejam as funções $f: \\mathbb{N} \to \\mathbb{R}$ e $g: \\mathbb{N} \to \\mathbb{R}$ definidas por $f(x) = \frac{1}{2^x}$ e $g(x) = 2^{-x}$. Considere os números $A$ e $B$, tais que $A = f(1) + f(2) + ... + f(50)$ e $B = 1 + g(1) + g(2) + ... + g(n) + ...$. Se o produto de $A$ por $B$ tende para o número $a$, então, $a$ é\nA. ímpar múltiplo de 9\nB. par divisor de 10000\nC. par múltiplo de 15\nD. ímpar múltiplo de 25",
+    "resposta": "\n\nCalculamos cada parte.\n\n\\[\nf(x)=\\frac{1}{2^x}=2^{-x}=g(x)\n\\]\n\nEntão\n\n\\[\nA=f(1)+f(2)+\\cdots+f(50)=\\sum_{k=1}^{50}\\left(\\frac12\\right)^k\n=1-\\left(\\frac12\\right)^{50}\n\\]\n\nE a soma infinita de \\(B\\) é\n\n\\[\nB=1+\\sum_{k=1}^{\\infty}g(k)=1+\\sum_{k=1}^{\\infty}\\left(\\frac12\\right)^k\n=1+1=2\n\\]\n\nLogo,\n\n\\[\nA\\cdot B=\\left(1-2^{-50}\\right)\\cdot 2=2-2^{-50}\n\\]\n\nQuando se considera a tendência para o limite infinito, esse produto tende a:\n\n\\[\na=2\n\\]\n\nO número \\(2\\) é par e divisor de \\(10000\\).\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "D",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004347",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nA imagem representa o processo de evolução das plantas e algumas de suas estruturas. Para o sucesso desse processo, a partir de um ancestral simples, os diferentes grupos vegetais desenvolveram estruturas adaptativas que lhes permitiram sobreviver em diferentes ambientes. Disponível em: http://biopibidufsj.blogspot.com. Acesso em: 29 fev. 2012 (adaptado). Qual das estruturas adaptativas apresentadas contribuiu para uma maior diversidade genética?\nA. As sementes aladas, que favorecem a dispersão aérea.\nB. Os arquegônios, que protegem o embrião multicelular.\nC. Os grãos de pólen, que garantem a polinização cruzada.\nD. Os frutos, que promovem uma maior eficiência reprodutiva.\nE. Os vasos condutores, que possibilitam o transporte da seiva bruta.",
+    "resposta": "\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004348",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nCada um no seu lugar Numa sala de aula existem cinco cadeiras, numeradas de 1 a 5, numa fileira junto à janela e sete alunos que ali desejam sentar: Douglas, Eduardo, Gustavo, Henrique, João, Karen e o Leonardo. A professora resolveu que somente quatro alunos vão ocupar as cadeiras. Cada aluno senta em somente uma cadeira e restará uma vazia. Somente cadeiras com números consecutivos são consideradas adjacentes. As seguinte condições também influenciam a decisão da professora: • Se Douglas for selecionado então ele deve ficar na cadeira 1. • Se Leonardo for selecionado ele deve ficar na cadeira 2. • Se Karen for selecionada ela deve ficar na cadeira 4. • Se Eduardo ou Gustavo for selecionado então ambos devem ser selecionados e colocados em cadeiras adjacentes. • Se Eduardo é selecionado então Leonardo também deve ser. • Henrique deve ser selecionado ou Karen deve ser selecionada mas não ambos. Qual das seguintes opções é uma associação correta dos números das cadeiras com os aluno?\nA. 1: Henrique, 2: Leonardo, 3: Vazia, 4: Eduardo, 5: Karen.\nB. 1: Douglas, 2: Henrique, 3: Leonardo, 4: Eduardo, 5: Vazia.\nC. 1: Douglas, 2: Leonardo, 3: João, 4: Karen, 5: Vazia.\nD. 1: Henrique, 2: Leonardo, 3: Eduardo, 4: Gustavo, 5: João.\nE. 1: Vazia, 2: Eduardo, 3: Gustavo, 4: João, 5: Henrique.",
+    "resposta": "\n\nA alternativa **C** satisfaz todas as condições:\n\n- Douglas está na cadeira 1.\n- Leonardo está na cadeira 2.\n- Karen está na cadeira 4.\n- Nem Eduardo nem Gustavo foram selecionados, então a regra deles não é violada.\n- Apenas Karen foi selecionada entre Henrique e Karen, atendendo à condição “um ou outro, não ambos”.\n- Há exatamente quatro alunos ocupando cadeiras e uma cadeira vazia.\n\nResposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004349",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nTalvez pareça excessivo o escrúpulo do Cotrim, a quem não souber que ele possuía um caráter ferozmente honrado. Eu mesmo fui injusto com ele durante os anos que se seguiram ao inventário de meu pai. Reconheço que era um modelo. Arguíam-no de avareza, e cuido que tinham razão; mas a avareza é apenas a exageração de uma virtude, e as virtudes devem ser como os orçamentos: melhor é o saldo que o déficit. Como era muito seco de maneiras, tinha inimigos que chegavam a acusá-lo de bárbaro. O único fato alegado neste particular era o de mandar com frequência escravos ao calabouço, donde eles desciam a escorrer sangue; mas, além de que ele só mandava os perversos e os fujões, ocorre que, tendo longamente contrabandeado em escravos, habituara-se de certo modo ao trato um pouco mais duro que esse gênero de negócio requeria, e não se pode honestamente atribuir à índole original de um homem o que é puro efeito de relações sociais. A prova de que o Cotrim tinha sentimentos pios encontrava-se no seu amor aos filhos, e na dor que padeceu quando morreu Sara, dali a alguns meses; prova irrefutável, acho eu, e não única. Era tesoureiro de uma confraria, e irmão de várias irmandades, e até irmão remido de uma destas, o que não se coaduna muito com a reputação da avareza; verdade é que o benefício não caíra no chão: a irmandade (de que ele fora juiz) mandara-lhe tirar o retrato a óleo. ASSIS, M. Memórias póstumas de Brás Cubas. Rio de Janeiro: Nova Aguilar, 1992. Obra que inaugura o Realismo na literatura brasileira, Memórias póstumas de Brás Cubas condensa uma expressividade que caracterizaria o estilo machadiano: a ironia. Descrevendo a moral de seu cunhado, Cotrim, o narrador-personagem Brás Cubas refina a percepção irônica ao\nA. acusar o cunhado de ser avarento para confessar-se injustiçado na divisão da herança paterna.\nB. atribuir a “efeito de relações sociais” a naturalidade com que Cotrim prendia e torturava os escravos.\nC. considerar os “sentimentos pios” demonstrados pelo personagem quando da perda da filha Sara.\nD. menosprezar Cotrim por ser tesoureiro de uma confraria e membro remido de várias irmandades.\nE. insinuar que o cunhado era um homem vaidoso e egocêntrico, contemplado com um retrato a óleo.",
+    "resposta": "\n\nO narrador usa ironia ao relativizar a crueldade de Cotrim, mostrando que sua forma de tratar escravos duramente decorria do costume do comércio negreiro, e não necessariamente de uma índole violenta original. Isso aparece claramente na expressão “puro efeito de relações sociais”.\n\nResposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0
+  },
+  {
+    "id": "004350",
+    "system": null,
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO procedimento de perda rápida de “peso” é comum entre os atletas dos esportes de combate. Para participar de um torneio, quatro atletas da categoria até 66 kg, Peso-Pena, foram submetidos a dietas balanceadas e atividades físicas. Realizaram três “pesagens” antes do início do torneio. Pelo regulamento do torneio, a primeira luta deverá ocorrer entre o atleta mais regular e o menos regular quanto aos “pesos”. As informações com base nas pesagens dos atletas estão no quadro. Após as três “pesagens”, os organizadores do torneio informaram aos atletas quais deles se enfrentariam na primeira luta. A primeira luta foi entre os atletas\nA. I e III.\nB. I e IV.\nC. II e III.\nD. II e IV.\nE. III e IV.",
+    "resposta": "\n\nPara avaliar a regularidade das pesagens, podemos comparar as **amplitudes** ou os **desvios-padrão**.\n\n- **I:** \\(65, 64, 66\\) → amplitude \\(2\\)\n- **II:** \\(66, 63, 65\\) → amplitude \\(3\\)\n- **III:** \\(66, 66, 66\\) → amplitude \\(0\\) (mais regular)\n- **IV:** \\(64, 68, 66\\) → amplitude \\(4\\) (menos regular)\n\nAssim, a primeira luta deve ser entre **III** (mais regular) e **IV** (menos regular).\n\nResposta: E",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "presence_penalty": 1.5,
+      "repetition_penalty": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": null,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "C",
+        "correct": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0
+  }
+]
