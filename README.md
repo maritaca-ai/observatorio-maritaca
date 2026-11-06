@@ -2,6 +2,8 @@
 
 **11 modelos de linguagem · 22 benchmarks · 1.077.954 instâncias de avaliação**
 
+[**Acessar o Observatório Maritaca →**](https://maritaca-ai.github.io/observatorio-maritaca/)
+
 A Maritaca avaliou o S5-nano e dez modelos brasileiros e internacionais em tarefas
 de conversa, seguimento de instruções, segurança, conhecimento, uso de ferramentas,
 saída estruturada e contexto longo, incluindo testes de cultura brasileira,
