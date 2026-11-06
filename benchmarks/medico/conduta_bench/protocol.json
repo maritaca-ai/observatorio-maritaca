@@ -1,0 +1,71 @@
+{
+  "id": "conduta_bench",
+  "name": "CondutaBench · amostra de 140 · Sabiá-4-Thinking",
+  "family": "remaining",
+  "tasks": [
+    "conduta_bench"
+  ],
+  "expected_counts": [
+    140
+  ],
+  "directory": "benchmarks/medico/conduta_bench",
+  "category": "medico",
+  "campaign_enabled": true,
+  "campaign_selection": "campaigns/conduta140-protocol.json",
+  "protocol_id": "conduta140-stratified-sabia4thinking-native",
+  "api_judge": true,
+  "dataset_rows_in_git": false,
+  "evaluation": {
+    "label": "CondutaBench · amostra de 140 · Sabiá-4-Thinking",
+    "variant": "conduta140-stratified-sabia4thinking-native",
+    "cases_per_model_mode": 140,
+    "repetitions": 1,
+    "scope": "Fixed proportional sample across all 14 guidelines; closed-book generation; native judge prompt, parser, penalties and equal question weights.",
+    "upstream_lock": "benchmarks/medico/conduta_bench/upstream.lock.json",
+    "upstream_lock_sha256": "0aa97edfa526476e1114e6db3b3b5ff4c7d4cbae1b5cb9f7a087ba5f7e9e9977",
+    "integration_status": "integrated_validated_offline",
+    "judge": {
+      "model": "sabia-4-thinking",
+      "provider": "maritaca",
+      "temperature": 0,
+      "max_tokens": 8000,
+      "service_tier": "auto",
+      "calls_per_model_mode": 140,
+      "protocol": "native recommended judge"
+    },
+    "selection": {
+      "inputs": [
+        {
+          "path": "data/questions.jsonl",
+          "url": "https://raw.githubusercontent.com/TropicAI-Research/CondutaBench/c11b335a20f8a2035071f9352b2812d76e42cd6b/data/questions.jsonl",
+          "sha256": "73aae936760df7ec370a70e9b366b5f182cb501690ccbd328e6b8ed39d7223b8"
+        }
+      ],
+      "id_field": "id",
+      "method": "stratified_sha256",
+      "population_rows": 715,
+      "field": "guideline_id",
+      "quotas": {
+        "anemia_ferropriva": 11,
+        "asma_pcdt": 10,
+        "dengue_ms": 10,
+        "dm2_sbd": 10,
+        "dpoc_pcdt": 10,
+        "febre_reumatica_sbc": 12,
+        "has_sbc": 10,
+        "hiv_pcdt": 10,
+        "ic_sbc": 9,
+        "ivas_aborl": 12,
+        "meningite_ms": 8,
+        "pneumonia_sbpt": 10,
+        "sca_sbc": 12,
+        "sop_pcdt": 6
+      },
+      "allocation": "largest_remainder_proportional_lexicographic_ties",
+      "selected_rows": 140,
+      "selected_ids_sha256": "87f184247fa9bba8b94e31aa69929cfb8190a6e912617e3c326c7169d4787b02"
+    }
+  },
+  "results_output": "results/<modelo>/<benchmark>/<instruct|thinking>",
+  "profile_plan": "profiles/plan.json"
+}

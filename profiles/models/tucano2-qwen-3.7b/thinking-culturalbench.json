@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "name": "tucano2-qwen-3.7b-thinking",
+  "mode": "thinking",
+  "model": "Polygl0t/Tucano2-qwen-3.7B-Think",
+  "revision": "12fb8714e73b42e1fffd1df6a4d6cb1f077a854d",
+  "enable_thinking": true,
+  "mode_supported": true,
+  "sampling": {
+    "temperature": 0.1,
+    "top_p": 1.0,
+    "top_k": 50,
+    "min_p": 0.0,
+    "presence_penalty": 0.0,
+    "repetition_penalty": 1.2
+  },
+  "max_tokens": null,
+  "reasoning_effort": null,
+  "context_length": 4096,
+  "history_encoding": "reasoning_field",
+  "chat_template_sha256": "f11f4983aa74cd781210a6a87783ceed07df87193d72b092279f3ea5c33d30b1",
+  "chat_template_kwargs": {},
+  "precision": "bfloat16",
+  "transport_policy": "tucano_raw_completion_v1",
+  "sampling_reference": "https://huggingface.co/Polygl0t/Tucano2-qwen-3.7B-Think/blob/main/README.md",
+  "output_budget_source": "Current campaign max_tokens=null; bounded by native 4096 context. Published generation_config cap1024 is not applied, explicitly following comparison campaign policy.",
+  "asset_sha256": {
+    "config.json": "71ba45dad2693bb51920c3190c4d33979c05d4f66c375f3bfea09a41320b34f6",
+    "tokenizer.json": "08cf86573026986a5eafd6b60f5d24abc095a750abaa1c5484e668b1199727a9",
+    "tokenizer_config.json": "c2bd3dbc00e74074e22ce9ad8543cf8d475bb09ba84bbce818700685ea88c3cb",
+    "special_tokens_map.json": "1923a0da6593135dcc4a87898a660647a8e2cb318afb4ea1164fdaa395ab6d18",
+    "chat_template.jinja": "f11f4983aa74cd781210a6a87783ceed07df87193d72b092279f3ea5c33d30b1",
+    "generation_config.json": "8634d1a000c250c0e331e86f99c069697ee3783c0341dc8f8ec8d7f9e133ce28",
+    "model.safetensors.index.json": "555b603cc46ef1bcb073b9782c05e92375cfc44b011e0d3e9cb09151ada1ea16"
+  },
+  "weight_sha256": {
+    "model-00001-of-00002.safetensors": "7e136984fa21cdede46e42b6e4c4a2031b017722a21c1ab684f6b36ea5ac499e",
+    "model-00002-of-00002.safetensors": "ea987b9ec60c5f33bd2f30c17ffaf7781e808eaad55553b572d8d2efc8f1e7c7"
+  },
+  "history_content_policy": "literal",
+  "reasoning_history_policy": "native_template_last_query",
+  "reasoning_mode_note": "Think checkpoint; no supported switch to instruct. Native prefix preserved without forced think tag.",
+  "runtime_differences": [
+    "vLLM uses KV cache; published Transformers use_cache=false is an implementation setting.",
+    "vLLM sampling normalizes logits; renormalize_logits flag is not passed as unsupported API option."
+  ],
+  "parser_identity": {
+    "id": "tucano_explicit_think_v1",
+    "vllm_version": "0.31.0",
+    "files": {},
+    "scope": "text_chat_only"
+  },
+  "references": [
+    "https://huggingface.co/Polygl0t/Tucano2-qwen-3.7B-Think/blob/main/README.md",
+    "https://huggingface.co/Polygl0t/Tucano2-qwen-3.7B-Think"
+  ]
+}

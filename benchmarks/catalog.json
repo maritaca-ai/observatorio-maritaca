@@ -1,0 +1,705 @@
+{
+  "mmlu_pt": {
+    "schema_version": 1,
+    "id": "mmlu_pt",
+    "name": "MMLU PT",
+    "tasks": [
+      "mmlu_pt_high_school",
+      "mmlu_pt_undergraduate"
+    ],
+    "expected_counts": [
+      7233,
+      19347
+    ],
+    "family": "lumi",
+    "summary": "Generative accuracy; zero-shot; all official full-release items.",
+    "score_final_content_only": true,
+    "seed": null,
+    "dataset_rows_in_git": false,
+    "api_judge": false,
+    "category": "provas",
+    "directory": "benchmarks/provas/mmlu_pt",
+    "protocol_id": "chat-adapter-v2",
+    "author_protocol_parity": "not_claimed",
+    "campaign_enabled": true
+  },
+  "global_mmlu_pt": {
+    "schema_version": 1,
+    "id": "global_mmlu_pt",
+    "name": "Global MMLU PT",
+    "tasks": [
+      "global_mmlu_pt"
+    ],
+    "expected_counts": [
+      14042
+    ],
+    "family": "lumi",
+    "summary": "Accuracy; five official development examples per subject.",
+    "score_final_content_only": true,
+    "seed": null,
+    "dataset_rows_in_git": false,
+    "api_judge": false,
+    "category": "provas",
+    "directory": "benchmarks/provas/global_mmlu_pt",
+    "protocol_id": "chat-adapter-v2",
+    "author_protocol_parity": "not_claimed",
+    "campaign_enabled": true
+  },
+  "enade_qa": {
+    "schema_version": 1,
+    "id": "enade_qa",
+    "name": "ENADE-QA",
+    "tasks": [
+      "enade_qa"
+    ],
+    "expected_counts": [
+      716
+    ],
+    "family": "exams",
+    "summary": "Native S1 zero-shot prompt; conservative answer extraction.",
+    "score_final_content_only": true,
+    "seed": null,
+    "dataset_rows_in_git": false,
+    "api_judge": false,
+    "category": "provas",
+    "directory": "benchmarks/provas/enade_qa",
+    "campaign_enabled": true
+  },
+  "enem_vl": {
+    "schema_version": 1,
+    "id": "enem_vl",
+    "name": "ENEM-VL · text",
+    "tasks": [
+      "enem_vl"
+    ],
+    "expected_counts": [
+      1988
+    ],
+    "family": "exams",
+    "summary": "2020–2025, image-free, non-annulled; native JSON prompt.",
+    "score_final_content_only": true,
+    "seed": null,
+    "dataset_rows_in_git": false,
+    "api_judge": false,
+    "category": "provas",
+    "directory": "benchmarks/provas/enem_vl",
+    "campaign_enabled": true
+  },
+  "bluex_v2": {
+    "schema_version": 1,
+    "id": "bluex_v2",
+    "name": "BLUEX v2 · text",
+    "tasks": [
+      "bluex_v2"
+    ],
+    "expected_counts": [
+      395
+    ],
+    "family": "exams",
+    "summary": "173 image-free questions; sequential subquestions; Sabiá-4 rubric judge.",
+    "score_final_content_only": true,
+    "seed": null,
+    "dataset_rows_in_git": false,
+    "api_judge": true,
+    "protocol": {
+      "question_n": 173,
+      "subquestion_n": 395,
+      "judge": "sabia-4",
+      "judge_attempts": 3,
+      "failed_judgments_score": 0,
+      "judge_error_rate_gate": 0.1,
+      "aggregation": "mean subquestion rubric scores; native0–10, reporting0–100",
+      "subset_difference": "excludes every question image and official-answer image; not paper880 subset"
+    },
+    "category": "provas",
+    "directory": "benchmarks/provas/bluex_v2",
+    "campaign_enabled": true
+  },
+  "marca": {
+    "schema_version": 1,
+    "id": "marca",
+    "name": "MARCA public",
+    "tasks": [
+      "marca_public"
+    ],
+    "expected_counts": [
+      104
+    ],
+    "family": "public",
+    "summary": "52 PT +52 EN; public basic agent; 40 iterations; k=1; GPT-4.1-2025-04-14 judge.",
+    "score_final_content_only": true,
+    "seed": null,
+    "dataset_rows_in_git": false,
+    "api_judge": true,
+    "protocol": {
+      "agent": "public basic",
+      "tools": [
+        "search",
+        "page_scraper"
+      ],
+      "k": 1,
+      "max_iterations": 40,
+      "judge": "gpt-4.1-2025-04-14",
+      "judge_parameters": "public source defaults",
+      "dataset_sizes": {
+        "marca_pt": 52,
+        "marca_en": 52
+      },
+      "aggregation": "mean of per-question checklist fractions; PT and EN equally weighted",
+      "dynamic_checklists": "public native resolver with owned Serper key; frozen at first evaluation"
+    },
+    "category": "agentico",
+    "directory": "benchmarks/agentico/marca",
+    "campaign_enabled": true
+  },
+  "capitu": {
+    "schema_version": 1,
+    "id": "capitu",
+    "name": "CAPITU",
+    "tasks": [
+      "capitu"
+    ],
+    "expected_counts": [
+      200,
+      100
+    ],
+    "family": "capitu",
+    "summary": "200 single-turn prompts +100 three-turn conversations; native strict checks.",
+    "score_final_content_only": true,
+    "seed": null,
+    "dataset_rows_in_git": false,
+    "api_judge": false,
+    "protocol": {
+      "single_n": 200,
+      "conversations_n": 100,
+      "turns": 500,
+      "primary": "single strict accuracy",
+      "secondary": "complete conversation accuracy",
+      "judge": null
+    },
+    "category": "instrucoes",
+    "directory": "benchmarks/instrucoes/capitu",
+    "campaign_enabled": true
+  },
+  "math_pt": {
+    "schema_version": 1,
+    "id": "math_pt",
+    "name": "MATH-PT · PT-BR MC",
+    "tasks": [
+      "math_pt_br_mc"
+    ],
+    "expected_counts": [
+      638
+    ],
+    "family": "pt",
+    "summary": "Native PT-BR multiple-choice prompt and boxed-letter scorer; zero-shot.",
+    "score_final_content_only": true,
+    "seed": 42,
+    "dataset_rows_in_git": false,
+    "api_judge": false,
+    "protocol": {
+      "n": 638,
+      "fewshot": 0,
+      "subset": "ptbr_multiple_choice/test",
+      "primary_metric": "accuracy",
+      "prompt": "Native MATH-PT ptbr prompt",
+      "parser": "Native notebook boxed-letter extraction, final answer only"
+    },
+    "category": "provas",
+    "directory": "benchmarks/provas/math_pt",
+    "campaign_enabled": true
+  },
+  "broverbs": {
+    "schema_version": 1,
+    "id": "broverbs",
+    "name": "BRoverbs",
+    "tasks": [
+      "broverbs"
+    ],
+    "expected_counts": [
+      1158
+    ],
+    "family": "pt",
+    "summary": "579 cases each direction; one different example per item, seed42; native PoETa chat/parser.",
+    "score_final_content_only": true,
+    "seed": 42,
+    "dataset_rows_in_git": false,
+    "api_judge": false,
+    "protocol": {
+      "n": 1158,
+      "per_direction": 579,
+      "fewshot": 1,
+      "seed": 42,
+      "primary_metric": "mean of both direction accuracies",
+      "paper": "https://arxiv.org/abs/2509.08960",
+      "prompt_and_parser": "Public PoETa v2 chat prompt builder and native letter parser",
+      "adaptation": "Full public HF splits and one different example per question per BRoverbs paper; not PoETa 300-item/5-shot subset"
+    },
+    "category": "brasil_especifico",
+    "directory": "benchmarks/brasil_especifico/broverbs",
+    "campaign_enabled": true
+  },
+  "assin_rte": {
+    "schema_version": 1,
+    "id": "assin_rte",
+    "name": "ASSIN 2 RTE",
+    "tasks": [
+      "assin_rte"
+    ],
+    "expected_counts": [
+      300
+    ],
+    "family": "pt",
+    "summary": "Canonical PoETa seed42-shuffled 300-item subset; 18-shot; macro F1 and accuracy.",
+    "score_final_content_only": true,
+    "seed": 42,
+    "dataset_rows_in_git": false,
+    "api_judge": false,
+    "protocol": {
+      "n": 300,
+      "full_test_n": 2448,
+      "fewshot": 18,
+      "seed": 42,
+      "subset": "PoETa v2 canonical 300 after seed-42 test shuffle",
+      "primary_metric": "macro F1",
+      "secondary_metric": "accuracy",
+      "parser": "Native strict sim/não string comparison"
+    },
+    "category": "brasil_especifico",
+    "directory": "benchmarks/brasil_especifico/assin_rte",
+    "campaign_enabled": true
+  },
+  "lumen": {
+    "schema_version": 1,
+    "id": "lumen",
+    "name": "Lumen PT · variante GPT-4.1",
+    "tasks": [
+      "lumen_pt"
+    ],
+    "expected_counts": [
+      1296,
+      22
+    ],
+    "family": "lumen",
+    "summary": "Portuguese harmful-action rate and matched benign controls",
+    "score_final_content_only": true,
+    "tool_actions_scored": true,
+    "seed": null,
+    "dataset_rows_in_git": false,
+    "api_judge": true,
+    "protocol": {
+      "language": "pt",
+      "scenarios": 108,
+      "pressure_conditions": 6,
+      "system_prompts": [
+        "ethical",
+        "neutral"
+      ],
+      "harmful_trials": 1296,
+      "benign_trials": 22,
+      "max_assistant_turns": 5,
+      "tools": 21,
+      "tool_schema_language": "en",
+      "simulator_language": "pt",
+      "judge": "gpt-4.1-2025-04-14",
+      "judge_reasoning_effort": null,
+      "judge_selection": "metrics_reconciled.is_l2_positive",
+      "primary_metric": "harmful_action_rate",
+      "higher_is_better": false,
+      "secondary_metrics": [
+        "say_do_gap_rate",
+        "benign_success_rate",
+        "L0",
+        "L1",
+        "L2"
+      ],
+      "failure_policy": "Retry incomplete candidate/judge outcomes from cached turns; final requires all 1318 cases; never classify transport errors as refusals",
+      "candidate_sampling": "explicit profile overrides native temperature=0 and max_tokens=1024",
+      "judge_sees_reasoning": false,
+      "judge_temperature": 0,
+      "judge_variant": "gpt41-v1",
+      "original_judge": "o4-mini-2025-04-16",
+      "original_judge_reasoning_effort": "medium"
+    },
+    "category": "seguranca_etica",
+    "directory": "benchmarks/seguranca_etica/lumen",
+    "campaign_enabled": true
+  },
+  "browsecomp_plus": {
+    "schema_version": 1,
+    "id": "browsecomp_plus",
+    "name": "BrowseComp-Plus · BM25 · val100",
+    "tasks": [
+      "browsecomp_plus"
+    ],
+    "expected_counts": [
+      100
+    ],
+    "family": "plus",
+    "summary": "Public BrowseComp-Plus data/index; Maritaca 100-ID validation selection and native tool loop/judge.",
+    "score_final_content_only": true,
+    "dataset_rows_in_git": false,
+    "api_judge": true,
+    "protocol": {
+      "selection": "Maritaca RL validation selection of 100 public test questions; not the full 830-question upstream test",
+      "query_ids": [
+        46,
+        59,
+        70,
+        85,
+        90,
+        111,
+        113,
+        120,
+        125,
+        149,
+        156,
+        166,
+        171,
+        174,
+        176,
+        190,
+        219,
+        226,
+        233,
+        250,
+        251,
+        257,
+        262,
+        264,
+        293,
+        298,
+        301,
+        304,
+        392,
+        411,
+        413,
+        414,
+        416,
+        421,
+        426,
+        432,
+        436,
+        445,
+        449,
+        468,
+        494,
+        500,
+        527,
+        532,
+        542,
+        560,
+        577,
+        580,
+        584,
+        592,
+        595,
+        620,
+        624,
+        645,
+        673,
+        696,
+        702,
+        707,
+        715,
+        717,
+        725,
+        739,
+        741,
+        753,
+        759,
+        768,
+        770,
+        774,
+        775,
+        793,
+        794,
+        796,
+        816,
+        819,
+        823,
+        875,
+        926,
+        928,
+        932,
+        951,
+        952,
+        966,
+        1008,
+        1010,
+        1016,
+        1020,
+        1028,
+        1033,
+        1037,
+        1040,
+        1055,
+        1057,
+        1090,
+        1094,
+        1105,
+        1138,
+        1198,
+        1221,
+        1223,
+        1235
+      ],
+      "query_ids_sha256": "534dea417de6fe22a93db4c881366569601d63be288831c57aaeb579b75ed019",
+      "n": 100,
+      "retriever": "BM25",
+      "retrieval_k": 5,
+      "get_document": true,
+      "snippet_max_tokens": 512,
+      "snippet_tokenizer": "Qwen/Qwen3-0.6B",
+      "snippet_tokenizer_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+      "candidate_tokenizer": "Candidate model tokenizer; independent from snippet truncation",
+      "max_iterations": 100,
+      "query_template": "QUERY_TEMPLATE",
+      "candidate_request_timeout_seconds": 600,
+      "candidate_sdk_max_retries": 2,
+      "candidate_full_query_retries": 0,
+      "max_tokens": null,
+      "candidate_sampling": "Explicit campaign profile forced by proxy; no named reasoning effort",
+      "history": "Campaign reasoning-preserving proxy and template; differs from an unpatched upstream template",
+      "judge": "gpt-6-luna",
+      "judge_api": "Responses",
+      "judge_max_output_tokens": 1024,
+      "judge_reasoning_effort": "medium",
+      "judge_prompt": "Native GRADER_TEMPLATE",
+      "denominator": "All 100 selected queries, including generation failures and unanswered cases",
+      "infrastructure_preemption": "Resume cached successful turns; preserve all complete outcomes",
+      "metrics": [
+        "accuracy",
+        "response_rate",
+        "accuracy_given_response",
+        "generation_errors",
+        "judge_errors",
+        "stop_categories",
+        "invented_tool_calls"
+      ],
+      "judge_reasoning_summary": "detailed",
+      "judge_profile_id": "browsecomp-plus-val100-bm25-gpt6-luna-medium-v1",
+      "judge_failure_policy": "Preserve the attempt and withhold the final score until all answered cases have valid completed verdicts"
+    },
+    "category": "agentico",
+    "directory": "benchmarks/agentico/browsecomp_plus",
+    "protocol_id": "browsecomp-plus-val100-bm25-gpt6-luna-medium-v1",
+    "judge_profile": "profiles/judges/browsecomp-plus-gpt6-luna-medium.json",
+    "campaign_enabled": true
+  },
+  "prosa_pt": {
+    "schema_version": 1,
+    "id": "prosa_pt",
+    "name": "Prosa-PT · rubricas filtradas",
+    "tasks": [
+      "prosa_pt"
+    ],
+    "expected_counts": [
+      1000
+    ],
+    "family": "prosa",
+    "summary": "Qualidade de respostas a conversas reais em português, com histórico e rubricas binárias.",
+    "score_final_content_only": true,
+    "seed": null,
+    "dataset_rows_in_git": false,
+    "api_judge": true,
+    "protocol": {
+      "language": "pt-BR",
+      "generated_conversations": 1000,
+      "scored_conversations": 981,
+      "frozen_excluded_conversations": 19,
+      "filtered_rubrics": 8408,
+      "selection": "public frozen question_excluded and checklist_filtered_indices; never recomputed",
+      "candidate_history": "original fixed conversation_input; generate only the final assistant response",
+      "candidate_system": "native zero_shot conversation template, unchanged",
+      "candidate_sampling": "explicit model/mode profile, including its output limit; no reasoning_effort",
+      "judge": "gpt-4.1-2025-04-14",
+      "judge_temperature": 0,
+      "judge_max_tokens": 4096,
+      "judge_reasoning_effort": null,
+      "judge_prompt": "native RRD F.3; all original rubrics per included question; final content only",
+      "primary_metric": "micro_filtered_rubric_pass_rate_percent",
+      "secondary_metrics": [
+        "macro_filtered_question_pass_rate_percent",
+        "empty_final",
+        "truncated"
+      ],
+      "failure_policy": "native: retry failed calls up to three attempts; parse the first returned judgment once; score valid YES/NO selected rubrics and report missing-verdict coverage; require all 1000 generations and judgments for all 981 included conversations",
+      "aggregation_policy": "native_first_judgment_valid_verdicts_v1"
+    },
+    "category": "chat",
+    "directory": "benchmarks/chat/prosa_pt",
+    "protocol_id": "prosa-pt-native-first-judgment-valid-verdicts-v1",
+    "campaign_enabled": true
+  },
+  "ifbench": {
+    "id": "ifbench",
+    "name": "IFBench · teste completo",
+    "family": "remaining",
+    "tasks": [
+      "ifbench"
+    ],
+    "expected_counts": [
+      300
+    ],
+    "directory": "benchmarks/instrucoes/ifbench",
+    "category": "instrucoes",
+    "campaign_enabled": true,
+    "campaign_selection": "campaigns/remaining-benchmarks-proposal.json",
+    "protocol_id": "ifbench-test-full",
+    "api_judge": false,
+    "seed": 42,
+    "dataset_rows_in_git": false
+  },
+  "arena_hard_v2": {
+    "id": "arena_hard_v2",
+    "name": "Arena-Hard v2 · 150 · Luna medium",
+    "family": "remaining",
+    "tasks": [
+      "arena_hard_v2"
+    ],
+    "expected_counts": [
+      150
+    ],
+    "directory": "benchmarks/chat/arena_hard_v2",
+    "category": "chat",
+    "campaign_enabled": true,
+    "campaign_selection": "campaigns/remaining-benchmarks-proposal.json",
+    "protocol_id": "arena150-gpt6-luna-medium",
+    "api_judge": true,
+    "dataset_rows_in_git": false
+  },
+  "culturalbench": {
+    "id": "culturalbench",
+    "name": "CulturalBench-Hard · completo + Brasil",
+    "family": "remaining",
+    "tasks": [
+      "culturalbench"
+    ],
+    "expected_counts": [
+      4908
+    ],
+    "directory": "benchmarks/brasil_especifico/culturalbench",
+    "category": "brasil_especifico",
+    "campaign_enabled": true,
+    "campaign_selection": "campaigns/remaining-benchmarks-proposal.json",
+    "protocol_id": "culturalbench-hard-full-en-appier-extraction",
+    "api_judge": true,
+    "dataset_rows_in_git": false
+  },
+  "sob": {
+    "id": "sob",
+    "name": "SOB · completo",
+    "family": "remaining",
+    "tasks": [
+      "sob"
+    ],
+    "expected_counts": [
+      5324
+    ],
+    "directory": "benchmarks/saida_estruturada/sob",
+    "category": "saida_estruturada",
+    "campaign_enabled": true,
+    "campaign_selection": "campaigns/remaining-benchmarks-proposal.json",
+    "protocol_id": "sob-full-text-ocr-transcripts",
+    "api_judge": false,
+    "dataset_rows_in_git": false
+  },
+  "longbench_v2": {
+    "id": "longbench_v2",
+    "name": "LongBench v2 · completo",
+    "family": "remaining",
+    "tasks": [
+      "longbench_v2"
+    ],
+    "expected_counts": [
+      503
+    ],
+    "directory": "benchmarks/contexto_longo/longbench_v2",
+    "category": "contexto_longo",
+    "campaign_enabled": true,
+    "campaign_selection": "campaigns/remaining-benchmarks-proposal.json",
+    "protocol_id": "longbench-v2-full-context-zero-shot",
+    "api_judge": false,
+    "dataset_rows_in_git": false
+  },
+  "harmbench": {
+    "id": "harmbench",
+    "name": "HarmBench · texto · DirectRequest",
+    "family": "remaining",
+    "tasks": [
+      "harmbench"
+    ],
+    "expected_counts": [
+      320
+    ],
+    "directory": "benchmarks/seguranca_etica/harmbench",
+    "category": "seguranca_etica",
+    "campaign_enabled": true,
+    "campaign_selection": "campaigns/remaining-benchmarks-proposal.json",
+    "protocol_id": "harmbench-text-test-directrequest",
+    "api_judge": false,
+    "dataset_rows_in_git": false
+  },
+  "conduta_bench": {
+    "id": "conduta_bench",
+    "name": "CondutaBench · amostra de 140 · Sabiá-4-Thinking",
+    "family": "remaining",
+    "tasks": [
+      "conduta_bench"
+    ],
+    "expected_counts": [
+      140
+    ],
+    "directory": "benchmarks/medico/conduta_bench",
+    "category": "medico",
+    "campaign_enabled": true,
+    "campaign_selection": "campaigns/conduta140-protocol.json",
+    "protocol_id": "conduta140-stratified-sabia4thinking-native",
+    "api_judge": true,
+    "dataset_rows_in_git": false
+  },
+  "oab_bench_full": {
+    "id": "oab_bench_full",
+    "name": "OAB-Bench · completo 39–44",
+    "family": "remaining",
+    "tasks": [
+      "oab_bench_full"
+    ],
+    "expected_counts": [
+      210
+    ],
+    "directory": "benchmarks/juridico/oab_bench",
+    "category": "juridico",
+    "campaign_enabled": true,
+    "campaign_selection": "campaigns/legal-completion-20261104.json",
+    "protocol_id": "oab-editions394041424344-gpt52-high",
+    "api_judge": true,
+    "dataset_rows_in_git": false,
+    "protocol": {
+      "variant": "oab-editions394041424344-gpt52-high"
+    }
+  },
+  "magis_bench": {
+    "id": "magis_bench",
+    "name": "Magis-Bench",
+    "family": "remaining",
+    "directory": "benchmarks/juridico/magis_bench",
+    "tasks": [
+      "magis_bench"
+    ],
+    "expected_counts": [
+      74
+    ],
+    "campaign_enabled": true,
+    "protocol": {
+      "variant": "magis74-opus46-high-structured-native",
+      "complete_exam_sections": 24
+    },
+    "category": "juridico",
+    "campaign_selection": "campaigns/legal-completion-20261104.json",
+    "protocol_id": "magis74-opus46-high-structured-native",
+    "api_judge": true,
+    "dataset_rows_in_git": false
+  }
+}

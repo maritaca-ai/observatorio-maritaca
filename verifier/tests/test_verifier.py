@@ -4,7 +4,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from verifier.verify import calculate_averages, check_group, item_score
+from verifier.verify import calculate_averages, check_group, item_score, verify
 from verifier.scores import aggregate
 
 
@@ -31,6 +31,31 @@ class VerifierTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             with self.assertRaisesRegex(ValueError, 'inventário'):
                 check_group(Path(tmp), {'arquivos': [{'arquivo': 'respostas-0001.json'}]}, 'enade-qa')
+
+    def test_reducing_population_and_summary_cannot_hide_missing_answers(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            folder = root/'results/model/enade-qa/instruct'
+            folder.mkdir(parents=True)
+            (root/'benchmarks').mkdir()
+            (root/'verifier').mkdir()
+            def write(path, value):
+                path.write_text(json.dumps(value))
+            write(root/'results/modelos.json', {'model': {'nome': 'Modelo', 'modos_avaliados': ['instruct']}})
+            write(root/'benchmarks/metrics.json', {'enade-qa': {'name': 'ENADE-QA', 'category': 'provas', 'origin': 'native_br'}})
+            key = 'model/enade-qa/instruct'
+            write(root/'verifier/reported.json', {'notas': {key: 100}, 'populacoes': {key: 2}, 'medias': {}})
+            rows = [row(), dict(row(), id='000002')]
+            summary = dict(modelo='Modelo', benchmark='ENADE-QA', modo='instruct', status='final',
+                           score=100, registros=2, arquivos=[{'arquivo': 'respostas-0001.json', 'registros': 2}])
+            write(folder/'respostas-0001.json', rows)
+            write(folder/'resumo.json', summary)
+            self.assertEqual(verify(root)['respostas'], 2)
+            write(folder/'respostas-0001.json', rows[:1])
+            summary['registros'] = summary['arquivos'][0]['registros'] = 1
+            write(folder/'resumo.json', summary)
+            with self.assertRaisesRegex(ValueError, 'População'):
+                verify(root)
 
     def test_assin_uses_macro_f1_instead_of_accuracy(self):
         rows = [{'score': 100 * (a == b), 'julgamento': {'veredito': {'f1': [a, b]}}}

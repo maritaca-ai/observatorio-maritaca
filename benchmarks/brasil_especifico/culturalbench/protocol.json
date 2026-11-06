@@ -1,0 +1,63 @@
+{
+  "id": "culturalbench",
+  "name": "CulturalBench-Hard · completo + Brasil",
+  "family": "remaining",
+  "tasks": [
+    "culturalbench"
+  ],
+  "expected_counts": [
+    4908
+  ],
+  "directory": "benchmarks/brasil_especifico/culturalbench",
+  "category": "brasil_especifico",
+  "campaign_enabled": true,
+  "campaign_selection": "campaigns/remaining-benchmarks-proposal.json",
+  "protocol_id": "culturalbench-hard-full-en-appier-extraction",
+  "api_judge": true,
+  "dataset_rows_in_git": false,
+  "evaluation": {
+    "label": "CulturalBench-Hard · completo + Brasil",
+    "variant": "culturalbench-hard-full-en-appier-native-comparison-v3",
+    "cases_per_model_mode": 4908,
+    "repetitions": 1,
+    "scope": "All 45 countries/regions in original English. Primary Hard accuracy groups all four options of each base question; Brazil is an additional slice from the same responses.",
+    "upstream_lock": "benchmarks/brasil_especifico/culturalbench/upstream.lock.json",
+    "upstream_lock_sha256": "55106d3d6097a88bab02c6c8c55498bb8125e49072a2f9a682cf6d36d59e0aed",
+    "integration_status": "integrated_validated_offline",
+    "base_questions": 1227,
+    "brazil_base_questions": 25,
+    "brazil_prompts": 100,
+    "code_origin": "Third-party Appier runner; not an implementation supplied by the dataset authors.",
+    "extraction": {
+      "local_rule_first": true,
+      "fallback_model": "gpt-4o-mini-2024-07-18",
+      "temperature": 0,
+      "max_output_tokens": 256,
+      "scope": "Only final answers that the pinned local rule cannot parse."
+    },
+    "selection": {
+      "inputs": [
+        {
+          "path": "CulturalBench-Hard.csv",
+          "sha256": "f0ed437f3c300b51812ca4bc0cab2e811d656ff93d1dbe3ae7df8d16ac5b7eee",
+          "url": "https://huggingface.co/datasets/kellycyy/CulturalBench/resolve/996d62a55f6a49c13596f0a31b772812a1aacd67/CulturalBench-Hard.csv"
+        }
+      ],
+      "id_field": "data_idx",
+      "method": "all",
+      "population_rows": 4908,
+      "selected_rows": 4908,
+      "selected_ids_sha256": "87fa2ff287b10b04f6a4fe55059401cea38effe0147ee70cf73ee94fc2a3b98f"
+    },
+    "scorer_revision": "appier_native_comparison_v3",
+    "aggregation": {
+      "source": "viz_culture_plot.py",
+      "sha256": "28bbed29ebfd1b1c0617daa1147a503af5c98fef41065af903059d0f314ff531",
+      "comparison": "str(pred).strip().lower() == str(gold).strip().lower()",
+      "question": "all four options correct",
+      "invalid_literal": "A completed, identity-verified JSON answer string is compared unchanged; transport, identity, JSON parse and answer schema errors remain pending."
+    }
+  },
+  "results_output": "results/<modelo>/<benchmark>/<instruct|thinking>",
+  "profile_plan": "profiles/plan.json"
+}

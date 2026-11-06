@@ -1,0 +1,62 @@
+{
+  "id": "magis_bench",
+  "name": "Magis-Bench",
+  "family": "remaining",
+  "directory": "benchmarks/juridico/magis_bench",
+  "tasks": [
+    "magis_bench"
+  ],
+  "expected_counts": [
+    74
+  ],
+  "campaign_enabled": true,
+  "protocol": {
+    "variant": "magis74-opus46-high-structured-native",
+    "complete_exam_sections": 24
+  },
+  "category": "juridico",
+  "campaign_selection": "campaigns/legal-completion-20261104.json",
+  "protocol_id": "magis74-opus46-high-structured-native",
+  "api_judge": true,
+  "dataset_rows_in_git": false,
+  "evaluation": {
+    "label": "Magis-Bench · completo",
+    "variant": "magis74-opus46-high-structured-native",
+    "cases_per_model_mode": 74,
+    "repetitions": 1,
+    "scope": "All 74 questions and all 24 complete examination sections; native conversation, structured judge and sum of points divided by24.",
+    "upstream_lock": "benchmarks/juridico/magis_bench/upstream.lock.json",
+    "upstream_lock_sha256": "6c4669cafc0c2a8bed252e053ca33b23c7fc50569c56d02092c3a871fb5bb2f5",
+    "integration_status": "integrated_validated_offline",
+    "judge": {
+      "model": "anthropic/claude-opus-4.6",
+      "reasoning_effort": "high",
+      "temperature": 0,
+      "structured": true,
+      "calls_per_model_mode": 74,
+      "protocol": "Current pinned upstream single judge",
+      "upstream_model_identifier": "anthropic/claude-opus-4-6",
+      "provider_canonical_slug": "anthropic/claude-4.6-opus-20260205",
+      "identifier_source": "https://openrouter.ai/api/v1/models",
+      "identifier_note": "The currently published provider ID uses a dot. Same Opus4.6 version, native judge prompts, temperature0 and effort high."
+    },
+    "selection": {
+      "inputs": [
+        {
+          "path": "data/magis_bench/question.jsonl",
+          "url": "https://raw.githubusercontent.com/maritaca-ai/magis-bench/b93d0e82795a37ff063bcf7cf89b91dcedebe921/data/magis_bench/question.jsonl",
+          "sha256": "9d23416f3bab14f1b1f857f48b247b28054cb328d3b694d8f6a6d41615eff4e5"
+        }
+      ],
+      "id_field": "question_id",
+      "method": "all",
+      "population_rows": 74,
+      "selected_rows": 74,
+      "selected_ids_sha256": "3932d8a8a71d942e1793e9bd1d54dab3091ae383f0ea98f3228cdd82b59a1d70"
+    },
+    "generation_turns": 124,
+    "failure_policy": "One dispatch per missing candidate turn or judgment; no automatic native or SDK retry. Preserve failures for audit; never impute scores."
+  },
+  "results_output": "results/<modelo>/<benchmark>/<instruct|thinking>",
+  "profile_plan": "profiles/plan.json"
+}

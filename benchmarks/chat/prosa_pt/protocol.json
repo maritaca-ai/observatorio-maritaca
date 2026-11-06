@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "id": "prosa_pt",
+  "name": "Prosa-PT · rubricas filtradas",
+  "tasks": [
+    "prosa_pt"
+  ],
+  "expected_counts": [
+    1000
+  ],
+  "family": "prosa",
+  "summary": "Qualidade de respostas a conversas reais em português, com histórico e rubricas binárias.",
+  "score_final_content_only": true,
+  "seed": null,
+  "dataset_rows_in_git": false,
+  "api_judge": true,
+  "protocol": {
+    "language": "pt-BR",
+    "generated_conversations": 1000,
+    "scored_conversations": 981,
+    "frozen_excluded_conversations": 19,
+    "filtered_rubrics": 8408,
+    "selection": "public frozen question_excluded and checklist_filtered_indices; never recomputed",
+    "candidate_history": "original fixed conversation_input; generate only the final assistant response",
+    "candidate_system": "native zero_shot conversation template, unchanged",
+    "candidate_sampling": "explicit model/mode profile, including its output limit; no reasoning_effort",
+    "judge": "gpt-4.1-2025-04-14",
+    "judge_temperature": 0,
+    "judge_max_tokens": 4096,
+    "judge_reasoning_effort": null,
+    "judge_prompt": "native RRD F.3; all original rubrics per included question; final content only",
+    "primary_metric": "micro_filtered_rubric_pass_rate_percent",
+    "secondary_metrics": [
+      "macro_filtered_question_pass_rate_percent",
+      "empty_final",
+      "truncated"
+    ],
+    "failure_policy": "native: retry failed calls up to three attempts; parse the first returned judgment once; score valid YES/NO selected rubrics and report missing-verdict coverage; require all 1000 generations and judgments for all 981 included conversations",
+    "aggregation_policy": "native_first_judgment_valid_verdicts_v1"
+  },
+  "category": "chat",
+  "directory": "benchmarks/chat/prosa_pt",
+  "protocol_id": "prosa-pt-native-first-judgment-valid-verdicts-v1",
+  "campaign_enabled": true,
+  "results_output": "results/<modelo>/<benchmark>/<instruct|thinking>",
+  "profile_plan": "profiles/plan.json"
+}

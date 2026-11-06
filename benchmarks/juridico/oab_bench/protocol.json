@@ -1,0 +1,66 @@
+{
+  "id": "oab_bench_full",
+  "name": "OAB-Bench · completo 39–44",
+  "family": "remaining",
+  "tasks": [
+    "oab_bench_full"
+  ],
+  "expected_counts": [
+    210
+  ],
+  "directory": "benchmarks/juridico/oab_bench",
+  "category": "juridico",
+  "campaign_enabled": true,
+  "campaign_selection": "campaigns/legal-completion-20261104.json",
+  "protocol_id": "oab-editions394041424344-gpt52-high",
+  "api_judge": true,
+  "dataset_rows_in_git": false,
+  "protocol": {
+    "variant": "oab-editions394041424344-gpt52-high"
+  },
+  "evaluation": {
+    "label": "OAB-Bench · completo 39–44",
+    "variant": "oab-editions394041424344-gpt52-high",
+    "cases_per_model_mode": 210,
+    "repetitions": 1,
+    "scope": "Complete examinations in all seven areas; professional piece and four discursive questions in every area/edition.",
+    "upstream_lock": "benchmarks/juridico/oab_bench/upstream.lock.json",
+    "upstream_lock_sha256": "f8cecb314b4487d59c6ae7e9744015d9e4622bcf35344ab27a0863b785cd40cf",
+    "integration_status": "integrated_validated_offline",
+    "judge": {
+      "model": "gpt-5.2",
+      "reasoning_effort": "high",
+      "structured": true,
+      "calls_per_model_mode": 210,
+      "protocol": "native recommended judge"
+    },
+    "selection": {
+      "inputs": [
+        {
+          "path": "data/oab_bench/question.jsonl",
+          "sha256": "c43557c9cd19a11db40a10c1ffe3dde577aedad7b5b7eee80ec6a8d4e35816d1",
+          "url": "https://raw.githubusercontent.com/maritaca-ai/oab-bench/238e9991c1fd204788001482cddaea472c66b86f/data/oab_bench/question.jsonl"
+        }
+      ],
+      "id_field": "question_id",
+      "method": "prefix_filter",
+      "population_rows": 210,
+      "field": "category",
+      "separator": "_",
+      "values": [
+        "39",
+        "40",
+        "41",
+        "42",
+        "43",
+        "44"
+      ],
+      "selected_rows": 210,
+      "selected_ids_sha256": "76b8739b54748c7af0dc907251b0f4d9184df63e4f7fff9c0e4d78a85d2f02a2"
+    },
+    "generation_turns": 378,
+    "failure_policy": "One dispatch per missing candidate turn or judgment; no automatic native or SDK retry. Preserve failures for audit; never impute scores."
+  },
+  "results_output": "results/<modelo>/<benchmark>/<instruct|thinking>",
+  "profile_plan": "profiles/plan.json"
+}

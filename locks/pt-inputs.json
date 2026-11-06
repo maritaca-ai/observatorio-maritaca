@@ -1,0 +1,90 @@
+{
+  "sources": {
+    "math_pt": {
+      "url": "https://huggingface.co/datasets/tiagoteixeira03/MATH-PT",
+      "revision": "11c44f85c32d5d6b3dce76d163201ae4c6abd4b2",
+      "public": true,
+      "license": "mit"
+    },
+    "broverbs": {
+      "url": "https://huggingface.co/datasets/Tropic-AI/BRoverbs",
+      "revision": "31acae08a10015e9221111a0984e6cc62f7a4638",
+      "public": true,
+      "license": "not declared"
+    },
+    "assin2": {
+      "url": "https://huggingface.co/datasets/nilc-nlp/assin2",
+      "revision": "0ff9c86779e06855536d8775ce5550550e1e5a2d",
+      "public": true,
+      "license": [
+        "unknown"
+      ]
+    },
+    "PoETaV2": {
+      "url": "https://github.com/PoETaV2/PoETaV2",
+      "revision": "653a9b145503a92d1812e0afe4a3051ade7e6407",
+      "public": true
+    },
+    "MATH-PT": {
+      "url": "https://github.com/deep-spin/math-benchmark",
+      "revision": "62e6417222b52a2213b185242096610a906e0894",
+      "public": true
+    }
+  },
+  "protocols": {
+    "math_pt_br_mc": {
+      "n": 638,
+      "fewshot": 0,
+      "subset": "ptbr_multiple_choice/test",
+      "primary_metric": "accuracy",
+      "prompt": "Native MATH-PT ptbr prompt",
+      "parser": "Native notebook boxed-letter extraction, final answer only"
+    },
+    "broverbs": {
+      "n": 1158,
+      "per_direction": 579,
+      "fewshot": 1,
+      "seed": 42,
+      "primary_metric": "mean of both direction accuracies",
+      "paper": "https://arxiv.org/abs/2509.08960",
+      "prompt_and_parser": "Public PoETa v2 chat prompt builder and native letter parser",
+      "adaptation": "Full public HF splits and one different example per question per BRoverbs paper; not PoETa 300-item/5-shot subset"
+    },
+    "assin_rte": {
+      "n": 300,
+      "full_test_n": 2448,
+      "fewshot": 18,
+      "seed": 42,
+      "subset": "PoETa v2 canonical 300 after seed-42 test shuffle",
+      "primary_metric": "macro F1",
+      "secondary_metric": "accuracy",
+      "parser": "Native strict sim/não string comparison"
+    }
+  },
+  "files": {
+    "sources/MATH-PT/README.md": "950cc61f24751aa9e1725e6908aa22cde58a3cb1a87626953e18b1bba3b3c747",
+    "sources/MATH-PT/create_prompts.ipynb": "962ade4c88596644d8c0d4445ede8292875cd8a84a74e4b94d21c3852c149b76",
+    "sources/MATH-PT/evaluate-multiple-choice-answers.ipynb": "b9f65975ad6c17244a8f3b7627a6450e570e67a5465eb4b3f075ca0f8f36f9c2",
+    "sources/PoETaV2/configs/poeta_v2_full.json": "4450bf4e6c27c61b57f7a20f1c2728782893a8edb02a6a8e0bf3e24790d42360",
+    "sources/PoETaV2/conversation.py": "78d0fc3c1d1d681a7f865d43518b3857cd38a362d7f3e347c3d48f367451204f",
+    "sources/PoETaV2/description.json": "9264938c6df4c1bbb298f6a31d7e083f02e65b652c439a3099389cc24ef9e831",
+    "sources/PoETaV2/lm_eval/base.py": "ae1d60eeb64586ca096402f98b6b2740bbf1abf1226f0c57f7ab4f9e57fb5a05",
+    "sources/PoETaV2/lm_eval/evaluator.py": "2763755bf83b31d4ea43d62534ea12c8c4d672275f8c59f749a29a0266640432",
+    "sources/PoETaV2/lm_eval/metrics.py": "e89b1157b5ccae005ae527ea999bdaa152e0f2358037247104c70827ac227877",
+    "sources/PoETaV2/lm_eval/models/openai_compatible_models.py": "16977927c1095df48941eb468bf4678797efad4b9b7070fd04daf0923835a90e",
+    "sources/PoETaV2/lm_eval/tasks/assin.py": "3c25bfb5795881ea4ada37999a360f1111e31217c8bc474333ffea9624861816",
+    "sources/PoETaV2/lm_eval/tasks/big_bench/bigbench_task_base.py": "aa19e2af66b871d20c630edd620dd5c680a246622e6fd718524df7870b4c083a",
+    "sources/PoETaV2/lm_eval/tasks/big_bench/bigbench_tasks.py": "0c45accacbba63d0d9c9b1db71a8d2e53d81a5231604b6cba7983707839c515a",
+    "data/assin2/README.md": "397d80db02fb207f23b3640408c6f37bc2bc450651c01a9932ce352e2579d2d7",
+    "data/assin2/data/test-00000-of-00001.parquet": "7300d08098a74175b75c5be7c04ec06a69a09857f2cf5c6dbaeff59b6fbc2557",
+    "data/assin2/data/train-00000-of-00001.parquet": "4e30f81122db3074eb23f00a8801c47cda1a2bc4e05eaea799439450e2762f44",
+    "data/broverbs/README.md": "4ab7561c4e018782cdfe254e4c53854b6e04148f137d3579caa0cd99e4970c96",
+    "data/broverbs/data/history_to_proverb-00000-of-00001.parquet": "d15958e9e1135407f53d341443861faec1fc776cc45aaf85170f73984a369bb5",
+    "data/broverbs/data/proverb_to_history-00000-of-00001.parquet": "cd01003894b56475d8cdb883f95924596df96dbafba6cf02ea007df0eac39a8d",
+    "data/math_pt/README.md": "1accedd6d1c738d3d8f00e32ef1fdf68e1ebf16601aacda54d7c247dc1e93d77",
+    "data/math_pt/ptbr_multiple_choice_test.json": "f42ae9f1e6540d6115b4a1a18b4d1bd3d95b931115b5ac691cb7ef7bab86ff35",
+    "cases/assin_rte.json": "a138fd1606783f941d5c11f49fe9d833a219484afc071eb7cb3bb6bf09930274",
+    "cases/broverbs.json": "55c4070f7527e94ec81d28c2acc3098bcb9de6cebaf37eb0db43f9082efb9095",
+    "cases/math_pt_br_mc.json": "64a574359939e0e676a14b5c9a7d878b5de6938e7ef09f15f9058d151a8b9a2b"
+  }
+}

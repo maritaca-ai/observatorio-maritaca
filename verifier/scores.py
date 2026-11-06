@@ -44,7 +44,8 @@ def aggregate(benchmark, rows):
         groups = collections.defaultdict(list)
         for j in verdicts:
             groups[j['question']].append(j['correct'])
-        assert len(groups) == 1227 and all(len(v) == 4 for v in groups.values())
+        if len(groups) != 1227 or any(len(v) != 4 for v in groups.values()):
+            raise ValueError('CulturalBench: população diferente de 1.227 perguntas × quatro opções')
         return 100*sum(all(v) for v in groups.values())/len(groups)
     if benchmark == 'structured-output-benchmark':
         return 100*sum(j['schema_compliance']*j['difficulty_weight'] for j in verdicts)/sum(j['difficulty_weight'] for j in verdicts)
@@ -57,7 +58,8 @@ def aggregate(benchmark, rows):
         sections = collections.defaultdict(float)
         for j in verdicts:
             sections['_'.join(j['question_id'].split('_')[:-2])] += j['score']
-        assert len(sections) == (42 if benchmark == 'oab-bench' else 24)
+        if len(sections) != (42 if benchmark == 'oab-bench' else 24):
+            raise ValueError('Benchmark jurídico: conjunto de exames/seções incompleto')
         return 10*sum(sections.values())/len(sections)
     return sum(scores)/len(scores)*(10 if benchmark == 'bluex-v2' else 1)
 

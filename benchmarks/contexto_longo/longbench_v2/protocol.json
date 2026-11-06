@@ -1,0 +1,62 @@
+{
+  "id": "longbench_v2",
+  "name": "LongBench v2 · completo",
+  "family": "remaining",
+  "tasks": [
+    "longbench_v2"
+  ],
+  "expected_counts": [
+    503
+  ],
+  "directory": "benchmarks/contexto_longo/longbench_v2",
+  "category": "contexto_longo",
+  "campaign_enabled": true,
+  "campaign_selection": "campaigns/remaining-benchmarks-proposal.json",
+  "protocol_id": "longbench-v2-full-context-zero-shot",
+  "api_judge": false,
+  "dataset_rows_in_git": false,
+  "evaluation": {
+    "label": "LongBench v2 · completo",
+    "variant": "longbench-v2-full-context-zero-shot",
+    "cases_per_model_mode": 503,
+    "repetitions": 1,
+    "scope": "Native zero-shot prompt, no RAG/no-context or second-stage CoT route. Model thinking remains controlled by its profile. Context/truncation policy, effective limits, tokenizer and full denominator require explicit validation before execution.",
+    "upstream_lock": "benchmarks/contexto_longo/longbench_v2/upstream.lock.json",
+    "upstream_lock_sha256": "2153a9f020f613070fc21562d408990e9cfd35f3e1c06658af03148df86a8f0f",
+    "integration_status": "integrated_validated_offline",
+    "context_policy": {
+      "method": "native_middle_truncation",
+      "authorization": "User confirmed native LongBench truncation on 2026-11-01",
+      "input_budget": "Campaign extension of the native model2maxlen map: 60000/120000/240000 input tokens for 64K/128K/256K contexts; preserve native middle truncation and the unchanged profile output policy. The upstream map uses 120000 for 128K models; these new model entries are campaign choices, not author-reported results.",
+      "audit": [
+        "original_prompt_tokens",
+        "input_budget_tokens",
+        "truncated",
+        "effective_prompt_tokens",
+        "tokenizer_revision"
+      ],
+      "input_budgets": {
+        "65536": 60000,
+        "131072": 120000,
+        "262144": 240000
+      }
+    },
+    "selection": {
+      "inputs": [
+        {
+          "path": "data.json",
+          "url": "https://huggingface.co/datasets/THUDM/LongBench-v2/resolve/2b48e494f2c7a2f0af81aae178e05c7e1dde0fe9/data.json",
+          "sha256": "15d61c22d92c96900b3c4948b6aeea218d3214b676a65df48e7b8555604c7fe2",
+          "size": 465490535
+        }
+      ],
+      "id_field": "_id",
+      "method": "all",
+      "population_rows": 503,
+      "selected_rows": 503,
+      "selected_ids_sha256": "81e22fb5cae5753c2bd07fe515384744c1cc65b4f67fa1eeee7b50419dde04ce"
+    }
+  },
+  "results_output": "results/<modelo>/<benchmark>/<instruct|thinking>",
+  "profile_plan": "profiles/plan.json"
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "name": "manaca-instruct",
+  "mode": "instruct",
+  "model": "AIInstituteLNCC/manaca-1b-instruct",
+  "revision": "3c8cab84799d504fe6692135e9b73f4baf68bbf5",
+  "enable_thinking": false,
+  "mode_supported": true,
+  "sampling": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": -1,
+    "min_p": 0.0,
+    "presence_penalty": 0.0,
+    "repetition_penalty": 1.0
+  },
+  "max_tokens": null,
+  "reasoning_effort": null,
+  "context_length": 4096,
+  "history_encoding": "reasoning_field",
+  "chat_template_sha256": "acb3a1606ecc169775a3998a2751567b9b48d1d0dcb0f60cc78a57aafe60c699",
+  "chat_template_kwargs": {},
+  "precision": "bfloat16",
+  "generation_stop": [
+    "\n### Instrução:",
+    "\n### Resposta:",
+    "</s>"
+  ],
+  "sampling_reference": "https://github.com/Instituto-IA-LNCC/manaca-1b-instruct/blob/main/docs/serving/llama-server.md",
+  "template_reference": "https://github.com/Instituto-IA-LNCC/manaca-1b-instruct/blob/main/docs/serving/alpacapt.jinja",
+  "output_budget_source": "Campaign max_tokens=null bounded by native 4096 context; differs from 384 model-card example and 768 serving example.",
+  "runtime_differences": [
+    "BF16 matches official Transformers benchmark; serving uses vLLM rather than Transformers.",
+    "vLLM top_k=-1 means disabled, equivalent to llama.cpp top_k=0 in published preset.",
+    "Official multi-turn Alpaca extension is used; authors note model was trained single-turn.",
+    "BOS is added only if required to match official tok(montar_prompt) token IDs.",
+    "Unsupported system/tool roles are rejected instead of silently dropped by upstream template."
+  ],
+  "references": [
+    "https://github.com/Instituto-IA-LNCC/manaca-1b-instruct/blob/main/docs/serving/llama-server.md",
+    "https://huggingface.co/AIInstituteLNCC/manaca-1b-instruct"
+  ]
+}

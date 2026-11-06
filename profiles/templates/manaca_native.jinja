@@ -1,0 +1,11 @@
+{%- if tools -%}{{ raise_exception('Manaca official template has no tool schema') }}{%- endif -%}{%- for m in messages -%}{%- if m['role'] not in ['user','assistant'] -%}{{ raise_exception('Unsupported role; never silently drop benchmark instructions') }}{%- endif -%}{%- if m.get('tool_calls') -%}{{ raise_exception('Unsupported tool history') }}{%- endif -%}{%- endfor -%}{{- bos_token + ' ' -}}{{- 'Abaixo está uma instrução que descreve uma tarefa. Escreva uma resposta que atenda adequadamente ao pedido.' -}}
+{%- for message in messages -%}
+{%- if message['role'] == 'user' -%}
+{{- '\n\n### Instrução:\n' + message['content'] -}}
+{%- elif message['role'] == 'assistant' -%}
+{{- '\n\n### Resposta:\n' + message['content'] + '</s>' -}}
+{%- endif -%}
+{%- endfor -%}
+{%- if add_generation_prompt -%}
+{{- '\n\n### Resposta:\n' -}}
+{%- endif -%}

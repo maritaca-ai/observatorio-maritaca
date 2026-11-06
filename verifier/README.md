@@ -15,6 +15,8 @@ O programa lê as respostas e os vereditos em `results/`, confere a pontuação
 individual, recalcula os agregados e compara com `resumo.json` e
 [`reported.json`](reported.json). Esse último arquivo conserva as notas finais e
 os cálculos do Observatório; não é usado como entrada para calcular as notas.
+As populações esperadas também ficam fixadas nessa referência: remover respostas
+e reduzir o contador no resumo não transforma uma execução incompleta em válida.
 
 Também confere as quatro médias — nativo brasileiro, traduzido para português,
 internacional e total — e o ranking, em 66 combinações de categoria, tamanho e

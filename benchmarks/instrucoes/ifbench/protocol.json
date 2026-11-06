@@ -1,0 +1,45 @@
+{
+  "id": "ifbench",
+  "name": "IFBench · teste completo",
+  "family": "remaining",
+  "tasks": [
+    "ifbench"
+  ],
+  "expected_counts": [
+    300
+  ],
+  "directory": "benchmarks/instrucoes/ifbench",
+  "category": "instrucoes",
+  "campaign_enabled": true,
+  "campaign_selection": "campaigns/remaining-benchmarks-proposal.json",
+  "protocol_id": "ifbench-test-full",
+  "api_judge": false,
+  "seed": 42,
+  "dataset_rows_in_git": false,
+  "evaluation": {
+    "label": "IFBench · teste completo",
+    "variant": "ifbench-test-full",
+    "cases_per_model_mode": 300,
+    "repetitions": 1,
+    "scope": "Complete public test split; native rule-based strict/loose metrics.",
+    "upstream_lock": "benchmarks/instrucoes/ifbench/upstream.lock.json",
+    "upstream_lock_sha256": "9e3e1e4322c7ad3222f0c4bc53a3223c62a6fa0168c29f8305212092ddb511af",
+    "integration_status": "integrated_validated_offline",
+    "selection": {
+      "inputs": [
+        {
+          "path": "data/IFBench_test.jsonl",
+          "sha256": "d2ada7da94a38cfe406351614c4e686846ed2da6d1b339db95fa5ead19554a4a",
+          "url": "https://raw.githubusercontent.com/allenai/IFBench/1c40f0c10d9b5c5c2f10a175a28007ebb64f7f4d/data/IFBench_test.jsonl"
+        }
+      ],
+      "id_field": "key",
+      "method": "all",
+      "population_rows": 300,
+      "selected_rows": 300,
+      "selected_ids_sha256": "c614b6804f13cfe1c8221d9f2ba364b1bf78fbe8ee385a707efd5699fa6489ef"
+    }
+  },
+  "results_output": "results/<modelo>/<benchmark>/<instruct|thinking>",
+  "profile_plan": "profiles/plan.json"
+}

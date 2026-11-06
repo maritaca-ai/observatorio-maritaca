@@ -1,0 +1,66 @@
+{
+  "benchmark": "bluex-v2",
+  "somente_resposta_final": true,
+  "references": [
+    "https://github.com/TropicAI-Research/BLUEX-V2",
+    "https://docs.maritaca.ai/"
+  ],
+  "variantes_registradas": [
+    {
+      "modelo": "sabia-4",
+      "origem": "chamada_selecionada",
+      "parametros": {
+        "text": {
+          "format": {
+            "name": "evaluation_result",
+            "schema": {
+              "additionalProperties": false,
+              "properties": {
+                "criteria_checks": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "criterion": {
+                        "type": "string"
+                      },
+                      "is_met": {
+                        "type": "boolean"
+                      },
+                      "justification": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "criterion",
+                      "is_met",
+                      "justification"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "overall_comment": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "criteria_checks",
+                "overall_comment"
+              ],
+              "type": "object"
+            },
+            "type": "json_schema"
+          }
+        }
+      },
+      "ocorrencias_selecionadas": 4125
+    },
+    {
+      "modelo": "sabia-4",
+      "origem": "protocolo_ou_metadados_disponiveis",
+      "parametros": null,
+      "ocorrencias_selecionadas": 2983
+    }
+  ],
+  "observacao": "Valores ausentes não foram inferidos. Parâmetros por chamada estão nas respostas. Ocorrências contam chamadas ou registros conforme a origem, não perguntas únicas."
+}

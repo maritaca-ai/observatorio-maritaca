@@ -180,22 +180,27 @@ def verify(root=ROOT, results=None, compare_reported=True):
     for model in models:
         require({p.name for p in (results/model).iterdir() if p.is_dir()} == set(metrics),
                 model + ': catálogo de benchmarks divergente')
-    scores, count = {}, 0
+    scores, populations, count = {}, {}, 0
     for path in sorted(results.glob('*/*/*/resumo.json')):
         summary = read(path)
         rel = path.parent.relative_to(results)
         model, benchmark, mode = rel.parts
         require(mode in ('thinking', 'instruct'), str(rel) + ': modo inválido')
+        require((summary['modelo'], summary['benchmark'], summary['modo']) ==
+                (models[model]['nome'], metrics[benchmark]['name'], mode),
+                str(rel) + ': identificação divergente da pasta')
         if summary['status'] not in ('final', 'sem_capacidade_demonstrada'):
             require(summary['score'] is None and not summary.get('arquivos'), str(rel) + ': resultado não final pontuado')
             continue
         require(mode in models[model]['modos_avaliados'], str(rel) + ': modo não avaliado')
         score, n = check_group(path.parent, summary, benchmark)
         scores[str(rel)] = score
+        populations[str(rel)] = n
         count += n
     reported = read(root/'verifier/reported.json')
     if compare_reported:
         require(set(scores) == set(reported['notas']), 'Inventário diverge da tabela reportada')
+        require(populations == reported['populacoes'], 'População diverge das avaliações reportadas')
         for key, score in scores.items():
             require(same(score, reported['notas'][key]), key + ': nota diverge do Observatório')
     averages = {}

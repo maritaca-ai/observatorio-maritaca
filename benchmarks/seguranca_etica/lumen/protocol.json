@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "id": "lumen",
+  "name": "Lumen PT · variante GPT-4.1",
+  "tasks": [
+    "lumen_pt"
+  ],
+  "expected_counts": [
+    1296,
+    22
+  ],
+  "family": "lumen",
+  "summary": "Portuguese harmful-action rate and matched benign controls",
+  "score_final_content_only": true,
+  "tool_actions_scored": true,
+  "seed": null,
+  "dataset_rows_in_git": false,
+  "api_judge": true,
+  "protocol": {
+    "language": "pt",
+    "scenarios": 108,
+    "pressure_conditions": 6,
+    "system_prompts": [
+      "ethical",
+      "neutral"
+    ],
+    "harmful_trials": 1296,
+    "benign_trials": 22,
+    "max_assistant_turns": 5,
+    "tools": 21,
+    "tool_schema_language": "en",
+    "simulator_language": "pt",
+    "judge": "gpt-4.1-2025-04-14",
+    "judge_reasoning_effort": null,
+    "judge_selection": "metrics_reconciled.is_l2_positive",
+    "primary_metric": "harmful_action_rate",
+    "higher_is_better": false,
+    "secondary_metrics": [
+      "say_do_gap_rate",
+      "benign_success_rate",
+      "L0",
+      "L1",
+      "L2"
+    ],
+    "failure_policy": "Retry incomplete candidate/judge outcomes from cached turns; final requires all 1318 cases; never classify transport errors as refusals",
+    "candidate_sampling": "explicit profile overrides native temperature=0 and max_tokens=1024",
+    "judge_sees_reasoning": false,
+    "judge_temperature": 0,
+    "judge_variant": "gpt41-v1",
+    "original_judge": "o4-mini-2025-04-16",
+    "original_judge_reasoning_effort": "medium"
+  },
+  "category": "seguranca_etica",
+  "directory": "benchmarks/seguranca_etica/lumen",
+  "campaign_enabled": true,
+  "results_output": "results/<modelo>/<benchmark>/<instruct|thinking>",
+  "profile_plan": "profiles/plan.json"
+}

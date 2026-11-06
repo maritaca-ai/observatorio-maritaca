@@ -1,0 +1,56 @@
+{
+  "sources": {
+    "lumen": {
+      "url": "https://github.com/TropicAI-Research/lumen",
+      "revision": "07347f9a4eabcfceab4db5acd9e84e83a8e8909a",
+      "code_license": "MIT",
+      "dataset_license": "CC-BY-4.0"
+    }
+  },
+  "files": {
+    "eval_v3.py": "c506996475b4f2d35ee451564d3bcc744ba2849fa1f3440a47dfd35a7b7dd593",
+    "metrics.py": "de64cbc04a80fbc1fc35450b4d6397e61edd99ee261db0b9d3fad678686cda08",
+    "metrics_reconciled.py": "c64ad5ef8097ae3ee86e3055cacabfe0c8bccb139b21e297a2a33fc6f2b5448f",
+    "score_benign_control.py": "f9f3d64da778e6de7ec1f03269ac9fb06fd35765a253dce216fe68dd3bf9cae0",
+    "benign_control.py": "5f9501d1c036710770f74832c4cf6eedd1c851afab9a516df74a3dcc8d63c758",
+    "benign_scenarios.py": "3ac1533eec5ddafc159412900323524f15141d70ede394952b1c868a1f6061c7",
+    "all_scenarios_reduced.py": "e18f6da2a3af4c3b2be5b7faf237c2f57ca6a3fe7e2ffeb08f1eea60c48734f0",
+    "tool/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tool/generic_tools.py": "f7d49794573f4e4cf9c1859e281adb7a05e5d34e8e018006273fc6dcbd4c4a7b",
+    "tool/simulated_responses.py": "a2613d04b1c2e1c60ee9bd5dc1dba0d2328d2cb5ac1eab8ed63e767db1d0a741",
+    "data/provenance/original_source/judge_new_l2.py": "e10f2e261de2b97bab4024ffa86cfa5ac11224900fc73a37ee96bd8c81fd5c6e",
+    "questions_v3_pt.json": "1318a2af7e0b47877d40f053374e12a82d7b1a7a4ff90315c53fed629d728689",
+    "benign_control_questions/questions_benign_control_pt.json": "128c7c0936d648418960a665e0a03d2c2d9f2747c420023041b6b3b053db4b31",
+    "benign_translations.json": "f82eecf0bc58e67dec73aa95188fbcb342379774715c334aa3aaac139c835066"
+  },
+  "protocol": {
+    "language": "pt",
+    "scenarios": 108,
+    "pressure_conditions": 6,
+    "system_prompts": [
+      "ethical",
+      "neutral"
+    ],
+    "harmful_trials": 1296,
+    "benign_trials": 22,
+    "max_assistant_turns": 5,
+    "tools": 21,
+    "tool_schema_language": "en",
+    "simulator_language": "pt",
+    "judge": "o4-mini-2025-04-16",
+    "judge_reasoning_effort": "medium",
+    "judge_selection": "metrics_reconciled.is_l2_positive",
+    "primary_metric": "harmful_action_rate",
+    "higher_is_better": false,
+    "secondary_metrics": [
+      "say_do_gap_rate",
+      "benign_success_rate",
+      "L0",
+      "L1",
+      "L2"
+    ],
+    "failure_policy": "Retry incomplete candidate/judge outcomes from cached turns; final requires all 1318 cases; never classify transport errors as refusals",
+    "candidate_sampling": "explicit profile overrides native temperature=0 and max_tokens=1024",
+    "judge_sees_reasoning": false
+  }
+}
