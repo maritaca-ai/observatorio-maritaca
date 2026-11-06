@@ -1,0 +1,436 @@
+[
+  {
+    "id": "000882",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNa Hora do Almoço Num restaurante da cidade você tem à disposição oito tipos de acompanhamento, A, B, C, D, E, F, G e H, e deve escolher no mínimo quatro deles para compor o seu prato. As seguintes condições restringem a sua escolha: • se A é escolhido então B não pode ser escolhido; • se ambos C e F são escolhidos então A também é escolhido; • se D é escolhido então E também é escolhido; • se ambos F e G são escolhidos então B também é escolhido; • se H é escolhido então C também é escolhido. Se C não é escolhido como acompanhamento então qual dos acompanhamentos também não pode ser escolhido?\nA. A\nB. B\nC. E\nD. F\nE. H",
+    "resposta": "Resposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 227,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "E",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNa Hora do Almoço Num restaurante da cidade você tem à disposição oito tipos de acompanhamento, A, B, C, D, E, F, G e H, e deve escolher no mínimo quatro deles para compor o seu prato. As seguintes condições restringem a sua escolha: • se A é escolhido então B não pode ser escolhido; • se ambos C e F são escolhidos então A também é escolhido; • se D é escolhido então E também é escolhido; • se ambos F e G são escolhidos então B também é escolhido; • se H é escolhido então C também é escolhido. Se C não é escolhido como acompanhamento então qual dos acompanhamentos também não pode ser escolhido?\nA. A\nB. B\nC. E\nD. F\nE. H"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 222,
+      "total_tokens": 227,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "000276",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNa Hora do Almoço Num restaurante da cidade você tem à disposição oito tipos de acompanhamento, A, B, C, D, E, F, G e H, e deve escolher no mínimo quatro deles para compor o seu prato. As seguintes condições restringem a sua escolha: • se A é escolhido então B não pode ser escolhido; • se ambos C e F são escolhidos então A também é escolhido; • se D é escolhido então E também é escolhido; • se ambos F e G são escolhidos então B também é escolhido; • se H é escolhido então C também é escolhido. Qual das seguintes opções é uma lista completa e correta de acompanhamentos que podem ser escolhidos?\nA. A, C, D, E\nB. A, D, F, G, H\nC. B, C, D, G, H\nD. B, C, E, F, G\nE. B, F, G, H",
+    "resposta": "Para determinar qual opção lista de acompanhamentos não viola nenhuma das condições, vamos analisar cada uma delas com base nas restrições dadas:\n\n- (1) Se A for escolhido → B **não** pode ser escolhido  \n- (2) Se C e F forem escolhidos → A **deve** ser escolhido  \n- (3) Se D for escolhido → E **também** deve ser escolhido  \n- (4) Se F e G forem escolhidos → B **também** deve ser escolhido  \n- (5) Se H for escolhido → C **também** deve ser escolhido\n\nVamos analisar cada opção:\n\n**A. A, C, D, E**\n\n- A está presente → por (1), B **não** deve estar presente → OK (B não está)\n- C e F estão presentes? → F **não** está → condição (2) não se aplica → OK\n- D está presente → por (3), E **deve** estar presente → E está presente → OK\n- F e G estão presentes? → F **não** está → condição (4) não se aplica → OK\n- H está presente? → H **não** está → condição (5) não se aplica → OK\n\n**Nenhuma condição violada.**  \n→ Esta lista é **válida**.\n\n**B. A, D, F, G, H**\n\n- A está presente → B **não** deve estar presente → OK (B não está)\n- C e F estão presentes? → C **não** está → condição (2) não se aplica → OK\n- D está presente → por (3), E **deve** estar presente → mas E **não** está → **violação!**\n\n→ **Invalidação.**\n\n**C. B, C, D, G, H**\n\n- A está presente? → A **não** está → condição (1) não se aplica → OK\n- C e F estão presentes? → F **não** está → condição (2) não se aplica → OK\n- D está presente → por (3), E **deve** estar presente → E **não** está → **violação!**\n\n→ **Invalidação.**\n\n**D. B, C, E, F, G**\n\n- A está presente? → A **não** está → condição (1) não se aplica → OK  \n- C e F estão presentes → por (2), A **deve** estar presente → mas A **não** está → **violação!**\n\n→ **Invalidação.**\n\n**E. B, F, G, H**\n\n- A está presente? → A **não** está → condição (1) não se aplica → OK  \n- C e F estão presentes? → C **não** está → condição (2) não se aplica → OK  \n- D está presente? → D **não** está → condição (3) não se aplica → OK  \n- F e G estão presentes → por (4), B **deve** estar presente → B está presente → OK  \n- H está presente → por (5), C **deve** estar presente → mas C **não** está → **violação!**\n\n→ **Invalidação.**\n\n**Somente a alternativa A atende a todas as restrições.**\n\nResposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 986,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNa Hora do Almoço Num restaurante da cidade você tem à disposição oito tipos de acompanhamento, A, B, C, D, E, F, G e H, e deve escolher no mínimo quatro deles para compor o seu prato. As seguintes condições restringem a sua escolha: • se A é escolhido então B não pode ser escolhido; • se ambos C e F são escolhidos então A também é escolhido; • se D é escolhido então E também é escolhido; • se ambos F e G são escolhidos então B também é escolhido; • se H é escolhido então C também é escolhido. Qual das seguintes opções é uma lista completa e correta de acompanhamentos que podem ser escolhidos?\nA. A, C, D, E\nB. A, D, F, G, H\nC. B, C, D, G, H\nD. B, C, E, F, G\nE. B, F, G, H"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 257,
+      "total_tokens": 986,
+      "completion_tokens": 729,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "003832",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNa Hora do Almoço Num restaurante da cidade você tem à disposição oito tipos de acompanhamento, A, B, C, D, E, F, G e H, e deve escolher no mínimo quatro deles para compor o seu prato. As seguintes condições restringem a sua escolha: • se A é escolhido então B não pode ser escolhido; • se ambos C e F são escolhidos então A também é escolhido; • se D é escolhido então E também é escolhido; • se ambos F e G são escolhidos então B também é escolhido; • se H é escolhido então C também é escolhido. Qual é o maior número de acompanhamentos que podem ser escolhidos obedecendo as restrições?\nA. 4\nB. 5\nC. 6\nD. 7\nE. 8",
+    "resposta": "Para maximizar o número de acompanhamentos escolhidos, precisamos selecionar o maior conjunto de {A, B, C, D, E, F, G, H} que atenda a todas as restrições:\n\n1. **\\$A \\to \\neg B\\$** – se A é escolhido, B não pode ser escolhido.  \n2. **\\$(C,F) \\to A\\$** – se C **e** F são escolhidos, então A também é escolhido.  \n3. **\\$D \\to E\\$** – se D é escolhido, E também é escolhido.  \n4. **\\$(F,G) \\to B\\$** – se F **e** G são escolhidos, então B também é escolhido.  \n5. **\\$H \\to C\\$** – se H é escolhido, C também é escolhido.  \n\nVamos tentar construir um conjunto o mais grande possível.\n\n- **Deixe H fora.**  \n  Isso evita a precisão de incluir C (…H → C…).  \n\n- **Não use A.**  \n  Se usássemos A, seria necessário excluir B (A → ¬B) e, se quisermos incluir C, seria necessário incluir A (C e F → A).  \n  Como A está fora, B pode ser usado (exceto se estivermos usando C & F juntos).  \n\n- **Use C e G juntos:**  \n  - C exige apenas que H esteja excluído (que já está).  \n  - Implica B (A não está sendo usado, então B está livre).  \n  - Usar A seria inútil, então deixe A fora.  \n\nSe usarmos C, precisamos decidir se queremos também F e G:\n\n- **Opção 1 – não usar F**  \n  Tomamos C, deixamos F fora.  \n  - Sem C & F, a restrição ... (C,F) → A ... nunca se aplica.  \n  - Use G → exige B (B → <okeyin> OK ). B pode ser usado.  \n\nSe C **e** G **e** B, tudo bem (não há regra proibindo C + G + B).  \n\n- **Opção 2 – usar F**  \n  Se quisermos C e F, o segundo passo força A.  \n  Se C, F e A forem escolhidos, então B também é obrigado (porque não pode ter B porque A está presente, mas era impossível satisfazer essa sequência).  \n  Portanto, **incluir F e C implicaria o uso de A, o que, por sua vez, forçaria B, mas isso violaria a regra A → ¬B**.  \n  Assim, **não podemos ter C e F na lista** se A estiver fora.\n\nPortanto, a melhor abordagem é excluir F e H (para não criar dependências sobre A) e nos concentramos em C, B, G.  \n\nAgora, considere as restrições envolvendo D e E:\n\n- Seus termos: ...D → E ...  \n  Qualquer f? Então o follow-up? O mesmo.  \n  (nem D, nem E; somente o perfil, não há impeachment)\n\nNenhuma das demais restrições se preocupa com D ou E, então podemos usá-los livremente (desde que E seja usado se D for usado).\n\nPodemos, portanto, incluir {A, B, C, D, E, G, H} **se tivermos C↔H e, ainda assim, C≠F, e omitir A**.\n\nAdmitindo que não vamos usar A (para eliminar B), vamos reconsiderar meticulosamente: usaremos C (que exige H como complemento? sim, H → C, mas C não precisa de H; C apenas apóia A e B, mas nem precisa de H), deixaremos F fora e vamos usar G e B por causa da implicação ... (F, G) → B ...  \n\nSuponha que escolhemos: C, G, B, D, E\n\nTodas as condições atendidas:\n\n- C ∈ conjunto: OK. (Não temos F, então restrição não se aplica).  \n- G ∈ conjunto: OK.  \n- B ∈ conjunto: OK.  \n- D ∈EA: OK.  \n- E ∈clusion: OK (D →E). D →E do cumprimento está satisfeito; não tem nenhuma contrapartida contra E.\n\nO que sobre A? Pode ser omitido; não tem que ser inclusive.\n\nInclúu A? Se incluirmos A, então precisamos excluir B (∀A → ¬B). Então provavelmente, se estamos usando A, não usamos B.\n\nMas se deixamos A embora, temos mais liberdade.\n\nNúmero de membros: C(1), G(1), GH, ... (pode ser considerado), B, E ... total = 5? Vamos contar melhor.\n\nCombinando contas com omissão de A e H:\n\n- C → OK\n- G → ok\n- B → OK\n- D → OK\n- E → OK\n\nTotal = 5 (C, G, B, D, E). Dois excluídos: A e H.\n\nMas lembrando que usamos H? Estamos buscando um conjunto o mais grande possível. Precisamos ver se podemos existir universalmente A e H presentes, ou, melhor ainda, manter H fora, com A incluída, mas usando D, E?",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 1443,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": null,
+        "gold": "C",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNa Hora do Almoço Num restaurante da cidade você tem à disposição oito tipos de acompanhamento, A, B, C, D, E, F, G e H, e deve escolher no mínimo quatro deles para compor o seu prato. As seguintes condições restringem a sua escolha: • se A é escolhido então B não pode ser escolhido; • se ambos C e F são escolhidos então A também é escolhido; • se D é escolhido então E também é escolhido; • se ambos F e G são escolhidos então B também é escolhido; • se H é escolhido então C também é escolhido. Qual é o maior número de acompanhamentos que podem ser escolhidos obedecendo as restrições?\nA. 4\nB. 5\nC. 6\nD. 7\nE. 8"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 226,
+      "total_tokens": 1443,
+      "completion_tokens": 1217,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001777",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNa Hora do Almoço Num restaurante da cidade você tem à disposição oito tipos de acompanhamento, A, B, C, D, E, F, G e H, e deve escolher no mínimo quatro deles para compor o seu prato. As seguintes condições restringem a sua escolha: • se A é escolhido então B não pode ser escolhido; • se ambos C e F são escolhidos então A também é escolhido; • se D é escolhido então E também é escolhido; • se ambos F e G são escolhidos então B também é escolhido; • se H é escolhido então C também é escolhido. Se H e G são escolhidos então qual dos acompanhamentos não pode ser escolhido?\nA. A\nB. B\nC. D\nD. E\nE. F",
+    "resposta": "Resposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 223,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "E",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNa Hora do Almoço Num restaurante da cidade você tem à disposição oito tipos de acompanhamento, A, B, C, D, E, F, G e H, e deve escolher no mínimo quatro deles para compor o seu prato. As seguintes condições restringem a sua escolha: • se A é escolhido então B não pode ser escolhido; • se ambos C e F são escolhidos então A também é escolhido; • se D é escolhido então E também é escolhido; • se ambos F e G são escolhidos então B também é escolhido; • se H é escolhido então C também é escolhido. Se H e G são escolhidos então qual dos acompanhamentos não pode ser escolhido?\nA. A\nB. B\nC. D\nD. E\nE. F"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 218,
+      "total_tokens": 223,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "003887",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nDesenvolvimento de Jogos Uma empresa deve formar grupos de desenvolvimento para os jogos de computador G1, G2 e G3. Cada grupo deve incluir no mínimo um dos programadores L e M e exatamente dois dos artistas gráficos R, S, T e V. Cada programador e cada artista é associado a no mínimo um grupo de acordo com as restrições: • nenhum programador pode estar associado ao mesmo tempo aos jogos G1 e G2; • nenhum artista pode estar associado ao mesmo tempo aos jogos G2 e G3; • S não pode estar no mesmo grupo que T; • V está num grupo com L; • V está escalado para o jogo G2; • S está escalado para o jogo G1. Qual das opções seguintes é uma lista completa e correta de grupos e seus respectivos jogos a serem desenvolvidos?\nA. G1: M,V,S G2: L,V,R G3: M,T,R.\nB. G1: M,V,R G2: L,V,R G3: M,S,T.\nC. G1: L,V,R G2: L,S,R G3: M,T,V.\nD. G1: L,V,S G2: M,V,S G3: L,T,R.\nE. G1: L,S,R G2: M,V,T G3: M,S,R.",
+    "resposta": "Resposta: A",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 335,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "D",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nDesenvolvimento de Jogos Uma empresa deve formar grupos de desenvolvimento para os jogos de computador G1, G2 e G3. Cada grupo deve incluir no mínimo um dos programadores L e M e exatamente dois dos artistas gráficos R, S, T e V. Cada programador e cada artista é associado a no mínimo um grupo de acordo com as restrições: • nenhum programador pode estar associado ao mesmo tempo aos jogos G1 e G2; • nenhum artista pode estar associado ao mesmo tempo aos jogos G2 e G3; • S não pode estar no mesmo grupo que T; • V está num grupo com L; • V está escalado para o jogo G2; • S está escalado para o jogo G1. Qual das opções seguintes é uma lista completa e correta de grupos e seus respectivos jogos a serem desenvolvidos?\nA. G1: M,V,S G2: L,V,R G3: M,T,R.\nB. G1: M,V,R G2: L,V,R G3: M,S,T.\nC. G1: L,V,R G2: L,S,R G3: M,T,V.\nD. G1: L,V,S G2: M,V,S G3: L,T,R.\nE. G1: L,S,R G2: M,V,T G3: M,S,R."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 330,
+      "total_tokens": 335,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001843",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nDesenvolvimento de Jogos Uma empresa deve formar grupos de desenvolvimento para os jogos de computador G1, G2 e G3. Cada grupo deve incluir no mínimo um dos programadores L e M e exatamente dois dos artistas gráficos R, S, T e V. Cada programador e cada artista é associado a no mínimo um grupo de acordo com as restrições: • nenhum programador pode estar associado ao mesmo tempo aos jogos G1 e G2; • nenhum artista pode estar associado ao mesmo tempo aos jogos G2 e G3; • S não pode estar no mesmo grupo que T; • V está num grupo com L; • V está escalado para o jogo G2; • S está escalado para o jogo G1. Qual dos seguintes pode somente estar em um dos grupos?\nA. S\nB. T\nC. R\nD. V\nE. L",
+    "resposta": "Resposta: B",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 236,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nDesenvolvimento de Jogos Uma empresa deve formar grupos de desenvolvimento para os jogos de computador G1, G2 e G3. Cada grupo deve incluir no mínimo um dos programadores L e M e exatamente dois dos artistas gráficos R, S, T e V. Cada programador e cada artista é associado a no mínimo um grupo de acordo com as restrições: • nenhum programador pode estar associado ao mesmo tempo aos jogos G1 e G2; • nenhum artista pode estar associado ao mesmo tempo aos jogos G2 e G3; • S não pode estar no mesmo grupo que T; • V está num grupo com L; • V está escalado para o jogo G2; • S está escalado para o jogo G1. Qual dos seguintes pode somente estar em um dos grupos?\nA. S\nB. T\nC. R\nD. V\nE. L"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 231,
+      "total_tokens": 236,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "006269",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nDesenvolvimento de Jogos Uma empresa deve formar grupos de desenvolvimento para os jogos de computador G1, G2 e G3. Cada grupo deve incluir no mínimo um dos programadores L e M e exatamente dois dos artistas gráficos R, S, T e V. Cada programador e cada artista é associado a no mínimo um grupo de acordo com as restrições: • nenhum programador pode estar associado ao mesmo tempo aos jogos G1 e G2; • nenhum artista pode estar associado ao mesmo tempo aos jogos G2 e G3; • S não pode estar no mesmo grupo que T; • V está num grupo com L; • V está escalado para o jogo G2; • S está escalado para o jogo G1. Se T está num grupo com R, qual das seguintes afirmações é verdadeira?\nA. L desenvolve o jogo G2.\nB. M desenvolve o jogo G3.\nC. R desenvolve o jogo G1.\nD. R desenvolve o jogo G3.\nE. M desenvolve o jogo G1.",
+    "resposta": "Resposta: C",
+    "parametros_inferencia": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 273,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "D",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nDesenvolvimento de Jogos Uma empresa deve formar grupos de desenvolvimento para os jogos de computador G1, G2 e G3. Cada grupo deve incluir no mínimo um dos programadores L e M e exatamente dois dos artistas gráficos R, S, T e V. Cada programador e cada artista é associado a no mínimo um grupo de acordo com as restrições: • nenhum programador pode estar associado ao mesmo tempo aos jogos G1 e G2; • nenhum artista pode estar associado ao mesmo tempo aos jogos G2 e G3; • S não pode estar no mesmo grupo que T; • V está num grupo com L; • V está escalado para o jogo G2; • S está escalado para o jogo G1. Se T está num grupo com R, qual das seguintes afirmações é verdadeira?\nA. L desenvolve o jogo G2.\nB. M desenvolve o jogo G3.\nC. R desenvolve o jogo G1.\nD. R desenvolve o jogo G3.\nE. M desenvolve o jogo G1."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 268,
+      "total_tokens": 273,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "motivo_encerramento": "stop"
+  }
+]
