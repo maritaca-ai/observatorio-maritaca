@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta
+      name="description"
+      content="Explore modelos, resultados e protocolos de avaliação da Maritaca."
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'"
+    />
+    <meta name="referrer" content="no-referrer" />
+    <title>Observatório de modelos · Maritaca</title>
+    <link rel="icon" href="assets/mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="experience.css" />
+    <link rel="stylesheet" href="home.css" />
+    <script src="model-controls.js" defer></script>
+    <script src="averages.js" defer></script>
+    <script src="experience.js" defer></script>
+    <script src="home.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Pular para o conteúdo</a>
+    <header class="site-header">
+      <a
+        class="brand"
+        href="#inicio"
+        aria-label="Maritaca · Observatório, início"
+        ><img src="assets/logo.png" alt="Maritaca AI" /><span
+          class="brand-divider"
+        ></span
+        ><span>observatório</span></a
+      >
+      <nav aria-label="Navegação principal" id="navigation">
+        <a href="#inicio" data-view="inicio">Início</a>
+        <a href="#descobrir" data-view="descobrir">Respostas</a>
+        <a href="#panorama" data-view="panorama">Todos os resultados</a>
+        <a href="#comparar" data-view="comparar">Comparar</a>
+        <a href="#modelos" data-view="modelos">Modelos</a>
+        <a href="#metodo" data-view="metodo">Como avaliamos</a>
+      </nav>
+    </header>
+    <main id="main">
+      <div id="app">
+        <div class="loading" role="status">Carregando resultados…</div>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <img src="assets/mark.svg" alt="" width="28" height="28" />
+      <div>
+        <strong>Observatório Maritaca</strong>
+        <p>Maritaca AI · <span id="snapshot-date"></span></p>
+      </div>
+      <a href="#metodo">Dados e metodologia ↗</a>
+    </footer>
+    <dialog
+      id="detail-dialog"
+      class="detail-dialog"
+      aria-labelledby="detail-title"
+    >
+      <button class="close-dialog" aria-label="Fechar detalhes">×</button>
+      <div id="detail-content"></div>
+    </dialog>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <noscript
+      >Ative JavaScript para explorar. Os agregados estão disponíveis em
+      <a href="data.json">data.json</a>.</noscript
+    >
+  </body>
+</html>
