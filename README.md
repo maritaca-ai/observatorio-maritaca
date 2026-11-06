@@ -1,11 +1,14 @@
-# S5-nano
+# Observatório Maritaca
 
-Modelo de linguagem da Maritaca AI.
+**11 modelos de linguagem · 22 benchmarks · 1.077.954 instâncias de avaliação**
 
-Aqui estão as avaliações finais do S5-nano e dos dez modelos comparados com ele:
-**426 conjuntos, 1.079.754 respostas selecionadas e 425 notas numéricas**.
-O conjunto sem capacidade demonstrada permanece sem nota. Os controles benignos
-do Lumen ficam separados das respostas que compõem a taxa de dano.
+A Maritaca avaliou o S5-nano e dez modelos brasileiros e internacionais em tarefas
+de conversa, seguimento de instruções, segurança, conhecimento, uso de ferramentas,
+saída estruturada e contexto longo, incluindo testes de cultura brasileira,
+direito e medicina. A comparação reúne avaliações nos modos Thinking e Instruct.
+
+Este repositório contém as notas, as respostas dos modelos, os julgamentos e os
+protocolos usados em cada benchmark.
 
 <!-- BEGIN VERIFIED RESULTS -->
 
