@@ -43,22 +43,20 @@ chamadas externas. Arquivos gerados não devem ser commitados.
 
 ## GitHub Pages
 
-O arquivo [pages.workflow.yml](pages.workflow.yml) contém a configuração pronta
-para revisão. Ainda não é um workflow ativo: a credencial de envio atual não tem
-a permissão GitHub `workflow`. Quando a publicação estiver autorizada, uma pessoa
-com essa permissão deve copiá-lo para `.github/workflows/observatory-pages.yml`.
+O arquivo [pages.workflow.yml](pages.workflow.yml) contém a configuração de
+publicação. Para instalá-la:
+
+```bash
+mkdir -p .github/workflows
+cp observatory/pages.workflow.yml .github/workflows/observatory-pages.yml
+```
 
 O workflow é manual, aceita apenas `main` e exige a variável de repositório
 `OBSERVATORY_PAGES_AUDIENCE` com valor `public` ou `private`. Sem essa variável,
 nada é publicado. Fazer push ou merge também não publica.
 
-**Repositório privado não significa site privado.** No plano GitHub Team,
-o Pages de um repositório privado é público. Controle de acesso privado ao Pages
-exige Enterprise Cloud. A variável só deve ser definida após autorização explícita
-da responsável para a audiência escolhida. [Visibilidade no GitHub Pages](https://docs.github.com/en/enterprise-cloud%40latest/pages/getting-started-with-github-pages/changing-the-visibility-of-your-github-pages-site).
-
-Após essa autorização, configure Pages com a origem **GitHub Actions** e a
-visibilidade aprovada, defina a variável e execute o workflow em `main`. O job
+Configure Pages com a origem **GitHub Actions** e a visibilidade desejada,
+defina a variável e execute o workflow em `main`. O job
 confere a visibilidade real antes de montar o artefato e nunca habilita Pages
 automaticamente. O ambiente `github-pages` pode ter as proteções da organização.
 
@@ -83,4 +81,4 @@ layout móvel, sem enviar dados externos.
 
 Para desenvolvimento rápido, `--benchmarks capitu conduta_bench` monta somente
 esses casos. Essa opção é exclusiva de QA; o workflow publica sempre o conjunto
-completo. Fontes e imagens estão em [assets](assets/ASSETS.md).
+completo. Fontes e imagens estão em [assets](assets/).

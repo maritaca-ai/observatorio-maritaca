@@ -1,6 +1,6 @@
 # S5-nano
 
-Modelo de linguagem da Maritaca AI. Este repositório permanece **privado**.
+Modelo de linguagem da Maritaca AI.
 
 Aqui estão as avaliações finais do S5-nano e dos dez modelos comparados com ele:
 **426 conjuntos, 1.079.754 respostas selecionadas e 425 notas numéricas**.
