@@ -51,11 +51,11 @@ def install(benchmark,cache,output,profile,model,api_base,marca_snapshot=None,ta
  else:inputs=prepare(spec['family'],cache)
  root=Path(output)/benchmark;runtime=root/'runtime';runtime.mkdir(parents=True,exist_ok=True)
  files={str(p.relative_to(REPO)):sha(p) for folder in ['src/s5_nano','benchmarks','locks'] for p in (REPO/folder).rglob('*') if p.is_file() and '__pycache__' not in p.parts}
- identity=dict(schema_version=1,benchmark=spec,model=model,profile=profile,api_base=api_base,input_receipt_sha256=sha(inputs/'prepared.json'),code=files,dependencies_sha256=sha(REPO/'requirements.lock'),scorer_dependencies_sha256=sha(REPO/'requirements-scorer.lock'))
+ identity=dict(schema_version=1,benchmark=spec,model=model,profile=profile,api_base=api_base,input_receipt_sha256=sha(inputs/'prepared.json'),code=files,dependencies_sha256=sha(REPO/'envs/requirements.lock'),scorer_dependencies_sha256=sha(REPO/'envs/requirements-scorer.lock'))
  identity['marca_snapshot_sha256']=sha(marca_snapshot) if marca_snapshot and benchmark=='marca' else None
- if spec['family']=='plus':identity['plus_dependencies_sha256']=sha(REPO/'requirements-plus.lock')
- if spec['family']=='remaining':identity['remaining_dependencies_sha256']=sha(REPO/'requirements-remaining.lock')
- if benchmark=='harmbench':identity['harm_scorer_dependencies_sha256']=sha(REPO/'requirements-harm-scorer.lock')
+ if spec['family']=='plus':identity['plus_dependencies_sha256']=sha(REPO/'envs/requirements-plus.lock')
+ if spec['family']=='remaining':identity['remaining_dependencies_sha256']=sha(REPO/'envs/requirements-remaining.lock')
+ if benchmark=='harmbench':identity['harm_scorer_dependencies_sha256']=sha(REPO/'envs/requirements-harm-scorer.lock')
  freeze(root/'run_manifest.json',identity);freeze(runtime/'run_manifest.json',identity)
  if marca_snapshot and benchmark=='marca':
   destination=root/'results/marca_public/frozen_jobs.json';destination.parent.mkdir(parents=True,exist_ok=True)

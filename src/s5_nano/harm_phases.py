@@ -118,7 +118,7 @@ def score(source, classifier, url, scorer_python):
                                 ('scorer_dependencies_sha256', 'requirements-scorer.lock'),
                                 ('remaining_dependencies_sha256', 'requirements-remaining.lock'),
                                 ('harm_scorer_dependencies_sha256', 'requirements-harm-scorer.lock')]:
-            if sha(REPO / filename) != manifest[field]:
+            if sha(REPO / 'envs' / filename) != manifest[field]:
                 raise ValueError('HarmBench dependency lock changed')
         run = Run(source / 'runtime', 'harmbench')
         verify_generation(run)

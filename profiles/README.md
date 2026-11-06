@@ -26,7 +26,8 @@ registrado não significa que o provedor usou um valor conhecido.
 ## Preparar o ambiente
 
 É necessário Linux, `uv` e espaço para os dados públicos. As bibliotecas estão
-fixadas nos arquivos `requirements*.lock`. As instalações ficam neste checkout:
+fixadas nos arquivos `envs/requirements*.lock`. A função de cada ambiente está em
+[`envs/README.md`](../envs/README.md). As instalações ficam neste checkout:
 
 ```bash
 bash scripts/setup.sh

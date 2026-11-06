@@ -12,6 +12,7 @@ do Lumen ficam separados das respostas que compõem a taxa de dano.
 | [results](results/README.md) | Respostas, julgamentos, parâmetros, tokens, custos e notas finais. |
 | [benchmarks](benchmarks/README.md) | 22 implementações utilizadas, com fontes, revisões, protocolos e adaptações. |
 | [profiles](profiles/README.md) | Perfis de cada modelo e modo, protocolos dos juízes e matriz de execução. |
+| [envs](envs/README.md) | Dependências e versões fixadas de cada ambiente. |
 | [verifier](verifier/README.md) | Conferência local das notas, médias, cobertura e rankings do Observatório. |
 
 ```text
@@ -27,6 +28,7 @@ results/
 benchmarks/<categoria>/<benchmark>/fork/
 profiles/models/<modelo>/
 profiles/judges/
+envs/
 verifier/
 run_all.sh
 ```
@@ -34,7 +36,7 @@ run_all.sh
 Para conferir o que está reportado, sem acessar APIs ou o Observatório:
 
 ```bash
-python -m pip install -r requirements.txt
+python -m pip install -r envs/requirements.txt
 python -m verifier
 ```
 
