@@ -1,0 +1,84 @@
+name: Observatório · GitHub Pages
+
+# Publication is deliberate. Pushing or merging never publishes the site.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: observatory-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    permissions:
+      contents: read
+      pages: read
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      (vars.OBSERVATORY_PAGES_AUDIENCE == 'public' ||
+       vars.OBSERVATORY_PAGES_AUDIENCE == 'private')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - name: Conferir a visibilidade autorizada
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          AUDIENCE: ${{ vars.OBSERVATORY_PAGES_AUDIENCE }}
+        run: |
+          gh api "repos/$REPOSITORY/pages" > "$RUNNER_TEMP/pages.json"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          pages = json.loads((Path(os.environ['RUNNER_TEMP']) / 'pages.json').read_text())
+          expected = os.environ['AUDIENCE'] == 'public'
+          if pages.get('public') is not expected or pages.get('build_type') != 'workflow':
+              raise SystemExit('A visibilidade/configuração do Pages difere da autorização.')
+          PY
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /README.md
+            /observatory/
+            /verifier/
+            /profiles/
+            /benchmarks/catalog.json
+            /benchmarks/metrics.json
+            /envs/requirements.txt
+      - name: Baixar objetos finais sem materializar 16 GB de respostas
+        run: git fetch --no-filter --refetch --no-tags --depth=1 origin "$GITHUB_SHA"
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r envs/requirements.txt
+      - run: python -m unittest discover -s observatory/tests -p 'test_*.py'
+      - run: node --test observatory/tests/case-performance.test.cjs
+      - name: Construir e verificar todas as notas e respostas
+        run: python observatory/build.py --from-git --output .site
+      - name: Conferir médias e posições calculadas pelo JavaScript
+        run: node observatory/tests/verify-averages.cjs .site/data.json
+      - name: Conferir as tabelas do README
+        run: python -m verifier.export_readme --check
+      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: .site
+          retention-days: 1
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar o artefato verificado
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
