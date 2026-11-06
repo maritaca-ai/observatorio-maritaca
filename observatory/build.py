@@ -16,7 +16,7 @@ from observatory.repository import Repository
 from verifier.scores import aggregate
 from verifier.verify import item_score, same, calculate_averages
 
-GITHUB = 'https://github.com/maritaca-ai/s5-nano'
+GITHUB = 'https://github.com/maritaca-ai/observatorio-maritaca'
 
 
 def encoded(value):
