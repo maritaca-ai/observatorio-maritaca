@@ -1,0 +1,38 @@
+{
+  "schema_version": 2,
+  "name": "lfm3-1.7b-instruct",
+  "mode": "instruct",
+  "model": "LiquidAI/LFM3-1.7B",
+  "revision": "ac2586a34f1a1c03329dbdcdefabd8b6478ddaa7",
+  "enable_thinking": false,
+  "mode_supported": true,
+  "sampling": {
+    "min_p": 0.0,
+    "presence_penalty": 0.0,
+    "repetition_penalty": 1.1,
+    "temperature": 0.1,
+    "top_k": 50,
+    "top_p": 1.0
+  },
+  "max_tokens": null,
+  "reasoning_effort": null,
+  "context_length": 262144,
+  "reasoning_parser": "qwen3",
+  "tool_parser": "qwen3_coder",
+  "chat_template_sha256": "f45005c50cd2a97329722bf3a2dee9f16c04cdf825a589b280fb7e99e6827818",
+  "history_encoding": "reasoning_field",
+  "chat_template_kwargs": {
+    "preserve_thinking": false
+  },
+  "history_policy": "Native template with thinking explicitly disabled; do not synthesize or reuse reasoning traces",
+  "native_defaults_overridden": true,
+  "sampling_reference": "https://huggingface.co/LiquidAI/LFM3-1.7B/blob/main/README.md",
+  "sampling_selection": "Author general-purpose recommendations; unspecified filters use explicit neutral settings or published generation_config defaults",
+  "output_budget_source": "Campaign: no artificial output cap; bounded by the native model context",
+  "precision": "bfloat16",
+  "mode_note": "Author-supported enable_thinking=false; authors warn that non-reasoning can be inconsistent. Validate actual outputs before benchmark generation.",
+  "references": [
+    "https://huggingface.co/LiquidAI/LFM3-1.7B/blob/main/README.md",
+    "https://huggingface.co/LiquidAI/LFM3-1.7B"
+  ]
+}

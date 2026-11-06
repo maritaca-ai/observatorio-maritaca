@@ -1,0 +1,61 @@
+{
+  "id": "sob",
+  "name": "SOB · completo",
+  "family": "remaining",
+  "tasks": [
+    "sob"
+  ],
+  "expected_counts": [
+    5324
+  ],
+  "directory": "benchmarks/saida_estruturada/sob",
+  "category": "saida_estruturada",
+  "campaign_enabled": true,
+  "campaign_selection": "campaigns/remaining-benchmarks-proposal.json",
+  "protocol_id": "sob-full-text-ocr-transcripts",
+  "api_judge": false,
+  "dataset_rows_in_git": false,
+  "evaluation": {
+    "label": "SOB · completo",
+    "variant": "sob-full-text-ocr-transcripts",
+    "cases_per_model_mode": 5324,
+    "repetitions": 1,
+    "scope": "5000 text,209 document OCR,115 audio transcripts already public. Native deterministic scoring; free generation without added constrained decoding.",
+    "upstream_lock": "benchmarks/saida_estruturada/sob/upstream.lock.json",
+    "upstream_lock_sha256": "d4aa4fc7b7309a3668f4189fd44abdc8546d2d69406489aad14a2d17c4dcf4b0",
+    "integration_status": "integrated_validated_offline",
+    "selection": {
+      "inputs": [
+        {
+          "path": "audio/train-00000-of-00001.parquet",
+          "url": "https://huggingface.co/datasets/interfaze-ai/sob/resolve/c118e38abdef6a8e1beba183405c70b28ff7d5a8/audio/train-00000-of-00001.parquet",
+          "sha256": "d068de08f9cec7cd038a97cb9d8604e6df0e8b8bf1ca1eb3d28a1390776cc7f8",
+          "size": 2632708,
+          "modality": "audio"
+        },
+        {
+          "path": "data/test-00000-of-00001.parquet",
+          "url": "https://huggingface.co/datasets/interfaze-ai/sob/resolve/c118e38abdef6a8e1beba183405c70b28ff7d5a8/data/test-00000-of-00001.parquet",
+          "sha256": "b86a475557aa65028a0d2c71aac780c8258a2a8cf15cd76e1300d9cc241c81a5",
+          "size": 19713752,
+          "modality": "text"
+        },
+        {
+          "path": "image/train-00000-of-00001.parquet",
+          "url": "https://huggingface.co/datasets/interfaze-ai/sob/resolve/c118e38abdef6a8e1beba183405c70b28ff7d5a8/image/train-00000-of-00001.parquet",
+          "sha256": "170b0f1bc77895abd904a9e437fb9ace456ccad97073e87421ca38423e0292db",
+          "size": 960912,
+          "modality": "image"
+        }
+      ],
+      "id_field": "_selection_id",
+      "method": "all",
+      "population_rows": 5324,
+      "selected_rows": 5324,
+      "selected_ids_sha256": "882485223474047e8b314c2520503f0fbdb15221ac3ca1ddf2cbc8732636c794"
+    },
+    "primary_metric": "text.weighted.JSONPassRate; preserve full native report separately for text/image/audio"
+  },
+  "results_output": "results/<modelo>/<benchmark>/<instruct|thinking>",
+  "profile_plan": "profiles/plan.json"
+}

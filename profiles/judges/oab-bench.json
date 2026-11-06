@@ -1,0 +1,117 @@
+{
+  "benchmark": "oab-bench",
+  "somente_resposta_final": true,
+  "references": [
+    "https://github.com/maritaca-ai/oab-bench",
+    "https://developers.openai.com/api/docs/models/gpt-5.2"
+  ],
+  "variantes_registradas": [
+    {
+      "modelo": "gpt-5.2",
+      "origem": "chamada_selecionada",
+      "parametros": {
+        "calls_per_model_mode": 105,
+        "protocol": "native recommended judge",
+        "reasoning_effort": "high",
+        "structured": true
+      },
+      "ocorrencias_selecionadas": 1233
+    },
+    {
+      "modelo": "gpt-5.2",
+      "origem": "chamada_selecionada",
+      "parametros": {
+        "calls_per_model_mode": 210,
+        "protocol": "native recommended judge",
+        "reasoning_effort": "high",
+        "structured": true
+      },
+      "ocorrencias_selecionadas": 158
+    },
+    {
+      "modelo": "gpt-5.2",
+      "origem": "chamada_selecionada",
+      "parametros": {
+        "reasoning_effort": "high",
+        "response_format": {
+          "json_schema": {
+            "name": "JudgmentResult",
+            "schema": {
+              "$defs": {
+                "ItemEvaluation": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "analysis": {
+                      "description": "Análise detalhada comparando a resposta do candidato com o item do gabarito",
+                      "title": "Analysis",
+                      "type": "string"
+                    },
+                    "item_description": {
+                      "description": "Descrição do item avaliado conforme a tabela de distribuição de pontos",
+                      "title": "Item Description",
+                      "type": "string"
+                    },
+                    "item_id": {
+                      "description": "Identificador do item (ex: '1', '2', 'A', 'B')",
+                      "title": "Item Id",
+                      "type": "string"
+                    },
+                    "score": {
+                      "description": "Pontuação atribuída ao item",
+                      "title": "Score",
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "item_id",
+                    "item_description",
+                    "analysis",
+                    "score"
+                  ],
+                  "title": "ItemEvaluation",
+                  "type": "object"
+                }
+              },
+              "additionalProperties": false,
+              "properties": {
+                "items": {
+                  "description": "Lista de itens avaliados conforme a tabela de distribuição de pontos",
+                  "items": {
+                    "$ref": "#/$defs/ItemEvaluation"
+                  },
+                  "title": "Items",
+                  "type": "array"
+                },
+                "total_score": {
+                  "description": "Nota total do candidato (soma das pontuações de todos os itens)",
+                  "title": "Total Score",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "items",
+                "total_score"
+              ],
+              "title": "JudgmentResult",
+              "type": "object"
+            },
+            "strict": true
+          },
+          "type": "json_schema"
+        },
+        "temperature": 1
+      },
+      "ocorrencias_selecionadas": 2310
+    },
+    {
+      "modelo": "gpt-5.2",
+      "origem": "protocolo_ou_metadados_disponiveis",
+      "parametros": {
+        "origem": "configuracao_registrada_da_execucao",
+        "reasoning_effort": "high"
+      },
+      "ocorrencias_selecionadas": 79
+    }
+  ],
+  "observacao": "Valores ausentes não foram inferidos. Parâmetros por chamada estão nas respostas. Ocorrências contam chamadas ou registros conforme a origem, não perguntas únicas."
+}

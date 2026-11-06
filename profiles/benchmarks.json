@@ -1,0 +1,365 @@
+{
+  "sampling_seeds": {
+    "arena_hard_v2": "mini-s5-cost-proposal-20261101",
+    "culturalbench": "mini-s5-cost-proposal-20261101",
+    "sob": "mini-s5-cost-proposal-20261101",
+    "longbench_v2": "mini-s5-cost-proposal-20261101",
+    "ifbench": "mini-s5-cost-proposal-20261101",
+    "harmbench": "mini-s5-cost-proposal-20261101",
+    "conduta_bench": "mini-s5-cost-proposal-20261101",
+    "oab_bench_full": "not_sampled",
+    "magis_bench": "not_sampled"
+  },
+  "excluded_benchmarks": [],
+  "benchmarks": {
+    "arena_hard_v2": {
+      "label": "Arena-Hard v2 · 150 · Luna medium",
+      "variant": "arena150-gpt6-luna-medium",
+      "cases_per_model_mode": 150,
+      "repetitions": 1,
+      "scope": "Proportional subset: 51 coding,49 math,50 creative_writing. Native reference answers and both A/B orders; changed judge is a separate variant.",
+      "upstream_lock": "benchmarks/chat/arena_hard_v2/upstream.lock.json",
+      "upstream_lock_sha256": "34b2b9e7e6c6b671667f1e23ea1f57ecc7d000e9a55f603bd05087483e3821ff",
+      "integration_status": "integrated_validated_offline",
+      "judge": {
+        "model": "gpt-6-luna",
+        "reasoning_effort": "medium",
+        "max_output_tokens": 16000,
+        "calls_per_model_mode": 300,
+        "quality_equivalence_to_gpt41_verified": false,
+        "baseline_models": {
+          "hard_prompt": "o3-mini-2025-01-31",
+          "creative_writing": "gemini-2.0-flash-001"
+        }
+      },
+      "selection": {
+        "inputs": [
+          {
+            "path": "data/arena-hard-v2.0/question.jsonl",
+            "sha256": "a75cef6623db6b27aec810497b059f0659705d7ff48dcbccc5bd5b130728ac73",
+            "url": "https://raw.githubusercontent.com/lmarena/arena-hard-auto/196f6b826783b3da7310e361a805fa36f0be83f3/data/arena-hard-v2.0/question.jsonl"
+          }
+        ],
+        "id_field": "uid",
+        "method": "stratified_sha256",
+        "population_rows": 750,
+        "field": "subcategory",
+        "quotas": {
+          "coding": 51,
+          "math": 49,
+          "creative_writing": 50
+        },
+        "allocation": "largest_remainder_proportional_lexicographic_ties",
+        "selected_rows": 150,
+        "selected_ids_sha256": "7de2f41020bbc1e7601c5979f1a33c34ff32da6ba6faceb6015a308a0c205fcd"
+      }
+    },
+    "culturalbench": {
+      "label": "CulturalBench-Hard · completo + Brasil",
+      "variant": "culturalbench-hard-full-en-appier-native-comparison-v3",
+      "cases_per_model_mode": 4908,
+      "repetitions": 1,
+      "scope": "All 45 countries/regions in original English. Primary Hard accuracy groups all four options of each base question; Brazil is an additional slice from the same responses.",
+      "upstream_lock": "benchmarks/brasil_especifico/culturalbench/upstream.lock.json",
+      "upstream_lock_sha256": "55106d3d6097a88bab02c6c8c55498bb8125e49072a2f9a682cf6d36d59e0aed",
+      "integration_status": "integrated_validated_offline",
+      "base_questions": 1227,
+      "brazil_base_questions": 25,
+      "brazil_prompts": 100,
+      "code_origin": "Third-party Appier runner; not an implementation supplied by the dataset authors.",
+      "extraction": {
+        "local_rule_first": true,
+        "fallback_model": "gpt-4o-mini-2024-07-18",
+        "temperature": 0,
+        "max_output_tokens": 256,
+        "scope": "Only final answers that the pinned local rule cannot parse."
+      },
+      "selection": {
+        "inputs": [
+          {
+            "path": "CulturalBench-Hard.csv",
+            "sha256": "f0ed437f3c300b51812ca4bc0cab2e811d656ff93d1dbe3ae7df8d16ac5b7eee",
+            "url": "https://huggingface.co/datasets/kellycyy/CulturalBench/resolve/996d62a55f6a49c13596f0a31b772812a1aacd67/CulturalBench-Hard.csv"
+          }
+        ],
+        "id_field": "data_idx",
+        "method": "all",
+        "population_rows": 4908,
+        "selected_rows": 4908,
+        "selected_ids_sha256": "87fa2ff287b10b04f6a4fe55059401cea38effe0147ee70cf73ee94fc2a3b98f"
+      },
+      "scorer_revision": "appier_native_comparison_v3",
+      "aggregation": {
+        "source": "viz_culture_plot.py",
+        "sha256": "28bbed29ebfd1b1c0617daa1147a503af5c98fef41065af903059d0f314ff531",
+        "comparison": "str(pred).strip().lower() == str(gold).strip().lower()",
+        "question": "all four options correct",
+        "invalid_literal": "A completed, identity-verified JSON answer string is compared unchanged; transport, identity, JSON parse and answer schema errors remain pending."
+      }
+    },
+    "sob": {
+      "label": "SOB · completo",
+      "variant": "sob-full-text-ocr-transcripts",
+      "cases_per_model_mode": 5324,
+      "repetitions": 1,
+      "scope": "5000 text,209 document OCR,115 audio transcripts already public. Native deterministic scoring; free generation without added constrained decoding.",
+      "upstream_lock": "benchmarks/saida_estruturada/sob/upstream.lock.json",
+      "upstream_lock_sha256": "d4aa4fc7b7309a3668f4189fd44abdc8546d2d69406489aad14a2d17c4dcf4b0",
+      "integration_status": "integrated_validated_offline",
+      "selection": {
+        "inputs": [
+          {
+            "path": "audio/train-00000-of-00001.parquet",
+            "url": "https://huggingface.co/datasets/interfaze-ai/sob/resolve/c118e38abdef6a8e1beba183405c70b28ff7d5a8/audio/train-00000-of-00001.parquet",
+            "sha256": "d068de08f9cec7cd038a97cb9d8604e6df0e8b8bf1ca1eb3d28a1390776cc7f8",
+            "size": 2632708,
+            "modality": "audio"
+          },
+          {
+            "path": "data/test-00000-of-00001.parquet",
+            "url": "https://huggingface.co/datasets/interfaze-ai/sob/resolve/c118e38abdef6a8e1beba183405c70b28ff7d5a8/data/test-00000-of-00001.parquet",
+            "sha256": "b86a475557aa65028a0d2c71aac780c8258a2a8cf15cd76e1300d9cc241c81a5",
+            "size": 19713752,
+            "modality": "text"
+          },
+          {
+            "path": "image/train-00000-of-00001.parquet",
+            "url": "https://huggingface.co/datasets/interfaze-ai/sob/resolve/c118e38abdef6a8e1beba183405c70b28ff7d5a8/image/train-00000-of-00001.parquet",
+            "sha256": "170b0f1bc77895abd904a9e437fb9ace456ccad97073e87421ca38423e0292db",
+            "size": 960912,
+            "modality": "image"
+          }
+        ],
+        "id_field": "_selection_id",
+        "method": "all",
+        "population_rows": 5324,
+        "selected_rows": 5324,
+        "selected_ids_sha256": "882485223474047e8b314c2520503f0fbdb15221ac3ca1ddf2cbc8732636c794"
+      },
+      "primary_metric": "text.weighted.JSONPassRate; preserve full native report separately for text/image/audio"
+    },
+    "longbench_v2": {
+      "label": "LongBench v2 · completo",
+      "variant": "longbench-v2-full-context-zero-shot",
+      "cases_per_model_mode": 503,
+      "repetitions": 1,
+      "scope": "Native zero-shot prompt, no RAG/no-context or second-stage CoT route. Model thinking remains controlled by its profile. Context/truncation policy, effective limits, tokenizer and full denominator require explicit validation before execution.",
+      "upstream_lock": "benchmarks/contexto_longo/longbench_v2/upstream.lock.json",
+      "upstream_lock_sha256": "2153a9f020f613070fc21562d408990e9cfd35f3e1c06658af03148df86a8f0f",
+      "integration_status": "integrated_validated_offline",
+      "context_policy": {
+        "method": "native_middle_truncation",
+        "authorization": "User confirmed native LongBench truncation on 2026-11-01",
+        "input_budget": "Campaign extension of the native model2maxlen map: 60000/120000/240000 input tokens for 64K/128K/256K contexts; preserve native middle truncation and the unchanged profile output policy. The upstream map uses 120000 for 128K models; these new model entries are campaign choices, not author-reported results.",
+        "audit": [
+          "original_prompt_tokens",
+          "input_budget_tokens",
+          "truncated",
+          "effective_prompt_tokens",
+          "tokenizer_revision"
+        ],
+        "input_budgets": {
+          "65536": 60000,
+          "131072": 120000,
+          "262144": 240000
+        }
+      },
+      "selection": {
+        "inputs": [
+          {
+            "path": "data.json",
+            "url": "https://huggingface.co/datasets/THUDM/LongBench-v2/resolve/2b48e494f2c7a2f0af81aae178e05c7e1dde0fe9/data.json",
+            "sha256": "15d61c22d92c96900b3c4948b6aeea218d3214b676a65df48e7b8555604c7fe2",
+            "size": 465490535
+          }
+        ],
+        "id_field": "_id",
+        "method": "all",
+        "population_rows": 503,
+        "selected_rows": 503,
+        "selected_ids_sha256": "81e22fb5cae5753c2bd07fe515384744c1cc65b4f67fa1eeee7b50419dde04ce"
+      }
+    },
+    "ifbench": {
+      "label": "IFBench · teste completo",
+      "variant": "ifbench-test-full",
+      "cases_per_model_mode": 300,
+      "repetitions": 1,
+      "scope": "Complete public test split; native rule-based strict/loose metrics.",
+      "upstream_lock": "benchmarks/instrucoes/ifbench/upstream.lock.json",
+      "upstream_lock_sha256": "9e3e1e4322c7ad3222f0c4bc53a3223c62a6fa0168c29f8305212092ddb511af",
+      "integration_status": "integrated_validated_offline",
+      "selection": {
+        "inputs": [
+          {
+            "path": "data/IFBench_test.jsonl",
+            "sha256": "d2ada7da94a38cfe406351614c4e686846ed2da6d1b339db95fa5ead19554a4a",
+            "url": "https://raw.githubusercontent.com/allenai/IFBench/1c40f0c10d9b5c5c2f10a175a28007ebb64f7f4d/data/IFBench_test.jsonl"
+          }
+        ],
+        "id_field": "key",
+        "method": "all",
+        "population_rows": 300,
+        "selected_rows": 300,
+        "selected_ids_sha256": "c614b6804f13cfe1c8221d9f2ba364b1bf78fbe8ee385a707efd5699fa6489ef"
+      }
+    },
+    "harmbench": {
+      "label": "HarmBench · texto · DirectRequest",
+      "variant": "harmbench-text-test-directrequest",
+      "cases_per_model_mode": 320,
+      "repetitions": 1,
+      "scope": "Complete text test split:159 standard,81 contextual,80 copyright. DirectRequest only; native local classifier/copyright checker. No paid attack-model pipeline. Pin classifier weights before execution.",
+      "upstream_lock": "benchmarks/seguranca_etica/harmbench/upstream.lock.json",
+      "upstream_lock_sha256": "7296235d5402db9c8f489339e58c4afc17c2446b0838afad7451eebd5f442ef9",
+      "integration_status": "integrated_validated_offline",
+      "selection": {
+        "inputs": [
+          {
+            "path": "data/behavior_datasets/harmbench_behaviors_text_test.csv",
+            "sha256": "75d257b3e7428c52eb7b0154318f455af3e01b09a3794b5e2f3d36054f3c0e29",
+            "url": "https://raw.githubusercontent.com/centerforaisafety/HarmBench/8e1604d1171fe8a48d8febecd22f600e462bdcdd/data/behavior_datasets/harmbench_behaviors_text_test.csv"
+          }
+        ],
+        "id_field": "BehaviorID",
+        "method": "all",
+        "population_rows": 320,
+        "selected_rows": 320,
+        "selected_ids_sha256": "e8c2c21f6e900865121d1f07a774b06721762b32f2afa6357b9b972e063a3ef0"
+      },
+      "classifier_lock": "locks/harmbench-classifier.json"
+    },
+    "conduta_bench": {
+      "label": "CondutaBench · amostra de 140 · Sabiá-4-Thinking",
+      "variant": "conduta140-stratified-sabia4thinking-native",
+      "cases_per_model_mode": 140,
+      "repetitions": 1,
+      "scope": "Fixed proportional sample across all 14 guidelines; closed-book generation; native judge prompt, parser, penalties and equal question weights.",
+      "upstream_lock": "benchmarks/medico/conduta_bench/upstream.lock.json",
+      "upstream_lock_sha256": "0aa97edfa526476e1114e6db3b3b5ff4c7d4cbae1b5cb9f7a087ba5f7e9e9977",
+      "integration_status": "integrated_validated_offline",
+      "judge": {
+        "model": "sabia-4-thinking",
+        "provider": "maritaca",
+        "temperature": 0,
+        "max_tokens": 8000,
+        "service_tier": "auto",
+        "calls_per_model_mode": 140,
+        "protocol": "native recommended judge"
+      },
+      "selection": {
+        "inputs": [
+          {
+            "path": "data/questions.jsonl",
+            "url": "https://raw.githubusercontent.com/TropicAI-Research/CondutaBench/c11b335a20f8a2035071f9352b2812d76e42cd6b/data/questions.jsonl",
+            "sha256": "73aae936760df7ec370a70e9b366b5f182cb501690ccbd328e6b8ed39d7223b8"
+          }
+        ],
+        "id_field": "id",
+        "method": "stratified_sha256",
+        "population_rows": 715,
+        "field": "guideline_id",
+        "quotas": {
+          "anemia_ferropriva": 11,
+          "asma_pcdt": 10,
+          "dengue_ms": 10,
+          "dm2_sbd": 10,
+          "dpoc_pcdt": 10,
+          "febre_reumatica_sbc": 12,
+          "has_sbc": 10,
+          "hiv_pcdt": 10,
+          "ic_sbc": 9,
+          "ivas_aborl": 12,
+          "meningite_ms": 8,
+          "pneumonia_sbpt": 10,
+          "sca_sbc": 12,
+          "sop_pcdt": 6
+        },
+        "allocation": "largest_remainder_proportional_lexicographic_ties",
+        "selected_rows": 140,
+        "selected_ids_sha256": "87f184247fa9bba8b94e31aa69929cfb8190a6e912617e3c326c7169d4787b02"
+      }
+    },
+    "oab_bench_full": {
+      "label": "OAB-Bench · completo 39–44",
+      "variant": "oab-editions394041424344-gpt52-high",
+      "cases_per_model_mode": 210,
+      "repetitions": 1,
+      "scope": "Complete examinations in all seven areas; professional piece and four discursive questions in every area/edition.",
+      "upstream_lock": "benchmarks/juridico/oab_bench/upstream.lock.json",
+      "upstream_lock_sha256": "f8cecb314b4487d59c6ae7e9744015d9e4622bcf35344ab27a0863b785cd40cf",
+      "integration_status": "integrated_validated_offline",
+      "judge": {
+        "model": "gpt-5.2",
+        "reasoning_effort": "high",
+        "structured": true,
+        "calls_per_model_mode": 210,
+        "protocol": "native recommended judge"
+      },
+      "selection": {
+        "inputs": [
+          {
+            "path": "data/oab_bench/question.jsonl",
+            "sha256": "c43557c9cd19a11db40a10c1ffe3dde577aedad7b5b7eee80ec6a8d4e35816d1",
+            "url": "https://raw.githubusercontent.com/maritaca-ai/oab-bench/238e9991c1fd204788001482cddaea472c66b86f/data/oab_bench/question.jsonl"
+          }
+        ],
+        "id_field": "question_id",
+        "method": "prefix_filter",
+        "population_rows": 210,
+        "field": "category",
+        "separator": "_",
+        "values": [
+          "39",
+          "40",
+          "41",
+          "42",
+          "43",
+          "44"
+        ],
+        "selected_rows": 210,
+        "selected_ids_sha256": "76b8739b54748c7af0dc907251b0f4d9184df63e4f7fff9c0e4d78a85d2f02a2"
+      },
+      "generation_turns": 378,
+      "failure_policy": "One dispatch per missing candidate turn or judgment; no automatic native or SDK retry. Preserve failures for audit; never impute scores."
+    },
+    "magis_bench": {
+      "label": "Magis-Bench · completo",
+      "variant": "magis74-opus46-high-structured-native",
+      "cases_per_model_mode": 74,
+      "repetitions": 1,
+      "scope": "All 74 questions and all 24 complete examination sections; native conversation, structured judge and sum of points divided by24.",
+      "upstream_lock": "benchmarks/juridico/magis_bench/upstream.lock.json",
+      "upstream_lock_sha256": "6c4669cafc0c2a8bed252e053ca33b23c7fc50569c56d02092c3a871fb5bb2f5",
+      "integration_status": "integrated_validated_offline",
+      "judge": {
+        "model": "anthropic/claude-opus-4.6",
+        "reasoning_effort": "high",
+        "temperature": 0,
+        "structured": true,
+        "calls_per_model_mode": 74,
+        "protocol": "Current pinned upstream single judge",
+        "upstream_model_identifier": "anthropic/claude-opus-4-6",
+        "provider_canonical_slug": "anthropic/claude-4.6-opus-20260205",
+        "identifier_source": "https://openrouter.ai/api/v1/models",
+        "identifier_note": "The currently published provider ID uses a dot. Same Opus4.6 version, native judge prompts, temperature0 and effort high."
+      },
+      "selection": {
+        "inputs": [
+          {
+            "path": "data/magis_bench/question.jsonl",
+            "url": "https://raw.githubusercontent.com/maritaca-ai/magis-bench/b93d0e82795a37ff063bcf7cf89b91dcedebe921/data/magis_bench/question.jsonl",
+            "sha256": "9d23416f3bab14f1b1f857f48b247b28054cb328d3b694d8f6a6d41615eff4e5"
+          }
+        ],
+        "id_field": "question_id",
+        "method": "all",
+        "population_rows": 74,
+        "selected_rows": 74,
+        "selected_ids_sha256": "3932d8a8a71d942e1793e9bd1d54dab3091ae383f0ea98f3228cdd82b59a1d70"
+      },
+      "generation_turns": 124,
+      "failure_policy": "One dispatch per missing candidate turn or judgment; no automatic native or SDK retry. Preserve failures for audit; never impute scores."
+    }
+  }
+}

@@ -1,0 +1,3018 @@
+[
+  {
+    "id": "001201",
+    "system": null,
+    "pergunta": "Em relação ao processo de conservação de alimentos descrito no texto, infere-se que\n\nA) as frutas e os legumes submetidos a uma dose de radiação apodrecem mais rapidamente que as demais.\nB) o processo de radiação de alimentos torna-os altamente radioativos e impróprios para o consumo humano.\nC) apenas os alimentos já embalados em recipientes adequados podem ser submetidos a uma dose de radiação ionizante.\nD) alimentos tratados com radiação ficam mais sensíveis ao ataque de insetos, bactérias patogênicas, fungos e leveduras.\nE) com a eliminação dos principais agentes patogênicos, a aplicação da radiação em alimentos contribui para sua melhor conservação.",
+    "resposta": "{\"answer\":\"E\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 367,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "O processo de radiação de alimentos consiste em submeter os alimentos, já embalados ou a granel, a uma quantidade controlada de radiação ionizante, por um determinado período de tempo. Esse procedimento não aumenta o nível de radioatividade normal dos alimentos. A aplicação de uma dose de radiação normalmente resulta na morte de insetos, bactérias patogênicas, fungos e leveduras, aumentando assim o tempo de conservação dos alimentos, e pode retardar a maturação de algumas frutas e legumes, sendo possível assim aumentar seu período de armazenamento.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 361,
+      "total_tokens": 367,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001202",
+    "system": "",
+    "pergunta": "Utilizando o mesmo caminhão da entrega anterior, qual é o volume mínimo de gasolina, em litro, que a distribuidora deverá enviar para garantir a entrega da quantidade encomendada nesse novo pedido?\n\nA) 20 100\nB) 20 200\nC) 20 300\nD) 20 400\nE) 20 600",
+    "resposta": "We need to parse the problem.\n\nWe have a fuel distributor with trucks (caminhões-tanque) capacity 30,000 liters each. In any transport performed by these trucks, a same volume of fuel is discarded because it has many impurities. This discarded volume is independent of the quantity transported. So for each trip, some amount is lost/discarded equal to some fixed amount? The statement: \"Em qualquer transporte realizado por esses caminhões, um mesmo volume de combustível é descartado, pois fica com muitas impurezas. Esse volume descartado independe da quantidade transportada.\" Means that for each shipment, there is a constant discard volume, say D liters, which is removed from the delivered amount. It does not depend on how much you transport; it's always the same per truck? Or per transport? Likely per truck per journey, they discard a fixed amount regardless of load. We'll assume D is known or can be derived from previous example.\n\nPrevious order: A fuel station ordered 10,000 liters of gasoline from the distributor. The distributor sent 10,200 liters, considering the discarded volume in transport. Even so, the amount delivered to the station was 9,900 liters. So we have:\n\nOrdered = 10,000 L.\nSent = 10,200 L (the total shipped).\nDelivered = 9,900 L.\n\nThe difference between sent and delivered is due to discard: Sent - Delivered = 10,200 - 9,900 = 300 L. That is the discarded volume (the same volume discarded). Since discard is independent of quantity transported, this 300 L corresponds to the fixed discard per shipment. So D = 300 liters.\n\nThus, when sending X liters via a truck, the actual delivered amount will be X - D = X - 300, assuming the whole X goes through one truck? But maybe multiple trips? However, given the numbers, likely one truck carrying 10,200 L resulted in delivery of 9,900 L after discarding 300 L. So discard per truck is 300 L.\n\nNow new request: \"Em um novo pedido, esse posto solicitou que fosse entregue exatamente o dobro do volume de gasolina encomendado no pedido anterior.\"\n\nSo previously ordered volume = 10,000 L. Double that = 20,000 L. They want exactly double the ordered volume delivered to the station. But we must consider discard again. Using same truck (capacity 30,000 L), we need to send enough to get delivered amount = 2 * 10,000 = 20,000 L? Wait careful: \"entregue exatamente o dobro do volume de gasolina encomendado no pedido anterior.\" Means deliver exactly twice the ordered volume. Ordered volume in previous request was 10,000 L. So now they want delivered quantity = 2 * 10,000 = 20,000 L.\n\nBut we also need to account for discard: For each shipment, we lose D=300 L. So to end up delivering 20,000 L net, we need to send S such that S - 300 = 20,000 => S = 20,300 L.\n\nHowever, we also need to respect the truck capacity of 30,000 L. S=20,300 < 30,000, okay.\n\nThus minimal volume to send should be 20,300 liters. Among options: A) 20 100 (maybe 20,100?), B) 20 200 (20,200), C) 20 300 (20,300), D) 20 400 (20,400), E) 20 600 (20,600). Option C matches 20,300.\n\nThus answer is C.\n\nCheck if any nuance: Could there be two trips? If the discard is per truck, but perhaps they could split into multiple trucks? Minimal total sent would be achieved by using as few trips as possible, i.e., one full truck. Since capacity is 30k, sending 20,300 fits within one truck. So minimal sent = 20,300.\n\nThus answer JSON {\"answer\":\"C\"}.\n\nLet's output exactly that without markdown.</think>{\"answer\":\"C\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 1204,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": null,
+        "gold": "C",
+        "correct": false,
+        "unknown": true
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Uma distribuidora de combustível possui caminhões-tanque com capacidade de 30 000 litros cada. Em qualquer transporte realizado por esses caminhões, um mesmo volume de combustível é descartado, pois fica com muitas impurezas. Esse volume descartado independe da quantidade transportada. Um posto de combustível encomendou 10 000 litros de gasolina dessa distribuidora, que enviou 10 200 litros, considerando o volume descartado no transporte. Mesmo assim, a quantidade de gasolina entregue ao posto foi de 9 900 litros. Em um novo pedido, esse posto solicitou que fosse entregue exatamente o dobro do volume de gasolina encomendado no pedido anterior.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nUma distribuidora de combustível possui caminhões-tanque com capacidade de 30 000 litros cada. Em qualquer transporte realizado por esses caminhões, um mesmo volume de combustível é descartado, pois fica com muitas impurezas. Esse volume descartado independe da quantidade transportada. Um posto de combustível encomendou 10 000 litros de gasolina dessa distribuidora, que enviou 10 200 litros, considerando o volume descartado no transporte. Mesmo assim, a quantidade de gasolina entregue ao posto foi de 9 900 litros. Em um novo pedido, esse posto solicitou que fosse entregue exatamente o dobro do volume de gasolina encomendado no pedido anterior.\n\nPergunta:\nUtilizando o mesmo caminhão da entrega anterior, qual é o volume mínimo de gasolina, em litro, que a distribuidora deverá enviar para garantir a entrega da quantidade encomendada nesse novo pedido?\n\nAlternativas:\nA) 20 100\nB) 20 200\nC) 20 300\nD) 20 400\nE) 20 600\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 894,
+      "prompt_tokens": 310,
+      "total_tokens": 1204,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001203",
+    "system": "",
+    "pergunta": "Caso a hipótese do administrador do cinema seja confirmada, o sucesso da promoção será classificado como\n\nA) fraco\nB) regular\nC) bom\nD) muito bom\nE) ótimo",
+    "resposta": "We need to determine the success classification based on increase in revenue from the promotion. The hypothesis: for each R$2 discount on full price and R$1 discount on half-price, the number of paying full-price customers increases by 20% and half-price paying customers increases by 10% relative to initial quantities.\n\nInitial data:\n- Cinema capacity: 180 people.\n- Full ticket price: R$30.00.\n- Half-ticket price: R$15.00.\n- Average occupancy (number of people) = 100.\n- Among these 100, 60 pay half-price, and the rest (100 - 60 = 40) pay full price initially.\n\nSo initial numbers:\n- Full-price paying customers (FPC): 40.\n- Half-price paying customers (HPC): 60.\n\nNow, promotion: discount of R$8.00 on full price, and R$4.00 on half-price.\n\nThus new prices after discount:\n- New full price = 30 - 8 = R$22.00.\n- New half price = 15 - 4 = R$11.00.\n\nBut we don't need exact new revenues; we need to compute change in total revenue due to increased numbers of customers at each price tier.\n\nHypothesis says that if discounts are applied as per pattern: For a discount of R$2 on full price and R$1 on half-price, the percentages increase follow: full-price paying customers increase by 20%, half-price paying customers increase by 10%. So for our promotion, we need to see what discount amounts correspond to \"each R$2 discount\" and \"R$1 discount\". Our discount is R$8 on full and R$4 on half. That's double the base increments? Let's interpret:\n\nThe hypothesis: \"para cada R$ 2,00 de desconto no preço inteiro e R$ 1,00 de desconto no preço da meia-entrada, a quantidade de frequentadores pagantes do preço inteiro aumentava em 20% e a de pagantes de meia-entrada aumentava em 10% em relação às quantidades iniciais.\"\n\nThus, for every R$2 discount on full price, full-price paying customers increase by 20%; for every R$1 discount on half-price, half-price paying customers increase by 10%.\n\nOur promotion gives R$8 discount on full price => that's 4 times R$2 (since 8/2=4). So according to hypothesis, full-price paying customers would increase by 20% *per R$2*? Actually it's linear: for each R$2 discount, increase by 20%. So for 4 increments of R$2, increase should be 4 * 20% = 80%? Or maybe they mean each increment yields 20% increase, so total increase = 20% * (discount / 2)? Usually such phrasing: \"para cada R$2,00 de desconto ... a quantidade ... aumentava em 20%\" suggests that a discount of R$2 leads to a 20% rise. So scaling linearly: discount amount divided by 2 times 20%? But more likely it's just a fixed relationship: discount of R$2 -> +20%; discount of R$1 -> +10% for half-price. So for discount of R$8 (which is 4 * R$2), you'd get 4 * 20% = 80% increase in full-price paying customers. Similarly, discount of R$4 (which is 4 * R$1) on half-price yields 4 * 10% = 40% increase in half-price paying customers.\n\nBut earlier they said \"a hipótese do administrador do cinema é que esse comportamento se mantenha para novos descontos, ou seja, ao duplicar o valor dos descontos, duplicarão também os percentuais de aumento do número de frequentadores de cada tipo.\" This means if you double the discount values, the percentage increases also double. So indeed, doubling discount doubles the % increase. So consistent with above: original increments were R$2 -> 20% increase; R$1 -> 10% increase. Doubling discount to R$4 -> 20% *2 = 40% increase; R$2 -> 20% *2 = 40%? Wait careful: If you double both discount amounts, then the % increase for each type would double. Starting point: discount R$2 gives 20% increase; discount R$1 gives 10% increase. So ratio of discount to %increase: For full price, 2 corresponds to 20% => 0.1 per unit of R$? Actually 20%/2 = 10% per R$. For half price, 1 corresponds to 10% => 10% per R$.\n\nIf we apply discount of R$8 (i.e., 8 R$), then increase = 8 * 10% = 80% (full price). Discount of R$4 => increase = 4 * 10% = 40% (half price).\n\nThus predicted new counts:\n- Initial full-price paying customers: 40.\n- Increase by 80% => new count = 40 * (1 + 0.80) = 40 * 1.80 = 72.\n- Initial half-price paying customers: 60.\n- Increase by 40% => new count = 60 * 1.40 = 84.\n\nCheck: Are these plausible given capacity 180? Total paying customers now = 72 + 84 = 156. That seems okay.\n\nNow we must compute total revenue before and after promotion.\n\nRevenue before promotion (initial):\n- Full-price tickets sold: average occupancy 100 people, but not all paid full price. We have 40 full-price paying out of 100. However, actual sales may vary. Usually revenue = price * number of tickets sold. They gave average occupancy 100, but we can assume that at any time, the cinema sells up to its capacity? Not sure. Typically, revenue depends on number of attendees and their payment type. Since we only know distribution among those who attend, we might approximate using average attendance and proportion paying each price. But we need to calculate total revenue under initial conditions. Let's derive from given info: \"A ocupação média é de 100 pessoas e, destas, 60 pagam meia-entrada e as demais, o valor inteiro.\" Means among the 100 occupants, 60 pay half-price, and the rest (100-60=40) pay full price. So presumably, at average occupancy, there are 40 full-price paying and 60 half-price paying. So total revenue = (price_full * 40) + (price_half * 60). Using original prices: full = 30, half = 15. So revenue_initial = 30*40 + 15*60 = 1200 + 900 = 2100.\n\nLet’s verify: 30*40 = 1200. 15*60 = 900. Sum = 2100.\n\nNow after promotion, we need to find new number of full-price paying customers (FPC_new) and half-price paying customers (HPC_new). According to hypothesis, FPC_new = 40 * (1 + 0.80) = 72. HPC_new = 60 * (1 + 0.40) = 84.\n\nBut note: The total number of paying customers could exceed capacity or something. But let's accept.\n\nNow new prices: full price after discount = 30 - 8 = 22. Half price after discount = 15 - 4 = 11.\n\nTotal revenue after promotion = (new full price * new FPC) + (new half price * new HPC) = 22 * 72 + 11 * 84.\n\nCompute: 22*72 = (20*72)+(2*72)=1440+144=1584. 11*84 = (10*84)+(1*84)=840+84=924. Sum = 1584+924 = 2508.\n\nThus revenue increase = 2508 - 2100 = 408.\n\nWait, that's an increase of 408, which is less than 500. That would classify as \"fraco\" (weak) because increase <= 500? The categories: fraco: increase até R$ 500,00; regular: >500 up to 800; bom: >800 up to 1200; muito bom: >1200 up to 2000; ótimo: >2000.\n\nOur computed increase is 408, which is below 500, thus \"fraco\". But this seems too low; perhaps I've misinterpreted the effect of discounts on quantity. Maybe the increase percentages apply to the whole population, not just paying customers? Or maybe the revenue calculation uses different baseline numbers like total possible attendees vs actual? Also, maybe the initial revenue includes all 100 seats being filled, but some may not pay? In typical scenario, revenue is price * number of tickets sold. If 60 pay half-price, 40 pay full price, then yes.\n\nBut the promotion reduces price, which could reduce revenue per ticket, but also increases number of paying customers. Net effect might be positive. My result shows net increase of 408, which is modest. Could be correct though. But check if my interpretation of discount multiples is right. Perhaps the hypothesis states: \"para cada R$ 2,00 de desconto no preço inteiro e R$ 1,00 de desconto no preço da meia-entrada, a quantidade de frequentadores pagantes do preço inteiro aumentava em 20% e a de pagantes de meia-entrada aumentava em 10% em relação às quantidades iniciais.\" It doesn't say per unit of discount; it's simply linking discount amount to percent increase. So for discount of R$2, full price paying customers increase by 20%; for discount of R$1, half price paying customers increase by 10%. So for discount of R$8 (four times R$2), increase would be 4*20% = 80% as I used. For discount of R$4 (four times R$1), increase would be 4*10% = 40%. So that matches.\n\nAlternatively, maybe they intend that the increase percentages are directly proportional to discount amount: i.e., each R$2 discount adds 20% points, each R$1 adds 10% points. So same as above.\n\nThus new counts: 40*(1+0.8)=72; 60*(1+0.4)=84. Good.\n\nNow compute revenue again: full price after discount = 30 - 8 = 22. Multiply by 72 = 22*72 = 1584. Half price after discount = 15 - 4 = 11. Multiply by 84 = 11*84 = 924. Sum = 2508. Yes.\n\nIncrease = 2508 - 2100 = 408.\n\nThus classification \"fraco\" (up to 500). Option A.\n\nBut wait, maybe we need to consider that the cinema has capacity 180, and after promotion, total paying customers 156 < 180, fine.\n\nHowever, maybe the initial revenue was calculated differently: maybe they considered average occupancy 100, but not necessarily all 100 are paid? Already accounted. Another nuance: The discount may affect the price of tickets already sold? Usually promotions apply to future sales, not retroactively. So we ignore past.\n\nThus answer appears to be A (fraco). But let's double-check everything thoroughly.\n\nLet's re-evaluate step-by-step.\n\nGiven:\n- Cinema capacity: 180.\n- Ticket price full: R$30.00.\n- Ticket price half: R$15.00.\n- Average occupancy: 100 people.\n- Among them, 60 pay half-price, remaining 40 pay full price.\n\nInterpretation: At average occupancy, 60 of the 100 guests pay half-price, 40 pay full price.\n\nThus initial revenue = 40 * 30 + 60 * 15 = 1200 + 900 = 2100.\n\nPromotion details:\n- Discount full price: R$8.00.\n- Discount half price: R$4.00.\n\nHypothesized behavior: For each R$2 discount on full price, full-price paying customers increase by 20%; for each R$1 discount on half price, half-price paying customers increase by 10%. And if discounts are doubled, the percentage increases double.\n\nThus for discount of R$8 (which is 4 * R$2), full-price paying customers increase by 4 * 20% = 80%.\nFor discount of R$4 (which is 4 * R$1), half-price paying customers increase by 4 * 10% = 40%.\n\nHence new numbers:\n- Full-price paying customers = 40 * (1 + 0.80) = 40 * 1.80 = 72.\n- Half-price paying customers = 60 * (1 + 0.40) = 60 * 1.40 = 84.\n\nNew prices:\n- Full price after discount = 30 - 8 = 22.\n- Half price after discount = 15 - 4 = 11.\n\nRevenue after promotion = 72 * 22 + 84 * 11 = ?\n\nCalculate precisely:\n72 * 22 = (70*22)+(2*22) = 1540 + 44 = 1584. Wait earlier I got 1584? Let's recalc: 70*22 = 1540, plus 2*22 = 44, sum = 1584. Yes.\n\n84 * 11 = (80*11)+(4*11) = 880 + 44 = 924. Yes.\n\nSum = 1584 + 924 = 2508.\n\nIncrease = 2508 - 2100 = 408.\n\nThus increase is 408, which is less than 500. So classification \"fraco\".\n\nOption A corresponds to \"fraco\". So answer is A.\n\nBut hold on: The categories thresholds: \"fraco: aumento até R$ 500,00; regular: aumento maior que R$ 500,00 até R$ 800,00; bom: aumento maior que R$ 800,00 até R$ 1 200,00; muito bom: aumento maior que R$ 1 200,00 até R$ 2 000,00; ótimo: aumento maior que R$ 2 000,00.\"\n\nThus \"até\" inclusive? Usually \"até\" means up to and including. So if increase ≤ 500 → fraco. Since 408 ≤ 500, it's fraco.\n\nThus answer: A.\n\nBefore finalizing, ensure no misinterpretation about the increase percentages: Possibly they meant that for each R$2 discount, the increase is 20% of the current number of paying customers, not additive across multiple discounts. But phrase \"para cada R$ 2,00 de desconto... a quantidade ... aumentava em 20%\" implies per discount amount. So our approach stands.\n\nAlso, check whether the increase applies to the entire set of paying customers or just the existing ones? Eg, if discount is larger, maybe the increase is bigger proportionally. Our method multiplies the initial count by (1 + pct). Equivalent to adding pct*initial. That aligns with \"aumenta em 20%\" meaning becomes 120% of original.\n\nThus new full-price paying customers = 40 + 0.20*40*4? No, that would be weird. Better stick with multiplicative.\n\nOne more nuance: The hypothesis says \"ao duplicar o valor dos descontos, duplicarão também os percentuais de aumento do número de frequentadores de cada tipo.\" That indicates that if we double discount amounts, the percent increase also doubles. So starting from base increments: R$2 discount -> 20% increase; R$1 discount -> 10% increase. So for R$8 discount (double of R$4?), hmm. Actually R$8 is double of R$4, not double of R$2. But anyway.\n\nThus our derived percentages seem consistent.\n\nNow confirm the new counts: With 80% increase on 40 = 32 additional full-price paying customers, making total 72. With 40% increase on 60 = 24 additional half-price paying customers, making total 84. That seems plausible.\n\nNow compute revenue difference again via alternative method: Compute revenue contributions separately.\n\nOriginal revenue breakdown:\n- Full price: 40 * 30 = 1200.\n- Half price: 60 * 15 = 900.\n\nAfter promotion:\n- Full price: 72 * 22 = 1584.\n- Half price: 84 * 11 = 924.\n\nDifference: Full price diff = 1584 - 1200 = 384. Half price diff = 924 - 900 = 24. Total diff = 384 + 24 = 408. Same.\n\nThus increase 408.\n\nThus classification \"fraco\".\n\nTherefore answer JSON: {\"answer\":\"A\"}.\n\nMake sure format exactly: {\"answer\":\"A\"} without markdown.</think>{\"answer\":\"A\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 4222,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": null,
+        "gold": "A",
+        "correct": false,
+        "unknown": true
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Um cinema tem capacidade para 180 pessoas e cobra R$ 30,00 pelo ingresso inteiro e R$ 15,00 pelo ingresso de meia-entrada. A ocupação média é de 100 pessoas e, destas, 60 pagam meia-entrada e as demais, o valor inteiro. O administrador desse cinema realizou algumas pesquisas com os seus frequentadores e constatou que, para cada R$ 2,00 de desconto no preço inteiro e R$ 1,00 de desconto no preço da meia-entrada, a quantidade de frequentadores pagantes do preço inteiro aumentava em 20% e a de pagantes de meia-entrada aumentava em 10% em relação às quantidades iniciais. A hipótese do administrador do cinema é que esse comportamento se mantenha para novos descontos, ou seja, ao duplicar o valor dos descontos, duplicarão também os percentuais de aumento do número de frequentadores de cada tipo. Por isso, ele decidiu criar uma promoção aplicando um desconto de R$ 8,00 no preço inteiro e de R$ 4,00 no preço da meia-entrada, visando aumentar a arrecadação. Ele classificará o sucesso da promoção em função do aumento na arrecadação da seguinte forma: • fraco: aumento até R$ 500,00; • regular: aumento maior que R$ 500,00 até R$ 800,00; • bom: aumento maior que R$ 800,00 até R$ 1 200,00; • muito bom: aumento maior que R$ 1 200,00 até R$ 2 000,00; • ótimo: aumento maior que R$ 2 000,00.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nUm cinema tem capacidade para 180 pessoas e cobra R$ 30,00 pelo ingresso inteiro e R$ 15,00 pelo ingresso de meia-entrada. A ocupação média é de 100 pessoas e, destas, 60 pagam meia-entrada e as demais, o valor inteiro. O administrador desse cinema realizou algumas pesquisas com os seus frequentadores e constatou que, para cada R$ 2,00 de desconto no preço inteiro e R$ 1,00 de desconto no preço da meia-entrada, a quantidade de frequentadores pagantes do preço inteiro aumentava em 20% e a de pagantes de meia-entrada aumentava em 10% em relação às quantidades iniciais. A hipótese do administrador do cinema é que esse comportamento se mantenha para novos descontos, ou seja, ao duplicar o valor dos descontos, duplicarão também os percentuais de aumento do número de frequentadores de cada tipo. Por isso, ele decidiu criar uma promoção aplicando um desconto de R$ 8,00 no preço inteiro e de R$ 4,00 no preço da meia-entrada, visando aumentar a arrecadação. Ele classificará o sucesso da promoção em função do aumento na arrecadação da seguinte forma: • fraco: aumento até R$ 500,00; • regular: aumento maior que R$ 500,00 até R$ 800,00; • bom: aumento maior que R$ 800,00 até R$ 1 200,00; • muito bom: aumento maior que R$ 1 200,00 até R$ 2 000,00; • ótimo: aumento maior que R$ 2 000,00.\n\nPergunta:\nCaso a hipótese do administrador do cinema seja confirmada, o sucesso da promoção será classificado como\n\nAlternativas:\nA) fraco\nB) regular\nC) bom\nD) muito bom\nE) ótimo\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 3708,
+      "prompt_tokens": 514,
+      "total_tokens": 4222,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001204",
+    "system": "",
+    "pergunta": "Os textos, mesmo apresentando distintos pontos de vista, se fundamentam na seguinte característica de um Banco Central autônomo/independente:\n\nA) Fonte dos recursos.\nB) Objetivo das decisões.\nC) Origem dos mandatos.\nD) Legitimidade das ações.\nE) Composição dos cargos.",
+    "resposta": "{\"answer\":\"B\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 575,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "TEXTO I\nEm suma, todos os elementos apresentados levam a encarar um banco central independente como um arranjo capaz de isolar a política monetária da política. O banco central é posto como uma entidade apolítica, com o alvo único de manutenção da estabilidade de preços, dado que possui maior aversão à inflação que a média da sociedade. A delegação da responsabilidade da formulação da política monetária a um banco central independente significa que o governo abre mão de um conjunto de instrumentos sob o qual a estabilidade de preços poderia ser sacrificada em detrimento de outros alvos.\nGODIN. P. R. Prós e contras da autonomia do Banco Central. Disponível em: www.uninter.com. Acesso em: 6 out. 2021 (adaptado).\nTEXTO II\nSurgiu um grande debate nos últimos dias por conta da votação sobre a autonomia do Banco Central. Essa autonomia já vem sendo pensada há algum tempo, mas agora foi votada. A ideia central, segundo defensores, é “blindar” o Bacen de ser capturado pelos interesses governamentais. Além disso, para os defensores, essa autonomia é fundamental para melhorar o investimento externo e a percepção do que é feito dentro do Brasil, pois pode ajudar a controlar a inflação. Entretanto, esse argumento pode ser questionável já que, independentemente de o Bacen ter uma atuação mais ou menos conservadora, não significa necessariamente que não prejudicará os trabalhadores, as políticas de emprego e renda e de crédito mais acessível. Isso ocorre pois o que é bom para o mercado financeiro não necessariamente será bom para o restante da população.\nBORGES, Y. F. F. Independência do Banco Central: teoria e prática. Disponível em: https://sapientia.pucsp.br. Acesso em: 6 out. 2021 (adaptado).",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nTEXTO I\nEm suma, todos os elementos apresentados levam a encarar um banco central independente como um arranjo capaz de isolar a política monetária da política. O banco central é posto como uma entidade apolítica, com o alvo único de manutenção da estabilidade de preços, dado que possui maior aversão à inflação que a média da sociedade. A delegação da responsabilidade da formulação da política monetária a um banco central independente significa que o governo abre mão de um conjunto de instrumentos sob o qual a estabilidade de preços poderia ser sacrificada em detrimento de outros alvos.\nGODIN. P. R. Prós e contras da autonomia do Banco Central. Disponível em: www.uninter.com. Acesso em: 6 out. 2021 (adaptado).\nTEXTO II\nSurgiu um grande debate nos últimos dias por conta da votação sobre a autonomia do Banco Central. Essa autonomia já vem sendo pensada há algum tempo, mas agora foi votada. A ideia central, segundo defensores, é “blindar” o Bacen de ser capturado pelos interesses governamentais. Além disso, para os defensores, essa autonomia é fundamental para melhorar o investimento externo e a percepção do que é feito dentro do Brasil, pois pode ajudar a controlar a inflação. Entretanto, esse argumento pode ser questionável já que, independentemente de o Bacen ter uma atuação mais ou menos conservadora, não significa necessariamente que não prejudicará os trabalhadores, as políticas de emprego e renda e de crédito mais acessível. Isso ocorre pois o que é bom para o mercado financeiro não necessariamente será bom para o restante da população.\nBORGES, Y. F. F. Independência do Banco Central: teoria e prática. Disponível em: https://sapientia.pucsp.br. Acesso em: 6 out. 2021 (adaptado).\n\nPergunta:\nOs textos, mesmo apresentando distintos pontos de vista, se fundamentam na seguinte característica de um Banco Central autônomo/independente:\n\nAlternativas:\nA) Fonte dos recursos.\nB) Objetivo das decisões.\nC) Origem dos mandatos.\nD) Legitimidade das ações.\nE) Composição dos cargos.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 569,
+      "total_tokens": 575,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001205",
+    "system": "",
+    "pergunta": "Para que se alcance o lucro esperado, o gasto médio por pessoa com bebidas e petiscos, em real, deverá ser de\n\nA) 19,50\nB) 28,80\nC) 34,00\nD) 52,00\nE) 68,70",
+    "resposta": "{\n  \"answer\": \"B\"\n}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 385,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "D",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Uma casa de shows terá um evento cujo custo total de produção é de R$ 34.350,00, sendo que comporta 500 pessoas. O preço do ingresso será de R$ 130,00 e, normalmente, 60% das pessoas adquirem meia-entrada, pagando R$ 65,00 pelo ingresso. Além do faturamento proveniente da venda de ingressos, a casa de shows vende, com 60% de lucro, bebidas e petiscos ao público no dia do evento. Após ter vendido todos os 500 ingressos, constatou-se que a quantidade de meias-entradas vendidas superou em 50% o que estava previsto, impactando o faturamento estimado com a venda de ingressos. No dia do evento, decidiu-se manter o percentual de 60% de lucro sobre as bebidas e petiscos, pois todo o público que comprou ingresso compareceu ao show. Com isso, espera-se ter lucro de R$ 17.000,00 nesse evento.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nUma casa de shows terá um evento cujo custo total de produção é de R$ 34.350,00, sendo que comporta 500 pessoas. O preço do ingresso será de R$ 130,00 e, normalmente, 60% das pessoas adquirem meia-entrada, pagando R$ 65,00 pelo ingresso. Além do faturamento proveniente da venda de ingressos, a casa de shows vende, com 60% de lucro, bebidas e petiscos ao público no dia do evento. Após ter vendido todos os 500 ingressos, constatou-se que a quantidade de meias-entradas vendidas superou em 50% o que estava previsto, impactando o faturamento estimado com a venda de ingressos. No dia do evento, decidiu-se manter o percentual de 60% de lucro sobre as bebidas e petiscos, pois todo o público que comprou ingresso compareceu ao show. Com isso, espera-se ter lucro de R$ 17.000,00 nesse evento.\n\nPergunta:\nPara que se alcance o lucro esperado, o gasto médio por pessoa com bebidas e petiscos, em real, deverá ser de\n\nAlternativas:\nA) 19,50\nB) 28,80\nC) 34,00\nD) 52,00\nE) 68,70\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 375,
+      "total_tokens": 385,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001206",
+    "system": "",
+    "pergunta": "Nesse texto, a estratégia utilizada para convencer o leitor acerca da necessidade do aumento de tempo da licença-paternidade foi\n\nA) citar a fala de um especialista jurídico sobre esse assunto.\nB) sugerir mudanças na legislação que versa sobre a matéria.\nC) descrever a regulamentação nacional e das empresas sobre o tema.\nD) ressaltar ações de coletivos que buscam o engajamento das empresas.\nE) apresentar benefícios profissionais e familiares decorrentes desse direito.",
+    "resposta": "{\"answer\":\"E\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 445,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Dá licença! Instituída no Brasil em 1988 pela Constituição Federal, a licença-paternidade foi definida como sendo de cinco dias corridos, com base no artigo 7º da Constituição, mas ainda precisaria ser regulamentada pelo Congresso Nacional, por meio de uma lei. \"A licença-paternidade no Brasil, de cinco dias corridos, é menor do que o Carnaval. Qual a mensagem que estamos passando com isso? Qual a prioridade nesse caso?\", questiona um jornalista integrante da articulação política CoPai, de pessoas, empresas e coletivos que buscam a licença-paternidade estendida. Especialistas defendem que um tempo de licença-paternidade maior tem impactos positivos na família inteira: gera pais mais participativos, crianças com melhor desempenho na escola e mães com maiores chances de sucesso nas carreiras. Estudos apontam esses benefícios, uma vez que pais que são presentes e cuidadores geram filhos que serão cidadãos mais saudáveis emocionalmente e mais produtivos, assim como empresas que oferecem essa licença apresentam maior retenção de funcionários e de produtividade.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nDá licença! Instituída no Brasil em 1988 pela Constituição Federal, a licença-paternidade foi definida como sendo de cinco dias corridos, com base no artigo 7º da Constituição, mas ainda precisaria ser regulamentada pelo Congresso Nacional, por meio de uma lei. \"A licença-paternidade no Brasil, de cinco dias corridos, é menor do que o Carnaval. Qual a mensagem que estamos passando com isso? Qual a prioridade nesse caso?\", questiona um jornalista integrante da articulação política CoPai, de pessoas, empresas e coletivos que buscam a licença-paternidade estendida. Especialistas defendem que um tempo de licença-paternidade maior tem impactos positivos na família inteira: gera pais mais participativos, crianças com melhor desempenho na escola e mães com maiores chances de sucesso nas carreiras. Estudos apontam esses benefícios, uma vez que pais que são presentes e cuidadores geram filhos que serão cidadãos mais saudáveis emocionalmente e mais produtivos, assim como empresas que oferecem essa licença apresentam maior retenção de funcionários e de produtividade.\n\nPergunta:\nNesse texto, a estratégia utilizada para convencer o leitor acerca da necessidade do aumento de tempo da licença-paternidade foi\n\nAlternativas:\nA) citar a fala de um especialista jurídico sobre esse assunto.\nB) sugerir mudanças na legislação que versa sobre a matéria.\nC) descrever a regulamentação nacional e das empresas sobre o tema.\nD) ressaltar ações de coletivos que buscam o engajamento das empresas.\nE) apresentar benefícios profissionais e familiares decorrentes desse direito.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 439,
+      "total_tokens": 445,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001207",
+    "system": null,
+    "pergunta": "A nova abordagem sobre a prática indicada no texto fundamentava-se no(a)\n\nA) abandono de objetos mediadores.\nB) instituição do ascetismo monástico.\nC) desprezo do proselitismo religioso.\nD) revalorização dos ritos sacramentais.\nE) consagração de preceitos populares.",
+    "resposta": "{\"answer\":\"A\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 274,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "No início do século XVI, as relíquias continuavam protegendo edifícios e cidades, promovendo curas milagrosas, sendo levadas em solenes procissões pelas ruas, sacralizando altares de igrejas por toda a Europa, em uma notável continuidade em relação ao papel que haviam desempenhado havia mais de mil anos no continente. Mas, em meados daquele século, essa situação tinha se transformado. O culto às relíquias foi fortemente repudiado pelos reformadores protestantes, que pregavam uma igreja invisível.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 268,
+      "total_tokens": 274,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001208",
+    "system": null,
+    "pergunta": "Para completar a ação proposta no ambiente escolar, o que falta ser inserido no planejamento?\n\nA) Realizar campanhas educativas de sensibilização em bairros vizinhos para fortalecer a coleta seletiva.\nB) Firmar parceria com a prefeitura ou cooperativa de catadores para recolhimento dos materiais recicláveis e destinação apropriada.\nC) Organizar visitas ao lixão ou aterro local para identificar aspectos importantes sobre a disposição final do lixo.\nD) Divulgar na rádio local, no jornal impresso e nas redes sociais que a escola está realizando a coleta seletiva.\nE) Colocar recipientes coletores de lixo reciclável fora da escola para entrega voluntária pela população.",
+    "resposta": "{\"answer\":\"A\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 370,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "B",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Uma escola iniciou o processo educativo para implantação da coleta seletiva e destino de materiais recicláveis. Para atingir seus objetivos, a instituição planejou: 1) sensibilizar a comunidade escolar, desenvolvendo atividades em sala e extraclasse de maneira contínua; 2) capacitar o pessoal responsável pela limpeza da escola quanto aos novos procedimentos adotados com a coleta seletiva; e 3) distribuir coletores de materiais recicláveis específicos nas salas, pátio e outros ambientes para acondicionamento dos resíduos.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 364,
+      "total_tokens": 370,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001209",
+    "system": null,
+    "pergunta": "Para reforçar o ponto de vista do autor, a progressão temática nesse texto é marcada pelo(a)\n\nA) formulação de hipóteses.\nB) emprego da primeira pessoa.\nC) utilização de elementos coesivos.\nD) repetição de estruturas sintáticas.\nE) uso de palavras de sentido oposto.",
+    "resposta": "{\"answer\":\"C\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 318,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "D",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Não posso ser professor se não percebo cada vez melhor que, por não poder ser neutra, minha prática exige de mim uma definição. Uma tomada de posição. Sou professor a favor da decência contra o despudor, a favor da liberdade contra o autoritarismo, da autoridade contra a licenciosidade, da democracia contra a ditadura de direita ou de esquerda. Sou professor a favor da luta constante contra qualquer forma de discriminação, contra a dominação econômica dos indivíduos ou das classes sociais. Sou professor contra a ordem capitalista vigente que inventou esta aberração: a miséria na fartura. Sou professor a favor da esperança que me anima apesar de tudo. Sou professor contra o desengano que me consome e imobiliza.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 312,
+      "total_tokens": 318,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001210",
+    "system": "",
+    "pergunta": "A quantidade mínima de pontos que o parâmetro da qualidade da água do reservatório V deve aumentar é\n\nA) 36\nB) 40\nC) 41\nD) 43\nE) 44",
+    "resposta": "{\n  \"answer\": \"A\"\n}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 382,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "O síndico de um condomínio contratou uma empresa para verificar a qualidade da água dos cinco reservatórios que alimentam esses edifícios. A empresa utiliza um teste que fornece o valor de um parâmetro, expresso em pontos que variam de 0 a 100, que indicam a qualidade da água, sendo o valor 0 associado à péssima qualidade e 100 associado à ótima qualidade da água. Quando esse parâmetro assume um valor a partir de 50 pontos, a água é considerada de qualidade adequada. Para os reservatórios I, II, III e IV, esse parâmetro assumiu, respectivamente, os valores 64, 53, 63 e 64 nesse tipo de teste. Já no reservatório V, esse parâmetro foi de 20 pontos, reprovando a qualidade da água. Com isso, a água desse reservatório será tratada de modo a aumentar sua qualidade. O síndico pretende que o parâmetro de qualidade da água do reservatório V aumente o suficiente para que a média dos parâmetros de qualidade da água dos cinco reservatórios seja, no mínimo, igual a 60 pontos.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nO síndico de um condomínio contratou uma empresa para verificar a qualidade da água dos cinco reservatórios que alimentam esses edifícios. A empresa utiliza um teste que fornece o valor de um parâmetro, expresso em pontos que variam de 0 a 100, que indicam a qualidade da água, sendo o valor 0 associado à péssima qualidade e 100 associado à ótima qualidade da água. Quando esse parâmetro assume um valor a partir de 50 pontos, a água é considerada de qualidade adequada. Para os reservatórios I, II, III e IV, esse parâmetro assumiu, respectivamente, os valores 64, 53, 63 e 64 nesse tipo de teste. Já no reservatório V, esse parâmetro foi de 20 pontos, reprovando a qualidade da água. Com isso, a água desse reservatório será tratada de modo a aumentar sua qualidade. O síndico pretende que o parâmetro de qualidade da água do reservatório V aumente o suficiente para que a média dos parâmetros de qualidade da água dos cinco reservatórios seja, no mínimo, igual a 60 pontos.\n\nPergunta:\nA quantidade mínima de pontos que o parâmetro da qualidade da água do reservatório V deve aumentar é\n\nAlternativas:\nA) 36\nB) 40\nC) 41\nD) 43\nE) 44\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 372,
+      "total_tokens": 382,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001211",
+    "system": null,
+    "pergunta": "Segundo o texto, apesar do aumento da participação de mulheres em lutas, a realidade na escola ainda é diferente em razão do(a)\n\nA) esportivização desse conteúdo.\nB) masculinização dessa modalidade.\nC) enfoque desses eventos pela mídia.\nD) trato pedagógico dessa manifestação.\nE) marginalização desse tema pela Educação Física.",
+    "resposta": "{\"answer\":\"B\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 441,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Por trás do universo “masculino” das lutas, é cada vez mais notório o aumento da participação de mulheres nessa prática corporal. Algumas situações reforçam esse fenômeno de ocupação em ambientes de lutas: a inclusão de mulheres em combates de artes marciais mistas, ou MMA, a transmissão televisiva de lutas de mulheres e a criação de horários específicos para elas em academias que ensinam lutas. Uma pesquisa científica mostrou menor participação e mobilização das meninas em comparação com os meninos nas aulas de Educação Física. Entre as justificativas discentes para essa situação está o fato de que eles relacionam a luta como uma expressão corporal masculina e, por consequência, não adequada aos interesses femininos. Dessa forma, o ensino de lutas nas aulas de Educação Física é atravessado por tensões relacionadas às questões de gênero e sexualidade, o que, por sua vez, pode favorecer a sua exclusão do conteúdo próprio da disciplina.\nSO, M. R.; MARTINS, M. Z.; BETTI, M. As relações das meninas com os saberes das lutas nas aulas de Educação Física. Motrivivência, n. 56, dez. 2018 (adaptado).",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 435,
+      "total_tokens": 441,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001212",
+    "system": null,
+    "pergunta": "As reivindicações dos operários, quanto às condições aviltantes de trabalho a que são submetidos, recebem algumas tentativas de neutralização dos representantes do empregador, das quais a mais forte é o(a)\n\nA) sequência de atribuição de responsabilidades e de poder decisório a terceiros.\nB) solicitação em nome dos prejuízos e compromissos para entrega da obra.\nC) intimidação pela discreta presença de um agente de segurança na cena.\nD) promessa de imediato atendimento da carência sexual dos operários.\nE) apelo pela identificação com a empresa extensiva ao amor patriótico.",
+    "resposta": "{\"answer\":\"A\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 527,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "E",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Fomos falar com o tal encarregado, depois com um engenheiro, depois com um supervisor que mandou chamar um engenheiro da nossa companhia. Esses homens são da sua companhia, engenheiro, ele falou, estão pedindo a conta. A companhia está empenhada nessa ponte, gente, falou o engenheiro, vocês não podem sair assim sem mais nem menos. Tinha uma serra circular cortando uns caibros ali perto, então só dava pra falar quando a serra parava, e aquilo foi dando nos nervos. Falei que a gente tinha o direito de sair quando a gente quisesse, e pronto. Nisso encostou um sujeito de paletó mas sem gravata, o engenheiro continuou falando e a serra cortando. Quando ele parou de falar, 50 Volts aproveitou uma parada da serra e falou que a gente não era bicho pra trabalhar daquele jeito; daí o supervisor falou que, se era falta de mulher, eles davam um jeito. O engenheiro falou que tinha mais de vinte companhias trabalhando na ponte, a maioria com prejuízo, porque era mais uma questão de honra, a gente tinha de acabar a ponte, a nossa companhia nunca ia esquecer nosso trabalho ali naquela ponte, um orgulho nacional.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 521,
+      "total_tokens": 527,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001213",
+    "system": null,
+    "pergunta": "O texto caracteriza um estágio do processo de urbanização marcado pela\n\nA) segregação socioespacial.\nB) emancipação territorial.\nC) conurbação planejada.\nD) metropolização tardia.\nE) expansão vertical.",
+    "resposta": "{\"answer\":\"A\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 246,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Esse processo concentra a população de renda mais elevada e maior poder político em áreas mais centrais e privilegiadas em termos de empregos, infraestrutura básica e serviços sociais. Ao mesmo tempo, redistribui a população menos favorecida quanto a esses aspectos, constituindo uma ocupação periférica que se estende até os municípios limítrofes. Neles, as condições de acesso às áreas mais centrais são agravadas pelas grandes distâncias e pelas dificuldades relacionadas à eficiência do sistema de transporte.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 240,
+      "total_tokens": 246,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001214",
+    "system": null,
+    "pergunta": "O comportamento desse religioso demonstra uma preocupação com as características assumidas pela Igreja e com as desigualdades sociais compartilhada no seu tempo pelos(as)\n\nA) senhores feudais.\nB) movimentos heréticos.\nC) integrantes das Cruzadas.\nD) corporações de ofícios.\nE) universidades medievais.",
+    "resposta": "{\"answer\":\"A\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 305,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "B",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Desde o século XII que a cristandade ocidental era agitada pelo desafio lançado pela cultura profana — a dos romances de cavalaria, mas também a cultura folclórica dos camponeses e igualmente a dos citadinos, de caráter mais jurídico — à cultura eclesiástica, cujo veículo era o latim. Francisco de Assis veio alterar a situação, propondo aos seus ouvintes uma mensagem acessível a todos e, simultaneamente, enobrecendo a língua vulgar através do seu uso na religião.\nVAUCHEZ, A. A espiritualidade da Idade Média Ocidental, séc. VIII-XIII. Lisboa: Estampa, 1995.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 299,
+      "total_tokens": 305,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001215",
+    "system": "",
+    "pergunta": "O texto trata da evolução inerente às funcionalidades de recursos tecnológicos. A expressão 'la guillotina del siglo XXI' destaca que os celulares de hoje podem\n\nA) oferecer recursos com funções múltiplas.\nB) reunir usuários com ideias semelhantes.\nC) divulgar informação instantânea.\nD) organizar movimentos sociais.\nE) assumir utilidade jurídica.",
+    "resposta": "{\"answer\":\"B\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 388,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "E",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Hoy, en cuestión uno es capaz de conocer la vida de un individuo o las actividades que lleva a cabo sin necesidad de contacto personal; las RRSS tienen la poderosa virtud de convocar concentraciones de gentes con idearios comunes y generar movimientos como la Primavera Árabe, por ejemplo. Bajo ese parámetro, cualquier incidente puede ser inmediatamente reportado por grabación o filmación, por lo que a los aparatos celulares, más allá de su utilidad en términos de conversación, habría que calificarlos como 'la guillotina del siglo XXI'. Así es. Son éstos los que han pasado a convertirse en artefactos con cuyo uso se han develado conversaciones, acuerdos, negociados, chantajes y un sin fin de hechos que han dado curso a procesos de naturaleza legal e investigativa que han tumbado gobiernos, empresas, empresarios, políticos y que, incluso, ha servido en un caso reciente, para que un inocente recupere su libertad tras cuatro años de injusto encierro.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nHoy, en cuestión uno es capaz de conocer la vida de un individuo o las actividades que lleva a cabo sin necesidad de contacto personal; las RRSS tienen la poderosa virtud de convocar concentraciones de gentes con idearios comunes y generar movimientos como la Primavera Árabe, por ejemplo. Bajo ese parámetro, cualquier incidente puede ser inmediatamente reportado por grabación o filmación, por lo que a los aparatos celulares, más allá de su utilidad en términos de conversación, habría que calificarlos como 'la guillotina del siglo XXI'. Así es. Son éstos los que han pasado a convertirse en artefactos con cuyo uso se han develado conversaciones, acuerdos, negociados, chantajes y un sin fin de hechos que han dado curso a procesos de naturaleza legal e investigativa que han tumbado gobiernos, empresas, empresarios, políticos y que, incluso, ha servido en un caso reciente, para que un inocente recupere su libertad tras cuatro años de injusto encierro.\n\nPergunta:\nO texto trata da evolução inerente às funcionalidades de recursos tecnológicos. A expressão 'la guillotina del siglo XXI' destaca que os celulares de hoje podem\n\nAlternativas:\nA) oferecer recursos com funções múltiplas.\nB) reunir usuários com ideias semelhantes.\nC) divulgar informação instantânea.\nD) organizar movimentos sociais.\nE) assumir utilidade jurídica.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 382,
+      "total_tokens": 388,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001216",
+    "system": null,
+    "pergunta": "De acordo com o texto, a dificuldade na produção de energia é causada pela alteração da(s)\n\nA) variável em pesquisas meteorológicas.\nB) paisagem em locais estratégicos.\nC) demandas em regiões industriais.\nD) metas em acordos climáticos.\nE) geologia em áreas naturais.",
+    "resposta": "{\"answer\":\"B\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 319,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Pela falta de chuvas, a geração de energia eólica, solar e térmica atingiu níveis recordes em agosto de 2021, quando as hidrelétricas ficaram com cerca de 50% do total. Para um professor da Universidade Federal da Bahia, essa queda não é uma surpresa. “Não aconteceu de uma hora para outra. Se olharmos o mapa do Brasil, um dos grandes provedores de água é a Floresta Amazônica. Se você diminui a floresta, diminui a quantidade de água que vai para a atmosfera”, explica. BORGES, T. O fantasma do apagão. Disponível em: www.correio24horas.com.br. Acesso em: 9 out. 2021 (adaptado).",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 313,
+      "total_tokens": 319,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001217",
+    "system": null,
+    "pergunta": "Na perspectiva do Romantismo, a representação feminina espelha concepções expressas no poema pela\n\nA) reprodução de estereótipos sociais e de gênero.\nB) presença de traços marcadores de nacionalidade.\nC) sublimação do desejo por meio da espiritualização.\nD) correlação feita entre estados emocionais e natureza.\nE) mudança de paradigmas relacionados à sensibilidade.",
+    "resposta": "{\"answer\":\"C\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 302,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "D",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Leito de folhas verdes\nBrilha a lua no céu, brilham estrelas,\nCorrem perfumes no correr da brisa,\nA cujo influxo mágico respira-se\nUm quebranto de amor, melhor que a vida!\nA flor que desabrocha ao romper d’alva\nUm só giro do sol, não mais, vegeta:\nEu sou aquela flor que espero ainda\nDoce raio do sol que me dê vida.\nDIAS, G. Antologia poética. Rio de Janeiro: Agir, 1979 (fragmento).",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 296,
+      "total_tokens": 302,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001218",
+    "system": "",
+    "pergunta": "Qual o motivo físico da proteção fornecida pelos automóveis, conforme citado no texto?\n\nA) Isolamento elétrico dos pneus.\nB) Efeito de para-raios da antena.\nC) Blindagem pela carcaça metálica.\nD) Escoamento da água pela lataria.\nE) Aterramento pelo fio terra da bateria.",
+    "resposta": "{\n  \"answer\": \"C\"\n}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 302,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Há muitos mitos em relação a como se proteger de raios, cobrir espelhos e não pegar em facas, garfos e outros objetos metálicos, por exemplo. Mas, de fato, se houver uma tempestade com raios, alguns cuidados são importantes, como evitar ambientes abertos. Um bom abrigo para proteção é o interior de um automóvel, desde que este não seja conversível.\nOLIVEIRA, A. Raios nas tempestades de verão. Disponível em: http://cienciahoje.uol.com.br. Acesso em: 10 dez. 2014 (adaptado).",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nHá muitos mitos em relação a como se proteger de raios, cobrir espelhos e não pegar em facas, garfos e outros objetos metálicos, por exemplo. Mas, de fato, se houver uma tempestade com raios, alguns cuidados são importantes, como evitar ambientes abertos. Um bom abrigo para proteção é o interior de um automóvel, desde que este não seja conversível.\nOLIVEIRA, A. Raios nas tempestades de verão. Disponível em: http://cienciahoje.uol.com.br. Acesso em: 10 dez. 2014 (adaptado).\n\nPergunta:\nQual o motivo físico da proteção fornecida pelos automóveis, conforme citado no texto?\n\nAlternativas:\nA) Isolamento elétrico dos pneus.\nB) Efeito de para-raios da antena.\nC) Blindagem pela carcaça metálica.\nD) Escoamento da água pela lataria.\nE) Aterramento pelo fio terra da bateria.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 292,
+      "total_tokens": 302,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001219",
+    "system": "",
+    "pergunta": "Qual é a razão entre as medidas da largura e do comprimento da nova folha?\n\nA) 1/16\nB) 620/1240\nC) 596/856\nD) 598/880\nE) 845/4840",
+    "resposta": "{\n  \"answer\": \"C\"\n}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 260,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "B",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Um técnico gráfico constrói uma nova folha a partir das medidas de uma folha A0. As medidas de uma folha A0 são 595 mm de largura e 840 mm de comprimento. A nova folha foi construída do seguinte modo: acrescenta uma polegada na medida da largura e 16 polegadas na medida do comprimento. Esse técnico precisa saber a razão entre as medidas da largura e do comprimento, respectivamente, dessa nova folha. Considere 2,5 cm como valor aproximado para uma polegada.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nUm técnico gráfico constrói uma nova folha a partir das medidas de uma folha A0. As medidas de uma folha A0 são 595 mm de largura e 840 mm de comprimento. A nova folha foi construída do seguinte modo: acrescenta uma polegada na medida da largura e 16 polegadas na medida do comprimento. Esse técnico precisa saber a razão entre as medidas da largura e do comprimento, respectivamente, dessa nova folha. Considere 2,5 cm como valor aproximado para uma polegada.\n\nPergunta:\nQual é a razão entre as medidas da largura e do comprimento da nova folha?\n\nAlternativas:\nA) 1/16\nB) 620/1240\nC) 596/856\nD) 598/880\nE) 845/4840\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 250,
+      "total_tokens": 260,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001220",
+    "system": "",
+    "pergunta": "Na organização desse texto, observam-se traços comumente característicos de biografias, entretanto, trata-se de um(a)\n\nA) aviso, pois sua função é advertir o leitor sobre o perigo de se caminhar nas orlas.\nB) relato, pois descreve o acidente envolvendo um motociclista e seus desdobramentos.\nC) obituário, pois tem o propósito de levar ao leitor informações sobre o velório do professor.\nD) anúncio, pois divulga o recebimento do título de doutor honoris causa pelo professor morto.\nE) notícia, pois seu objetivo é informar o leitor sobre o acidente, seguido da morte do professor.",
+    "resposta": "{\n  \"answer\": \"C\"\n}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 478,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Nascido em Milão, em 1934, o arquiteto Roberto Segre emigrou para a Argentina aos cinco anos, fugindo do fascismo italiano. Ainda jovem, aos 29 anos, mudou-se para Cuba, onde permaneceu dando aulas de história da arquitetura e urbanismo na Universidade de Havana até 1994. Segre se mudaria definitivamente para o Brasil, em 1994, a convite da UFRJ. Em 2007, recebeu o título de doutor honoris causa pelo Instituto Superior Politécnico de Havana. Roberto Segre morreu, na manhã de anteontem, aos 78 anos, atropelado por um motociclista, quando caminhava na Praia de Icaraí, em Niterói, onde morava. Ele chegou a ser hospitalizado, mas não resistiu aos ferimentos. O corpo será velado amanhã, das 9 h às 17 h, no Palácio Universitário da UFRJ, Avenida Pasteur, 250, na Praia Vermelha, Urca.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nNascido em Milão, em 1934, o arquiteto Roberto Segre emigrou para a Argentina aos cinco anos, fugindo do fascismo italiano. Ainda jovem, aos 29 anos, mudou-se para Cuba, onde permaneceu dando aulas de história da arquitetura e urbanismo na Universidade de Havana até 1994. Segre se mudaria definitivamente para o Brasil, em 1994, a convite da UFRJ. Em 2007, recebeu o título de doutor honoris causa pelo Instituto Superior Politécnico de Havana. Roberto Segre morreu, na manhã de anteontem, aos 78 anos, atropelado por um motociclista, quando caminhava na Praia de Icaraí, em Niterói, onde morava. Ele chegou a ser hospitalizado, mas não resistiu aos ferimentos. O corpo será velado amanhã, das 9 h às 17 h, no Palácio Universitário da UFRJ, Avenida Pasteur, 250, na Praia Vermelha, Urca.\n\nPergunta:\nNa organização desse texto, observam-se traços comumente característicos de biografias, entretanto, trata-se de um(a)\n\nAlternativas:\nA) aviso, pois sua função é advertir o leitor sobre o perigo de se caminhar nas orlas.\nB) relato, pois descreve o acidente envolvendo um motociclista e seus desdobramentos.\nC) obituário, pois tem o propósito de levar ao leitor informações sobre o velório do professor.\nD) anúncio, pois divulga o recebimento do título de doutor honoris causa pelo professor morto.\nE) notícia, pois seu objetivo é informar o leitor sobre o acidente, seguido da morte do professor.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 468,
+      "total_tokens": 478,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001221",
+    "system": "",
+    "pergunta": "O texto apresenta uma reflexão da personagem acerca de um problema característico da filosofia contemporânea, que trata da(s)\n\nA) implicações éticas.\nB) finitude humana.\nC) limitações da linguagem.\nD) pressuposição existencial.\nE) objetividade do conhecimento.",
+    "resposta": "{\"answer\":\"B\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 334,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Eu sentia falta do futuro. É claro que eu sabia, muito mesmo antes da recorrência dele, que nunca envelheceria. Era muito provável que eu nunca mais fosse ver o oceano de uma altura de trinta mil pés de novo, uma distância tão grande que não dá nem para distinguir as ondas, nem nenhum barco, de um jeito que faz o oceano parecer um enorme e infinito monólito. Eu poderia imaginá-lo. Eu poderia me lembrar dele. Mas não poderia vê-lo de novo, e me ocorreu que a ambição voraz dos seres humanos nunca é saciada quando os sonhos são realizados, porque há sempre a sensação de que tudo poderia ter sido feito melhor e ser feito outra vez.\nGREEN, J. A culpa é das estrelas. Rio de Janeiro: Intrínseca, 2012.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nEu sentia falta do futuro. É claro que eu sabia, muito mesmo antes da recorrência dele, que nunca envelheceria. Era muito provável que eu nunca mais fosse ver o oceano de uma altura de trinta mil pés de novo, uma distância tão grande que não dá nem para distinguir as ondas, nem nenhum barco, de um jeito que faz o oceano parecer um enorme e infinito monólito. Eu poderia imaginá-lo. Eu poderia me lembrar dele. Mas não poderia vê-lo de novo, e me ocorreu que a ambição voraz dos seres humanos nunca é saciada quando os sonhos são realizados, porque há sempre a sensação de que tudo poderia ter sido feito melhor e ser feito outra vez.\nGREEN, J. A culpa é das estrelas. Rio de Janeiro: Intrínseca, 2012.\n\nPergunta:\nO texto apresenta uma reflexão da personagem acerca de um problema característico da filosofia contemporânea, que trata da(s)\n\nAlternativas:\nA) implicações éticas.\nB) finitude humana.\nC) limitações da linguagem.\nD) pressuposição existencial.\nE) objetividade do conhecimento.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 328,
+      "total_tokens": 334,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001222",
+    "system": null,
+    "pergunta": "O comportamento dos personagens narrado no texto destaca o(a)\n\nA) abandono da própria identidade.\nB) medo dos perigos durante a noite.\nC) influência do grupo na tomada de decisão.\nD) diferença cultural entre galegos e andaluzes.\nE) variação meteorológica entre Sevilha e Galiza.",
+    "resposta": "{\"answer\":\"C\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 345,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "D",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "“Y si llueve, que llueva” es un refrán gallego. Para mí cobró sentido una noche de febrero, cuando vivía en el barrio de la Macarena de Sevilla con dos buenos amigos, gallegos también. Mi compañero y yo nos decidimos a salir ese sábado de noche, pese a que había estado lloviendo algunas horas a lo largo del día. La idea era una locura, al parecer. Le propusimos salir “de parranda” con nosotros a una amiga andaluza, ésta respondió que no, nos dijo que no iba a salir un día de lluvia. Flipamos. Comentamos entre nosotros que si los gallegos no saliésemos de casa cuando llueve, en invierno saldríamos poco. Habríamos inventado el confinamiento hace mucho. Los gallegos no dejamos de salir por la lluvia.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 339,
+      "total_tokens": 345,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001223",
+    "system": null,
+    "pergunta": "A composição e o funcionamento do organismo internacional apresentados revelam a seguinte característica das relações internacionais entre os países-membros:\n\nA) Igualdade militar.\nB) Assimetria política.\nC) Consenso multipolar.\nD) Equilíbrio estratégico.\nE) Soberania compartilhada.",
+    "resposta": "{\n  \"answer\": \"B\"\n}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 262,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "O Conselho de Segurança da Organização das Nações Unidas (ONU) é, junto com a Assembleia-Geral, um dos principais órgãos de tomada de decisão dentro da entidade. O Conselho lida com questões de segurança e paz internacionais, além de recomendar a admissão de novos membros à Assembleia-Geral e aprovar mudanças na Carta das Nações Unidas. Cinco dos quinze membros são permanentes e podem vetar resoluções, o que ocorreu 261 vezes até 2020.",
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 252,
+      "total_tokens": 262,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001224",
+    "system": "",
+    "pergunta": "Ao situar a composição no panorama cultural brasileiro, o Texto II destaca o(a)\n\nA) diálogo que a letra da canção estabelece com diferentes tradições da cultura nacional.\nB) singularidade com que o compositor converte referências eruditas em populares.\nC) caráter inovador com que o compositor concebe o processo de criação artística.\nD) relativização que a letra da canção promove na concepção tradicional de originalidade.\nE) resgate que a letra da canção promove de obras pouco conhecidas pelo público no país.",
+    "resposta": "{\"answer\":\"B\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 613,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "A",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "TEXTO I\nÉ pau, é pedra, é o fim do caminho\nÉ um resto de toco, é um pouco sozinho\nÉ um caco de vidro, é a vida, é o sol\nÉ a noite, é a morte, é o laço, é o anzol\nÉ peroba-do-campo, é o nó da madeira\nCaingá, candeia, é o matita-pereira\nTOM JOBIM. Águas de março. O Tom de Jobim e o tal de João Bosco (disco de bolso). Salvador: Zen Produtora, 1972 (fragmento).\nTEXTO II\nA inspiração súbita e certeira do compositor serve ainda de exemplo do lema antigo: nada vem do nada. Para ninguém, nem mesmo para Tom Jobim. Duas fontes são razoavelmente conhecidas. A primeira é o poema O caçador de esmeraldas, do mestre parnasiano Olavo Bilac: “Foi em março, ao findar da chuva, quase à entrada/ do outono, quando a terra em sede requeimada/ bebera longamente as águas da estação [...]”. E a outra é um ponto de macumba, gravado com sucesso por J. B. Carvalho, do Conjunto Tupi: “É pau, é pedra, é seixo miúdo, roda a baiana por cima de tudo”. Combinar Olavo Bilac e macumba já seria bom; mas o que se vê em Águas de março vai muito além: tudo se transforma numa outra coisa e numa outra música, que recompõem o mundo para nós.\nNESTROVSKI, A. O samba mais bonito do mundo. In: Três canções de Tom Jobim. São Paulo: Cosac Naify, 2004.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nTEXTO I\nÉ pau, é pedra, é o fim do caminho\nÉ um resto de toco, é um pouco sozinho\nÉ um caco de vidro, é a vida, é o sol\nÉ a noite, é a morte, é o laço, é o anzol\nÉ peroba-do-campo, é o nó da madeira\nCaingá, candeia, é o matita-pereira\nTOM JOBIM. Águas de março. O Tom de Jobim e o tal de João Bosco (disco de bolso). Salvador: Zen Produtora, 1972 (fragmento).\nTEXTO II\nA inspiração súbita e certeira do compositor serve ainda de exemplo do lema antigo: nada vem do nada. Para ninguém, nem mesmo para Tom Jobim. Duas fontes são razoavelmente conhecidas. A primeira é o poema O caçador de esmeraldas, do mestre parnasiano Olavo Bilac: “Foi em março, ao findar da chuva, quase à entrada/ do outono, quando a terra em sede requeimada/ bebera longamente as águas da estação [...]”. E a outra é um ponto de macumba, gravado com sucesso por J. B. Carvalho, do Conjunto Tupi: “É pau, é pedra, é seixo miúdo, roda a baiana por cima de tudo”. Combinar Olavo Bilac e macumba já seria bom; mas o que se vê em Águas de março vai muito além: tudo se transforma numa outra coisa e numa outra música, que recompõem o mundo para nós.\nNESTROVSKI, A. O samba mais bonito do mundo. In: Três canções de Tom Jobim. São Paulo: Cosac Naify, 2004.\n\nPergunta:\nAo situar a composição no panorama cultural brasileiro, o Texto II destaca o(a)\n\nAlternativas:\nA) diálogo que a letra da canção estabelece com diferentes tradições da cultura nacional.\nB) singularidade com que o compositor converte referências eruditas em populares.\nC) caráter inovador com que o compositor concebe o processo de criação artística.\nD) relativização que a letra da canção promove na concepção tradicional de originalidade.\nE) resgate que a letra da canção promove de obras pouco conhecidas pelo público no país.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 607,
+      "total_tokens": 613,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001225",
+    "system": "",
+    "pergunta": "Uma causa determinante que contribui para a anorexia, vinculada ao exercício físico, é o(a)\n\nA) busca por um modelo de corpo e beleza estereotipado socialmente.\nB) conjunto de fatores familiares, psicológicos e socioculturais.\nC) utilização de medicamentos e dietas restritivas.\nD) recorrência da provocação do vômito.\nE) medo exagerado de ganhar peso.",
+    "resposta": "{\n  \"answer\": \"E\"\n}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 418,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "A",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "A anorexia é um transtorno alimentar caracterizado por grande perda de peso, ausência de menstruação e distúrbio na vivência do peso ou da forma corporal. Fatores familiares, psicológicos, socioculturais e fisiológicos interagem entre si, predispondo, precipitando e/ou mantendo o transtorno. Anoréxicos têm medo doentio de engordar e experienciam uma grande necessidade de controle sobre o peso e a forma do corpo. Dietas exíguas, uso de laxantes, diuréticos e indução de vômito são estratégias para manter o peso e a forma corporal. O exercício também é uma estratégia para perder e controlar o peso, sendo praticado de maneira ritualizada e excessiva. O objetivo é alcançar um corpo ideal condizente com os padrões de beleza, eliminando as poucas calorias que o sujeito se permite ingerir.\nCUMMING, G. et al. Experiências e expectativas em práticas de atividades físicas de pessoas com anorexia nervosa. Movimento, n. 2, 2009 (adaptado).",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nA anorexia é um transtorno alimentar caracterizado por grande perda de peso, ausência de menstruação e distúrbio na vivência do peso ou da forma corporal. Fatores familiares, psicológicos, socioculturais e fisiológicos interagem entre si, predispondo, precipitando e/ou mantendo o transtorno. Anoréxicos têm medo doentio de engordar e experienciam uma grande necessidade de controle sobre o peso e a forma do corpo. Dietas exíguas, uso de laxantes, diuréticos e indução de vômito são estratégias para manter o peso e a forma corporal. O exercício também é uma estratégia para perder e controlar o peso, sendo praticado de maneira ritualizada e excessiva. O objetivo é alcançar um corpo ideal condizente com os padrões de beleza, eliminando as poucas calorias que o sujeito se permite ingerir.\nCUMMING, G. et al. Experiências e expectativas em práticas de atividades físicas de pessoas com anorexia nervosa. Movimento, n. 2, 2009 (adaptado).\n\nPergunta:\nUma causa determinante que contribui para a anorexia, vinculada ao exercício físico, é o(a)\n\nAlternativas:\nA) busca por um modelo de corpo e beleza estereotipado socialmente.\nB) conjunto de fatores familiares, psicológicos e socioculturais.\nC) utilização de medicamentos e dietas restritivas.\nD) recorrência da provocação do vômito.\nE) medo exagerado de ganhar peso.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 408,
+      "total_tokens": 418,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001226",
+    "system": "",
+    "pergunta": "Esse texto problematiza os resultados do desenvolvimento tecnológico da sociedade contemporânea, denunciando o(a)\n\nA) controle das informações que os usuários fornecem no ambiente virtual.\nB) disponibilização irrestrita de ferramentas digitais para os usuários da web.\nC) abuso no domínio do mercado tecnológico por um grupo pequeno de empresas.\nD) desenvolvimento de tecnologias que visam expor os dados dos usuários nas redes.\nE) desinformação em relação à identidade daqueles que comandam os grupos empresariais.",
+    "resposta": "{\"answer\":\"C\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 465,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Google, Apple, Facebook, Amazon, Microsoft. Esse conjunto de grupos empresariais — ocasionalmente designado como Gafam, Big Tech ou Big Five — é conhecido por sua hegemonia na indústria de tecnologia digital. Nós utilizamos seus sistemas operacionais, fazemos compras e buscas por meio de suas plataformas, mantemos contas em suas redes sociais e conhecemos os nomes e rostos de seus fundadores. Isso ocorre, muitas vezes, sem que sequer tenhamos consciência: quando mandamos áudios por WhatsApp ou vemos stories no Instagram, não é óbvio que esses serviços pertençam à Facebook Inc. Similarmente, o usuário padrão ignora que o sistema Android é desenvolvido pela Google e que ela pertence à Alphabet Inc., conglomerado que também é proprietário do YouTube. Os problemas associados a essa concentração de poder econômico, político e cultural têm sido um foco cada vez maior de atenção pública. Muito se fala sobre como filtros-bolha, bots e desinformação fragilizam a democracia, e manchetes sobre violações da privacidade e da liberdade de expressão dos usuários pelas empresas se tornaram comuns nesta década.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nGoogle, Apple, Facebook, Amazon, Microsoft. Esse conjunto de grupos empresariais — ocasionalmente designado como Gafam, Big Tech ou Big Five — é conhecido por sua hegemonia na indústria de tecnologia digital. Nós utilizamos seus sistemas operacionais, fazemos compras e buscas por meio de suas plataformas, mantemos contas em suas redes sociais e conhecemos os nomes e rostos de seus fundadores. Isso ocorre, muitas vezes, sem que sequer tenhamos consciência: quando mandamos áudios por WhatsApp ou vemos stories no Instagram, não é óbvio que esses serviços pertençam à Facebook Inc. Similarmente, o usuário padrão ignora que o sistema Android é desenvolvido pela Google e que ela pertence à Alphabet Inc., conglomerado que também é proprietário do YouTube. Os problemas associados a essa concentração de poder econômico, político e cultural têm sido um foco cada vez maior de atenção pública. Muito se fala sobre como filtros-bolha, bots e desinformação fragilizam a democracia, e manchetes sobre violações da privacidade e da liberdade de expressão dos usuários pelas empresas se tornaram comuns nesta década.\n\nPergunta:\nEsse texto problematiza os resultados do desenvolvimento tecnológico da sociedade contemporânea, denunciando o(a)\n\nAlternativas:\nA) controle das informações que os usuários fornecem no ambiente virtual.\nB) disponibilização irrestrita de ferramentas digitais para os usuários da web.\nC) abuso no domínio do mercado tecnológico por um grupo pequeno de empresas.\nD) desenvolvimento de tecnologias que visam expor os dados dos usuários nas redes.\nE) desinformação em relação à identidade daqueles que comandam os grupos empresariais.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 459,
+      "total_tokens": 465,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001227",
+    "system": null,
+    "pergunta": "Qual é a probabilidade de Paula retirar exatamente o valor de sua despesa?\n\nA) 1/48\nB) 1/24\nC) 1/16\nD) 5/12\nE) 1/4",
+    "resposta": "{\"answer\":\"A\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 265,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "B",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Na bolsa de Paula, há uma cédula de R$ 2,00, duas de R$ 5,00, duas de R$ 10,00, uma de R$ 20,00, duas de R$ 50,00 e quatro moedas: uma de R$ 0,10, uma de R$ 0,25, uma de R$ 0,50 e uma de R$ 1,00. Paula deseja pagar uma despesa de R$ 10,75 e, para isso, retira de sua bolsa, sem olhar, uma cédula juntamente com duas moedas.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 259,
+      "total_tokens": 265,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001228",
+    "system": null,
+    "pergunta": "Essa petição de habeas corpus, ao transgredir o rigor da linguagem jurídica,\n\nA) permite que a narrativa seja objetiva e repleta de sentidos denotativos.\nB) mostra que o cordel explora termos próprios da esfera do direito.\nC) demonstra que o jogo de linguagem proposto atenua a gravidade do delito.\nD) exemplifica como o texto em forma de cordel compromete a solicitação pretendida.\nE) esclarece que os termos “crime” e “processo de contravenção” são sinônimos.",
+    "resposta": "{\"answer\":\"B\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 404,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "C",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Senhor Juiz\nO instrumento do “crime” que se arrola\nNesse processo de contravenção\nNão é faca, revólver ou pistola,\nSimplesmente, doutor, é um violão.\nSerá crime, afinal, será pecado,\nSerá delito de tão vis horrores,\nPerambular na rua um desgraçado\nDerramando nas praças suas dores?\nMande, pois, libertá-lo da agonia\n(a consciência assim nos insinua)\nNão sufoque o cantar que vem da rua,\nQue vem da noite para saudar o dia.\nÉ o apelo que aqui lhe dirigimos,\nNa certeza do seu acolhimento\nJuntada desta aos autos nós pedimos\nE pedimos, enfim, deferimento.\nDisponível em: www.migalhas.com.br. Acesso em: 23 set. 2020 (adaptado).",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 398,
+      "total_tokens": 404,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001229",
+    "system": "",
+    "pergunta": "Na construção desse texto acadêmico, o autor se vale de estratégia argumentativa bastante comum a esse gênero textual, a intertextualidade, cujas marcas são\n\nA) aspas, que representam o questionamento parcial de um ponto de vista.\nB) citações de autores consagrados, que garantem a autoridade do argumento.\nC) construções sintáticas, que privilegiam a coordenação temporal de argumentos.\nD) comparações entre dois pontos de vista, que são antagônicos.\nE) parênteses, que representam uma digressão para as considerações do autor.",
+    "resposta": "{\"answer\":\"B\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 504,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "O termo \"Na minha casa...\" é uma metáfora que guarda múltiplas acepções para o conjunto de pessoas, de adeptos, dos que creem nos orixás. Múltiplos deuses que a diáspora negra trouxe para o Brasil. Refere-se ao espaço onde as comunidades edificaram seus templos, referência de orgulho, aludindo ao patrimônio cultural de matriz africana, reelaborado em novo território. O espaço é fundamental na constituição da história de um povo. Halbwachs (1941, p. 85), ao afirmar que \"não há memória coletiva que não se desenvolva em um quadro espacial\", aponta para a importância de aspecto tão significativo no desenvolvimento da vida social. Lugar para onde está voltada a memória, onde aqueles que viveram a condição-limite de escravos podiam pensar-se como seres humanos, exercer essa humanidade e encontrar os elementos que lhes conferiam e garantiam uma identidade religiosa diferenciada, com características próprias, que constituiu um \"patrimônio simbólico do negro brasileiro (a memória cultural da África)\", afirmou-se aqui como território político-mítico-religioso para sua transmissão e preservação\" (SODRÉ, 1988, p. 50).",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nO termo \"Na minha casa...\" é uma metáfora que guarda múltiplas acepções para o conjunto de pessoas, de adeptos, dos que creem nos orixás. Múltiplos deuses que a diáspora negra trouxe para o Brasil. Refere-se ao espaço onde as comunidades edificaram seus templos, referência de orgulho, aludindo ao patrimônio cultural de matriz africana, reelaborado em novo território. O espaço é fundamental na constituição da história de um povo. Halbwachs (1941, p. 85), ao afirmar que \"não há memória coletiva que não se desenvolva em um quadro espacial\", aponta para a importância de aspecto tão significativo no desenvolvimento da vida social. Lugar para onde está voltada a memória, onde aqueles que viveram a condição-limite de escravos podiam pensar-se como seres humanos, exercer essa humanidade e encontrar os elementos que lhes conferiam e garantiam uma identidade religiosa diferenciada, com características próprias, que constituiu um \"patrimônio simbólico do negro brasileiro (a memória cultural da África)\", afirmou-se aqui como território político-mítico-religioso para sua transmissão e preservação\" (SODRÉ, 1988, p. 50).\n\nPergunta:\nNa construção desse texto acadêmico, o autor se vale de estratégia argumentativa bastante comum a esse gênero textual, a intertextualidade, cujas marcas são\n\nAlternativas:\nA) aspas, que representam o questionamento parcial de um ponto de vista.\nB) citações de autores consagrados, que garantem a autoridade do argumento.\nC) construções sintáticas, que privilegiam a coordenação temporal de argumentos.\nD) comparações entre dois pontos de vista, que são antagônicos.\nE) parênteses, que representam uma digressão para as considerações do autor.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 498,
+      "total_tokens": 504,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001230",
+    "system": null,
+    "pergunta": "Com bases nas informações apresentadas, são suscetíveis de serem formados no solo os compostos:\n\nA) CdS e Zn(OH)2\nB) Pb(OH)2 e Na2S\nC) Ni(OH)2 e Cr(C2H5)2\nD) CdSO4 e Pb(CH3CO2)2\nE) Hg(CH3)2 e Ca(CH3CO2)2",
+    "resposta": "{\"answer\":\"A\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 291,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Quando as pilhas, que contêm metais pesados, são descartadas no lixo comum, pode ocorrer o rompimento de sua blindagem e a liberação de seu conteúdo para o meio ambiente. Ao atingir o solo, um metal pesado pode ficar retido nas camadas superiores por três processos: reação com moléculas orgânicas que possuam oxigênio ou nitrogênio em sua estrutura, adsorção em argilas e minerais e reação com grupamento hidroxila, sulfeto ou metil, formando precipitado insolúvel.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 285,
+      "total_tokens": 291,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001231",
+    "system": "",
+    "pergunta": "Para atingir seu objetivo, essa pessoa deverá comprar latas do tipo\n\nA) I.\nB) II.\nC) III.\nD) IV.\nE) V.",
+    "resposta": "{\n  \"answer\": \"A\"\n}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 349,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "B",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Uma pessoa comprará uma tinta especial para pintar, com apenas uma demão, uma parede que tem medida de 320 m2 de área. Para pintar uma área de 10 m2, é necessário exatamente 1 L de tinta. Em uma loja, essa tinta está em promoção e é vendida em latas de diversas capacidades, mas só é possível comprar latas do mesmo tipo. A pessoa tem como objetivo gastar o menor valor possível, em real, com a compra dessa tinta e observa os seguintes dados referentes aos tipos de latas disponíveis:\n• I: contém 0,6 L de tinta e custa R$ 18,00;\n• II: contém 0,8 L de tinta e custa R$ 23,00;\n• III: contém 1,0 L de tinta e custa R$ 29,00;\n• IV: contém 3,0 L de tinta e custa R$ 85,00;\n• V: contém 5,0 L de tinta e custa R$ 150,00.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nUma pessoa comprará uma tinta especial para pintar, com apenas uma demão, uma parede que tem medida de 320 m2 de área. Para pintar uma área de 10 m2, é necessário exatamente 1 L de tinta. Em uma loja, essa tinta está em promoção e é vendida em latas de diversas capacidades, mas só é possível comprar latas do mesmo tipo. A pessoa tem como objetivo gastar o menor valor possível, em real, com a compra dessa tinta e observa os seguintes dados referentes aos tipos de latas disponíveis:\n• I: contém 0,6 L de tinta e custa R$ 18,00;\n• II: contém 0,8 L de tinta e custa R$ 23,00;\n• III: contém 1,0 L de tinta e custa R$ 29,00;\n• IV: contém 3,0 L de tinta e custa R$ 85,00;\n• V: contém 5,0 L de tinta e custa R$ 150,00.\n\nPergunta:\nPara atingir seu objetivo, essa pessoa deverá comprar latas do tipo\n\nAlternativas:\nA) I.\nB) II.\nC) III.\nD) IV.\nE) V.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 339,
+      "total_tokens": 349,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001232",
+    "system": null,
+    "pergunta": "O conjunto dessas práticas musicais demonstra que os instrumentos mencionados no texto\n\nA) refletem a dependência da utilização de matéria-prima europeia.\nB) adaptam suas características a cada cultura, assumindo nova identidade.\nC) comprovam a hegemonia portuguesa na invenção de cordófonos dedilhados.\nD) ilustram processos de dominação cultural, evidenciando situações de choque cultural.\nE) mantêm nomenclatura própria para garantir a fidelidade às formas originais de confecção.",
+    "resposta": "{\"answer\":\"B\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 406,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "É fundamentalmente no Minho, norte de Portugal, que o cavaquinho aparece como instrumento tipicamente popular, ligado às formas essenciais da música característica dessa província. O cavaquinho minhoto tem escala rasa com o tampo, o que facilita a prática do “rasqueado”. O cavaquinho chega ao Brasil diretamente de Portugal, e o modelo brasileiro é maior do que a sua versão portuguesa, com uma caixa de ressonância mais funda. Semelhante ao cavaquinho minhoto, o machete, ou machetinho madeirense, é um pequeno cordófono de corda dedilhada, que faz parte da grande e diversificada família das violas de mão portuguesas. O ukulele tem a sua origem no século XIX, tendo como ancestrais o braguinha (ou machete) e o rajão, instrumentos levados pelos madeirenses quando eles emigraram para o Havaí.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 400,
+      "total_tokens": 406,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001233",
+    "system": "",
+    "pergunta": "Nesse cordel, além da função poética, também está presente a função metalinguística, pois ocorre a\n\nA) prestação de informação.\nB) utilização da norma-padrão.\nC) produção de efeito estilístico.\nD) enunciação em primeira pessoa.\nE) tematização da língua portuguesa.",
+    "resposta": "{\"answer\":\"E\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 331,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "A gramática em cordel\nGrupo de duas vogais\nNuma sílaba em Português\nSabemos que é um ditongo.\nTritongo, quando é de três\nE sendo em sílabas vizinhas,\nÉ hiato, dessa vez.\n[...]\nO substantivo vem,\nDepois, a preposição.\nAdjetivo, advérbio,\nVem agora a conjunção.\nNumeral, artigo, verbo,\nPronome e interjeição.\n[...]\nAcho ser conveniente\nFalar-se em preposição —\nÉ palavra invariável,\nQue sempre faz ligação\nA outras duas palavras\nE exprime posição.\nJOSÉ MARIA DE FORTALEZA. Disponível em: www.fiocruz.br. Acesso em: 21 jan. 2024 (fragmento).",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nA gramática em cordel\nGrupo de duas vogais\nNuma sílaba em Português\nSabemos que é um ditongo.\nTritongo, quando é de três\nE sendo em sílabas vizinhas,\nÉ hiato, dessa vez.\n[...]\nO substantivo vem,\nDepois, a preposição.\nAdjetivo, advérbio,\nVem agora a conjunção.\nNumeral, artigo, verbo,\nPronome e interjeição.\n[...]\nAcho ser conveniente\nFalar-se em preposição —\nÉ palavra invariável,\nQue sempre faz ligação\nA outras duas palavras\nE exprime posição.\nJOSÉ MARIA DE FORTALEZA. Disponível em: www.fiocruz.br. Acesso em: 21 jan. 2024 (fragmento).\n\nPergunta:\nNesse cordel, além da função poética, também está presente a função metalinguística, pois ocorre a\n\nAlternativas:\nA) prestação de informação.\nB) utilização da norma-padrão.\nC) produção de efeito estilístico.\nD) enunciação em primeira pessoa.\nE) tematização da língua portuguesa.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 325,
+      "total_tokens": 331,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001234",
+    "system": null,
+    "pergunta": "Nesse fragmento, a tensão da luta corporal entre os personagens desdobra-se na consciência com que cada um\n\nA) procura descobrir e atacar as fraquezas do adversário.\nB) reconhece e renega a força de um sentimento imperioso.\nC) admite a culpa por seus crimes e cede ao impulso de morte.\nD) recompõe a calma e desiste da violência do confronto físico.\nE) percebe o impasse da situação e espera pelo momento oportuno.",
+    "resposta": "{\"answer\":\"D\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 462,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "B",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "O valente Romano\nNão rolaram pelo chão, machucando-se nas pedras, como fazem os guerreiros. Nem esmurraram-se as bocas. Num tempo que não tem medida, sentiram o calor e o cheiro que cada um exalava. Olhavam o céu procurando resposta e nada estava escrito. Teriam eles mesmos de inventar a sentença para o encontro.\nDerrotados pela certeza de que gostariam de nunca romper o abraço, desvencilharam-se, bruscamente. De cabeças baixas, guardaram o silêncio que apenas os homens de coragem conhecem.\n— Vá embora! — suplicou Romano.\nAnselmo Dantas experimentou um derradeiro impulso de partir em cima do inimigo, mas duvidou se queria matá-lo ou retê-lo junto ao peito. Virou as costas e desapareceu na escuridão. Um galho de baraúna e um laço de corda de agave eram a única luz que seus olhos enxergavam.\nBRITO, R. C. Faca. São Paulo: Cosac & Naify, 2003.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 456,
+      "total_tokens": 462,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001235",
+    "system": null,
+    "pergunta": "Que ação poderia evitar essa intoxicação?\n\nA) Criar os peixes em cativeiro.\nB) Realizar a pesca com redes.\nC) Consumir peixes cozidos ou fritos.\nD) Preparar o peixe em condições adequadas de higiene.\nE) Manusear o peixe sem provocar o rompimento dos órgãos internos.",
+    "resposta": "{\"answer\":\"C\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 250,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "E",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "O sashimi (filé de peixe cru) de baiacu é uma iguaria muito apreciada no Japão. Entretanto, sua ingestão pode causar a morte por parada respiratória, pois esse peixe contém uma potente neurotoxina termoestável, a tetrodotoxina, que é produzida e armazenada nas gônadas e vísceras.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 244,
+      "total_tokens": 250,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001236",
+    "system": "",
+    "pergunta": "A quantidade mínima de pacotes de pão de forma necessários para prover o suprimento a esse casal é\n\nA) 1\nB) 4\nC) 6\nD) 7\nE) 8",
+    "resposta": "{\"answer\":\"C\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 372,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "D",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Alguns estudos comprovam que os carboidratos fornecem energia ao corpo, preservam as proteínas estruturais dos músculos durante a prática de atividade física e ainda dão força para o cérebro coordenar os movimentos, o que de fato tem impacto positivo no desenvolvimento do praticante. O ideal é consumir 1 grama de carboidrato para cada minuto de caminhada. CIRINO, C. Boa pergunta: consumir carboidratos antes dos exercícios melhora o desempenho do atleta? Revista Saúde! É Vital, n. 330, nov. 2010 (adaptado). Um casal realizará diariamente 30 minutos de caminhada, ingerindo, antes dessa atividade, a quantidade ideal de carboidratos recomendada. Para ter o consumo ideal apenas por meio do consumo de pão de fôrma integral, o casal planeja garantir o suprimento de pães para um período de 30 dias ininterruptos. Sabe-se que cada pacote desse pão vem com 18 fatias, e que cada uma delas tem 15 gramas de carboidratos.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nAlguns estudos comprovam que os carboidratos fornecem energia ao corpo, preservam as proteínas estruturais dos músculos durante a prática de atividade física e ainda dão força para o cérebro coordenar os movimentos, o que de fato tem impacto positivo no desenvolvimento do praticante. O ideal é consumir 1 grama de carboidrato para cada minuto de caminhada. CIRINO, C. Boa pergunta: consumir carboidratos antes dos exercícios melhora o desempenho do atleta? Revista Saúde! É Vital, n. 330, nov. 2010 (adaptado). Um casal realizará diariamente 30 minutos de caminhada, ingerindo, antes dessa atividade, a quantidade ideal de carboidratos recomendada. Para ter o consumo ideal apenas por meio do consumo de pão de fôrma integral, o casal planeja garantir o suprimento de pães para um período de 30 dias ininterruptos. Sabe-se que cada pacote desse pão vem com 18 fatias, e que cada uma delas tem 15 gramas de carboidratos.\n\nPergunta:\nA quantidade mínima de pacotes de pão de forma necessários para prover o suprimento a esse casal é\n\nAlternativas:\nA) 1\nB) 4\nC) 6\nD) 7\nE) 8\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 366,
+      "total_tokens": 372,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001237",
+    "system": null,
+    "pergunta": "O evento analisado no texto teve como repercussão imediata na política nacional a\n\nA) reação popular.\nB) intervenção militar.\nC) abertura democrática.\nD) campanha anticomunista.\nE) radicalização oposicionista.",
+    "resposta": "{\n  \"answer\": \"A\"\n}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 281,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Quando Getúlio Vargas se suicidou, em agosto de 1954, o país parecia à beira do caos. Acuado por uma grave crise política, o velho líder preferiu uma bala no peito à humilhação de aceitar uma nova deposição, como a que sofrera em outubro de 1945. Entretanto, ao contrário do que imaginavam os inimigos, ao ruído do estampido não seguiu o silêncio que cerca a derrota.\n\nREIS FILHO, D. A. O Estado à sombra de Vargas. Revista Nossa História, n. 7, maio 2004.",
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 271,
+      "total_tokens": 281,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001238",
+    "system": "",
+    "pergunta": "As alterações no perfil demográfico brasileiro, descritas no texto, trouxeram como consequência socioeconômica o(a)\n\nA) aumento da mortalidade infantil.\nB) crescimento das desigualdades regionais.\nC) redução dos gastos na educação superior.\nD) restrição no atendimento público hospitalar.\nE) expansão na demanda por ocupações laborais.",
+    "resposta": "{\n  \"answer\": \"E\"\n}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 289,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "A pirâmide de formato triangular da década de 1970 foi dando lugar a uma pirâmide mais retangular de base mais estreita e topo mais largo. Em 1991, a população de 0 a 14 anos correspondia a 34,7% da população brasileira, tendo passado para 24,1% em 2010. A população em idade ativa, entre 15 e 59 anos, por sua vez, passou de 58,0% a 65,1% no mesmo período. IBGE. Brasil em números. Rio de Janeiro: IBGE, 2014.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nA pirâmide de formato triangular da década de 1970 foi dando lugar a uma pirâmide mais retangular de base mais estreita e topo mais largo. Em 1991, a população de 0 a 14 anos correspondia a 34,7% da população brasileira, tendo passado para 24,1% em 2010. A população em idade ativa, entre 15 e 59 anos, por sua vez, passou de 58,0% a 65,1% no mesmo período. IBGE. Brasil em números. Rio de Janeiro: IBGE, 2014.\n\nPergunta:\nAs alterações no perfil demográfico brasileiro, descritas no texto, trouxeram como consequência socioeconômica o(a)\n\nAlternativas:\nA) aumento da mortalidade infantil.\nB) crescimento das desigualdades regionais.\nC) redução dos gastos na educação superior.\nD) restrição no atendimento público hospitalar.\nE) expansão na demanda por ocupações laborais.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 279,
+      "total_tokens": 289,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001239",
+    "system": "",
+    "pergunta": "De acordo com esse texto, as práticas esportivas para PcD são caracterizadas por\n\nA) terem regras flexíveis em função do desempenho dos atletas em cada modalidade.\nB) ampliarem perspectivas de vida ao considerarem o desenvolvimento integral das pessoas.\nC) estarem voltadas para o estímulo à competitividade dos atletas com deficiência.\nD) buscarem a adesão do público para garantir apoio financeiro às competições.\nE) serem organizadas sem distinção para grupos de diferentes deficiências.",
+    "resposta": "{\"answer\":\"B\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 405,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "O Esporte Adaptado ou Paradesporto é compreendido como prática que oportuniza às pessoas com deficiência (PcD) o alcance de novos horizontes e perspectivas de vida por meio de vivências motoras, psicológicas e sociais diversificadas. Esse tipo de atividade consiste na possibilidade de prática esportiva para PcD com modificações relacionadas às regras da modalidade ou à maneira como a modalidade se desenvolve. Adicionalmente, o esporte para PcD é geralmente dividido por grupos de deficiência específicos nos quais cada grupo tem história distinta, organização, programa de competição e abordagem diferentes. Registram-se atualmente movimentos esportivos específicos para pessoas surdas, para deficientes físicos, deficientes visuais e para pessoas com deficiência intelectual. Uma grande variedade de modalidades esportivas foram adaptadas para serem praticadas por pessoas com diferentes deficiências, assim como outras modalidades foram criadas exclusivamente para PcD.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nO Esporte Adaptado ou Paradesporto é compreendido como prática que oportuniza às pessoas com deficiência (PcD) o alcance de novos horizontes e perspectivas de vida por meio de vivências motoras, psicológicas e sociais diversificadas. Esse tipo de atividade consiste na possibilidade de prática esportiva para PcD com modificações relacionadas às regras da modalidade ou à maneira como a modalidade se desenvolve. Adicionalmente, o esporte para PcD é geralmente dividido por grupos de deficiência específicos nos quais cada grupo tem história distinta, organização, programa de competição e abordagem diferentes. Registram-se atualmente movimentos esportivos específicos para pessoas surdas, para deficientes físicos, deficientes visuais e para pessoas com deficiência intelectual. Uma grande variedade de modalidades esportivas foram adaptadas para serem praticadas por pessoas com diferentes deficiências, assim como outras modalidades foram criadas exclusivamente para PcD.\n\nPergunta:\nDe acordo com esse texto, as práticas esportivas para PcD são caracterizadas por\n\nAlternativas:\nA) terem regras flexíveis em função do desempenho dos atletas em cada modalidade.\nB) ampliarem perspectivas de vida ao considerarem o desenvolvimento integral das pessoas.\nC) estarem voltadas para o estímulo à competitividade dos atletas com deficiência.\nD) buscarem a adesão do público para garantir apoio financeiro às competições.\nE) serem organizadas sem distinção para grupos de diferentes deficiências.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 399,
+      "total_tokens": 405,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001240",
+    "system": "",
+    "pergunta": "A esterilização reduziu, para as ervilhas, a disponibilidade de\n\nA) água.\nB) cálcio.\nC) fosfato.\nD) potássio.\nE) nitrogênio.",
+    "resposta": "{\"answer\":\"C\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 233,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "E",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Um grupo de pesquisadores realizou um experimento para identificar condições ideais para o crescimento de ervilhas. Utilizaram um solo rico em nutrientes e minerais (nitrogênio orgânico, fosfato, cálcio, potássio). Em um lote, o solo foi esterilizado por calor; em outro, não. Após o cultivo, em condições ideais de luminosidade e umidade, as plantas cultivadas em solo esterilizado tiveram um desenvolvimento inferior.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nUm grupo de pesquisadores realizou um experimento para identificar condições ideais para o crescimento de ervilhas. Utilizaram um solo rico em nutrientes e minerais (nitrogênio orgânico, fosfato, cálcio, potássio). Em um lote, o solo foi esterilizado por calor; em outro, não. Após o cultivo, em condições ideais de luminosidade e umidade, as plantas cultivadas em solo esterilizado tiveram um desenvolvimento inferior.\n\nPergunta:\nA esterilização reduziu, para as ervilhas, a disponibilidade de\n\nAlternativas:\nA) água.\nB) cálcio.\nC) fosfato.\nD) potássio.\nE) nitrogênio.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 227,
+      "total_tokens": 233,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001241",
+    "system": null,
+    "pergunta": "No contexto das distintas formas de apropriação da terra, o poema de Cora Coralina valoriza a relação entre\n\nA) grileiros e controle territorial.\nB) meeiros e divisão do trabalho.\nC) camponeses e uso da natureza.\nD) indígenas e manejo agroecológico.\nE) latifundiários e fertilização do solo.",
+    "resposta": "{\"answer\":\"C\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 307,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "O cântico da terra\nEu sou a terra, eu sou a vida.\nA ti, ó lavrador, tudo quanto é meu.\nTeu arado, tua foice, teu machado.\nO berço pequenino de teu filho.\nO algodão de tua veste\ne o pão de tua casa.\nE um dia bem distante\na mim tu voltarás.\nE no canteiro materno de meu seio\ntranquilo dormirás.\nPlantemos a roça.\nLavremos a gleba.\nCORALINA, C. Textos e contextos: poemas dos becos de Goiás e estórias mais. São Paulo: Global, 1997 (fragmento).",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 301,
+      "total_tokens": 307,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001242",
+    "system": "",
+    "pergunta": "A potência φ⁷, escrita na forma aφ + b (a e b são inteiros positivos), é\n\nA) 5φ + 3\nB) 7φ + 2\nC) 9φ + 6\nD) 11φ + 7\nE) 13φ + 8",
+    "resposta": "We need to find φ⁷ expressed as aφ + b, where a and b are positive integers. The sequence given shows powers of φ from φ² up to φ⁷, with expressions:\n\nφ² = ? (not listed directly but we can infer)\nGiven list:\nφ²\nφ³\nφ⁴\nφ⁵\nφ⁶\nφ⁷\nφ + 1\n2φ + 1\n3φ + 2\n5φ + 3\n8φ + 5\n…\n\nIt seems they've listed some forms for lower powers? Let's parse.\n\nThe text: \"Assim como a potência φ², as potências superiores de φ podem ser expressas da forma aφ + b, em que a e b são inteiros positivos, como apresentado no quadro.\"\n\nThen they show a column:\n\nφ²\nφ³\nφ⁴\nφ⁵\nφ⁶\nφ⁷\nφ + 1\n2φ + 1\n3φ + 2\n5φ + 3\n8φ + 5\n…\n\nProbably the list is showing the expansions for each power in order, maybe starting from φ^0? But they start at φ² then φ³ etc. Then after those six lines, they give \"φ + 1\", \"2φ + 1\", \"3φ + 2\", \"5φ + 3\", \"8φ + 5\"... This looks like Fibonacci-like sequences for coefficients a and b.\n\nLet's try to identify pattern.\n\nWe know φ satisfies φ² = φ + 1. So φ² = 1*φ + 1? Actually φ² = φ + 1. That matches one of the entries: \"φ + 1\"? Wait φ² = φ + 1 indeed. So φ² corresponds to \"φ + 1\". Good.\n\nThus mapping:\n- For n=2: φ² = 1·φ + 1 → a=1, b=1.\n- For n=3: φ³? We can compute using recurrence: φ^n = φ * φ^(n-1). Since φ² = φ+1, multiply by φ: φ³ = φ * φ² = φ*(φ+1) = φ² + φ = (φ+1) + φ = 2φ + 1. Indeed that matches \"2φ + 1\".\n- For n=4: φ⁴ = φ * φ³ = φ*(2φ+1) = 2φ² + φ = 2(φ+1) + φ = 2φ + 2 + φ = 3φ + 2. That matches \"3φ + 2\".\n- For n=5: φ⁵ = φ * φ⁴ = φ*(3φ+2) = 3φ² + 2φ = 3(φ+1) + 2φ = 3φ + 3 + 2φ = 5φ + 3. Matches \"5φ + 3\".\n- For n=6: φ⁶ = φ * φ⁵ = φ*(5φ+3) = 5φ² + 3φ = 5(φ+1) + 3φ = 5φ + 5 + 3φ = 8φ + 5. Matches \"8φ + 5\".\n- For n=7: φ⁷ = φ * φ⁶ = φ*(8φ+5) = 8φ² + 5φ = 8(φ+1) + 5φ = 8φ + 8 + 5φ = 13φ + 8.\n\nThus φ⁷ = 13φ + 8.\n\nCheck options: A) 5φ + 3; B) 7φ + 2; C) 9φ + 6; D) 11φ + 7; E) 13φ + 8.\n\nSo answer is E.\n\nThus JSON: {\"answer\":\"E\"}.</think>{\"answer\":\"E\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 1141,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": null,
+        "gold": "E",
+        "correct": false,
+        "unknown": true
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Um segmento de reta está dividido em duas partes na proporção áurea quando o todo está para uma das partes na mesma razão em que essa parte está para a outra. Essa constante de proporcionalidade é comumente representada pela letra grega φ, e seu valor é dado pela solução positiva da equação φ² = φ + 1. Assim como a potência φ², as potências superiores de φ podem ser expressas da forma aφ + b, em que a e b são inteiros positivos, como apresentado no quadro.\n\nφ²\nφ³\nφ⁴\nφ⁵\nφ⁶\nφ⁷\nφ + 1\n2φ + 1\n3φ + 2\n5φ + 3\n8φ + 5\n…",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nUm segmento de reta está dividido em duas partes na proporção áurea quando o todo está para uma das partes na mesma razão em que essa parte está para a outra. Essa constante de proporcionalidade é comumente representada pela letra grega φ, e seu valor é dado pela solução positiva da equação φ² = φ + 1. Assim como a potência φ², as potências superiores de φ podem ser expressas da forma aφ + b, em que a e b são inteiros positivos, como apresentado no quadro.\n\nφ²\nφ³\nφ⁴\nφ⁵\nφ⁶\nφ⁷\nφ + 1\n2φ + 1\n3φ + 2\n5φ + 3\n8φ + 5\n…\n\nPergunta:\nA potência φ⁷, escrita na forma aφ + b (a e b são inteiros positivos), é\n\nAlternativas:\nA) 5φ + 3\nB) 7φ + 2\nC) 9φ + 6\nD) 11φ + 7\nE) 13φ + 8\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 834,
+      "prompt_tokens": 307,
+      "total_tokens": 1141,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001243",
+    "system": "",
+    "pergunta": "Qual é a quantidade mínima de água, em litro, que cada morador, em média, deverá economizar por dia, de modo que o reservatório não fique sem água nos próximos 10 dias?\n\nA) 50\nB) 60\nC) 80\nD) 140\nE) 150",
+    "resposta": "We need to find the minimum amount of water each resident should save per day on average for the next 10 days so that the reservoir doesn't run out. Given data:\n\n- Reservoir: cylindrical circular right base, radius = 5 meters.\n- Volume of a cylinder: V = π r^2 h (where h is height). But we are told about water level in column after extra usage: \"Passado esse período, as pessoas verificaram a quantidade de água presente no reservatório e constataram que o nível da coluna de água estava em 1,5 metro.\" So after the extra consumption period (first 20 days), they measured water level at 1.5 m.\n\n- Each resident consumes on average 200 liters per day.\n\n- There are 75 residents.\n\n- In June, there was an extra expense of water in first 20 days. After that, they decided to do rationing for the next 10 days.\n\n- We need to compute how much water will be used over the next 10 days if no rationing? Or rather, we need to determine how much extra water was consumed during those first 20 days due to festivity, and then after that, they want to ensure that the remaining water (level 1.5 m) lasts for another 10 days without running out. They plan to reduce daily consumption by some amount x per person per day (i.e., saving x liters per day per person). The question asks: \"Qual é a quantidade mínima de água, em litro, que cada morador, em média, deverá economizar por dia, de modo que o reservatório não fique sem água nos próximos 10 dias?\" i.e., what's the minimal average daily savings per person needed for the next 10 days such that the reservoir won't run dry.\n\nInterpretation: Initially, before rationing, they had some water left after the extra consumption period. That leftover corresponds to water level 1.5 m in the cylindrical tank. Over the next 10 days, they intend to cut their consumption. If they don't cut enough, the water might run out within those 10 days. We need to find the smallest reduction per day per person required to keep the water level above zero (or just not empty) after 10 days.\n\nThus steps:\n\n1. Compute total volume of the reservoir when full? Not given directly but can infer from radius and maybe initial fill? However we have only final level after extra usage: 1.5 m. Possibly this is the current water level after extra usage; we need to know how much water remains in the tank now (i.e., volume corresponding to height 1.5 m). Then we need to see how many more days it would last with normal consumption (200 L/day per person * 75 persons = 15000 L/day). Actually 200 L/person/day * 75 = 15,000 L per day. Convert to cubic meters: 1 cubic meter = 1000 liters. So 15,000 L = 15 m³ per day.\n\nBut wait: 200 L per day per person seems high relative to typical household use. Let's check: 200 L per day per person is about 8,000 L per month per person (~80 m³ per year). For 75 people, monthly consumption ~600 m³. A cylindrical tank radius 5 m => cross-sectional area = π r² = π*25 ≈ 78.54 m². Height of water currently is 1.5 m, giving volume = area * height = 78.54 * 1.5 ≈ 117.81 m³. That's far less than typical monthly supply. Something off: Maybe the radius is 5 cm? No says 5 metros. Let's recalc: 5 m radius gives huge capacity. At 1.5 m height, volume ~118 m³. That's plausible for a small village? 118 m³ is like a large bathtub? Actually 1 m³ = 1000 L. So 118 m³ = 118,000 L. That's huge compared to daily consumption of 15,000 L. So indeed the water would last >7 days at normal consumption. So perhaps the scenario: They had extra consumption for first 20 days, causing water level drop to 1.5 m. Now they want to ration for next 10 days, meaning they anticipate depletion soon. They need to reduce intake enough to make the remaining water last exactly 10 days or longer.\n\nLet's compute the total water originally present before extra usage? Might be unknown. But we can deduce the amount of water used in first 20 days (extra) plus the subsequent 10 days (normal?) leads to current level 1.5 m. Need to solve for the amount saved.\n\nLet’s denote:\n\n- R = radius = 5 m.\n- Area A = π R² ≈ π * 25 = 25π ≈ 78.5398 m².\n\n- Current water height h_current = 1.5 m. So current volume V_current = A * h_current = 25π * 1.5 = 37.5π ≈ 117.8097 m³.\n\n- Daily consumption per person = 200 L = 0.2 m³ (since 1 m³ = 1000 L). Wait: 200 L = 0.2 m³. Yes! I mistakenly earlier said 15 m³ per day for all 75 persons. Let's recompute: 200 L per person per day = 0.2 m³ per person per day. Times 75 persons = 15 m³ per day. Indeed 0.2 * 75 = 15 m³ per day. Good. So my conversion earlier was correct: 15 m³ per day. And current volume is about 117.8 m³. So the current water would last about 117.8 / 15 ≈ 7.85 days at normal consumption. That matches expectation: after extra 20 days, they'd have about 7.8 days left. They plan to ration for next 10 days, which is longer than 7.8 days, so they need to reduce consumption significantly.\n\nNow we need to find the minimal daily saving per person (in liters) such that after reducing consumption, the remaining water (V_current) lasts at least 10 days. So we need to find x (liters per person per day saved) such that the effective daily consumption becomes (original - x). Original daily consumption per person = 200 L. Saved x reduces to (200 - x) L per person per day. Total daily consumption for 75 persons = 75*(200 - x) L = 75*200 - 75*x = 15000 - 75x L per day.\n\nConvert to m³: divide by 1000 => (15000 - 75x)/1000 = 15 - 0.075x m³ per day.\n\nThe water available now is V_current = 25π * 1.5 = 37.5π m³ ≈ 117.81 m³.\n\nWe need this volume to last at least 10 days: V_current >= (daily consumption) * 10 days.\n\nSo inequality: 37.5π ≥ 10 * (15 - 0.075x).\n\nSolve for x.\n\nCompute numeric values: π ≈ 3.14159, but problem says \"Considere 3 como aproximação para π\". So approximate π = 3.\n\nThus A = 25π ≈ 25*3 = 75 m². Then V_current = A * h = 75 * 1.5 = 112.5 m³. Wait using exact: 25π * 1.5 = 37.5π. With π=3, 37.5*3 = 112.5 m³. So V_current ≈ 112.5 m³.\n\nCheck difference: Using π=3 yields 75*1.5 = 112.5 m³. Which is close to previous 117.8 but slightly lower. Use approximation.\n\nNow daily consumption per person after saving x: original 200 L = 0.2 m³. Subtract x/1000 m³? Since x is in liters per person per day. To convert x liters to m³: x L = x/1000 m³. So new consumption per person = (200 - x) L = (200 - x)/1000 m³ = 0.2 - x/1000 m³.\n\nTotal daily consumption for 75 persons = 75*(0.2 - x/1000) = 15 - 75x/1000 = 15 - 0.075x m³ per day. Same as earlier.\n\nSet V_current >= 10 * (15 - 0.075x). Plug numbers:\n\n112.5 >= 10 * (15 - 0.075x) = 150 - 0.75x.\n\nBring terms: 112.5 + 0.75x >= 150 → 0.75x >= 150 - 112.5 = 37.5 → x >= 37.5 / 0.75 = 50.\n\nThus x must be at least 50 liters per person per day.\n\nThus answer choice A) 50.\n\nCheck options: A) 50, B) 60, C) 80, D) 140, E) 150. Minimum is 50.\n\nThus answer JSON {\"answer\":\"A\"}.\n\nBut let's double-check calculations thoroughly, including rounding errors and interpretation of \"gasto extra de água nos primeiros 20 dias\" and \"passado esse período... nível da coluna de água estava em 1,5 metro\". Could also mean that after extra consumption, they measured water level at 1.5 m, indicating that the water remaining is 1.5 m deep. This is consistent with our assumption.\n\nAlso note: They decided to do rationing for the next 10 days. So we assume they will continue to consume normally except for the saved amount. The goal: ensure reservoir does not run out within those 10 days. So we solved for x such that the remaining water lasts exactly 10 days. Minimal x ensures just enough.\n\nOur result x = 50 L per person per day. Check if any nuance: maybe they consider the extra consumption in first 20 days already accounted for in the current level. So we didn't need to subtract anything else. Our calculation uses current water volume after extra consumption. That seems appropriate.\n\nLet's verify with actual numbers using π=3.14 maybe? Using π=3.14 yields A=25*3.14=78.5 m². Multiply by 1.5 = 117.75 m³. Then equation: 117.75 >= 10*(15 - 0.075x) = 150 - 0.75x. Solve: 0.75x >= 150 - 117.75 = 32.25 → x >= 32.25/0.75 = 43. So approx 43 L. Slightly higher than 50? Wait 32.25/0.75 = 43. So using π=3.14 gives 43 L. But problem explicitly says \"Considere 3 como aproximação para π\", i.e., take π≈3. So we should use 3. Thus 50 L is correct.\n\nDouble-check arithmetic: Starting with V_current = π r^2 h = π * (5^2) * 1.5 = π * 25 * 1.5 = π * 37.5 = 37.5π. With π=3, V_current = 112.5 m³. Right.\n\nDaily consumption per person after saving x: 200 - x L. Convert to m³: (200 - x)/1000 = 0.2 - x/1000. Multiply by 75: 75*0.2 = 15 m³. 75*(-x/1000) = -(75x)/1000 = -0.075x m³. So net = 15 - 0.075x m³ per day.\n\nRequirement: 112.5 >= 10*(15 - 0.075x) = 150 - 0.75x.\n\nRearr: 112.5 + 0.75x >= 150 → 0.75x >= 150 - 112.5 = 37.5 → x >= 37.5/0.75 = 50.\n\nYes.\n\nThus answer A.\n\nHence output JSON: {\"answer\":\"A\"}. Ensure no extra text.</think>{\"answer\":\"A\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 3009,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": null,
+        "gold": "A",
+        "correct": false,
+        "unknown": true
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "A água utilizada pelos 75 moradores de um vilarejo provém de um reservatório de formato cilíndrico circular reto cujo raio da base mede 5 metros, sempre abastecido no primeiro dia de cada mês por caminhões-pipa. Cada morador desse vilarejo consome, em média, 200 litros de água por dia. No mês de junho de um determinado ano, o vilarejo festejou o dia do seu padroeiro e houve um gasto extra de água nos primeiros 20 dias. Passado esse período, as pessoas verificaram a quantidade de água presente no reservatório e constataram que o nível da coluna de água estava em 1,5 metro. Decidiram, então, fazer um racionamento de água durante os 10 dias seguintes. Considere 3 como aproximação para π.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nA água utilizada pelos 75 moradores de um vilarejo provém de um reservatório de formato cilíndrico circular reto cujo raio da base mede 5 metros, sempre abastecido no primeiro dia de cada mês por caminhões-pipa. Cada morador desse vilarejo consome, em média, 200 litros de água por dia. No mês de junho de um determinado ano, o vilarejo festejou o dia do seu padroeiro e houve um gasto extra de água nos primeiros 20 dias. Passado esse período, as pessoas verificaram a quantidade de água presente no reservatório e constataram que o nível da coluna de água estava em 1,5 metro. Decidiram, então, fazer um racionamento de água durante os 10 dias seguintes. Considere 3 como aproximação para π.\n\nPergunta:\nQual é a quantidade mínima de água, em litro, que cada morador, em média, deverá economizar por dia, de modo que o reservatório não fique sem água nos próximos 10 dias?\n\nAlternativas:\nA) 50\nB) 60\nC) 80\nD) 140\nE) 150\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 2685,
+      "prompt_tokens": 324,
+      "total_tokens": 3009,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001244",
+    "system": "",
+    "pergunta": "No relato da visita de duas mulheres ricas a uma vidente no Morro do Castelo, a ironia — um dos traços mais representativos da narrativa machadiana — consiste no\n\nA) modo de vestir dos moradores do morro carioca.\nB) senso prático em relação às oportunidades de renda.\nC) mistério que cerca as clientes de práticas de vidência.\nD) misto de singeleza e astúcia dos gestos da personagem.\nE) interesse do narrador pelas figuras femininas ambíguas.",
+    "resposta": "{\"answer\":\"C\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 514,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "D",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Esaú e Jacó\nBárbara entrou, enquanto o pai pegou da viola e passou ao patamar de pedra, à porta da esquerda. Era uma criaturinha leve e breve, saia bordada, chinelinha no pé. Não se lhe podia negar um corpo airoso. Os cabelos, apanhados no alto da cabeça por um pedaço de fita enxovalhada, faziam-lhe um solidéu natural, cuja borla era suprida por um raminho de arruda. Já vai nisto um pouco de sacerdotisa. O mistério estava nos olhos. Estes eram opacos, não sempre nem tanto que não fossem também lúcidos e agudos, e neste último estado eram igualmente compridos; tão compridos e tão agudos que entravam pela gente abaixo, revolviam o coração e tornavam cá fora, prontos para nova entrada e outro revolvimento. Não te minto dizendo que as duas sentiram tal ou qual fascinação. Bárbara interrogou-as; Natividade disse ao que vinha e entregou-lhe os retratos dos filhos e os cabelos cortados, por lhe haverem dito que bastava.\n— Basta, confirmou Bárbara. Os meninos são seus filhos?\n— São.\nASSIS, M. Obra completa. Rio de Janeiro: Nova Aguilar, 1994.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nEsaú e Jacó\nBárbara entrou, enquanto o pai pegou da viola e passou ao patamar de pedra, à porta da esquerda. Era uma criaturinha leve e breve, saia bordada, chinelinha no pé. Não se lhe podia negar um corpo airoso. Os cabelos, apanhados no alto da cabeça por um pedaço de fita enxovalhada, faziam-lhe um solidéu natural, cuja borla era suprida por um raminho de arruda. Já vai nisto um pouco de sacerdotisa. O mistério estava nos olhos. Estes eram opacos, não sempre nem tanto que não fossem também lúcidos e agudos, e neste último estado eram igualmente compridos; tão compridos e tão agudos que entravam pela gente abaixo, revolviam o coração e tornavam cá fora, prontos para nova entrada e outro revolvimento. Não te minto dizendo que as duas sentiram tal ou qual fascinação. Bárbara interrogou-as; Natividade disse ao que vinha e entregou-lhe os retratos dos filhos e os cabelos cortados, por lhe haverem dito que bastava.\n— Basta, confirmou Bárbara. Os meninos são seus filhos?\n— São.\nASSIS, M. Obra completa. Rio de Janeiro: Nova Aguilar, 1994.\n\nPergunta:\nNo relato da visita de duas mulheres ricas a uma vidente no Morro do Castelo, a ironia — um dos traços mais representativos da narrativa machadiana — consiste no\n\nAlternativas:\nA) modo de vestir dos moradores do morro carioca.\nB) senso prático em relação às oportunidades de renda.\nC) mistério que cerca as clientes de práticas de vidência.\nD) misto de singeleza e astúcia dos gestos da personagem.\nE) interesse do narrador pelas figuras femininas ambíguas.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 508,
+      "total_tokens": 514,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001245",
+    "system": "",
+    "pergunta": "O escritor nigeriano Chinua Achebe traz uma reflexão sobre a situação dos refugiados em um cenário pós-guerra civil em seu país. Essa reflexão é construída no poema por meio da representação de uma mãe, explorando a(s)\n\nA) demonstração de orgulho por não precisar pedir doações.\nB) descrições artísticas detalhadas de uma obra conhecida.\nC) aceitação de um diagnóstico de doença terminal do filho.\nD) consternação ao visitar o túmulo do filho recém-falecido.\nE) impressões sensoriais experimentadas no ambiente.",
+    "resposta": "{\"answer\":\"D\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 429,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "E",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "A Mother in a Refugee Camp\nNo Madonna and Child could touch\nHer tenderness for a son\nShe soon would have to forget...\nThe air was heavy with odors of diarrhea,\nOf unwashed children with washed-out ribs\nAnd dried-up bottoms waddling in labored steps\nBehind blown-empty bellies. Other mothers there\nHad long ceased to care, but not this one:\nShe held a ghost-smile between her teeth,\nand in her eyes the memory\nOf a mother's pride... She had bathed him\nAnd rubbed him down with bare palms.\nShe took from their bundle of possessions\nA broken comb and combed\nThe rust-colored hair left on his skull\nAnd then — humming in her eyes — began carefully\n[to part it.\nIn their former life this was perhaps\nA little daily act of no consequence\nBefore his breakfast and school; now she did it\nLike putting flowers on a tiny grave.\nACHEBE, C. Collected Poems. New York: Anchor Books, 2004.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nA Mother in a Refugee Camp\nNo Madonna and Child could touch\nHer tenderness for a son\nShe soon would have to forget...\nThe air was heavy with odors of diarrhea,\nOf unwashed children with washed-out ribs\nAnd dried-up bottoms waddling in labored steps\nBehind blown-empty bellies. Other mothers there\nHad long ceased to care, but not this one:\nShe held a ghost-smile between her teeth,\nand in her eyes the memory\nOf a mother's pride... She had bathed him\nAnd rubbed him down with bare palms.\nShe took from their bundle of possessions\nA broken comb and combed\nThe rust-colored hair left on his skull\nAnd then — humming in her eyes — began carefully\n[to part it.\nIn their former life this was perhaps\nA little daily act of no consequence\nBefore his breakfast and school; now she did it\nLike putting flowers on a tiny grave.\nACHEBE, C. Collected Poems. New York: Anchor Books, 2004.\n\nPergunta:\nO escritor nigeriano Chinua Achebe traz uma reflexão sobre a situação dos refugiados em um cenário pós-guerra civil em seu país. Essa reflexão é construída no poema por meio da representação de uma mãe, explorando a(s)\n\nAlternativas:\nA) demonstração de orgulho por não precisar pedir doações.\nB) descrições artísticas detalhadas de uma obra conhecida.\nC) aceitação de um diagnóstico de doença terminal do filho.\nD) consternação ao visitar o túmulo do filho recém-falecido.\nE) impressões sensoriais experimentadas no ambiente.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 423,
+      "total_tokens": 429,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001246",
+    "system": null,
+    "pergunta": "A dinâmica demográfica descrita resulta no processo de expansão do(a)\n\nA) topo da pirâmide etária.\nB) taxa de fecundidade anual.\nC) nível de mortalidade infantil.\nD) índice de desemprego estrutural.\nE) política de controle da natalidade.",
+    "resposta": "{\n  \"answer\": \"A\"\n}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 220,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "O volume anual de população que se incorporará à faixa de 65 anos e mais aumentará continuamente. Em média, anualmente, o acréscimo será, talvez, de mais de 550 mil idosos, no primeiro quartel do século XXI, e superará a casa de um milhão, entre 2025 e 2050.",
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 210,
+      "total_tokens": 220,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001247",
+    "system": null,
+    "pergunta": "Esse verbete contribui para a preservação do patrimônio linguístico nacional, pois apresenta uma\n\nA) explicação de um rito medicinal do povo Wajãpi.\nB) definição de um termo na perspectiva ancestral indígena.\nC) relação de equivalência entre vocábulos de diferentes línguas indígenas.\nD) atualização de saberes tradicionais dos povos indígenas brasileiros.\nE) descrição das propriedades científicas de plantas silvestres.",
+    "resposta": "{\"answer\":\"D\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 467,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "B",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Uruku\nUrucum\nRocou\n(Bixa orellana)\nMoju, dono da água, não gosta do cheiro de urucum. Mani’ojarã, dono da mandioca, e os donos das outras plantas cultivadas também não. Eles não suportam. Por isso, os Wajãpi se untam de urucum, deixam o rosto vermelho e se perfumam com seu aroma agradável. Além disso, os seres agressores, os jarã (donos) e os espíritos terrestres, gostam do cheiro dos fluidos humanos, do sangue, do suor. Então, o urucum os dissimula, protegendo as pessoas que vão caçar, caminhar pela floresta, que estão sendo perturbadas por espíritos em sonhos ou que estão em resguardo, como os doentes. O seu uso é tão cotidiano que os Wajãpi o plantam na aldeia, para ter sempre pertinho. Como o urucum não tem jarã, não tem problema nenhum em arrancar e usar para pintar.\nSTRAPPAZZON, A. I.; SIGOLO, R. P. Jardins da história: medicinas indígenas. Recife: ObservaPICS, 2022.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 461,
+      "total_tokens": 467,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001248",
+    "system": "",
+    "pergunta": "Descrevendo seu gato, o narrador remete ao contexto e a protagonistas da Inconfidência para criar um efeito desconcertante centrado no\n\nA) desenho imaginativo do casario colonial de Ouro Preto.\nB) efeito de apagamento de limites entre ficção e realidade.\nC) vínculo estabelecido entre animais urbanos e literatura.\nD) questionamento sutil quanto à sanidade dos inconfidentes.\nE) contraste entre austeridade pomposa e imagem repugnante.",
+    "resposta": "{\"answer\":\"B\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 515,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "E",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Era um gato preto, como convinha a um cultor das boas letras, que já lera Poe traduzido por Baudelaire. Preto e gordo. E lerdo. Tão gordo e lerdo que a certa altura observei que ia perdendo inteiramente as qualidades características da raça, que são em suma o ódio de morte aos ratos. Já nem os afugentava! Os ratos de Ouro Preto são também dignos e solenes — não ria — tradicionalistas... descendentes de outros ratos que naqueles mesmos casarões presenciaram acontecimentos importantes da nossa história... No sobrado do desembargador Tomás Antônio Gonzaga, imagine o senhor uma reunião dos sonhadores inconfidentes, com os antepassados daqueles ratos a passearem pelo sótão ou mesmo pelo assoalho por entre as pernas dos homens absortos na esperança da independência nacional! E depois, os ancestrais daqueles roedores que eu via agora deslizar sutilmente no meu quarto podiam ter subido pelo poste da ignomínia colonial, onde estava exposta a cabeça do Tiradentes! E quando as órbitas se descarnaram ignominiosamente, podiam até ter penetrado no recesso daquele crânio onde verdadeiramente ardera a literatura, com a simplicidade do heroísmo, a febre nacionalista...",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nEra um gato preto, como convinha a um cultor das boas letras, que já lera Poe traduzido por Baudelaire. Preto e gordo. E lerdo. Tão gordo e lerdo que a certa altura observei que ia perdendo inteiramente as qualidades características da raça, que são em suma o ódio de morte aos ratos. Já nem os afugentava! Os ratos de Ouro Preto são também dignos e solenes — não ria — tradicionalistas... descendentes de outros ratos que naqueles mesmos casarões presenciaram acontecimentos importantes da nossa história... No sobrado do desembargador Tomás Antônio Gonzaga, imagine o senhor uma reunião dos sonhadores inconfidentes, com os antepassados daqueles ratos a passearem pelo sótão ou mesmo pelo assoalho por entre as pernas dos homens absortos na esperança da independência nacional! E depois, os ancestrais daqueles roedores que eu via agora deslizar sutilmente no meu quarto podiam ter subido pelo poste da ignomínia colonial, onde estava exposta a cabeça do Tiradentes! E quando as órbitas se descarnaram ignominiosamente, podiam até ter penetrado no recesso daquele crânio onde verdadeiramente ardera a literatura, com a simplicidade do heroísmo, a febre nacionalista...\n\nPergunta:\nDescrevendo seu gato, o narrador remete ao contexto e a protagonistas da Inconfidência para criar um efeito desconcertante centrado no\n\nAlternativas:\nA) desenho imaginativo do casario colonial de Ouro Preto.\nB) efeito de apagamento de limites entre ficção e realidade.\nC) vínculo estabelecido entre animais urbanos e literatura.\nD) questionamento sutil quanto à sanidade dos inconfidentes.\nE) contraste entre austeridade pomposa e imagem repugnante.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 509,
+      "total_tokens": 515,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001249",
+    "system": "",
+    "pergunta": "A comparação mencionada no texto foi possível em razão da seguinte característica:\n\nA) Oferta de contrato formal.\nB) Origem étnica dos grupos de trabalhadores.\nC) Conhecimento das tarefas desenvolvidas.\nD) Controle opressivo das vidas dos indivíduos.\nE) Investimento requerido dos empregadores.",
+    "resposta": "{\"answer\":\"D\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 275,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "O fenômeno histórico conhecido como “tráfico de coolies” esteve associado diretamente ao período que vai do final da década de 1840 até o ano de 1874, quando milhares de chineses foram encaminhados principalmente para Cuba e Peru e muitos abusos no recrutamento de mão de obra foram identificados. O tráfico de coolies ou, em outros termos, o transporte por meios coativos de mão de obra de um lugar para outro, foi comparado ao tráfico africano de escravos por muitos periodistas e analistas do século XIX.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nO fenômeno histórico conhecido como “tráfico de coolies” esteve associado diretamente ao período que vai do final da década de 1840 até o ano de 1874, quando milhares de chineses foram encaminhados principalmente para Cuba e Peru e muitos abusos no recrutamento de mão de obra foram identificados. O tráfico de coolies ou, em outros termos, o transporte por meios coativos de mão de obra de um lugar para outro, foi comparado ao tráfico africano de escravos por muitos periodistas e analistas do século XIX.\n\nPergunta:\nA comparação mencionada no texto foi possível em razão da seguinte característica:\n\nAlternativas:\nA) Oferta de contrato formal.\nB) Origem étnica dos grupos de trabalhadores.\nC) Conhecimento das tarefas desenvolvidas.\nD) Controle opressivo das vidas dos indivíduos.\nE) Investimento requerido dos empregadores.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 269,
+      "total_tokens": 275,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001250",
+    "system": null,
+    "pergunta": "Em qual região espectral se situa o comprimento de onda do laser que otimiza o armazenamento e a leitura de dados em discos de uma mesma área?\n\nA) Violeta.\nB) Azul.\nC) Verde.\nD) Vermelho.\nE) Infravermelho.",
+    "resposta": "{\"answer\":\"B\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 309,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "A",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Informações digitais — dados — são gravadas em discos ópticos, como CD e DVD, na forma de cavidades microscópicas. A gravação e a leitura óptica dessas informações são realizadas por um laser (fonte de luz monocromática). Quanto menores as dimensões dessas cavidades, mais dados são armazenados na mesma área do disco. O fator limitante para a leitura de dados é o espalhamento da luz pelo efeito de difração, fenômeno que ocorre quando a luz atravessa um obstáculo com dimensões da ordem de seu comprimento de onda. Essa limitação motivou o desenvolvimento de lasers com emissão em menores comprimentos de onda, possibilitando armazenar e ler dados em cavidades cada vez menores.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 303,
+      "total_tokens": 309,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  }
+]

@@ -1,0 +1,111 @@
+{
+  "benchmark": "magis-bench",
+  "somente_resposta_final": true,
+  "references": [
+    "https://github.com/maritaca-ai/magis-bench",
+    "https://www.anthropic.com/claude/opus"
+  ],
+  "variantes_registradas": [
+    {
+      "modelo": "anthropic/claude-opus-4.6",
+      "origem": "chamada_selecionada",
+      "parametros": {
+        "calls_per_model_mode": 74,
+        "identifier_note": "The currently published provider ID uses a dot. Same Opus4.6 version, native judge prompts, temperature0 and effort high.",
+        "identifier_source": "https://openrouter.ai/api/v1/models",
+        "protocol": "Current pinned upstream single judge",
+        "provider_canonical_slug": "anthropic/claude-4.6-opus-20260205",
+        "reasoning_effort": "high",
+        "structured": true,
+        "temperature": 0,
+        "upstream_model_identifier": "anthropic/claude-opus-4-6"
+      },
+      "ocorrencias_selecionadas": 493
+    },
+    {
+      "modelo": "anthropic/claude-opus-4.6",
+      "origem": "chamada_selecionada",
+      "parametros": {
+        "reasoning_effort": "high",
+        "response_format": {
+          "json_schema": {
+            "name": "JudgmentResult",
+            "schema": {
+              "$defs": {
+                "ItemEvaluation": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "analysis": {
+                      "description": "Análise detalhada comparando a resposta do candidato com o item do padrão",
+                      "title": "Analysis",
+                      "type": "string"
+                    },
+                    "item_description": {
+                      "description": "Descrição do item avaliado conforme o padrão de resposta",
+                      "title": "Item Description",
+                      "type": "string"
+                    },
+                    "item_id": {
+                      "description": "Identificador do item (ex: '1', '2', 'A', 'B')",
+                      "title": "Item Id",
+                      "type": "string"
+                    },
+                    "score": {
+                      "description": "Pontuação atribuída ao item",
+                      "title": "Score",
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "item_id",
+                    "item_description",
+                    "analysis",
+                    "score"
+                  ],
+                  "title": "ItemEvaluation",
+                  "type": "object"
+                }
+              },
+              "additionalProperties": false,
+              "properties": {
+                "items": {
+                  "description": "Lista de itens avaliados conforme o padrão de resposta",
+                  "items": {
+                    "$ref": "#/$defs/ItemEvaluation"
+                  },
+                  "title": "Items",
+                  "type": "array"
+                },
+                "total_score": {
+                  "description": "Nota total do candidato (soma das pontuações de todos os itens)",
+                  "title": "Total Score",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "items",
+                "total_score"
+              ],
+              "title": "JudgmentResult",
+              "type": "object"
+            },
+            "strict": true
+          },
+          "type": "json_schema"
+        },
+        "temperature": 0
+      },
+      "ocorrencias_selecionadas": 814
+    },
+    {
+      "modelo": "anthropic/claude-opus-4.6",
+      "origem": "protocolo_ou_metadados_disponiveis",
+      "parametros": {
+        "origem": "configuracao_registrada_da_execucao",
+        "reasoning_effort": "high"
+      },
+      "ocorrencias_selecionadas": 25
+    }
+  ],
+  "observacao": "Valores ausentes não foram inferidos. Parâmetros por chamada estão nas respostas. Ocorrências contam chamadas ou registros conforme a origem, não perguntas únicas."
+}

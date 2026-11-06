@@ -1,0 +1,62 @@
+{
+  "id": "arena_hard_v2",
+  "name": "Arena-Hard v2 · 150 · Luna medium",
+  "family": "remaining",
+  "tasks": [
+    "arena_hard_v2"
+  ],
+  "expected_counts": [
+    150
+  ],
+  "directory": "benchmarks/chat/arena_hard_v2",
+  "category": "chat",
+  "campaign_enabled": true,
+  "campaign_selection": "campaigns/remaining-benchmarks-proposal.json",
+  "protocol_id": "arena150-gpt6-luna-medium",
+  "api_judge": true,
+  "dataset_rows_in_git": false,
+  "evaluation": {
+    "label": "Arena-Hard v2 · 150 · Luna medium",
+    "variant": "arena150-gpt6-luna-medium",
+    "cases_per_model_mode": 150,
+    "repetitions": 1,
+    "scope": "Proportional subset: 51 coding,49 math,50 creative_writing. Native reference answers and both A/B orders; changed judge is a separate variant.",
+    "upstream_lock": "benchmarks/chat/arena_hard_v2/upstream.lock.json",
+    "upstream_lock_sha256": "34b2b9e7e6c6b671667f1e23ea1f57ecc7d000e9a55f603bd05087483e3821ff",
+    "integration_status": "integrated_validated_offline",
+    "judge": {
+      "model": "gpt-6-luna",
+      "reasoning_effort": "medium",
+      "max_output_tokens": 16000,
+      "calls_per_model_mode": 300,
+      "quality_equivalence_to_gpt41_verified": false,
+      "baseline_models": {
+        "hard_prompt": "o3-mini-2025-01-31",
+        "creative_writing": "gemini-2.0-flash-001"
+      }
+    },
+    "selection": {
+      "inputs": [
+        {
+          "path": "data/arena-hard-v2.0/question.jsonl",
+          "sha256": "a75cef6623db6b27aec810497b059f0659705d7ff48dcbccc5bd5b130728ac73",
+          "url": "https://raw.githubusercontent.com/lmarena/arena-hard-auto/196f6b826783b3da7310e361a805fa36f0be83f3/data/arena-hard-v2.0/question.jsonl"
+        }
+      ],
+      "id_field": "uid",
+      "method": "stratified_sha256",
+      "population_rows": 750,
+      "field": "subcategory",
+      "quotas": {
+        "coding": 51,
+        "math": 49,
+        "creative_writing": 50
+      },
+      "allocation": "largest_remainder_proportional_lexicographic_ties",
+      "selected_rows": 150,
+      "selected_ids_sha256": "7de2f41020bbc1e7601c5979f1a33c34ff32da6ba6faceb6015a308a0c205fcd"
+    }
+  },
+  "results_output": "results/<modelo>/<benchmark>/<instruct|thinking>",
+  "profile_plan": "profiles/plan.json"
+}

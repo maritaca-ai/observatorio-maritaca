@@ -1,0 +1,3002 @@
+[
+  {
+    "id": "013147",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nEm relação a IDS e IPS, é correto afirmar que:\nA. IDS é restrito a monitoramento de estações e servidores;\nB. IDS não podem atuar de forma integrada a firewalls;\nC. a tecnologia IPS é considerada como uma evolução da tecnologia IDS;\nD. o problema da ocorrência de falsos positivos foi resolvido com o uso de IPS;\nE. IDS e IPS não podem operar em conjunto.",
+    "resposta": "C",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 146,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nEm relação a IDS e IPS, é correto afirmar que:\nA. IDS é restrito a monitoramento de estações e servidores;\nB. IDS não podem atuar de forma integrada a firewalls;\nC. a tecnologia IPS é considerada como uma evolução da tecnologia IDS;\nD. o problema da ocorrência de falsos positivos foi resolvido com o uso de IPS;\nE. IDS e IPS não podem operar em conjunto."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 144,
+      "total_tokens": 146,
+      "completion_tokens": 2,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "017789",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNas questões 51 até 54 considere um banco de dados simplificado referente ao controle de concursos, constituído pelas tabelas Concurso, Cargo, Candidato e Inscrição, criadas pelo script SQL mostrado abaixo. create table concurso ( id_concurso int not null primary key, concurso varchar(60) not null, inscritos int default 0); create table cargo ( id_cargo int not null primary key, cargo varchar(60) not null, id_concurso int not null, constraint c1c foreign key (id_concurso) references concurso (id_concurso)); create table candidato ( id_candidato int not null primary key clustered, nome varchar(40) not null); create table inscrição ( id_concurso int not null, id_candidato int not null, id_cargo int, pontos int, constraint c11 foreign key (id_concurso) references concurso (id_concurso), constraint c12 foreign key (id_candidato) references candidato (id_candidato), constraint c13 foreign key (id_cargo) references cargo (id_cargo), constraint c14 primary key (id_concurso, id_candidato)); Um candidato pode estar inscrito em zero ou mais concursos e um concurso pode ter zero ou mais candidatos nele inscritos. Para cada concurso, o candidato inscreve-se em um cargo e recebe um número de pontos. É possível que um candidato fique temporariamente sem cargo definido. Cada concurso tem uma lista de um ou mais cargos nos quais os candidatos podem estar inscritos. O atributo inscritos, na tabela concurso, armazena o número de inscritos no concurso. Considere ainda que: a tabela concurso tenha 5 registros; a tabela candidato tenha 40.000 registros; a tabela inscrição tenha 55.000 registros; haja 2 concursos ainda sem inscrições; haja 90 candidatos ainda sem inscrições. No MS SQL Server, o comando SQL que atualiza corretamente o atributo inscritos na tabela concurso é:\nA. update concurso set inscritos = (select sum(*) from inscrição i where i.id_concurso=concurso.id_concurso)\nB. update concurso set inscritos = isnull(count(inscrição) where i.id_concurso=concurso.id_concurso)\nC. update concurso set inscritos = count(inscrição) where i.id_concurso=concurso.id_concurso\nD. update concurso set inscritos = isnull((select sum(1) from inscrição i where i.id_concurso=concurso.id_concurso),0)\nE. update concurso natural join inscrição set inscritos = count(*)",
+    "resposta": "A resposta correta é D.",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 658,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": null,
+        "gold": "D",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNas questões 51 até 54 considere um banco de dados simplificado referente ao controle de concursos, constituído pelas tabelas Concurso, Cargo, Candidato e Inscrição, criadas pelo script SQL mostrado abaixo. create table concurso ( id_concurso int not null primary key, concurso varchar(60) not null, inscritos int default 0); create table cargo ( id_cargo int not null primary key, cargo varchar(60) not null, id_concurso int not null, constraint c1c foreign key (id_concurso) references concurso (id_concurso)); create table candidato ( id_candidato int not null primary key clustered, nome varchar(40) not null); create table inscrição ( id_concurso int not null, id_candidato int not null, id_cargo int, pontos int, constraint c11 foreign key (id_concurso) references concurso (id_concurso), constraint c12 foreign key (id_candidato) references candidato (id_candidato), constraint c13 foreign key (id_cargo) references cargo (id_cargo), constraint c14 primary key (id_concurso, id_candidato)); Um candidato pode estar inscrito em zero ou mais concursos e um concurso pode ter zero ou mais candidatos nele inscritos. Para cada concurso, o candidato inscreve-se em um cargo e recebe um número de pontos. É possível que um candidato fique temporariamente sem cargo definido. Cada concurso tem uma lista de um ou mais cargos nos quais os candidatos podem estar inscritos. O atributo inscritos, na tabela concurso, armazena o número de inscritos no concurso. Considere ainda que: a tabela concurso tenha 5 registros; a tabela candidato tenha 40.000 registros; a tabela inscrição tenha 55.000 registros; haja 2 concursos ainda sem inscrições; haja 90 candidatos ainda sem inscrições. No MS SQL Server, o comando SQL que atualiza corretamente o atributo inscritos na tabela concurso é:\nA. update concurso set inscritos = (select sum(*) from inscrição i where i.id_concurso=concurso.id_concurso)\nB. update concurso set inscritos = isnull(count(inscrição) where i.id_concurso=concurso.id_concurso)\nC. update concurso set inscritos = count(inscrição) where i.id_concurso=concurso.id_concurso\nD. update concurso set inscritos = isnull((select sum(1) from inscrição i where i.id_concurso=concurso.id_concurso),0)\nE. update concurso natural join inscrição set inscritos = count(*)"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 650,
+      "total_tokens": 658,
+      "completion_tokens": 8,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "009167",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nA execução do comando SQL select count(*) from concurso c left join (select i.id_concurso,cd.id_candidato from inscrição i inner join candidato cd on i.id_candidato=cd.id_candidato) x on c.id_concurso=x.id_concurso resulta no número:\nA. 40.002\nB. 40.005\nC. 54.912\nD. 55.000\nE. 55.002",
+    "resposta": "Resposta: C",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 149,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "E",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nA execução do comando SQL select count(*) from concurso c left join (select i.id_concurso,cd.id_candidato from inscrição i inner join candidato cd on i.id_candidato=cd.id_candidato) x on c.id_concurso=x.id_concurso resulta no número:\nA. 40.002\nB. 40.005\nC. 54.912\nD. 55.000\nE. 55.002"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 144,
+      "total_tokens": 149,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "015820",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSuponha que um candidato inscrito no concurso 2 não possa ter inscrições nos demais concursos. O comando que remove as inscrições de outros concursos para os candidatos inscritos no concurso 2 é:\nA. delete inscrição, inscrição ii where inscrição.id_candidato=ii.id_candidato and ii.id_concurso=2 and inscrição.id_concurso <> 2\nB. delete inscrição where not exists (select * from inscrição ii where inscrição.id_candidato=ii.id_candidato and ii.id_concurso <> 2) and inscrição.id_concurso <> 2\nC. delete inscrição where exists (select * from inscrição ii where inscrição.id_candidato=ii.id_candidato and ii.id_concurso=2) and inscrição.id_concurso <> 2\nD. delete inscrição where exists (select * from inscrição ii where inscrição.id_candidato=ii.id_candidato and ii.id_concurso=2 and inscrição.id_concurso = 2)\nE. delete inscrição from inscrição ii where inscrição.id_candidato=ii.id_candidato and ii.id_concurso=2 and inscrição.id_concurso <> 2",
+    "resposta": "A",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 334,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "C",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSuponha que um candidato inscrito no concurso 2 não possa ter inscrições nos demais concursos. O comando que remove as inscrições de outros concursos para os candidatos inscritos no concurso 2 é:\nA. delete inscrição, inscrição ii where inscrição.id_candidato=ii.id_candidato and ii.id_concurso=2 and inscrição.id_concurso <> 2\nB. delete inscrição where not exists (select * from inscrição ii where inscrição.id_candidato=ii.id_candidato and ii.id_concurso <> 2) and inscrição.id_concurso <> 2\nC. delete inscrição where exists (select * from inscrição ii where inscrição.id_candidato=ii.id_candidato and ii.id_concurso=2) and inscrição.id_concurso <> 2\nD. delete inscrição where exists (select * from inscrição ii where inscrição.id_candidato=ii.id_candidato and ii.id_concurso=2 and inscrição.id_concurso = 2)\nE. delete inscrição from inscrição ii where inscrição.id_candidato=ii.id_candidato and ii.id_concurso=2 and inscrição.id_concurso <> 2"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 332,
+      "total_tokens": 334,
+      "completion_tokens": 2,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "004773",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nA chave primária da tabela candidato foi definida com a opção clustered, que provoca a criação de um índice que armazena os próprios registros na árvore de indexação. Considere as seguintes afirmativas sobre índices clustered no MS SQL Server: I. São adequados quando os valores usados como chaves indexadoras são freqüentemente alterados; II. Uma tabela pode ter mais de uma coluna com índices desse tipo; III. As chaves não determinam a ordem física na qual os registros ficam armazenados. Sobre as afirmativas acima, pode-se concluir que:\nA. nenhuma está correta;\nB. somente I está correta;\nC. somente I e II estão corretas:\nD. somente III está correta;\nE. todas estão corretas.",
+    "resposta": "A resposta é A. Nenhuma está correta.",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 246,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": null,
+        "gold": "A",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nA chave primária da tabela candidato foi definida com a opção clustered, que provoca a criação de um índice que armazena os próprios registros na árvore de indexação. Considere as seguintes afirmativas sobre índices clustered no MS SQL Server: I. São adequados quando os valores usados como chaves indexadoras são freqüentemente alterados; II. Uma tabela pode ter mais de uma coluna com índices desse tipo; III. As chaves não determinam a ordem física na qual os registros ficam armazenados. Sobre as afirmativas acima, pode-se concluir que:\nA. nenhuma está correta;\nB. somente I está correta;\nC. somente I e II estão corretas:\nD. somente III está correta;\nE. todas estão corretas."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 233,
+      "total_tokens": 246,
+      "completion_tokens": 13,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "014857",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNum sistema gerenciador de bancos de dados, o mecanismo de lock (bloqueio) viabiliza a obtenção de uma importante propriedade das transações. Essa propriedade é:\nA. atomicidade;\nB. consistência;\nC. durabilidade;\nD. independência de dados;\nE. isolamento.",
+    "resposta": "Resposta: E",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 122,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNum sistema gerenciador de bancos de dados, o mecanismo de lock (bloqueio) viabiliza a obtenção de uma importante propriedade das transações. Essa propriedade é:\nA. atomicidade;\nB. consistência;\nC. durabilidade;\nD. independência de dados;\nE. isolamento."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 117,
+      "total_tokens": 122,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "008731",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConsidere as seguintes afirmativas sobre segurança no SQL Server. I. Roles podem ser interpretados como grupos de usuários para os quais as permissões podem ser atribuídas em bloco. II. Um usuário que não seja DBA (sysadmin) jamais pode atribuir permissões para outros usuários. III. É possível designar permissões para registros completos, mas não para colunas isoladas. Sobre as afirmativas, pode-se concluir que:\nA. nenhuma está correta;\nB. somente I está correta;\nC. somente I e II estão corretas;\nD. somente II e III estão corretas;\nE. todas estão corretas.",
+    "resposta": "Resposta: C",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 203,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "B",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConsidere as seguintes afirmativas sobre segurança no SQL Server. I. Roles podem ser interpretados como grupos de usuários para os quais as permissões podem ser atribuídas em bloco. II. Um usuário que não seja DBA (sysadmin) jamais pode atribuir permissões para outros usuários. III. É possível designar permissões para registros completos, mas não para colunas isoladas. Sobre as afirmativas, pode-se concluir que:\nA. nenhuma está correta;\nB. somente I está correta;\nC. somente I e II estão corretas;\nD. somente II e III estão corretas;\nE. todas estão corretas."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 198,
+      "total_tokens": 203,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "010426",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConsidere as seguintes afirmativas sobre modelos de recuperação de falhas no MS SQL Server. I. O modelo bulk-logged oferece proteção mais completa que o modelo simple. II. O modelo de proteção escolhido na criação de um banco de dados não pode ser mudado mais tarde. III. Quando um banco de dados é criado, o modelo default é o modelo do banco de dados master. IV. Um backup diferencial só é útil no modelo full. Sobre as afirmativas acima, pode-se concluir que\nA. nenhuma está correta;\nB. somente I está correta;\nC. somente I e III estão corretas;\nD. somente II e IV estão corretas;\nE. todas estão corretas.",
+    "resposta": "C",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 214,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "B",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConsidere as seguintes afirmativas sobre modelos de recuperação de falhas no MS SQL Server. I. O modelo bulk-logged oferece proteção mais completa que o modelo simple. II. O modelo de proteção escolhido na criação de um banco de dados não pode ser mudado mais tarde. III. Quando um banco de dados é criado, o modelo default é o modelo do banco de dados master. IV. Um backup diferencial só é útil no modelo full. Sobre as afirmativas acima, pode-se concluir que\nA. nenhuma está correta;\nB. somente I está correta;\nC. somente I e III estão corretas;\nD. somente II e IV estão corretas;\nE. todas estão corretas."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 212,
+      "total_tokens": 214,
+      "completion_tokens": 2,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "018778",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConsidere as seguintes afirmativas sobre stored procedures no âmbito do MS SQL Server: I. Uma stored procedure pode receber parâmetros de entrada mas não pode ter parâmetros de saída. II. No corpo de uma stored procedure não é possível chamar outra stored procedure. III. Uma stored procedure pode ser executada no servidor onde o banco de dados está localizado ou no computador que executa o aplicativo remoto que tem acesso a esse banco, mesmo que neste último o SQL Server não esteja instalado. IV. Uma tabela temporária local criada por uma stored procedure perdura após o fim desta, sendo removida no final da sessão (conexão). Sobre as afirmativas acima, pode-se concluir que\nA. nenhuma está correta;\nB. somente I e II estão corretas;\nC. somente III está correta;\nD. somente II e IV estão corretas;\nE. todas estão corretas.",
+    "resposta": "A resposta correta é D. Somente II e IV estão corretas.\n\nI. Uma stored procedure pode receber parâmetros de entrada e também pode ter parâmetros de saída. Isso é útil para retornar valores de volta ao chamador da stored procedure.\n\nII. É possível chamar outra stored procedure dentro do corpo de uma stored procedure. Isso é chamado de chamada de stored procedure aninhada e é uma prática comum para modularizar o código e reutilizar funcionalidade.\n\nIII. Uma stored procedure só pode ser executada no servidor onde o banco de dados está localizado. O computador que executa o aplicativo remoto que tem acesso ao banco de dados não pode executar stored procedures localmente, mesmo que o SQL Server não esteja instalado nesse computador.\n\nIV. Uma tabela temporária local criada por uma stored procedure perdura após o fim desta e é removida no final da sessão (conexão). Isso significa que a tabela temporária está disponível para uso por outras stored procedures ou consultas dentro da mesma sessão, mas é excluída quando a sessão é encerrada.",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 501,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": null,
+        "gold": "A",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConsidere as seguintes afirmativas sobre stored procedures no âmbito do MS SQL Server: I. Uma stored procedure pode receber parâmetros de entrada mas não pode ter parâmetros de saída. II. No corpo de uma stored procedure não é possível chamar outra stored procedure. III. Uma stored procedure pode ser executada no servidor onde o banco de dados está localizado ou no computador que executa o aplicativo remoto que tem acesso a esse banco, mesmo que neste último o SQL Server não esteja instalado. IV. Uma tabela temporária local criada por uma stored procedure perdura após o fim desta, sendo removida no final da sessão (conexão). Sobre as afirmativas acima, pode-se concluir que\nA. nenhuma está correta;\nB. somente I e II estão corretas;\nC. somente III está correta;\nD. somente II e IV estão corretas;\nE. todas estão corretas."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 254,
+      "total_tokens": 501,
+      "completion_tokens": 247,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "000378",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO valor impresso pelo programa Delphi abaixo será: (SAPPTYPE CONSOLE) procedure troca (x, y; integer); var aux: integer; begin aux := x; x := y: y:= aux; end; procedure m2 (var vetor: array of integer); var i: integer; begin for i:=low (vetor) to high (vetor) do vetor[i]:= vetor[high (vetor)-i] end; procedure ml (var vetor: array of integer); begin m2 (vetor); troca (vetor[low (vetor)], vetor [high (vetor)]); end; var vetor: array[0..4] of integer = (5, 4, 3, 2, 1); i: integer; begin m1(vetor); for i:= low(vetor) to high (vetor) do write (retor[i], ' '); end.\nA. 12321\nB. 1 2 3 4 5\nC. 14325\nD. 54345\nE. 5 4 3 2 1",
+    "resposta": "A. 12321",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 290,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": null,
+        "gold": "A",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO valor impresso pelo programa Delphi abaixo será: (SAPPTYPE CONSOLE) procedure troca (x, y; integer); var aux: integer; begin aux := x; x := y: y:= aux; end; procedure m2 (var vetor: array of integer); var i: integer; begin for i:=low (vetor) to high (vetor) do vetor[i]:= vetor[high (vetor)-i] end; procedure ml (var vetor: array of integer); begin m2 (vetor); troca (vetor[low (vetor)], vetor [high (vetor)]); end; var vetor: array[0..4] of integer = (5, 4, 3, 2, 1); i: integer; begin m1(vetor); for i:= low(vetor) to high (vetor) do write (retor[i], ' '); end.\nA. 12321\nB. 1 2 3 4 5\nC. 14325\nD. 54345\nE. 5 4 3 2 1"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 284,
+      "total_tokens": 290,
+      "completion_tokens": 6,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "007544",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConsidere uma árvore binária de busca com n elementos e altura mínima. O tempo de acesso a qualquer elemento desta árvore é da ordem de:\nA. $O(n)$\nB. $O(n^2)$\nC. $O(\\log n)$\nD. $O(\\log_{10}n)$\nE. $O(n)$",
+    "resposta": "Resposta: C",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 129,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConsidere uma árvore binária de busca com n elementos e altura mínima. O tempo de acesso a qualquer elemento desta árvore é da ordem de:\nA. $O(n)$\nB. $O(n^2)$\nC. $O(\\log n)$\nD. $O(\\log_{10}n)$\nE. $O(n)$"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 124,
+      "total_tokens": 129,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "005911",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO código Java a seguir mostra uma implementação de uma hashtable usando um mecanismo linear para tratamento de colisões. Os objetos inseridos na hashtable devem implementar a interface Hashable mostrada. public interface Hashable { public int hash(); } class HashTable { final public static int MAX_ITENS = 10; public Hashable vetor[] = new Hashable [MAX_ITENS]; int numItems = 0; public void inserir(Hashable item) { int pos = item.hash(); while (vetor[pos] != null) pos = ++pos % vetor.length; vetor[pos] = item; numItems++; } } class Inteiro implements Hashable { int i; public Inteiro(int i) { this.i= i; } public int hash() { return i % HashTable.MAX_ITENS; } } Se dez objetos da classe Inteiro, com valores 1, 4, 3, 73, 44, 9, 80, 70, 2 e 41, forem inseridos nesta ordem na hashtable, a ordem em que eles serão armazenados no vetor vetor[] será:\nA. 1, 4, 3, 73, 44, 9, 80, 70, 2, 41\nB. 80, 1, 70, 3, 4, 73, 44, 2, 41, 9\nC. 70, 41, 2, 80, 44, 73, 3, 4, 1, 9\nD. 1, 70, 3, 4, 73, 44, 2, 41, 9, 80\nE. 41, 2, 70, 80, 9, 44, 73, 3, 4, 1",
+    "resposta": "Resposta: D",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 450,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "B",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO código Java a seguir mostra uma implementação de uma hashtable usando um mecanismo linear para tratamento de colisões. Os objetos inseridos na hashtable devem implementar a interface Hashable mostrada. public interface Hashable { public int hash(); } class HashTable { final public static int MAX_ITENS = 10; public Hashable vetor[] = new Hashable [MAX_ITENS]; int numItems = 0; public void inserir(Hashable item) { int pos = item.hash(); while (vetor[pos] != null) pos = ++pos % vetor.length; vetor[pos] = item; numItems++; } } class Inteiro implements Hashable { int i; public Inteiro(int i) { this.i= i; } public int hash() { return i % HashTable.MAX_ITENS; } } Se dez objetos da classe Inteiro, com valores 1, 4, 3, 73, 44, 9, 80, 70, 2 e 41, forem inseridos nesta ordem na hashtable, a ordem em que eles serão armazenados no vetor vetor[] será:\nA. 1, 4, 3, 73, 44, 9, 80, 70, 2, 41\nB. 80, 1, 70, 3, 4, 73, 44, 2, 41, 9\nC. 70, 41, 2, 80, 44, 73, 3, 4, 1, 9\nD. 1, 70, 3, 4, 73, 44, 2, 41, 9, 80\nE. 41, 2, 70, 80, 9, 44, 73, 3, 4, 1"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 445,
+      "total_tokens": 450,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "003991",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nObserve as afirmações a seguir, a respeito das seções interface e implementation nas Units Delphi 7: i. variáveis declaradas na seção interface são globais à Unit onde elas foram declaradas e a qualquer outra que insira esta Unit na sua cláusula uses; ii. variáveis declaradas na seção implementation de uma Unit podem ser usadas apenas na Unit onde foram declaradas; iii. o código dos métodos das classes definidas em uma Unit podem ser escritos apenas na seção implementation desta mesma Unit; iv. as seções interface e implementation de uma Unit, se não usadas, podem ser removidas do código. O número de afirmações corretas é:\nA. 0;\nB. 1;\nC. 2;\nD. 3;\nE. 4.",
+    "resposta": "Resposta: B",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 227,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "D",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nObserve as afirmações a seguir, a respeito das seções interface e implementation nas Units Delphi 7: i. variáveis declaradas na seção interface são globais à Unit onde elas foram declaradas e a qualquer outra que insira esta Unit na sua cláusula uses; ii. variáveis declaradas na seção implementation de uma Unit podem ser usadas apenas na Unit onde foram declaradas; iii. o código dos métodos das classes definidas em uma Unit podem ser escritos apenas na seção implementation desta mesma Unit; iv. as seções interface e implementation de uma Unit, se não usadas, podem ser removidas do código. O número de afirmações corretas é:\nA. 0;\nB. 1;\nC. 2;\nD. 3;\nE. 4."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 222,
+      "total_tokens": 227,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "002558",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConsidere as seguintes afirmativas sobre JSP e servlets: i. é possível usar uma página JSP para gerar um arquivo de imagem do tipo JPEG, GIF ou PNG ii. um servlet é executado no servidor, ao passo que uma página JSP é executada no browser do cliente iii. uma página gerada por um servlet não pode conter código javascript iv. uma página JSP é executada no servidor, enquanto que um servlet é executado no browser do cliente A quantidade de afirmativas corretas é:\nA. 0;\nB. 1;\nC. 2;\nD. 3;\nE. 4.",
+    "resposta": "Resposta: C",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 186,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "B",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConsidere as seguintes afirmativas sobre JSP e servlets: i. é possível usar uma página JSP para gerar um arquivo de imagem do tipo JPEG, GIF ou PNG ii. um servlet é executado no servidor, ao passo que uma página JSP é executada no browser do cliente iii. uma página gerada por um servlet não pode conter código javascript iv. uma página JSP é executada no servidor, enquanto que um servlet é executado no browser do cliente A quantidade de afirmativas corretas é:\nA. 0;\nB. 1;\nC. 2;\nD. 3;\nE. 4."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 181,
+      "total_tokens": 186,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "004370",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSerá impresso, pelo código Java abaixo, public class Cliente { public static void main(String[] args) { try { throw new RuntimeException(); } catch (RuntimeException e) { System.out.print(\" 1\"); } catch(Exception e) { System.out.print(\" 2\"); } finally { System.out.println(\" 3\"); } } } o seguinte:\nA. 1\nB. 3\nC. 1 2\nD. 1 3\nE. 1 2 3",
+    "resposta": "D",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 152,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSerá impresso, pelo código Java abaixo, public class Cliente { public static void main(String[] args) { try { throw new RuntimeException(); } catch (RuntimeException e) { System.out.print(\" 1\"); } catch(Exception e) { System.out.print(\" 2\"); } finally { System.out.println(\" 3\"); } } } o seguinte:\nA. 1\nB. 3\nC. 1 2\nD. 1 3\nE. 1 2 3"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 150,
+      "total_tokens": 152,
+      "completion_tokens": 2,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "000759",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nObserve o esquema DTD (registro.dtd) na figura a seguir: <?xml version=\"1.0\" encoding=\"UTF-8\"?> <!ELEMENT funcionario (nome, filiacao?, telefone*)> <!ELEMENT nome (#PCDATA)> <!ELEMENT filiacao EMPTY> <!ATTLIST filiacao pai CDATA #REQUIRED mae CDATA #REQUIRED > <!ELEMENT telefone (#PCDATA)> <!ATTLIST telefone preferido (sim | nao) \"nao\"> O documento XML que atende ao esquema é:\nA. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <!DOCTYPE funcionario SYSTEM \"C:\\lixo\\Registro.dtd\"> <funcionario> <filiacao pai=\"Saulo Silva\" mae=\"Sandra Silva\"/> <nome>Pedro Silva</nome> <telefone>22222222</telefone> <telefone preferido \"sim\">99999999</telefone> </funcionario>\nB. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <!DOCTYPE funcionario SYSTEM \"C:\\lixo\\Registro.dtd\"> <funcionario> <nome>Pedro Silva</nome> <telefone>22222222</telefone> <telefone preferido=\"sim\">99999999</telefone> </funcionario>\nC. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <!DOCTYPE funcionario SYSTEM \"C:\\lixo\\Registro.dtd\"> <funcionario> <nome>Pedro Silva</nome> <filiacao> <pai>Saulo Silva</pai> <mae>Sandra Silva</mae> </filiacao> <telefone>22222222</telefone> <telefone preferido \"sim\">99999999</telefone> </funcionario>\nD. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <!DOCTYPE funcionario SYSTEM \"C:\\lixo\\Registro.dtd\"> <funcionario> <nome>Pedro Silva</nome> <filiacao pai=\"Saulo Silva\" mae=\"Sandra Silva\"/> <telefone preferido=\"\">22222222</telefone> <telefone preferido=\"sim\">99999999</telefone> </funcionario>\nE. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <!DOCTYPE funcionario SYSTEM \"C:\\lixo\\Registro.dtd\"> <funcionario> <nome>Pedro Silva</nome> <filiacao pai=\"Saulo Silva\" mae=\"Sandra Silva\"/> </funcionario>",
+    "resposta": "Resposta: B",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 590,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "E",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nObserve o esquema DTD (registro.dtd) na figura a seguir: <?xml version=\"1.0\" encoding=\"UTF-8\"?> <!ELEMENT funcionario (nome, filiacao?, telefone*)> <!ELEMENT nome (#PCDATA)> <!ELEMENT filiacao EMPTY> <!ATTLIST filiacao pai CDATA #REQUIRED mae CDATA #REQUIRED > <!ELEMENT telefone (#PCDATA)> <!ATTLIST telefone preferido (sim | nao) \"nao\"> O documento XML que atende ao esquema é:\nA. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <!DOCTYPE funcionario SYSTEM \"C:\\lixo\\Registro.dtd\"> <funcionario> <filiacao pai=\"Saulo Silva\" mae=\"Sandra Silva\"/> <nome>Pedro Silva</nome> <telefone>22222222</telefone> <telefone preferido \"sim\">99999999</telefone> </funcionario>\nB. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <!DOCTYPE funcionario SYSTEM \"C:\\lixo\\Registro.dtd\"> <funcionario> <nome>Pedro Silva</nome> <telefone>22222222</telefone> <telefone preferido=\"sim\">99999999</telefone> </funcionario>\nC. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <!DOCTYPE funcionario SYSTEM \"C:\\lixo\\Registro.dtd\"> <funcionario> <nome>Pedro Silva</nome> <filiacao> <pai>Saulo Silva</pai> <mae>Sandra Silva</mae> </filiacao> <telefone>22222222</telefone> <telefone preferido \"sim\">99999999</telefone> </funcionario>\nD. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <!DOCTYPE funcionario SYSTEM \"C:\\lixo\\Registro.dtd\"> <funcionario> <nome>Pedro Silva</nome> <filiacao pai=\"Saulo Silva\" mae=\"Sandra Silva\"/> <telefone preferido=\"\">22222222</telefone> <telefone preferido=\"sim\">99999999</telefone> </funcionario>\nE. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <!DOCTYPE funcionario SYSTEM \"C:\\lixo\\Registro.dtd\"> <funcionario> <nome>Pedro Silva</nome> <filiacao pai=\"Saulo Silva\" mae=\"Sandra Silva\"/> </funcionario>"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 585,
+      "total_tokens": 590,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "017228",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nObserve a folha de estilo XSLT na figura a seguir: <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\"> <xsl:output method=\"xml\" version=\"1.0\" encoding=\"ISO-8859-1\" indent=\"yes\"/> <xsl:template match=\"documento\"> <html> <head> <title>Saudação</title> </head> <body><xsl:apply-templates select=\"saudacao\" /></body> </html> </xsl:template> <xsl:template match=\"saudacao\"> <strike><xsl:value-of select=\".\" /></strike> </xsl:template> </xsl:stylesheet> Esta folha de estilo foi aplicada ao seguinte documento XML: <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <?xml-stylesheet type=\"text/xsl\" href=\"saudacao.xslt\"?> <documento> <saudacao>Alo mundo!</saudacao> </documento> O resultado da transformação é:\nA. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <html> <head> <title>Saudação</title> </head> <body>saudacao</body> <strike>Alo mundo!</strike> </html>\nB. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <html> <body>Alo mundo!</body> </html>\nC. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <html> <head> <title>Saudação</title> </head> <body> <strike>Alo mundo!</strike> </body> </html>\nD. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <html> <head> <title>Saudação</title> </head> <body> saudacao <strike>.</strike> </body> </html>\nE. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <html> <head> <title>Saudação</title> </head> <body> <xsl:apply-templates select=\"saudacao\" /> </body> </html>",
+    "resposta": "Resposta: C",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 563,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nObserve a folha de estilo XSLT na figura a seguir: <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\"> <xsl:output method=\"xml\" version=\"1.0\" encoding=\"ISO-8859-1\" indent=\"yes\"/> <xsl:template match=\"documento\"> <html> <head> <title>Saudação</title> </head> <body><xsl:apply-templates select=\"saudacao\" /></body> </html> </xsl:template> <xsl:template match=\"saudacao\"> <strike><xsl:value-of select=\".\" /></strike> </xsl:template> </xsl:stylesheet> Esta folha de estilo foi aplicada ao seguinte documento XML: <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <?xml-stylesheet type=\"text/xsl\" href=\"saudacao.xslt\"?> <documento> <saudacao>Alo mundo!</saudacao> </documento> O resultado da transformação é:\nA. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <html> <head> <title>Saudação</title> </head> <body>saudacao</body> <strike>Alo mundo!</strike> </html>\nB. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <html> <body>Alo mundo!</body> </html>\nC. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <html> <head> <title>Saudação</title> </head> <body> <strike>Alo mundo!</strike> </body> </html>\nD. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <html> <head> <title>Saudação</title> </head> <body> saudacao <strike>.</strike> </body> </html>\nE. <?xml version=\"1.0\" encoding=\"ISO-8859-1\"?> <html> <head> <title>Saudação</title> </head> <body> <xsl:apply-templates select=\"saudacao\" /> </body> </html>"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 558,
+      "total_tokens": 563,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "015440",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nAvanços recentes na criação digitalizada de imagens fazem supor novos aplicativos, que desempenham tarefas específicas. Estes sistemas são chamados de desktop publishing (DTP). O processamento de imagens e textos para editoração eletrônica tem feito uso dos seguintes programas para DTP:\nA. ReadySetGo; Page Maker; Ventura Publisher;\nB. Rag Time Solo; Movie Maker 2; Web Reader 2.3;\nC. Page Maker; MS Office; Adobe Frame Maker 7.1;\nD. Java Script; Ventura Publisher; Desktop Manager;\nE. AcdSee Writer; ReadySetGo; WebEditor.",
+    "resposta": "Resposta: A",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 195,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nAvanços recentes na criação digitalizada de imagens fazem supor novos aplicativos, que desempenham tarefas específicas. Estes sistemas são chamados de desktop publishing (DTP). O processamento de imagens e textos para editoração eletrônica tem feito uso dos seguintes programas para DTP:\nA. ReadySetGo; Page Maker; Ventura Publisher;\nB. Rag Time Solo; Movie Maker 2; Web Reader 2.3;\nC. Page Maker; MS Office; Adobe Frame Maker 7.1;\nD. Java Script; Ventura Publisher; Desktop Manager;\nE. AcdSee Writer; ReadySetGo; WebEditor."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 190,
+      "total_tokens": 195,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "003140",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\n\"Sistemas interativos que podem apresentar dados retirados de arquivos, organizando-os sob forma de tabela\". (BAER, Lorenzo. Produção Gráfica. São Paulo: Senac, 2004, p.119). Ao tratar de editoração eletrônica, o autor designa com o curto texto acima os programas de:\nA. elaboração de bancos de dados;\nB. diagramação de páginas;\nC. criação de planilhas;\nD. processamento de cálculos;\nE. armazenagem de informações.",
+    "resposta": "Resposta: A",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 170,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "C",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\n\"Sistemas interativos que podem apresentar dados retirados de arquivos, organizando-os sob forma de tabela\". (BAER, Lorenzo. Produção Gráfica. São Paulo: Senac, 2004, p.119). Ao tratar de editoração eletrônica, o autor designa com o curto texto acima os programas de:\nA. elaboração de bancos de dados;\nB. diagramação de páginas;\nC. criação de planilhas;\nD. processamento de cálculos;\nE. armazenagem de informações."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 165,
+      "total_tokens": 170,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "009900",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nOs dados que descrevem o sistema operacional, o programa que gera os documentos, a localização física dos documentos no sistema eletrônico Dados que colocam o documento dentro do seu contexto documentário e administrativo no momento da sua criação... Em alguns sistemas eletrônicos, tais dados são armazenados no dicionário de dados; em outros, são reunidos num perfil do documento anexado ao documento arquivístico. MacNeil (2000:96 apud Rondinelli). O texto acima focaliza a categoria de:\nA. infodados.\nB. metadados.\nC. arquidados.\nD. contextodados.\nE. organodados.",
+    "resposta": "Resposta: B",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 202,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nOs dados que descrevem o sistema operacional, o programa que gera os documentos, a localização física dos documentos no sistema eletrônico Dados que colocam o documento dentro do seu contexto documentário e administrativo no momento da sua criação... Em alguns sistemas eletrônicos, tais dados são armazenados no dicionário de dados; em outros, são reunidos num perfil do documento anexado ao documento arquivístico. MacNeil (2000:96 apud Rondinelli). O texto acima focaliza a categoria de:\nA. infodados.\nB. metadados.\nC. arquidados.\nD. contextodados.\nE. organodados."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 197,
+      "total_tokens": 202,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "002337",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO desenho abaixo apresenta duas chaves geradas por computador para identificação do usuário. Uma chave é privada, devendo ser mantida em sigilo pelo usuário e em seu poder exclusivo, e outra é pública e deve ser distribuída. A mensagem que for ecriptada por uma chave só pode ser decriptada pela outra. Assim, simultaneamente a um documento produzido, é gerada uma assinatura com a chave privada. Se a chave pública decifrar a assinatura e relacioná-la ao documento, significa que o documento não foi alterado desde a sua produção. Ações do Emissor Documento produzido Chave privada Emissor Chave pública Receptor Ações do Receptor Documento ecriptado Chave privada Receptor Chave Pública Emissor Documento decriptado Esse desenho caracteriza um modelo de uso de:\nA. preservação tecnológica.\nB. criptografia assimétrica.\nC. simetria criptografada.\nD. simetria decriptada.\nE. rede ecriptada.",
+    "resposta": "A resposta correta é B. Criptografia assimétrica.",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 302,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": null,
+        "gold": "B",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO desenho abaixo apresenta duas chaves geradas por computador para identificação do usuário. Uma chave é privada, devendo ser mantida em sigilo pelo usuário e em seu poder exclusivo, e outra é pública e deve ser distribuída. A mensagem que for ecriptada por uma chave só pode ser decriptada pela outra. Assim, simultaneamente a um documento produzido, é gerada uma assinatura com a chave privada. Se a chave pública decifrar a assinatura e relacioná-la ao documento, significa que o documento não foi alterado desde a sua produção. Ações do Emissor Documento produzido Chave privada Emissor Chave pública Receptor Ações do Receptor Documento ecriptado Chave privada Receptor Chave Pública Emissor Documento decriptado Esse desenho caracteriza um modelo de uso de:\nA. preservação tecnológica.\nB. criptografia assimétrica.\nC. simetria criptografada.\nD. simetria decriptada.\nE. rede ecriptada."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 286,
+      "total_tokens": 302,
+      "completion_tokens": 16,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "005901",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nAs planilhas eletrônicas, as mensagens de correio eletrônico, os sítios na Internet, as bases de dados e textos, imagens fixas, imagens em movimento e gravações sonoras são considerados documentos arquivísticos:\nA. especializados.\nB. especiais.\nC. digitais.\nD. operativos.\nE. funcionais.",
+    "resposta": "Resposta: C",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 135,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nAs planilhas eletrônicas, as mensagens de correio eletrônico, os sítios na Internet, as bases de dados e textos, imagens fixas, imagens em movimento e gravações sonoras são considerados documentos arquivísticos:\nA. especializados.\nB. especiais.\nC. digitais.\nD. operativos.\nE. funcionais."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 130,
+      "total_tokens": 135,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "013369",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO subcomitê da ISO/TC46 que trata da normalização de linguagens documentárias em âmbito mundial é o:\nA. SC-2\nB. SC-3\nC. SC-6\nD. SC-8\nE. SC-9",
+    "resposta": "Resposta: A",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 108,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "E",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO subcomitê da ISO/TC46 que trata da normalização de linguagens documentárias em âmbito mundial é o:\nA. SC-2\nB. SC-3\nC. SC-6\nD. SC-8\nE. SC-9"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 103,
+      "total_tokens": 108,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "008291",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nOs sistemas de recuperação da informação evoluíram por gerações que se caracterizam por interfaces baseadas em comandos, interfaces baseadas em menus e comandos, e interfaces gráficas. Os tipos de dados armazenados por cada uma dessas gerações são, respectivamente:\nA. multimídia, hipertexto e sistemas especialistas.\nB. hipertexto, metadados e dados com texto integral.\nC. metadados, dados com texto integral e multimídia.\nD. dados com texto integral, sistemas especialistas e hipertexto.\nE. sistemas especialistas, multimídia e metadados.",
+    "resposta": "Resposta: C",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 190,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nOs sistemas de recuperação da informação evoluíram por gerações que se caracterizam por interfaces baseadas em comandos, interfaces baseadas em menus e comandos, e interfaces gráficas. Os tipos de dados armazenados por cada uma dessas gerações são, respectivamente:\nA. multimídia, hipertexto e sistemas especialistas.\nB. hipertexto, metadados e dados com texto integral.\nC. metadados, dados com texto integral e multimídia.\nD. dados com texto integral, sistemas especialistas e hipertexto.\nE. sistemas especialistas, multimídia e metadados."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 185,
+      "total_tokens": 190,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "012975",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nA topologia de distribuição de unidades de processamento, compatibilizadas ponto a ponto, o controle e fluxo das informações e os protocolos e normas de codificação e transmissão de dados integram a definição sistemática de:\nA. recurso de informação.\nB. ferramenta de busca.\nC. base de dados em linha.\nD. arquitetura de rede.\nE. estrutura de dados.",
+    "resposta": "Resposta: D",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 143,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nA topologia de distribuição de unidades de processamento, compatibilizadas ponto a ponto, o controle e fluxo das informações e os protocolos e normas de codificação e transmissão de dados integram a definição sistemática de:\nA. recurso de informação.\nB. ferramenta de busca.\nC. base de dados em linha.\nD. arquitetura de rede.\nE. estrutura de dados."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 138,
+      "total_tokens": 143,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "008655",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nGreen is the hot topic these days, and the concept is having an impact on the way people think about datacenters. Companies around the world are announcing ways to save energy and reduce costs by buying new hardware and services. Yet, there is little guidance on how you can take action to control energy costs. In the past, electricity has been treated as an overhead expense, like the cost of space. But with rising power costs and issues regarding reliability, supply, and capacity, electricity requires its own specific strategy. Projects regarding performance optimization and cost reduction are a part of everyday best practices in nearly every area of business. So why not treat energy cost in the same way? As Information Technologies (IT) pros, many of us make decisions about the configuration and setup of servers, the specifications on the equipment our organizations purchase, and the requirements for datacenter upgrades and construction. We even provide early design input during application development. When it comes to these projects, we obviously have a golden opportunity to be green and influence the energy efficiency of any datacenter. The first part of any strategy is to know your current energy usage. You need to know where your energy is used and by what specific equipment, as well as what usage is efficient and what is wasteful in the datacenter. Unfortunately, it's rare to find power-consumption metering in place that can break down usage to a level where people can see the results of their actions. Most organizations typically only see a monthly power bill that rolls up consumption into an overall bottom line. This offers little incentive for saving energy since individuals never see the impact of their decisions, and there is no way for them to prove that their changes have actually saved energy. One of the first issues people confront when considering a green datacenter initiative is whether they have executive support. For the purpose of the article, I am going to assume the answer is \"not yet.\" Executive support requires a serious commitment that provides resources and budget for your initiative. And while there is a lot of talk about green datacenters, the reality is that there is still often a lack of serious support at the executive level. If you did already have such executive support, you would probably be running a green datacenter right now. Still, even assuming you are not getting the support you need, there is a great deal you can do to push your green datacenter initiative forward. So how do you determine effective actions to take in achieving your goals? Fortunately, energy efficiency is not a new concept and there is a lot that IT pros can learn from other industries. [...] Anyway, for whichever direction you choose, planning an energy efficiency program for your datacenter will require collaboration across groups in IT. Until recently, the typical approach to planning IT solutions has been to ignore power costs early on during the design phase, focusing on the hardware and software being purchased, along with the labor and hosting costs of the solution. When power is buried in the overhead cost of running solutions in a datacenter, energy efficiency is a low priority. Exposing the actual power being consumed by solutions is the first critical step in changing the behavior of your organization. By Dave Ohara TechNet Magazine, October 2007 The final message of the text (lines 55-66) is that:\nA. to change company behavior you must proceed step by step.\nB. it is only during the design phase that power costs have to be considered.\nC. it is important to discriminate power consumption by IT equipment in companies.\nD. energy efficiency will ensure close collaboration between teams of IT experts.\nE. energy experts ought to invest more time in planning IT solutions.",
+    "resposta": "C",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 778,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nGreen is the hot topic these days, and the concept is having an impact on the way people think about datacenters. Companies around the world are announcing ways to save energy and reduce costs by buying new hardware and services. Yet, there is little guidance on how you can take action to control energy costs. In the past, electricity has been treated as an overhead expense, like the cost of space. But with rising power costs and issues regarding reliability, supply, and capacity, electricity requires its own specific strategy. Projects regarding performance optimization and cost reduction are a part of everyday best practices in nearly every area of business. So why not treat energy cost in the same way? As Information Technologies (IT) pros, many of us make decisions about the configuration and setup of servers, the specifications on the equipment our organizations purchase, and the requirements for datacenter upgrades and construction. We even provide early design input during application development. When it comes to these projects, we obviously have a golden opportunity to be green and influence the energy efficiency of any datacenter. The first part of any strategy is to know your current energy usage. You need to know where your energy is used and by what specific equipment, as well as what usage is efficient and what is wasteful in the datacenter. Unfortunately, it's rare to find power-consumption metering in place that can break down usage to a level where people can see the results of their actions. Most organizations typically only see a monthly power bill that rolls up consumption into an overall bottom line. This offers little incentive for saving energy since individuals never see the impact of their decisions, and there is no way for them to prove that their changes have actually saved energy. One of the first issues people confront when considering a green datacenter initiative is whether they have executive support. For the purpose of the article, I am going to assume the answer is \"not yet.\" Executive support requires a serious commitment that provides resources and budget for your initiative. And while there is a lot of talk about green datacenters, the reality is that there is still often a lack of serious support at the executive level. If you did already have such executive support, you would probably be running a green datacenter right now. Still, even assuming you are not getting the support you need, there is a great deal you can do to push your green datacenter initiative forward. So how do you determine effective actions to take in achieving your goals? Fortunately, energy efficiency is not a new concept and there is a lot that IT pros can learn from other industries. [...] Anyway, for whichever direction you choose, planning an energy efficiency program for your datacenter will require collaboration across groups in IT. Until recently, the typical approach to planning IT solutions has been to ignore power costs early on during the design phase, focusing on the hardware and software being purchased, along with the labor and hosting costs of the solution. When power is buried in the overhead cost of running solutions in a datacenter, energy efficiency is a low priority. Exposing the actual power being consumed by solutions is the first critical step in changing the behavior of your organization. By Dave Ohara TechNet Magazine, October 2007 The final message of the text (lines 55-66) is that:\nA. to change company behavior you must proceed step by step.\nB. it is only during the design phase that power costs have to be considered.\nC. it is important to discriminate power consumption by IT equipment in companies.\nD. energy efficiency will ensure close collaboration between teams of IT experts.\nE. energy experts ought to invest more time in planning IT solutions."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 776,
+      "total_tokens": 778,
+      "completion_tokens": 2,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "009040",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nQue situação favorece a escolha do uso de XP para um projeto de desenvolvimento de software, em oposição à escolha do RUP ou do modelo Cascata?\nA. Equipe do projeto localizada em diferentes cidades e com poucos recursos de colaboração.\nB. Equipe do projeto formada por pessoas com alto grau de competitividade.\nC. Cliente do projeto trabalhando em parceria com a equipe do projeto e sempre disponível para retirar dúvidas.\nD. Requisitos do software com pequena probabilidade de mudanças.\nE. Presença de um processo organizacional que exige a elaboração de vários documentos específicos para cada projeto.",
+    "resposta": "Resposta: C",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 199,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nQue situação favorece a escolha do uso de XP para um projeto de desenvolvimento de software, em oposição à escolha do RUP ou do modelo Cascata?\nA. Equipe do projeto localizada em diferentes cidades e com poucos recursos de colaboração.\nB. Equipe do projeto formada por pessoas com alto grau de competitividade.\nC. Cliente do projeto trabalhando em parceria com a equipe do projeto e sempre disponível para retirar dúvidas.\nD. Requisitos do software com pequena probabilidade de mudanças.\nE. Presença de um processo organizacional que exige a elaboração de vários documentos específicos para cada projeto."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 194,
+      "total_tokens": 199,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "011908",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNo âmbito de estratégias e técnicas de testes de software, assinale a afirmativa correta.\nA. É uma boa prática automatizar os testes de unidade, embora não seja recomendado, em geral, automatizar os testes de regressão.\nB. São exemplos de abordagens de testes para aplicações cliente-servidor: teste de função da aplicação cliente, teste de servidor, teste de banco de dados, teste de transação e teste de comunicação em rede.\nC. São exemplos de teste de caixa-branca: teste de caminho básico, teste de estrutura de controle e teste utilizando particionamento de equivalência.\nD. A verificação é testada pela pergunta: \"Estamos construindo o produto correto?\", enquanto a validação indaga: \"Estamos construindo o produto corretamente?\".\nE. Depois do teste de unidade, o teste seguinte a ser aplicado a um software é, comumente, o teste de validação.",
+    "resposta": "Resposta: B",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 274,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNo âmbito de estratégias e técnicas de testes de software, assinale a afirmativa correta.\nA. É uma boa prática automatizar os testes de unidade, embora não seja recomendado, em geral, automatizar os testes de regressão.\nB. São exemplos de abordagens de testes para aplicações cliente-servidor: teste de função da aplicação cliente, teste de servidor, teste de banco de dados, teste de transação e teste de comunicação em rede.\nC. São exemplos de teste de caixa-branca: teste de caminho básico, teste de estrutura de controle e teste utilizando particionamento de equivalência.\nD. A verificação é testada pela pergunta: \"Estamos construindo o produto correto?\", enquanto a validação indaga: \"Estamos construindo o produto corretamente?\".\nE. Depois do teste de unidade, o teste seguinte a ser aplicado a um software é, comumente, o teste de validação."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 269,
+      "total_tokens": 274,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "006302",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConsiderando o processo de desenvolvimento de software unificado, associe cada produto de trabalho com a fase em que deve ser realizado. | ARTEFATOS | FASES | |---|---| | I - Avaliação inicial de riscos | P - Concepção | | II - Relatório de execução de testes beta | Q - Elaboração | | III - Modelo de projeto completo | R - Construção | | IV - Modelo de negócio preliminar | S - Transição | | V - Protótipo arquitetural executável | | Marque a opção que ilustra a associação correta.\nA. I-P, II-S, III-R, IV-P, V-Q\nB. I-P, II-S, III-Q, IV-P, V-Q\nC. I-P, II-R, III-Q, IV-P, V-R\nD. I-Q, II-R, III-Q, IV-P, V-R\nE. I-Q, II-S, III-R, IV-Q, V-S",
+    "resposta": "Resposta: B",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 271,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "A",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConsiderando o processo de desenvolvimento de software unificado, associe cada produto de trabalho com a fase em que deve ser realizado. | ARTEFATOS | FASES | |---|---| | I - Avaliação inicial de riscos | P - Concepção | | II - Relatório de execução de testes beta | Q - Elaboração | | III - Modelo de projeto completo | R - Construção | | IV - Modelo de negócio preliminar | S - Transição | | V - Protótipo arquitetural executável | | Marque a opção que ilustra a associação correta.\nA. I-P, II-S, III-R, IV-P, V-Q\nB. I-P, II-S, III-Q, IV-P, V-Q\nC. I-P, II-R, III-Q, IV-P, V-R\nD. I-Q, II-R, III-Q, IV-P, V-R\nE. I-Q, II-S, III-R, IV-Q, V-S"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 266,
+      "total_tokens": 271,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "011471",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConsidere o relacionamento de \"todo-parte\" ilustrado no diagrama UML abaixo. ``` * 1 ItemPedido --- Pedido --- InfoCliente 1 1 ``` É correto afirmar que\nA. um objeto da classe InfoCliente pode participar de mais de um relacionamento de composição desempenhando o papel de \"parte\".\nB. um objeto da classe ItemPedido pode participar de mais de um relacionamento de composição desempenhando o papel de \"parte\".\nC. uma instância da classe InfoCliente pode existir antes mesmo que a instância da classe Pedido com que se relacionará tenha sido criada.\nD. o relacionamento ilustrado acima é ternário.\nE. a cardinalidade do pedido no relacionamento com ItemPedido igual a 1 não precisaria ser apresentada, uma vez que não poderia assumir outro valor.",
+    "resposta": "A. um objeto da classe InfoCliente pode participar de mais de um relacionamento de composição desempenhando o papel de \"parte\".",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 268,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": null,
+        "gold": "E",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConsidere o relacionamento de \"todo-parte\" ilustrado no diagrama UML abaixo. ``` * 1 ItemPedido --- Pedido --- InfoCliente 1 1 ``` É correto afirmar que\nA. um objeto da classe InfoCliente pode participar de mais de um relacionamento de composição desempenhando o papel de \"parte\".\nB. um objeto da classe ItemPedido pode participar de mais de um relacionamento de composição desempenhando o papel de \"parte\".\nC. uma instância da classe InfoCliente pode existir antes mesmo que a instância da classe Pedido com que se relacionará tenha sido criada.\nD. o relacionamento ilustrado acima é ternário.\nE. a cardinalidade do pedido no relacionamento com ItemPedido igual a 1 não precisaria ser apresentada, uma vez que não poderia assumir outro valor."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 235,
+      "total_tokens": 268,
+      "completion_tokens": 33,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001804",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO diagrama UML mais indicado para representar o passo a passo do fluxo de eventos principal de um caso de uso de um software orientado a objetos é o diagrama de\nA. casos de uso.\nB. atividades.\nC. eventos e transições.\nD. classes.\nE. componentes.",
+    "resposta": "Resposta: B",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 119,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO diagrama UML mais indicado para representar o passo a passo do fluxo de eventos principal de um caso de uso de um software orientado a objetos é o diagrama de\nA. casos de uso.\nB. atividades.\nC. eventos e transições.\nD. classes.\nE. componentes."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 114,
+      "total_tokens": 119,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "019263",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nObserve a árvore de decisão abaixo relativa ao desenvolvimento de um projeto de software. Os números decimais entre parênteses representam o valor da probabilidade da escolha do ramo, enquanto que o valor em reais, o custo de cada opção. Analisando a árvore acima, conclui-se que\nA. o custo esperado para realizar o trabalho contratando desenvolvimento terceirizado é de R$ 7.480,00.\nB. o custo estimado para \"Desenvolver internamente” é menor do que o custo estimado para \"Contratar desenvolvimento terceirizado\".\nC. quando não há probabilidade associada ao primeiro nível da árvore de decisão, pode-se assumir que essa probabilidade é de 50%.\nD. supondo que a opção \"Contratar desenvolvimento terceirizado\" seja escolhida, e que uma equipe inexperiente assuma o trabalho, o custo esperado será de R$ 4.480,00.\nE. as probabilidades associadas à árvore de decisão estão inconsistentes.",
+    "resposta": "Resposta: B",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 294,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nObserve a árvore de decisão abaixo relativa ao desenvolvimento de um projeto de software. Os números decimais entre parênteses representam o valor da probabilidade da escolha do ramo, enquanto que o valor em reais, o custo de cada opção. Analisando a árvore acima, conclui-se que\nA. o custo esperado para realizar o trabalho contratando desenvolvimento terceirizado é de R$ 7.480,00.\nB. o custo estimado para \"Desenvolver internamente” é menor do que o custo estimado para \"Contratar desenvolvimento terceirizado\".\nC. quando não há probabilidade associada ao primeiro nível da árvore de decisão, pode-se assumir que essa probabilidade é de 50%.\nD. supondo que a opção \"Contratar desenvolvimento terceirizado\" seja escolhida, e que uma equipe inexperiente assuma o trabalho, o custo esperado será de R$ 4.480,00.\nE. as probabilidades associadas à árvore de decisão estão inconsistentes."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 289,
+      "total_tokens": 294,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "003658",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSuponha que um projeto de software siga o modelo cascata e utilize técnicas de refatoração apoiadas por uma ferramenta durante a etapa de implementação. Qual o impacto resultante na etapa de análise e projeto?\nA. Pode aumentar o trabalho do analista, pois o código deve estar preparado para utilizar as técnicas de refatoração.\nB. Pode aumentar o trabalho do analista se o profissional que realizar a etapa de análise for diferente do profissional que implementará o software.\nC. Pode diminuir o trabalho do analista, mas apenas se o profissional que realizar a etapa de análise for o mesmo que implementar o software.\nD. Pode diminuir o trabalho do analista, já que o profissional de análise e projeto saberá que mudanças futuras no modelo gerado durante essa etapa poderão ser realizadas com um custo menor na etapa de implementação.\nE. Não terá impacto se o profissional já conhecer as técnicas de refatoração.",
+    "resposta": "Resposta: D",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 278,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSuponha que um projeto de software siga o modelo cascata e utilize técnicas de refatoração apoiadas por uma ferramenta durante a etapa de implementação. Qual o impacto resultante na etapa de análise e projeto?\nA. Pode aumentar o trabalho do analista, pois o código deve estar preparado para utilizar as técnicas de refatoração.\nB. Pode aumentar o trabalho do analista se o profissional que realizar a etapa de análise for diferente do profissional que implementará o software.\nC. Pode diminuir o trabalho do analista, mas apenas se o profissional que realizar a etapa de análise for o mesmo que implementar o software.\nD. Pode diminuir o trabalho do analista, já que o profissional de análise e projeto saberá que mudanças futuras no modelo gerado durante essa etapa poderão ser realizadas com um custo menor na etapa de implementação.\nE. Não terá impacto se o profissional já conhecer as técnicas de refatoração."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 273,
+      "total_tokens": 278,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "017668",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nAo alterar o estado de uma classe, o desenvolvedor deseja que uma ou mais classes da interface gráfica sejam modificadas. Entretanto, o desenvolvedor não acha interessante criar um acoplamento forte entre essas classes. Qual padrão de projeto comportamental é mais adequado para resolver essa situação?\nA. Composite\nB. Adapter\nC. Observer\nD. Abstract Factory\nE. Decorator",
+    "resposta": "Resposta: C",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 142,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nAo alterar o estado de uma classe, o desenvolvedor deseja que uma ou mais classes da interface gráfica sejam modificadas. Entretanto, o desenvolvedor não acha interessante criar um acoplamento forte entre essas classes. Qual padrão de projeto comportamental é mais adequado para resolver essa situação?\nA. Composite\nB. Adapter\nC. Observer\nD. Abstract Factory\nE. Decorator"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 137,
+      "total_tokens": 142,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "000041",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nObserve o seguinte programa JAVA: ```java package p; public class exemplo { public exemplo() { } public static void main(String[] args) { try { System.out.println(1/0); System.out.println(\"M\"); } catch (ArithmeticException ex2) { System.out.print(\"X\"); } catch (Exception ex3) { System.out.print(\"Y\"); } finally { System.out.print(\"Z\"); } System.out.print(\"F\"); } } ``` A saída desse programa é\nA. MXYZF\nB. XYZ\nC. XF\nD. XZF\nE. XYZF",
+    "resposta": "Resposta: D",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 177,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nObserve o seguinte programa JAVA: ```java package p; public class exemplo { public exemplo() { } public static void main(String[] args) { try { System.out.println(1/0); System.out.println(\"M\"); } catch (ArithmeticException ex2) { System.out.print(\"X\"); } catch (Exception ex3) { System.out.print(\"Y\"); } finally { System.out.print(\"Z\"); } System.out.print(\"F\"); } } ``` A saída desse programa é\nA. MXYZF\nB. XYZ\nC. XF\nD. XZF\nE. XYZF"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 172,
+      "total_tokens": 177,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "018122",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nDuas transações (T1 e T2) de banco de dados executam as seguintes seqüências de operações: T1: Na tabela DEPARTAMENTO, bloqueia a linha N em modo compartilhado; Na tabela DEPARTAMENTO, lê a coluna DESPESA da linha N; Na tabela DEPARTAMENTO, desbloqueia a linha N; Na tabela PROJETO, bloqueia a linha M em modo compartilhado; Na tabela PROJETO, lê a coluna VERBA da linha M; Na tabela PROJETO, desbloqueia a linha M; Na tabela PROJETO, bloqueia a linha M em modo exclusivo; Na tabela PROJETO, escreve a coluna VERBA da linha M com o valor VERBA + DESPESA; Na tabela PROJETO, desbloqueia a linha M; T2: Na tabela PROJETO, bloqueia linha M em modo compartilhado; Na tabela PROJETO, lê a coluna VERBA da linha M; Na tabela PROJETO, desbloqueia a linha M; Na tabela DEPARTAMENTO, bloqueia a linha N em modo compartilhado; Na tabela DEPARTAMENTO, lê a coluna DESPESA da linha N; Na tabela DEPARTAMENTO, desbloqueia a linha N; Na tabela DEPARTAMENTO, bloqueia a linha N em modo exclusivo; Na tabela DEPARTAMENTO, escreve a coluna DESPESA da linha N com o valor DESPESA + VERBA; Na tabela DEPARTAMENTO, desbloqueia a linha N; É correto afirmar que essas transações\nA. não são serializáveis e, portanto, não podem ser executadas concorrentemente.\nB. não podem entrar em bloqueio infinito porque obedecem ao protocolo de bloqueio em duas fases (two-phase locking).\nC. podem entrar em bloqueio infinito (deadlock) se executadas concorrentemente.\nD. obedecem ao protocolo de bloqueio em duas fases (two-phase locking).\nE. são serializáveis e obedecem ao protocolo de bloqueio em duas fases (two-phase locking).",
+    "resposta": "Resposta: C",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 528,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "A",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nDuas transações (T1 e T2) de banco de dados executam as seguintes seqüências de operações: T1: Na tabela DEPARTAMENTO, bloqueia a linha N em modo compartilhado; Na tabela DEPARTAMENTO, lê a coluna DESPESA da linha N; Na tabela DEPARTAMENTO, desbloqueia a linha N; Na tabela PROJETO, bloqueia a linha M em modo compartilhado; Na tabela PROJETO, lê a coluna VERBA da linha M; Na tabela PROJETO, desbloqueia a linha M; Na tabela PROJETO, bloqueia a linha M em modo exclusivo; Na tabela PROJETO, escreve a coluna VERBA da linha M com o valor VERBA + DESPESA; Na tabela PROJETO, desbloqueia a linha M; T2: Na tabela PROJETO, bloqueia linha M em modo compartilhado; Na tabela PROJETO, lê a coluna VERBA da linha M; Na tabela PROJETO, desbloqueia a linha M; Na tabela DEPARTAMENTO, bloqueia a linha N em modo compartilhado; Na tabela DEPARTAMENTO, lê a coluna DESPESA da linha N; Na tabela DEPARTAMENTO, desbloqueia a linha N; Na tabela DEPARTAMENTO, bloqueia a linha N em modo exclusivo; Na tabela DEPARTAMENTO, escreve a coluna DESPESA da linha N com o valor DESPESA + VERBA; Na tabela DEPARTAMENTO, desbloqueia a linha N; É correto afirmar que essas transações\nA. não são serializáveis e, portanto, não podem ser executadas concorrentemente.\nB. não podem entrar em bloqueio infinito porque obedecem ao protocolo de bloqueio em duas fases (two-phase locking).\nC. podem entrar em bloqueio infinito (deadlock) se executadas concorrentemente.\nD. obedecem ao protocolo de bloqueio em duas fases (two-phase locking).\nE. são serializáveis e obedecem ao protocolo de bloqueio em duas fases (two-phase locking)."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 523,
+      "total_tokens": 528,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "002346",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nObserve as seguintes tabelas de um sistema: Pessoa (nomePessoa, endereço) Filme (nomeFilme, estúdio, verba) Trabalha (nomePessoa(FK), nomeFilme(FK), atividade, salário) Um administrador de dados deseja fazer o seguinte relatório: Todas as pessoas, os filmes nos quais já trabalharam e o total recebido por cada filme. Se uma pessoa nunca trabalhou num filme, ela deve aparecer no relatório. A atividade que a pessoa exerceu no filme (ex: ator, diretor, câmera etc.) não é importante para o relatório. Qual consulta retorna o conjunto resposta correto?\nA. SELECT P.nomePessoa, T.nomeFilme, sum(T.salário) total FROM Pessoa P LEFT OUTER JOIN Trabalha T ON P.nomePessoa = T.nomePessoa GROUP BY P.nomePessoa, T.nomeFilme\nB. SELECT T.nomePessoa, T.nomeFilme, sum(T.salário) total FROM Pessoa P INNER JOIN Trabalha T ON P.nomePessoa = T.nomePessoa GROUP BY T.nomePessoa, T.nomeFilme\nC. SELECT P.nomePessoa, T.nomeFilme, sum(T.salário) total FROM Pessoa P LEFT OUTER JOIN Trabalha T ON P.nomePessoa = T.nomePessoa GROUP BY P.nomePessoa, T.nomeFilme HAVING sum(T.salário) > 0\nD. SELECT P.nomePessoa, F.nomeFilme, sum(T.salário) total FROM Pessoa P INNER JOIN Trabalha T ON P.nomePessoa = T.nomePessoa INNER JOIN Filme F ON F.nomeFilme = T.nomeFilme WHERE T.atividade IS NOT NULL AND T.salário > 0 GROUP BY P.nomePessoa, F.nomeFilme\nE. SELECT T.nomePessoa, T.nomeFilme, sum(T.salário) total FROM Pessoa P LEFT OUTER JOIN Trabalha T ON P.nomePessoa = T.nomePessoa LEFT OUTER JOIN Filme F ON F.nomeFilme = T.nomeFilme",
+    "resposta": "A resposta correta é A.",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 500,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": null,
+        "gold": "A",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nObserve as seguintes tabelas de um sistema: Pessoa (nomePessoa, endereço) Filme (nomeFilme, estúdio, verba) Trabalha (nomePessoa(FK), nomeFilme(FK), atividade, salário) Um administrador de dados deseja fazer o seguinte relatório: Todas as pessoas, os filmes nos quais já trabalharam e o total recebido por cada filme. Se uma pessoa nunca trabalhou num filme, ela deve aparecer no relatório. A atividade que a pessoa exerceu no filme (ex: ator, diretor, câmera etc.) não é importante para o relatório. Qual consulta retorna o conjunto resposta correto?\nA. SELECT P.nomePessoa, T.nomeFilme, sum(T.salário) total FROM Pessoa P LEFT OUTER JOIN Trabalha T ON P.nomePessoa = T.nomePessoa GROUP BY P.nomePessoa, T.nomeFilme\nB. SELECT T.nomePessoa, T.nomeFilme, sum(T.salário) total FROM Pessoa P INNER JOIN Trabalha T ON P.nomePessoa = T.nomePessoa GROUP BY T.nomePessoa, T.nomeFilme\nC. SELECT P.nomePessoa, T.nomeFilme, sum(T.salário) total FROM Pessoa P LEFT OUTER JOIN Trabalha T ON P.nomePessoa = T.nomePessoa GROUP BY P.nomePessoa, T.nomeFilme HAVING sum(T.salário) > 0\nD. SELECT P.nomePessoa, F.nomeFilme, sum(T.salário) total FROM Pessoa P INNER JOIN Trabalha T ON P.nomePessoa = T.nomePessoa INNER JOIN Filme F ON F.nomeFilme = T.nomeFilme WHERE T.atividade IS NOT NULL AND T.salário > 0 GROUP BY P.nomePessoa, F.nomeFilme\nE. SELECT T.nomePessoa, T.nomeFilme, sum(T.salário) total FROM Pessoa P LEFT OUTER JOIN Trabalha T ON P.nomePessoa = T.nomePessoa LEFT OUTER JOIN Filme F ON F.nomeFilme = T.nomeFilme"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 492,
+      "total_tokens": 500,
+      "completion_tokens": 8,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "006389",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUm analista de sistemas elabora um texto explicando um sistema de uma imobiliária. Todo departamento deve possuir um e somente um gerente. Todo empregado deve estar alocado a um e somente um departamento. O Administrador de Dados elabora os comandos SQL para esse sistema. ```sql CREATE TABLE empregado ( matrícula number (5) NOT NULL, nome char (200) NOT NULL, endereço varchar(300) NULL, iddepto number (3) NOT NULL, PRIMARY KEY (matricula), FOREIGN KEY (iddepto) REFERENCES departamento [.......] ) CREATE TABLE departamento ( iddepto number (3) NOT NULL, nome char(200) NOT NULL, matGerente number (5) NOT NULL, PRIMARY KEY (iddepto), FOREIGN KEY (matGerente) REFERENCES empregado [...] ) ``` Sobre as colunas EMPREGADO.IDDEРТО e DEPARTAMENTO.MATGERENTE e suas restrições de nulidade (NULL ou NOT NULL) e de integridade referencial (chave estrangeira), é correto afirmar que\nA. não é possível ter ambas cadastradas com NOT NULL, pois ao cadastrar o primeiro departamento, um empregado deverá existir, mas não pode existir um empregado sem departamento associado.\nB. não é possível ter ambas cadastradas com NOT NULL, mesmo com a avaliação postergada das restrições, pois no momento do COMMIT o registro referenciado pela chave estrangeira já precisa estar no banco de dados, para ser validado.\nC. ambas podem ser NOT NULL, desde que o nível de isolamento das transações permita leitura suja (read uncommitted).\nD. ambas podem ser NOT NULL, desde que o primeiro empregado e o primeiro departamento sejam inseridos na mesma transação e que as chaves estrangeiras sejam avaliadas somente ao final dela (no momento do COMMIT), o que pode ser conseguido declarando-as como sendo de avaliação postergada (DEFERRABLE).\nE. ambas podem ser NOT NULL, mas os sistemas não poderão usar transações para cadastrar os dados nessas tabelas.",
+    "resposta": "Resposta: D",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 523,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUm analista de sistemas elabora um texto explicando um sistema de uma imobiliária. Todo departamento deve possuir um e somente um gerente. Todo empregado deve estar alocado a um e somente um departamento. O Administrador de Dados elabora os comandos SQL para esse sistema. ```sql CREATE TABLE empregado ( matrícula number (5) NOT NULL, nome char (200) NOT NULL, endereço varchar(300) NULL, iddepto number (3) NOT NULL, PRIMARY KEY (matricula), FOREIGN KEY (iddepto) REFERENCES departamento [.......] ) CREATE TABLE departamento ( iddepto number (3) NOT NULL, nome char(200) NOT NULL, matGerente number (5) NOT NULL, PRIMARY KEY (iddepto), FOREIGN KEY (matGerente) REFERENCES empregado [...] ) ``` Sobre as colunas EMPREGADO.IDDEРТО e DEPARTAMENTO.MATGERENTE e suas restrições de nulidade (NULL ou NOT NULL) e de integridade referencial (chave estrangeira), é correto afirmar que\nA. não é possível ter ambas cadastradas com NOT NULL, pois ao cadastrar o primeiro departamento, um empregado deverá existir, mas não pode existir um empregado sem departamento associado.\nB. não é possível ter ambas cadastradas com NOT NULL, mesmo com a avaliação postergada das restrições, pois no momento do COMMIT o registro referenciado pela chave estrangeira já precisa estar no banco de dados, para ser validado.\nC. ambas podem ser NOT NULL, desde que o nível de isolamento das transações permita leitura suja (read uncommitted).\nD. ambas podem ser NOT NULL, desde que o primeiro empregado e o primeiro departamento sejam inseridos na mesma transação e que as chaves estrangeiras sejam avaliadas somente ao final dela (no momento do COMMIT), o que pode ser conseguido declarando-as como sendo de avaliação postergada (DEFERRABLE).\nE. ambas podem ser NOT NULL, mas os sistemas não poderão usar transações para cadastrar os dados nessas tabelas."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 518,
+      "total_tokens": 523,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "004930",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUma tabela de um banco de dados relacional para um sistema de loja virtual foi definida da seguinte forma: cliente (idCliente, nome, senha, endereço, tipoEndereço, telefone*) onde (*) indica campo multivalorado. Conhecendo as dependências funcionais: idClientenome, senha, endereço, tipoEndereço, telefone* tipoEndereçoendereço Assinale a opção correta quanto à decomposição da tabela segundo a terceira Forma Normal (3FN).\nA. cliente (idCliente, nome, senha)\\nendereço (idCliente(FK), endereço, tipoEndereço)\\ntelefone (idCliente(FK), telefone)\nB. cliente (idCliente, nome, senha)\\nendereço (idCliente(FK), tipoEndereço, endereço)\\ntelefone (idCliente(FK), telefone)\nC. cliente (idCliente, nome, senha)\\nendereço (idCliente(FK), tipoEndereço, endereço, telefone)\nD. cliente (idCliente, nome, senha, telefone*)\\nendereço (idCliente(FK), tipoEndereço, endereço)\nE. cliente (idCliente, nome, senha)\\nendereço (idCliente(FK), seqEndereço, tipoEndereço, endereço)\\ntelefone (idCliente(FK), seqTelefone, telefone)",
+    "resposta": "Resposta: B",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 338,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUma tabela de um banco de dados relacional para um sistema de loja virtual foi definida da seguinte forma: cliente (idCliente, nome, senha, endereço, tipoEndereço, telefone*) onde (*) indica campo multivalorado. Conhecendo as dependências funcionais: idClientenome, senha, endereço, tipoEndereço, telefone* tipoEndereçoendereço Assinale a opção correta quanto à decomposição da tabela segundo a terceira Forma Normal (3FN).\nA. cliente (idCliente, nome, senha)\\nendereço (idCliente(FK), endereço, tipoEndereço)\\ntelefone (idCliente(FK), telefone)\nB. cliente (idCliente, nome, senha)\\nendereço (idCliente(FK), tipoEndereço, endereço)\\ntelefone (idCliente(FK), telefone)\nC. cliente (idCliente, nome, senha)\\nendereço (idCliente(FK), tipoEndereço, endereço, telefone)\nD. cliente (idCliente, nome, senha, telefone*)\\nendereço (idCliente(FK), tipoEndereço, endereço)\nE. cliente (idCliente, nome, senha)\\nendereço (idCliente(FK), seqEndereço, tipoEndereço, endereço)\\ntelefone (idCliente(FK), seqTelefone, telefone)"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 333,
+      "total_tokens": 338,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "017669",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nObserve o algoritmo em JAVA. ```java public void algoritmo (int[] v) { int m; int tmp; for (int i=0; i<v.length; i++) { m = i; for (int j=i+1; j<v.length; j++) { if (v[j]<v[m]) { m=j; } } if (m!=i) { tmp = v[m]; v[m] = v[i]; v[i] = tmp; } } } ``` A complexidade de tempo desse algoritmo, no pior caso, em que n corresponde ao número de elementos do vetor v, é\nA. $\\Theta (\\pi)$\nB. $O (n \\log n)$\nC. $O (n^2)$\nD. $\\Theta (n \\log n)$\nE. $\\Omega (n^2 \\log n)$",
+    "resposta": "Resposta: C",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 237,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nObserve o algoritmo em JAVA. ```java public void algoritmo (int[] v) { int m; int tmp; for (int i=0; i<v.length; i++) { m = i; for (int j=i+1; j<v.length; j++) { if (v[j]<v[m]) { m=j; } } if (m!=i) { tmp = v[m]; v[m] = v[i]; v[i] = tmp; } } } ``` A complexidade de tempo desse algoritmo, no pior caso, em que n corresponde ao número de elementos do vetor v, é\nA. $\\Theta (\\pi)$\nB. $O (n \\log n)$\nC. $O (n^2)$\nD. $\\Theta (n \\log n)$\nE. $\\Omega (n^2 \\log n)$"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 232,
+      "total_tokens": 237,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "002183",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUm funcionário, encarregado de verificar o correto funcionamento de uma base de dados relacional, faz o seguinte teste: `select nome from emp where matr = 123;` O resultado é vazio. Então ele executa: `insert into emp(matr, nome, salario, ativo) values (123, 'José da Silva', 2000, 'N');` `commit;` O banco de dados não retorna erro e informa que inseriu uma linha. Por fim, para verificar, ele consulta novamente: `select nome from emp where matr = 123;` O resultado continua vazio. Supondo que o sistema gerenciador de banco de dados esteja funcionando corretamente, que opção explica o ocorrido?\nA. Como o funcionário executou o primeiro SELECT momentos antes de executar o INSERT, o resultado ficou na memória cache do computador e não foi executado pelo banco de dados na segunda vez. Somente após o protocolo LRU ter retirado do cache o resultado do SELECT é que ele será novamente executado.\nB. Como \"emp\" é uma visão e uma visão é nada menos que uma consulta gravada no banco de dados, nunca é possível usá-la em operações de manipulação de dados. O COMMIT ignora a inserção anterior.\nC. \"emp” é uma visão que retorna todos os empregados ativos (ativo='S'), mas foi criada sem a expressão WITH CHECK OPTION, que evitaria o problema acima.\nD. “emp” não é uma tabela, mas uma visão que retorna todos os empregados ativos (ativo='S') e foi criada com a expressão WITH CHECK OPTION. Dessa forma, como o empregado José da Silva não está ativo, o banco de dados não gravou o registro no momento do COMMIT.\nE. O funcionário executou o SELECT pouco tempo após a inserção do registro. Mesmo finalizando a transação com o COMMIT, o registro está em memória e ainda não foi gravado no disco. Somente após o CHECKPOINT é que o registro estará disponível para consulta.",
+    "resposta": "A resposta é D. \"emp\" não é uma tabela, mas uma visão que retorna todos os empregados ativos (ativo='S') e foi criada com a expressão WITH CHECK OPTION. Dessa forma, como o empregado José da Silva não está ativo, o banco de dados não gravou o registro no momento do COMMIT.",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 579,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": null,
+        "gold": "C",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUm funcionário, encarregado de verificar o correto funcionamento de uma base de dados relacional, faz o seguinte teste: `select nome from emp where matr = 123;` O resultado é vazio. Então ele executa: `insert into emp(matr, nome, salario, ativo) values (123, 'José da Silva', 2000, 'N');` `commit;` O banco de dados não retorna erro e informa que inseriu uma linha. Por fim, para verificar, ele consulta novamente: `select nome from emp where matr = 123;` O resultado continua vazio. Supondo que o sistema gerenciador de banco de dados esteja funcionando corretamente, que opção explica o ocorrido?\nA. Como o funcionário executou o primeiro SELECT momentos antes de executar o INSERT, o resultado ficou na memória cache do computador e não foi executado pelo banco de dados na segunda vez. Somente após o protocolo LRU ter retirado do cache o resultado do SELECT é que ele será novamente executado.\nB. Como \"emp\" é uma visão e uma visão é nada menos que uma consulta gravada no banco de dados, nunca é possível usá-la em operações de manipulação de dados. O COMMIT ignora a inserção anterior.\nC. \"emp” é uma visão que retorna todos os empregados ativos (ativo='S'), mas foi criada sem a expressão WITH CHECK OPTION, que evitaria o problema acima.\nD. “emp” não é uma tabela, mas uma visão que retorna todos os empregados ativos (ativo='S') e foi criada com a expressão WITH CHECK OPTION. Dessa forma, como o empregado José da Silva não está ativo, o banco de dados não gravou o registro no momento do COMMIT.\nE. O funcionário executou o SELECT pouco tempo após a inserção do registro. Mesmo finalizando a transação com o COMMIT, o registro está em memória e ainda não foi gravado no disco. Somente após o CHECKPOINT é que o registro estará disponível para consulta."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 504,
+      "total_tokens": 579,
+      "completion_tokens": 75,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "013277",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO Administrador de Dados de uma loja virtual verifica que há um problema no sistema controlador do estoque. Alguns produtos apresentam quantidades negativas, ou seja, houve mais vendas que a quantidade existente no estoque. O programador do sistema mostra, em pseudocódigo, o trecho que realiza a verificação do estoque. ``` BEGIN TRANSACTION SELECT quantidade FROM estoque WHERE idproduto = <ID>; IF quantidade > 0 THEN UPDATE estoque SET quantidade = quantidade - <QTD> WHERE idproduto = <ID>; ELSE ERRO (\"quantidade insuficiente no estoque\"); ROLLBACK TRANSACTION; END IF; COMMIT TRANSACTION; ``` Qual opção descreve corretamente o problema e sua solução?\nA. Está havendo um problema de leitura suja e a solução é mover o COMMIT TRANSACTION para dentro do THEN, logo abaixo do UPDATE.\nB. Está havendo um problema de registro fantasma e a solução é alterar o nível de isolamento para serializável.\nC. Está havendo um problema de deadlock e a solução é colocar a cláusula FOR UPDATE ao final do BEGIN TRANSACTION.\nD. Está havendo um problema de concorrência e a solução é retirar a transação, eliminando os comandos BEGIN TRANSACTION, ROLLBACK TRANSACTION e COMMIT TRANSACTION.\nE. A transação não bloqueia o produto consultado. O SELECT deverá ter, no final, a cláusula FOR UPDATE.",
+    "resposta": "A opção correta é C. Está havendo um problema de deadlock e a solução é colocar a cláusula FOR UPDATE ao final do BEGIN TRANSACTION.\n\nNo trecho de código fornecido, o problema é que a transação não bloqueia o produto consultado. Isso significa que, se outra transação tentar acessar o mesmo produto simultaneamente, pode ocorrer um deadlock, onde duas ou mais transações ficam esperando uma pela outra para liberar o recurso. Para resolver esse problema, é necessário adicionar a cláusula FOR UPDATE ao final do BEGIN TRANSACTION, o que fará com que a transação bloqueie o produto consultado, evitando assim o deadlock.",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 515,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": null,
+        "gold": "E",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nO Administrador de Dados de uma loja virtual verifica que há um problema no sistema controlador do estoque. Alguns produtos apresentam quantidades negativas, ou seja, houve mais vendas que a quantidade existente no estoque. O programador do sistema mostra, em pseudocódigo, o trecho que realiza a verificação do estoque. ``` BEGIN TRANSACTION SELECT quantidade FROM estoque WHERE idproduto = <ID>; IF quantidade > 0 THEN UPDATE estoque SET quantidade = quantidade - <QTD> WHERE idproduto = <ID>; ELSE ERRO (\"quantidade insuficiente no estoque\"); ROLLBACK TRANSACTION; END IF; COMMIT TRANSACTION; ``` Qual opção descreve corretamente o problema e sua solução?\nA. Está havendo um problema de leitura suja e a solução é mover o COMMIT TRANSACTION para dentro do THEN, logo abaixo do UPDATE.\nB. Está havendo um problema de registro fantasma e a solução é alterar o nível de isolamento para serializável.\nC. Está havendo um problema de deadlock e a solução é colocar a cláusula FOR UPDATE ao final do BEGIN TRANSACTION.\nD. Está havendo um problema de concorrência e a solução é retirar a transação, eliminando os comandos BEGIN TRANSACTION, ROLLBACK TRANSACTION e COMMIT TRANSACTION.\nE. A transação não bloqueia o produto consultado. O SELECT deverá ter, no final, a cláusula FOR UPDATE."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 363,
+      "total_tokens": 515,
+      "completion_tokens": 152,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "002112",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUm analista de sistemas recebe o seguinte trecho de descrição de um sistema: Uma empresa contrata um profissional para trabalhar em um projeto recebendo um determinado salário. Sabe-se que um projeto pode ter a participação de diversas empresas e que um profissional pode desempenhar várias atividades nesse projeto (p.ex. operador de guindaste e pedreiro). Que modelo ER representa corretamente essa descrição? (O símbolo (*) representa atributo multivalorado).\nA. \nB. \nC. \nD. \nE. ",
+    "resposta": "Resposta: A",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 174,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "E",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUm analista de sistemas recebe o seguinte trecho de descrição de um sistema: Uma empresa contrata um profissional para trabalhar em um projeto recebendo um determinado salário. Sabe-se que um projeto pode ter a participação de diversas empresas e que um profissional pode desempenhar várias atividades nesse projeto (p.ex. operador de guindaste e pedreiro). Que modelo ER representa corretamente essa descrição? (O símbolo (*) representa atributo multivalorado).\nA. \nB. \nC. \nD. \nE. "
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 169,
+      "total_tokens": 174,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "015233",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSeja o seguinte grupo de tabelas de um sistema: fabricante (idfabricante, nome, endereço) peça (idmodelo, nome, descrição) constrói (idmodelo (FK), idfabricante (FK), data, quantidade, cor) Um programador monta a seguinte consulta SQL: ```sql SELECT f.nome, count(distinct c.idmodelo) as num FROM fabricante f INNER JOIN constroi C ON f.idfabricante = c.idfabricante WHERE c.cor = 'VERMELHO' GROUP BY f.nome HAVING count(distinct c.idmodelo) > 10 ORDER BY num DESC ``` Qual o retorno dessa consulta?\nA. Os nomes dos fabricantes e a respectiva quantidade total de peças construídas na cor vermelha, desde que, em cada data, a quantidade construída seja maior que 10; o relatório estará ordenado de forma descendente pela quantidade de peças construídas.\nB. Os nomes dos fabricantes que já construíram mais de 10 modelos diferentes de peças na cor vermelha e a quantidade de modelos diferentes, mostrando a lista ordenada de forma descendente pela quantidade.\nC. Os nomes dos fabricantes que já construíram pelo menos uma peça na cor vermelha; o relatório estará ordenado de forma descendente na quantidade de modelos diferentes construídos.\nD. Todos os nomes dos fabricantes e a respectiva quantidade de modelos diferentes de peças vermelhas que já construíram; se um fabricante nunca construiu uma peça na cor vermelha, a contagem mostrará zero.\nE. Todos os nomes dos fabricantes e a respectiva quantidade de modelos diferentes construídos, não importando a quantidade de peças, cor ou a data da construção; o relatório estará ordenado de forma descendente na quantidade de peças.",
+    "resposta": "Resposta: B",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 451,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "D",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSeja o seguinte grupo de tabelas de um sistema: fabricante (idfabricante, nome, endereço) peça (idmodelo, nome, descrição) constrói (idmodelo (FK), idfabricante (FK), data, quantidade, cor) Um programador monta a seguinte consulta SQL: ```sql SELECT f.nome, count(distinct c.idmodelo) as num FROM fabricante f INNER JOIN constroi C ON f.idfabricante = c.idfabricante WHERE c.cor = 'VERMELHO' GROUP BY f.nome HAVING count(distinct c.idmodelo) > 10 ORDER BY num DESC ``` Qual o retorno dessa consulta?\nA. Os nomes dos fabricantes e a respectiva quantidade total de peças construídas na cor vermelha, desde que, em cada data, a quantidade construída seja maior que 10; o relatório estará ordenado de forma descendente pela quantidade de peças construídas.\nB. Os nomes dos fabricantes que já construíram mais de 10 modelos diferentes de peças na cor vermelha e a quantidade de modelos diferentes, mostrando a lista ordenada de forma descendente pela quantidade.\nC. Os nomes dos fabricantes que já construíram pelo menos uma peça na cor vermelha; o relatório estará ordenado de forma descendente na quantidade de modelos diferentes construídos.\nD. Todos os nomes dos fabricantes e a respectiva quantidade de modelos diferentes de peças vermelhas que já construíram; se um fabricante nunca construiu uma peça na cor vermelha, a contagem mostrará zero.\nE. Todos os nomes dos fabricantes e a respectiva quantidade de modelos diferentes construídos, não importando a quantidade de peças, cor ou a data da construção; o relatório estará ordenado de forma descendente na quantidade de peças."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 446,
+      "total_tokens": 451,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "007157",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNum departamento com 50 funcionários, cada um gera, em seu próprio computador, 30 requisições por segundo ao sistema de arquivos local, que tem uma capacidade de processamento de 50 requisições por segundo. Se toda essa capacidade de processamento individual fosse colocada em um único servidor, qual o tempo médio para uma requisição ser atendida?\nA. 1 ms\nB. 10 ms\nC. 20 ms\nD. 50 ms\nE. 1 s",
+    "resposta": "Resposta: C",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 163,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "A",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nNum departamento com 50 funcionários, cada um gera, em seu próprio computador, 30 requisições por segundo ao sistema de arquivos local, que tem uma capacidade de processamento de 50 requisições por segundo. Se toda essa capacidade de processamento individual fosse colocada em um único servidor, qual o tempo médio para uma requisição ser atendida?\nA. 1 ms\nB. 10 ms\nC. 20 ms\nD. 50 ms\nE. 1 s"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 158,
+      "total_tokens": 163,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "011492",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUm sistema operacional que usa segmentação de memória tem a seguinte configuração: segmento 1: 100 KB segmento 2: 50 KB segmento 3: 200 KB segmento 4: 50 KB A memória é preenchida com segmentos de diversos tamanhos, colocados na ordem abaixo. 20 KB, 50 KB, 10 KB, 50 KB, 20 KB, 20 KB, 40 KB Qual o espaço livre de cada segmento, respectivamente, para as estratégias abaixo? I: best-fit II: first-fit III: worst-fit\nA. I: 1=30 KB, 2=0 KB, 3=160 KB, 4=0 KB\\nII: 1=0 KB, 2=0 KB, 3=140 KB, 4=50 KB\\nIII: 1=60 KB, 2=50 KB, 3=30 KB, 4=50 KB\nB. I: 1=0 KB, 2=0 KB, 3=160 KB, 4=30 KB\\nII: 1=0 KB, 2=0 KB, 3=140 KB, 4=50 KB\\nIII: 1=60 KB, 2=50 KB, 3=30 KB, 4=50 KB\nC. I: 1=30 KB, 2=0 KB, 3=160 KB, 4=0 KB\\nII: 1=60 KB, 2=50 KB, 3=30 KB, 4=50 KB\\nIII: 1=0 KB, 2=0 KB, 3=140 KB, 4=50 KB\nD. I: 1=0 KB, 2=0 KB, 3=160 KB, 4=30 KB\\nII: 1=0 KB, 2=0 KB, 3=140 KB, 4=50 KB\\nIII: 1=20 KB, 2=0 KB, 3=120 KB, 4=50 KB\nE. I: 1=20 KB, 2=0 KB, 3=120 KB, 4=50 KB\\nII: 1=60 KB, 2=50 KB, 3=30 KB, 4=50 KB\\nIII: 1=0 KB, 2=0 KB, 3=140 KB, 4=50 KB",
+    "resposta": "Resposta: C",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 582,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "A",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUm sistema operacional que usa segmentação de memória tem a seguinte configuração: segmento 1: 100 KB segmento 2: 50 KB segmento 3: 200 KB segmento 4: 50 KB A memória é preenchida com segmentos de diversos tamanhos, colocados na ordem abaixo. 20 KB, 50 KB, 10 KB, 50 KB, 20 KB, 20 KB, 40 KB Qual o espaço livre de cada segmento, respectivamente, para as estratégias abaixo? I: best-fit II: first-fit III: worst-fit\nA. I: 1=30 KB, 2=0 KB, 3=160 KB, 4=0 KB\\nII: 1=0 KB, 2=0 KB, 3=140 KB, 4=50 KB\\nIII: 1=60 KB, 2=50 KB, 3=30 KB, 4=50 KB\nB. I: 1=0 KB, 2=0 KB, 3=160 KB, 4=30 KB\\nII: 1=0 KB, 2=0 KB, 3=140 KB, 4=50 KB\\nIII: 1=60 KB, 2=50 KB, 3=30 KB, 4=50 KB\nC. I: 1=30 KB, 2=0 KB, 3=160 KB, 4=0 KB\\nII: 1=60 KB, 2=50 KB, 3=30 KB, 4=50 KB\\nIII: 1=0 KB, 2=0 KB, 3=140 KB, 4=50 KB\nD. I: 1=0 KB, 2=0 KB, 3=160 KB, 4=30 KB\\nII: 1=0 KB, 2=0 KB, 3=140 KB, 4=50 KB\\nIII: 1=20 KB, 2=0 KB, 3=120 KB, 4=50 KB\nE. I: 1=20 KB, 2=0 KB, 3=120 KB, 4=50 KB\\nII: 1=60 KB, 2=50 KB, 3=30 KB, 4=50 KB\\nIII: 1=0 KB, 2=0 KB, 3=140 KB, 4=50 KB"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 577,
+      "total_tokens": 582,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "015309",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nA expressão (NOT A AND B) OR ((B AND NOT A) OR B) equivale a\nA. B\nB. A\nC. NOT A\nD. tautologia\nE. contradição",
+    "resposta": "A expressão (NOT A AND B) OR ((B AND NOT A) OR B) equivale a A. B.",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 119,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": null,
+        "gold": "A",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nA expressão (NOT A AND B) OR ((B AND NOT A) OR B) equivale a\nA. B\nB. A\nC. NOT A\nD. tautologia\nE. contradição"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 92,
+      "total_tokens": 119,
+      "completion_tokens": 27,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001421",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConsidere uma árvore B de ordem 2 inicialmente vazia. Os números abaixo são inseridos na seguinte ordem: 10, 15, 8, 3, 4, 12, 20, Que número(s) compõe(m) o nó raiz?\nA. 8\nB. 10\nC. 4 e 15\nD. 8 e 12\nE. 9 e 10",
+    "resposta": "Resposta: B",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 148,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "D",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nConsidere uma árvore B de ordem 2 inicialmente vazia. Os números abaixo são inseridos na seguinte ordem: 10, 15, 8, 3, 4, 12, 20, Que número(s) compõe(m) o nó raiz?\nA. 8\nB. 10\nC. 4 e 15\nD. 8 e 12\nE. 9 e 10"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 143,
+      "total_tokens": 148,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "007376",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUma estação de uma pequena empresa, ao tentar uma conexão com a Intranet, recebeu uma mensagem do tipo ICMP TIME EXCEEDED. No dia anterior, esse serviço estava operando normalmente. Essa situação pode ocorrer quando\nA. o servidor da Intranet está fora do ar.\nB. o tempo máximo para estabelecimento de uma conexão UDP foi excedido.\nC. o default gateway da estação está fora do ar.\nD. existe um problema de roteamento interno, provocando loops entre os roteadores.\nE. existe um congestionamento na rede, sinalizando que pacotes serão perdidos.",
+    "resposta": "Resposta: D",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 190,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nUma estação de uma pequena empresa, ao tentar uma conexão com a Intranet, recebeu uma mensagem do tipo ICMP TIME EXCEEDED. No dia anterior, esse serviço estava operando normalmente. Essa situação pode ocorrer quando\nA. o servidor da Intranet está fora do ar.\nB. o tempo máximo para estabelecimento de uma conexão UDP foi excedido.\nC. o default gateway da estação está fora do ar.\nD. existe um problema de roteamento interno, provocando loops entre os roteadores.\nE. existe um congestionamento na rede, sinalizando que pacotes serão perdidos."
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 185,
+      "total_tokens": 190,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "005372",
+    "system": "",
+    "pergunta": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSeja S a sub-rede da estação de endereço IP 192.168.100.20 e máscara 255.255.255.Qual o endereço de broadcast de S?\nA. 192.168.100.0\nB. 192.168.100.23\nC. 192.168.100.255\nD. 192.168.255.248\nE. 192.168.255.255",
+    "resposta": "Resposta: C",
+    "parametros_inferencia": {
+      "temperature": 0.6,
+      "top_p": 0.9,
+      "top_k": 0,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.0,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 4096,
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 145,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "B",
+        "correct": false,
+        "empty": false,
+        "finish_reason": "stop"
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Responda à questão de múltipla escolha. Termine com \"Resposta: X\", substituindo X pela letra da alternativa correta.\n\nSeja S a sub-rede da estação de endereço IP 192.168.100.20 e máscara 255.255.255.Qual o endereço de broadcast de S?\nA. 192.168.100.0\nB. 192.168.100.23\nC. 192.168.100.255\nD. 192.168.255.248\nE. 192.168.255.255"
+      }
+    ],
+    "tokens": {
+      "prompt_tokens": 140,
+      "total_tokens": 145,
+      "completion_tokens": 5,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "motivo_encerramento": "stop"
+  }
+]

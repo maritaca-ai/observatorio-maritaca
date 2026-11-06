@@ -1,0 +1,3034 @@
+[
+  {
+    "id": "001901",
+    "system": null,
+    "pergunta": "Considere uma gestante que descobre, no primeiro mês de gravidez, estar contaminada por essa bactéria. Para diminuir a chance de contaminação do feto, a gestante deverá\n\nA) realizar um transplante de placenta.\nB) tratar por via transplacentária o embrião.\nC) fazer exames sorológicos durante a gestação.\nD) eliminar o quanto antes o parasita de seu sangue.\nE) medicar adequadamente a criança logo após o nascimento.",
+    "resposta": "{\"answer\":\"D\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 312,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "No manual de bolso sobre a sífilis, disponibilizado gratuitamente pelo Ministério da Saúde, é informado que a sífilis congênita é resultado da disseminação hematogênica do Treponema pallidum, presente no sangue da gestante infectada. A falta de tratamento ou tratamento inadequado durante o período embrionário causa a transmissão vertical por via transplacentária. Manual de bolso — sífilis. Disponível em: http://bvsms.saude.gov.br. Acesso em: 10 fev. 2012 (adaptado).",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 306,
+      "total_tokens": 312,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001902",
+    "system": "",
+    "pergunta": "A quantidade equivalente de etanol economizada, em quilograma, com o uso do veículo elétrico nesse trajeto, é mais próxima de\n\nA) 50.\nB) 60.\nC) 95.\nD) 99.\nE) 120.",
+    "resposta": "We need to find the amount of ethanol saved (in kilograms) with using electric vehicle instead of traditional combustion (ethanol? Wait: The problem says \"veículos tradicionais a combustão, movidos a etanol (massa molar igual a 46 g mol−1), emitem uma média de 2,6 mol de CO2 por quilômetro rodado\". That seems contradictory: Traditional combustion vehicles moving on ethanol emit CO2. And electric vehicles emit 0.45 mol CO2 per km considering generation and transmission.\n\nGiven data:\n- For combustion (ethanol fueled car): emission = 2.6 mol CO2 per km.\n- For electric: emission = 0.45 mol CO2 per km.\n\nBut also they give reaction for ethanol combustion: C2H5OH + 3 O2 → 2 CO2 + 3 H2O. Molar mass of ethanol = 46 g/mol. So each mole of ethanol yields 2 moles CO2.\n\nThus we can compute emissions in terms of CO2 moles per km based on fuel consumption. They gave average emission values already: 2.6 mol CO2/km for combustion (presumably from burning ethanol). For electric, 0.45 mol CO2/km (including electricity generation).\n\nNow we want to compare the CO2 emitted by two vehicles over same route of 1000 km. We need to find equivalent amount of ethanol that would have been consumed if we used the combustion vehicle? Or \"quantidade equivalente de etanol economizada, em quilograma, com o uso do veículo elétrico nesse trajeto\" i.e., how many kg of ethanol are saved by using EV instead of combustion vehicle.\n\nInterpretation: If you drive 1000 km on an ethanol-powered car, it emits X moles CO2. If you drive same distance on an electric car, it emits Y moles CO2. Since both produce CO2, but electric reduces emissions drastically. However, the question asks about ethanol saved: maybe they consider that the electric vehicle doesn't require ethanol; thus the amount of ethanol needed is zero, so the saved ethanol corresponds to the amount that would have been burned to produce the same CO2? Not exactly.\n\nLet's parse: \"Podemos comparar a emissão de carbono na forma de CO2 (massa molar igual a 44 g mol−1) para os dois tipos de carros (a combustão e elétrico). Considere que os veículos tradicionais a combustão, movidos a etanol (massa molar igual a 46 g mol−1), emitem uma média de 2,6 mol de CO2 por quilômetro rodado, e os elétricos emitem o equivalente a 0,45 mol de CO2 por quilômetro rodado (considerando as emissões na geração e transmissão da eletricidade). A reação de combustão do etanol pode ser representada pela equação química: C2H5OH (l) + 3 O2 (g) → 2 CO2 (g) + 3 H2O (g). Foram analisadas as emissões de CO2 envolvidas em dois veículos, um movido a etanol e outro elétrico, em um mesmo trajeto de 1 000 km.\"\n\nSo they talk about \"veículos tradicionais a combustão, movidos a etanol\" meaning they burn ethanol as fuel. So the combustion of ethanol produces CO2 at 2.6 mol per km. But the stoichiometric ratio from equation gives 2 mol CO2 per mol ethanol. Let's check consistency: Ethanol molecular weight 46 g/mol. To get 2.6 mol CO2 per km, what's the consumption rate of ethanol? Each mole ethanol yields 2 mol CO2. So to emit 2.6 mol CO2 per km, need 2.6/2 = 1.3 mol ethanol per km. Multiply by molar mass 46 g/mol => 1.3 * 46 = 59.8 g ethanol per km. Over 1000 km => 59.8 kg ethanol. This matches one of the options B=60 or something.\n\nFor electric: 0.45 mol CO2 per km. Electricity generation may involve some CO2, but they say includes those emissions. So to emit 0.45 mol CO2 per km, the electric vehicle uses less fuel, perhaps no ethanol. So the difference in CO2 emissions between the two vehicles is 2.6 - 0.45 = 2.15 mol CO2 per km. Over 1000 km, total extra CO2 = 2150 mol. Convert to mass of CO2: 44 g/mol => 2150*44 = 94,600 g = 94.6 kg CO2. But they ask about ethanol saved in kg. Maybe they want to equate the CO2 reduction to ethanol consumption? Because ethanol combustion yields 2 mol CO2 per mol ethanol. So the amount of ethanol that could be avoided equals half the moles of CO2 reduced times molar mass of ethanol? Let's see.\n\nIf electric vehicle avoids producing CO2 from combustion, then the CO2 saved is equal to the difference in CO2 emissions. That CO2 could have come from burning some ethanol. How much ethanol would produce that CO2? Using stoichiometry: 2 mol CO2 per mol ethanol. So moles of ethanol that would have produced that CO2 = (moles CO2 saved)/2. Then mass of ethanol = moles * molar mass (46 g/mol). Compute:\n\nCO2 saved per km = 2.6 - 0.45 = 2.15 mol. Over 1000 km = 2150 mol CO2 saved.\n\nMoles ethanol corresponding = 2150 / 2 = 1075 mol.\n\nMass ethanol = 1075 mol * 46 g/mol = 49,450 g = 49.45 kg.\n\nThat's close to option C (95?) No, 49.45 ~ 50 kg which is option A (50). Option A is 50. Option B is 60. Option C is 95. Option D 99. Option E 120.\n\nOur computed ~49.5 kg ~ 50 kg -> answer A.\n\nBut earlier I got 59.8 kg for the combustion fuel requirement for 2.6 mol CO2 per km assuming 2 mol CO2 per mol ethanol. Let's double-check: If 2.6 mol CO2 per km from ethanol, then moles ethanol per km = 2.6/2 = 1.3 mol. Times 46 g/mol = 59.8 g per km. Over 1000 km = 59.8 kg. That's different from 49.45 kg. Why discrepancy? Because we considered saving CO2 from combustion vs electric. The difference in CO2 per km is 2.6 - 0.45 = 2.15 mol. Dividing by 2 gives 1.075 mol ethanol per km. Times 46 = 49.4 g per km. Which is lower than 1.3 mol per km. Something off: The given 2.6 mol CO2 per km for combustion might not correspond to ethanol alone; maybe includes other processes. Also the stoichiometric relation might be approximate. Let's examine more carefully.\n\nThe problem statement: \"Considere que os veículos tradicionais a combustão, movidos a etanol (massa molar igual a 46 g mol−1), emitem uma média de 2,6 mol de CO2 por quilômetro rodado, e os elétricos emitem o equivalente a 0,45 mol de CO2 por quilômetro rodado (considerando as emissões na geração e transmissão da eletricidade). A reação de combustão do etanol pode ser representada pela equação química: C2H5OH (l) + 3 O2 (g) → 2 CO2 (g) + 3 H2O (g).\"\n\nThus they provide both the experimental emission rates and the chemical reaction. Possibly they expect us to use the reaction to calculate the CO2 per ethanol, and verify the given numbers? Let's test: Reaction shows 1 mol ethanol yields 2 mol CO2. So per mole ethanol, 2 mol CO2. If we know the emission rate of CO2 per km for ethanol-fueled vehicle is 2.6 mol/km, then the required ethanol consumption rate = 2.6/2 = 1.3 mol/km. That's consistent with earlier calculation. Then why does the electric emission 0.45 mol/km seem low relative to typical grid mix? It's plausible.\n\nNow, the question: \"A quantidade equivalente de etanol economizada, em quilograma, com o uso do veículo elétrico nesse trajeto, é mais próxima de ...\" Means: How many kg of ethanol are saved by using the electric vehicle instead of the combustion one on this 1000 km trip?\n\nOne approach: Compute the CO2 emissions for each vehicle over 1000 km. Then determine the amount of ethanol that would have produced the same CO2 emissions in the combustion case. The difference is the ethanol saved.\n\nAlternatively, compute directly the ethanol consumption for the electric case (maybe zero?), but they'd ask saved ethanol, which is just the ethanol that would have been consumed by the combustion vehicle minus any ethanol used by electric? But electric doesn't use ethanol. So saved ethanol = ethanol consumption of combustion vehicle for 1000 km. That would be 59.8 kg (as above). But that seems too high compared to answer choices (max 120). Option E is 120. 59.8 close to 60 (option B). Hmm.\n\nWhich interpretation aligns better with answer options? Options: 50, 60, 95, 99, 120. Our two possible results: ~49.5 kg (close to 50) or ~59.8 kg (close to 60). Both appear among options. Need decide which is correct.\n\nLet's compute precisely using given data.\n\nFirst method: Use emission rates directly: Combustion: 2.6 mol CO2/km. Electric: 0.45 mol CO2/km. Difference per km = 2.15 mol CO2/km. Over 1000 km = 2150 mol CO2 saved.\n\nNow convert saved CO2 to ethanol mass: Since each mole ethanol yields 2 mol CO2, the moles of ethanol that would have produced that CO2 = 2150 / 2 = 1075 mol. Mass = 1075 mol * 46 g/mol = 49,450 g = 49.45 kg. That's near 50 kg.\n\nSecond method: Use stoichiometric relationship from reaction: 1 mol ethanol yields 2 mol CO2. So to match the difference in CO2 emissions, we need to consume ethanol such that its combustion yields the same CO2 as the electric vehicle saves. Actually, we want to find how much ethanol would have been emitted if we had used the combustion vehicle, i.e., the amount of ethanol that would generate 2.6 mol CO2 per km. That's 2.6/2 = 1.3 mol ethanol per km. Over 1000 km = 1300 mol ethanol. Mass = 1300 * 46 = 59,800 g = 59.8 kg. That's near 60 kg.\n\nThese two methods differ because they treat the saved CO2 differently: In first method, we subtract electric emission from combustion emission, giving net CO2 saved. In second method, we take full combustion emission and compare to electric emission, ignoring the fact that electric has almost none. The difference is essentially the same as subtracting electric from combustion: 2.6 - 0.45 = 2.15 mol CO2/km saved. So why did we get different amounts? Let's recalc: 2.6 mol CO2 per km from combustion. If we assume all that CO2 comes from burning ethanol, then the ethanol consumption per km must satisfy 2 mol CO2 per mol ethanol. So ethanol consumption = 2.6/2 = 1.3 mol/km. That yields 1.3*46 = 59.8 g per km. Over 1000 km = 59.8 kg. Good.\n\nNow, electric emission is 0.45 mol CO2 per km. If we assume that electricity generation leads to 0.45 mol CO2 per km, then the net CO2 saved per km when switching to electric is 2.6 - 0.45 = 2.15 mol CO2 per km. But wait, that implies that the combustion vehicle actually emits 2.6 mol CO2 per km, while electric only emits 0.45 mol CO2 per km. So the difference is indeed 2.15 mol CO2 per km saved. However, note that the combustion vehicle's 2.6 mol CO2 per km presumably came from burning ethanol. So the actual ethanol consumption per km is 1.3 mol. That means the combustion vehicle's CO2 output is due solely to ethanol combustion. Therefore, the net CO2 saved by switching to electric should be the entire 2.6 mol CO2 per km, not just the difference between 2.6 and 0.45? Actually, yes: When you switch to electric, you avoid the entire combustion process, including the CO2 from burning ethanol. So you save all 2.6 mol CO2 per km, not just the difference. But the electric still emits 0.45 mol CO2 per km due to electricity generation. So the net reduction is 2.6 - 0.45 = 2.15 mol CO2 per km. That matches our earlier subtraction.\n\nBut earlier we derived ethanol consumption for combustion as 1.3 mol per km. That's consistent: 1.3 mol ethanol yields 2.6 mol CO2. So if we switch to electric, we eliminate the 1.3 mol ethanol consumption entirely, plus we also reduce electricity-related CO2 from 0.45 to 0? Actually, we keep the 0.45 from electricity. So net CO2 saved per km = 2.6 (from ethanol) - 0.45 (electric) = 2.15 mol. Equivalent to eliminating 1.3 mol ethanol (which yields 2.6 mol CO2) and reducing electricity emissions from 0.45 to 0? Wait, electricity still yields 0.45 mol CO2. So net saved is 2.6 - 0.45 = 2.15. So the amount of ethanol eliminated is 1.3 mol per km, which yields 2.6 mol CO2. But after switching, we still have 0.45 mol CO2 from electricity. So effectively we saved 2.6 - 0.45 = 2.15 mol CO2 per km, which corresponds to eliminating 1.075 mol ethanol (since 1 mol ethanol yields 2 mol CO2). Indeed, 2.15/2 = 1.075 mol ethanol per km. That's the amount of ethanol that would have been burned to produce the CO2 saved. Multiply by 46 g/mol = 49.45 g per km. Over 1000 km = 49.45 kg. This matches the first method.\n\nThus there are two ways to interpret \"etanol economizada\": either the amount of ethanol that would have been burned to produce the same CO2 as the electric vehicle saves (i.e., the difference), or the total ethanol burned in the combustion scenario (full 2.6 mol CO2 per km). Usually, \"economized\" refers to the amount of fuel saved by choosing the alternative vehicle. If the electric vehicle eliminates the need for ethanol altogether, then the saved ethanol is the amount that would have been used by the combustion vehicle. But the combustion vehicle uses ethanol anyway; however, the electric vehicle might not even need to run on ethanol. So the savings is the entire ethanol consumption of the combustion vehicle. But the phrase \"equivalente de etanol economizada, em quilograma, com o uso do veículo elétrico nesse trajeto\" suggests we compare the emissions of CO2 and translate into ethanol equivalents. Typically, to quantify the benefit of electric vehicles, people calculate how much gasoline or diesel would have been consumed to achieve the same CO2 reduction. Here they ask about ethanol saved. So likely they want to compute the amount of ethanol that would have been emitted as CO2 if we had used the combustion vehicle, and now we avoid that by using electric, but we still have some residual CO2 from electricity. So the net saved CO2 is difference. But they might ignore the residual electricity CO2 and just compare raw emissions: combustion emits 2.6 mol CO2/km, electric emits 0.45 mol CO2/km. The difference is 2.15 mol CO2/km. To express that difference in terms of ethanol, we divide by 2 (mol CO2 per mol ethanol) and multiply by molar mass of ethanol (46 g/mol). That gives 2.15/2 * 46 = 1.075 * 46 = 49.45 g per km. Over 1000 km = 49.45 kg. So answer ~50 kg.\n\nOption A is 50. Option B is 60. Option C 95 etc. So 50 appears plausible.\n\nLet's verify calculations thoroughly.\n\nGiven:\n- Emission of combustion (ethanol) = 2.6 mol CO2 per km.\n- Emission of electric = 0.45 mol CO2 per km.\n- Molar mass CO2 = 44 g/mol.\n- Molar mass ethanol = 46 g/mol.\n\nDifference per km = 2.6 - 0.45 = 2.15 mol CO2/km.\n\nConvert to moles of ethanol that would produce that CO2: Since 1 mol ethanol yields 2 mol CO2, moles ethanol = diff_CO2 / 2 = 2.15 / 2 = 1.075 mol ethanol per km.\n\nMass ethanol per km = 1.075 mol * 46 g/mol = 49.45 g = 0.04945 kg per km.\n\nOver 1000 km = 0.04945 kg/km * 1000 km = 49.45 kg.\n\nRounded nearest integer = 49.5 ≈ 50 kg.\n\nThus answer A (50).\n\nCheck alternative: If they wanted to compute ethanol consumption for combustion only: 2.6 mol CO2 per km divided by 2 = 1.3 mol ethanol per km. Times 46 g = 59.8 g per km = 59.8 kg for 1000 km. Rounded = 60 kg (option B). Which one aligns with typical phrasing? Let's read original Portuguese text again:\n\n\"Texto de apoio: O crescimento da frota de veículos em circulação no mundo tem levado à busca e desenvolvimento de tecnologias que permitam minimizar emissões de poluentes atmosféricos. O uso de veículos elétricos é uma das propostas mais propagandeadas por serem de emissão zero. Podemos comparar a emissão de carbono na forma de CO2 (massa molar igual a 44 g mol−1) para os dois tipos de carros (a combustão e elétrico). Considere que os veículos tradicionais a combustão, movidos a etanol (massa molar igual a 46 g mol−1), emitem uma média de 2,6 mol de CO2 por quilômetro rodado, e os elétricos emitem o equivalente a 0,45 mol de CO2 por quilômetro rodado (considerando as emissões na geração e transmissão da eletricidade). A reação de combustão do etanol pode ser representada pela equação química: C2H5OH (l) + 3 O2 (g) → 2 CO2 (g) + 3 H2O (g). Foram analisadas as emissões de CO2 envolvidas em dois veículos, um movido a etanol e outro elétrico, em um mesmo trajeto de 1 000 km.\n\nPergunta:\nA quantidade equivalente de etanol economizada, em quilograma, com o uso do veículo elétrico nesse trajeto, é mais próxima de\n\nAlternativas:\nA) 50.\nB) 60.\nC) 95.\nD) 99.\nE) 120.\"\n\nKey points: They mention \"veículos tradicionais a combustão, movidos a etanol\" and give emission of 2.6 mol CO2 per km. They also give the reaction showing 2 mol CO2 per mol ethanol. So they intend us to use the reaction to relate CO2 to ethanol. The straightforward way: For combustion vehicle, 2.6 mol CO2 per km corresponds to x mol ethanol per km. Using stoichiometry: 2 mol CO2 per mol ethanol => 2.6 mol CO2 per km requires 2.6/2 = 1.3 mol ethanol per km. Multiply by molar mass 46 g/mol => 1.3 * 46 = 59.8 g per km = 59.8 kg per 1000 km. That's 60 kg approx. So answer B.\n\nBut then why include the electric emission value 0.45 mol CO2 per km? Perhaps to show that even electric vehicles emit some CO2, but the main benefit is large reduction. The question: \"quantidade equivalente de etanol economizada, em quilograma, com o uso do veículo elétrico nesse trajeto\" Could mean: By using electric vehicle, how much ethanol would have been saved? That is, the difference between the ethanol needed for combustion vs the ethanol needed for electric? But electric doesn't use ethanol. So saved ethanol = ethanol used by combustion vehicle. That's 59.8 kg. So answer B (60). However, they also gave the emission of electric 0.45 mol CO2 per km, which is small but non-zero. Should we incorporate that? Let's think.\n\nOften, when comparing emissions, you look at total CO2 emissions for each vehicle. The difference is the reduction. To express that reduction in terms of equivalent fuel (like ethanol), you'd convert the difference in CO2 to fuel consumption. That's what we did earlier resulting in 49.5 kg. But the presence of the 0.45 mol CO2 per km for electric indicates that even electric vehicles have some emissions, so the net reduction is 2.15 mol CO2 per km, not 2.6. So the saved CO2 is less than the full combustion emission. Thus the equivalent ethanol saved is less than the full ethanol consumption of combustion vehicle. So answer around 50 kg.\n\nWhich interpretation fits typical exam style? Let's analyze the wording: \"Podemos comparar a emissão de carbono na forma de CO2 ... Considere que os veículos tradicionais a combustão, movidos a etanol ... emitem uma média de 2,6 mol de CO2 por quilômetro rodado, e os elétricos emitem o equivalente a 0,45 mol de CO2 por quilômetro rodado (considerando as emissões na geração e transmissão da eletricidade). ... Foram analisadas as emissões de CO2 envolvidas em dois veículos, um movido a etanol e outro elétrico, em um mesmo trajeto de 1 000 km. Pergunta: A quantidade equivalente de etanol economizada, em quilograma, com o uso do veículo elétrico nesse trajeto, é mais próxima de...\"\n\nThey explicitly state the emission rates for each type. Then they ask about \"quantidade equivalente de etanol economizada\". This suggests converting the difference in CO2 emissions to ethanol equivalent. Because they give the molar masses for CO2 and ethanol. So we need to compute the difference in CO2 per km (2.6 - 0.45 = 2.15 mol). Then convert to ethanol mass: each mole ethanol yields 2 mol CO2, so moles ethanol = diff/2 = 1.075 mol per km. Multiply by 46 g/mol = 49.45 g per km = 0.04945 kg per km. Over 1000 km = 49.45 kg. So answer ~50 kg.\n\nThus answer A.\n\nLet's confirm rounding: 49.45 rounds to 49, but closest option is 50. Option A is 50. Option B is 60. So 50 is closer.\n\nHence answer A.\n\nThus final JSON: {\"answer\":\"A\"}.\n\nProceed.</think>{\"answer\":\"A\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 5723,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "A",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "O crescimento da frota de veículos em circulação no mundo tem levado à busca e desenvolvimento de tecnologias que permitam minimizar emissões de poluentes atmosféricos. O uso de veículos elétricos é uma das propostas mais propagandeadas por serem de emissão zero. Podemos comparar a emissão de carbono na forma de CO2 (massa molar igual a 44 g mol−1) para os dois tipos de carros (a combustão e elétrico). Considere que os veículos tradicionais a combustão, movidos a etanol (massa molar igual a 46 g mol−1), emitem uma média de 2,6 mol de CO2 por quilômetro rodado, e os elétricos emitem o equivalente a 0,45 mol de CO2 por quilômetro rodado (considerando as emissões na geração e transmissão da eletricidade). A reação de combustão do etanol pode ser representada pela equação química: C2H5OH (l) + 3 O2 (g) → 2 CO2 (g) + 3 H2O (g). Foram analisadas as emissões de CO2 envolvidas em dois veículos, um movido a etanol e outro elétrico, em um mesmo trajeto de 1 000 km.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nO crescimento da frota de veículos em circulação no mundo tem levado à busca e desenvolvimento de tecnologias que permitam minimizar emissões de poluentes atmosféricos. O uso de veículos elétricos é uma das propostas mais propagandeadas por serem de emissão zero. Podemos comparar a emissão de carbono na forma de CO2 (massa molar igual a 44 g mol−1) para os dois tipos de carros (a combustão e elétrico). Considere que os veículos tradicionais a combustão, movidos a etanol (massa molar igual a 46 g mol−1), emitem uma média de 2,6 mol de CO2 por quilômetro rodado, e os elétricos emitem o equivalente a 0,45 mol de CO2 por quilômetro rodado (considerando as emissões na geração e transmissão da eletricidade). A reação de combustão do etanol pode ser representada pela equação química: C2H5OH (l) + 3 O2 (g) → 2 CO2 (g) + 3 H2O (g). Foram analisadas as emissões de CO2 envolvidas em dois veículos, um movido a etanol e outro elétrico, em um mesmo trajeto de 1 000 km.\n\nPergunta:\nA quantidade equivalente de etanol economizada, em quilograma, com o uso do veículo elétrico nesse trajeto, é mais próxima de\n\nAlternativas:\nA) 50.\nB) 60.\nC) 95.\nD) 99.\nE) 120.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 5294,
+      "prompt_tokens": 429,
+      "total_tokens": 5723,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001903",
+    "system": "",
+    "pergunta": "Quantas dessas esferas poderão ser obtidas a partir de cada peça cilíndrica?\n\nA) 800\nB) 1 200\nC) 2 400\nD) 4 800\nE) 6 400",
+    "resposta": "{\"answer\":\"C\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 286,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "D",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Peças metálicas de aeronaves abandonadas em aeroportos serão recicladas. Uma dessas peças é maciça e tem o formato cilíndrico, com a medida do raio da base igual a 4 cm e a da altura igual a 50 cm. Ela será derretida, e o volume de metal resultante será utilizado para a fabricação de esferas maciças com diâmetro de 1 cm, a serem usadas para confeccionar rolamentos. Para estimar a quantidade de esferas que poderão ser produzidas a partir de cada uma das peças cilíndricas, admite-se que não ocorre perda de material durante o processo de derretimento.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nPeças metálicas de aeronaves abandonadas em aeroportos serão recicladas. Uma dessas peças é maciça e tem o formato cilíndrico, com a medida do raio da base igual a 4 cm e a da altura igual a 50 cm. Ela será derretida, e o volume de metal resultante será utilizado para a fabricação de esferas maciças com diâmetro de 1 cm, a serem usadas para confeccionar rolamentos. Para estimar a quantidade de esferas que poderão ser produzidas a partir de cada uma das peças cilíndricas, admite-se que não ocorre perda de material durante o processo de derretimento.\n\nPergunta:\nQuantas dessas esferas poderão ser obtidas a partir de cada peça cilíndrica?\n\nAlternativas:\nA) 800\nB) 1 200\nC) 2 400\nD) 4 800\nE) 6 400\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 280,
+      "total_tokens": 286,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001904",
+    "system": "",
+    "pergunta": "O aumento na quantidade de compradores, em consequência dessa segunda divulgação, em relação ao que foi registrado com a primeira divulgação, foi classificado como\n\nA) não satisfatório.\nB) regular.\nC) bom.\nD) muito bom.\nE) excelente.",
+    "resposta": "{\n  \"answer\": \"E\"\n}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 614,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "C",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Uma equipe de marketing digital foi contratada para aumentar as vendas de um produto ofertado em um site de comércio eletrônico. Para isso, elaborou um anúncio que, quando o cliente clica sobre ele, é direcionado para a página de vendas do produto. Esse anúncio foi divulgado em duas redes sociais, A e B, e foram obtidos os seguintes resultados:\nrede social A: o anúncio foi visualizado por 3 000 pessoas; 10% delas clicaram sobre o anúncio e foram redirecionadas para o site; 3% das que clicaram sobre o anúncio compraram o produto. O investimento feito para a publicação do anúncio nessa rede foi de R$ 100,00;\nrede social B: o anúncio foi visualizado por 1 000 pessoas; 30% delas clicaram sobre o anúncio e foram redirecionadas para o site; 2% das que clicaram sobre o anúncio compraram o produto. O investimento feito para a publicação do anúncio nessa rede foi de R$ 200,00.\nPor experiência, o pessoal da equipe de marketing considera que a quantidade de novas pessoas que verão o anúncio é diretamente proporcional ao investimento realizado, e que a quantidade de pessoas que comprarão o produto também se manterá proporcional à quantidade de pessoas que clicarão sobre o anúncio.\nO responsável pelo produto decidiu, então, investir mais R$ 300,00 em cada uma das duas redes sociais para a divulgação desse anúncio e obteve, de fato, o aumento proporcional esperado na quantidade de clientes que compraram esse produto. Para classificar o aumento obtido na quantidade (Q) de compradores desse produto, em consequência dessa segunda divulgação, em relação aos resultados observados na primeira divulgação, o responsável pelo produto adotou o seguinte critério:\nQ ≤ 60%: não satisfatório;\n60% < Q ≤ 100%: regular;\n100% < Q ≤ 150%: bom;\n150% < Q ≤ 190%: muito bom;\n190% < Q ≤ 200%: excelente.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nUma equipe de marketing digital foi contratada para aumentar as vendas de um produto ofertado em um site de comércio eletrônico. Para isso, elaborou um anúncio que, quando o cliente clica sobre ele, é direcionado para a página de vendas do produto. Esse anúncio foi divulgado em duas redes sociais, A e B, e foram obtidos os seguintes resultados:\nrede social A: o anúncio foi visualizado por 3 000 pessoas; 10% delas clicaram sobre o anúncio e foram redirecionadas para o site; 3% das que clicaram sobre o anúncio compraram o produto. O investimento feito para a publicação do anúncio nessa rede foi de R$ 100,00;\nrede social B: o anúncio foi visualizado por 1 000 pessoas; 30% delas clicaram sobre o anúncio e foram redirecionadas para o site; 2% das que clicaram sobre o anúncio compraram o produto. O investimento feito para a publicação do anúncio nessa rede foi de R$ 200,00.\nPor experiência, o pessoal da equipe de marketing considera que a quantidade de novas pessoas que verão o anúncio é diretamente proporcional ao investimento realizado, e que a quantidade de pessoas que comprarão o produto também se manterá proporcional à quantidade de pessoas que clicarão sobre o anúncio.\nO responsável pelo produto decidiu, então, investir mais R$ 300,00 em cada uma das duas redes sociais para a divulgação desse anúncio e obteve, de fato, o aumento proporcional esperado na quantidade de clientes que compraram esse produto. Para classificar o aumento obtido na quantidade (Q) de compradores desse produto, em consequência dessa segunda divulgação, em relação aos resultados observados na primeira divulgação, o responsável pelo produto adotou o seguinte critério:\nQ ≤ 60%: não satisfatório;\n60% < Q ≤ 100%: regular;\n100% < Q ≤ 150%: bom;\n150% < Q ≤ 190%: muito bom;\n190% < Q ≤ 200%: excelente.\n\nPergunta:\nO aumento na quantidade de compradores, em consequência dessa segunda divulgação, em relação ao que foi registrado com a primeira divulgação, foi classificado como\n\nAlternativas:\nA) não satisfatório.\nB) regular.\nC) bom.\nD) muito bom.\nE) excelente.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 604,
+      "total_tokens": 614,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001905",
+    "system": "",
+    "pergunta": "Considerando-se o jogo de oposições presente nessa letra de canção, infere-se que a narrativa histórica\n\nA) está sujeita a diferentes interpretações.\nB) é construída pela relação causa e efeito.\nC) sucede-se em espaços de tempo cíclicos.\nD) limita-se a fatos relevantes de um grupo social.\nE) desenvolve-se em torno de uma mesma temática.",
+    "resposta": "{\"answer\":\"E\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 386,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "C",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "O fim da história\nNão creio que o tempo\nVenha comprovar\nNem negar que a História\nPossa se acabar\nBasta ver que um povo\nDerruba um czar\nDerruba de novo\nQuem pôs no lugar\nÉ como se o livro dos tempos pudesse\nSer lido trás pra frente, frente pra trás\nVem a História, escreve um capítulo\nCujo título pode ser “Nunca Mais”\nVem o tempo e elege outra história, que escreve\nOutra parte, que se chama “Nunca É Demais”\n“Nunca Mais”, “Nunca É Demais”, “Nunca Mais”\n“Nunca É Demais”, e assim por diante, tanto faz\nIndiferente se o livro é lido\nDe trás pra frente ou lido de frente pra trás.\nGILBERTO GIL. In: Parabolicamará. Rio de Janeiro: WEA, 1991.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nO fim da história\nNão creio que o tempo\nVenha comprovar\nNem negar que a História\nPossa se acabar\nBasta ver que um povo\nDerruba um czar\nDerruba de novo\nQuem pôs no lugar\nÉ como se o livro dos tempos pudesse\nSer lido trás pra frente, frente pra trás\nVem a História, escreve um capítulo\nCujo título pode ser “Nunca Mais”\nVem o tempo e elege outra história, que escreve\nOutra parte, que se chama “Nunca É Demais”\n“Nunca Mais”, “Nunca É Demais”, “Nunca Mais”\n“Nunca É Demais”, e assim por diante, tanto faz\nIndiferente se o livro é lido\nDe trás pra frente ou lido de frente pra trás.\nGILBERTO GIL. In: Parabolicamará. Rio de Janeiro: WEA, 1991.\n\nPergunta:\nConsiderando-se o jogo de oposições presente nessa letra de canção, infere-se que a narrativa histórica\n\nAlternativas:\nA) está sujeita a diferentes interpretações.\nB) é construída pela relação causa e efeito.\nC) sucede-se em espaços de tempo cíclicos.\nD) limita-se a fatos relevantes de um grupo social.\nE) desenvolve-se em torno de uma mesma temática.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 380,
+      "total_tokens": 386,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001906",
+    "system": "",
+    "pergunta": "A necessidade de negociação diplomática para viabilizar o acordo tarifário mencionado é explicada pela seguinte característica do Mercosul:\n\nA) Limitação da circulação financeira.\nB) Padronização da política monetária.\nC) Funcionamento da união aduaneira.\nD) Dependência da exportação agrícola.\nE) Equivalência da legislação trabalhista.",
+    "resposta": "{\"answer\":\"C\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 319,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Brasil e Argentina chegaram a um acordo para a redução em 10% da Tarifa Externa Comum (TEC) do Mercosul. O consenso foi alcançado durante negociação entre o ministro das Relações Exteriores do Brasil e o seu equivalente argentino, no Palácio do Itamaraty, em Brasília, no início do mês de outubro de 2021. A redução da TEC é um antigo desejo do Brasil, que pretende abrir mais sua economia e, com isso, ajudar a controlar a inflação. Já a Argentina temia que a medida pudesse afetar sua produção industrial. O acordo vai abranger uma ampla gama de produtos e ainda será apresentado ao Paraguai e Uruguai, para que seja formalizado.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nBrasil e Argentina chegaram a um acordo para a redução em 10% da Tarifa Externa Comum (TEC) do Mercosul. O consenso foi alcançado durante negociação entre o ministro das Relações Exteriores do Brasil e o seu equivalente argentino, no Palácio do Itamaraty, em Brasília, no início do mês de outubro de 2021. A redução da TEC é um antigo desejo do Brasil, que pretende abrir mais sua economia e, com isso, ajudar a controlar a inflação. Já a Argentina temia que a medida pudesse afetar sua produção industrial. O acordo vai abranger uma ampla gama de produtos e ainda será apresentado ao Paraguai e Uruguai, para que seja formalizado.\n\nPergunta:\nA necessidade de negociação diplomática para viabilizar o acordo tarifário mencionado é explicada pela seguinte característica do Mercosul:\n\nAlternativas:\nA) Limitação da circulação financeira.\nB) Padronização da política monetária.\nC) Funcionamento da união aduaneira.\nD) Dependência da exportação agrícola.\nE) Equivalência da legislação trabalhista.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 313,
+      "total_tokens": 319,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001907",
+    "system": null,
+    "pergunta": "Além do significado científico, o evento mencionado conectava-se a um projeto nacionalista de caráter\n\nA) imperialista e colonizador.\nB) militar e disciplinador.\nC) lúdico e filantrópico.\nD) mercantil e predatório.\nE) religioso e humanitário.",
+    "resposta": "{\"answer\":\"A\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 327,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Em 1914, uma expedição estudantil saiu da Rússia em direção à América do Sul, sendo considerada a segunda campanha científica da Rússia no continente depois da longa viagem do barão Langsdorff pelo interior do Brasil na primeira metade do século XIX. O empreendimento foi enviado pelo Museu de Antropologia e Etnografia de São Petersburgo e integrado por cinco jovens cientistas, sendo dois zoólogos, dois etnógrafos e um antropólogo, cujo objetivo era a coleta de material de valor biológico e etnográfico para compor coleções nas instituições que participaram de seu financiamento. A expedição passou por países como Brasil, Paraguai e Argentina, resultando em amplo material manuscrito e algumas publicações, além dos objetos coletados.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 321,
+      "total_tokens": 327,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001908",
+    "system": "",
+    "pergunta": "A situação retratada problematiza o uso dessa tecnologia em relação ao(à)\n\nA) valorização das redes virtuais.\nB) aumento da prática consumista.\nC) crescimento da economia global.\nD) expansão dos espaços monitorados.\nE) ampliação dos meios comunicacionais.",
+    "resposta": "{\"answer\":\"D\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 240,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Com tanta espionagem à solta, governantes sofrem para ter um smartphone, acessível aos cidadãos comuns, mas problemático para líderes políticos. O aparelho é também um potencial rastreador preciso, capaz de localizar o chefe de Estado no mapa e gravar as conversas mesmo sem estar fazendo uma chamada. Tentação e risco na forma de um smartphone. O Globo, 26 out. 2013 (adaptado).",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nCom tanta espionagem à solta, governantes sofrem para ter um smartphone, acessível aos cidadãos comuns, mas problemático para líderes políticos. O aparelho é também um potencial rastreador preciso, capaz de localizar o chefe de Estado no mapa e gravar as conversas mesmo sem estar fazendo uma chamada. Tentação e risco na forma de um smartphone. O Globo, 26 out. 2013 (adaptado).\n\nPergunta:\nA situação retratada problematiza o uso dessa tecnologia em relação ao(à)\n\nAlternativas:\nA) valorização das redes virtuais.\nB) aumento da prática consumista.\nC) crescimento da economia global.\nD) expansão dos espaços monitorados.\nE) ampliação dos meios comunicacionais.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 234,
+      "total_tokens": 240,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001909",
+    "system": "",
+    "pergunta": "A mãe lhe fez essa recomendação porque o metal, em relação à madeira, apresenta maior\n\nA) calor específico.\nB) energia interna.\nC) temperatura.\nD) condutividade térmica.\nE) coeficiente de dilatação térmica.",
+    "resposta": "{\"answer\":\"D\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 205,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Um menino está ajudando sua mãe na cozinha. Ela lhe pede que tire do fogo uma panela que já estava lá há bastante tempo, em fogo baixo, orientando-lhe que tome cuidado para não se queimar, buscando tocar apenas no cabo de madeira, e não na base de metal da panela.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nUm menino está ajudando sua mãe na cozinha. Ela lhe pede que tire do fogo uma panela que já estava lá há bastante tempo, em fogo baixo, orientando-lhe que tome cuidado para não se queimar, buscando tocar apenas no cabo de madeira, e não na base de metal da panela.\n\nPergunta:\nA mãe lhe fez essa recomendação porque o metal, em relação à madeira, apresenta maior\n\nAlternativas:\nA) calor específico.\nB) energia interna.\nC) temperatura.\nD) condutividade térmica.\nE) coeficiente de dilatação térmica.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 199,
+      "total_tokens": 205,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001910",
+    "system": "",
+    "pergunta": "Os jogos eletrônicos presentes na cultura juvenil podem desempenhar uma relevante função na abordagem do futebol ao\n\nA) disseminarem uma modalidade, promovendo a igualdade de gênero.\nB) superarem jogos malsucedidos no mercado, lançados anteriormente.\nC) inovarem a modalidade com novas ofertas de jogos ao mercado.\nD) explorarem nichos de mercado antes ignorados, produzindo mais lucro.\nE) reforçarem estereótipos de gênero masculino ou feminino nos esportes.",
+    "resposta": "{\"answer\":\"A\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 415,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Em 2000 tivemos a primeira experiência do futebol feminino em um jogo de videogame, o Mia Hamm Soccer. Doze anos depois, uma petição on-line pedia que a EA Sports incluísse o futebol feminino no Fifa 13. Contudo, só em 2015, com uma nova petição on-line, que arrecadou milhares de assinaturas, tivemos o futebol feminino incluído no Fifa 16. Vendo um nicho de mercado inexplorado, a EA Sports produziu o jogo com 12 seleções femininas e o apresentou como inovação. A empresa sabe que mais de 40% dos praticantes de futebol nos EUA são meninas. Para elas, ver o futebol feminino representado em um jogo de videogame é extremamente importante. Ter o futebol feminino no Fifa 16 é um grande passo para a sua popularização na luta pela igualdade de gênero, num contexto machista, sexista, misógino e homofóbico.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nEm 2000 tivemos a primeira experiência do futebol feminino em um jogo de videogame, o Mia Hamm Soccer. Doze anos depois, uma petição on-line pedia que a EA Sports incluísse o futebol feminino no Fifa 13. Contudo, só em 2015, com uma nova petição on-line, que arrecadou milhares de assinaturas, tivemos o futebol feminino incluído no Fifa 16. Vendo um nicho de mercado inexplorado, a EA Sports produziu o jogo com 12 seleções femininas e o apresentou como inovação. A empresa sabe que mais de 40% dos praticantes de futebol nos EUA são meninas. Para elas, ver o futebol feminino representado em um jogo de videogame é extremamente importante. Ter o futebol feminino no Fifa 16 é um grande passo para a sua popularização na luta pela igualdade de gênero, num contexto machista, sexista, misógino e homofóbico.\n\nPergunta:\nOs jogos eletrônicos presentes na cultura juvenil podem desempenhar uma relevante função na abordagem do futebol ao\n\nAlternativas:\nA) disseminarem uma modalidade, promovendo a igualdade de gênero.\nB) superarem jogos malsucedidos no mercado, lançados anteriormente.\nC) inovarem a modalidade com novas ofertas de jogos ao mercado.\nD) explorarem nichos de mercado antes ignorados, produzindo mais lucro.\nE) reforçarem estereótipos de gênero masculino ou feminino nos esportes.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 409,
+      "total_tokens": 415,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001911",
+    "system": "",
+    "pergunta": "De acordo com esse texto, o uso da palavra “tankar” e seus derivados\n\nA) provoca dificuldades de compreensão entre usuários de games.\nB) produz humor fora do contexto original de sua criação.\nC) demonstra como as gírias refletem a cultura televisiva.\nD) marca a criação de neologismos em épocas de crise.\nE) revela o impacto dos jogos eletrônicos na língua.",
+    "resposta": "{\"answer\":\"E\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 438,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Segundo estudiosos do nosso idioma, as gírias e os neologismos contemporâneos originam-se de ambientes segmentados, como o videogame. De vez em quando, alguns desses termos furam a bolha e intrigam quem não circula por esses espaços. Um caso em evidência atualmente é “tankar” — eu “tanko”, tu “tankas”. O verbo veio de um tipo de personagem popular em games de combate em equipe: o tank funciona como um escudo, permitindo ao resto do time executar suas tarefas. Em um ano difícil como o de 2022, a palavra se popularizou como sinônimo de “aguentar”, “suportar” (no sentido oposto surgiu “intankável”, aquilo que não pode ser suportado). “Até os anos 1980, as gírias vinham de uma cultura massiva mais forte e dominante, como novelas e programas de humor”, diz uma professora do curso de Estudos de Mídia da Universidade Federal Fluminense. “Havia um solo comum em que elas eram compartilhadas. Hoje as fontes são muito mais específicas e diversas”.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nSegundo estudiosos do nosso idioma, as gírias e os neologismos contemporâneos originam-se de ambientes segmentados, como o videogame. De vez em quando, alguns desses termos furam a bolha e intrigam quem não circula por esses espaços. Um caso em evidência atualmente é “tankar” — eu “tanko”, tu “tankas”. O verbo veio de um tipo de personagem popular em games de combate em equipe: o tank funciona como um escudo, permitindo ao resto do time executar suas tarefas. Em um ano difícil como o de 2022, a palavra se popularizou como sinônimo de “aguentar”, “suportar” (no sentido oposto surgiu “intankável”, aquilo que não pode ser suportado). “Até os anos 1980, as gírias vinham de uma cultura massiva mais forte e dominante, como novelas e programas de humor”, diz uma professora do curso de Estudos de Mídia da Universidade Federal Fluminense. “Havia um solo comum em que elas eram compartilhadas. Hoje as fontes são muito mais específicas e diversas”.\n\nPergunta:\nDe acordo com esse texto, o uso da palavra “tankar” e seus derivados\n\nAlternativas:\nA) provoca dificuldades de compreensão entre usuários de games.\nB) produz humor fora do contexto original de sua criação.\nC) demonstra como as gírias refletem a cultura televisiva.\nD) marca a criação de neologismos em épocas de crise.\nE) revela o impacto dos jogos eletrônicos na língua.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 432,
+      "total_tokens": 438,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001912",
+    "system": null,
+    "pergunta": "Pela sua interatividade, os exergames apresentam-se como possibilidade para estimular o(a)\n\nA) exercitação física, promovendo a saúde.\nB) vivência de exercícios físicos sistemáticos.\nC) envolvimento com atividades físicas ao longo da vida.\nD) jogo por meio de comandos fornecidos pelo videogame.\nE) disputa entre jogadores, contribuindo para o individualismo.",
+    "resposta": "{\"answer\":\"A\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 338,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Atualmente os jovens estão imersos numa sociedade permeada pela tecnologia. Nesse contexto, os jogos digitais são artefatos muito empregados. Videogames ativos ou exergames foram introduzidos como forma de permitir que o corpo controlasse tais jogos. Como resultado, passaram a ser vistos como uma ferramenta auxiliar na adoção de um estilo de vida menos sedentário, com efeitos positivos sobre a saúde. Tem-se defendido que os exergames podem contribuir para a prática regular de atividade física moderada, bem como promover a interação entre jogadores, reduzindo o sentimento de isolamento social. Por outro lado, argumenta-se que os exergames não podem substituir a experiência real das práticas corporais, pois não motivam a longo prazo a prática permanente de atividades físicas.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 332,
+      "total_tokens": 338,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001913",
+    "system": "",
+    "pergunta": "Com base na decisão da Associação Internacional das Federações de Atletismo, considera-se que as penalidades previstas para esse esporte indicam um(a)\n\nA) incentivo a novas formas de doping por parte dos atletas.\nB) descaso com a performance esportiva das várias modalidades do atletismo.\nC) uso favorável dos produtos da indústria farmacêutica nos torneios oficiais de atletismo.\nD) procedimento prejudicial para a credibilidade da modalidade e do fair play nos esportes.\nE) aumento na utilização do doping para a melhora na performance dos atletas.",
+    "resposta": "{\n  \"answer\": \"D\"\n}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 309,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "E",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "A Associação Internacional das Federações de Atletismo (IAAF) aprovou o aumento da suspensão de dois para quatro anos em casos de atletas flagrados por doping. Em sincronia com o próximo Código Mundial Antidoping, da Agência Mundial de Doping (WADA), a nova punição entrará em vigor no dia 1º de janeiro de 2015. Até lá, a penalidade continua sendo de dois anos.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nA Associação Internacional das Federações de Atletismo (IAAF) aprovou o aumento da suspensão de dois para quatro anos em casos de atletas flagrados por doping. Em sincronia com o próximo Código Mundial Antidoping, da Agência Mundial de Doping (WADA), a nova punição entrará em vigor no dia 1º de janeiro de 2015. Até lá, a penalidade continua sendo de dois anos.\n\nPergunta:\nCom base na decisão da Associação Internacional das Federações de Atletismo, considera-se que as penalidades previstas para esse esporte indicam um(a)\n\nAlternativas:\nA) incentivo a novas formas de doping por parte dos atletas.\nB) descaso com a performance esportiva das várias modalidades do atletismo.\nC) uso favorável dos produtos da indústria farmacêutica nos torneios oficiais de atletismo.\nD) procedimento prejudicial para a credibilidade da modalidade e do fair play nos esportes.\nE) aumento na utilização do doping para a melhora na performance dos atletas.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 299,
+      "total_tokens": 309,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001914",
+    "system": "",
+    "pergunta": "Esse tipo de doping está diretamente relacionado ao aumento da\n\nA) frequência cardíaca.\nB) capacidade pulmonar.\nC) massa muscular do indivíduo.\nD) atividade anaeróbica da musculatura.\nE) taxa de transporte de oxigênio pelo sangue.",
+    "resposta": "{\"answer\":\"E\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 277,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Diversas substâncias são empregadas com a intenção de incrementar o desempenho esportivo de atletas de alto nível. O chamado doping sanguíneo, por exemplo, pela utilização da eritropoietina, é proibido pelas principais federações de esportes no mundo. A eritropoietina é um hormônio produzido pelos rins e fígado e sua principal ação é regular o processo de eritropoiese. Seu uso administrado intravenosamente em quantidades superiores àquelas presentes naturalmente no organismo permite que o indivíduo aumente a sua capacidade de realização de exercícios físicos.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nDiversas substâncias são empregadas com a intenção de incrementar o desempenho esportivo de atletas de alto nível. O chamado doping sanguíneo, por exemplo, pela utilização da eritropoietina, é proibido pelas principais federações de esportes no mundo. A eritropoietina é um hormônio produzido pelos rins e fígado e sua principal ação é regular o processo de eritropoiese. Seu uso administrado intravenosamente em quantidades superiores àquelas presentes naturalmente no organismo permite que o indivíduo aumente a sua capacidade de realização de exercícios físicos.\n\nPergunta:\nEsse tipo de doping está diretamente relacionado ao aumento da\n\nAlternativas:\nA) frequência cardíaca.\nB) capacidade pulmonar.\nC) massa muscular do indivíduo.\nD) atividade anaeróbica da musculatura.\nE) taxa de transporte de oxigênio pelo sangue.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 271,
+      "total_tokens": 277,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001915",
+    "system": "",
+    "pergunta": "De acordo com esse texto, o programa voltado ao estímulo da prática do parasurf evidencia a\n\nA) adesão de diferentes países a programas inclusivos.\nB) preocupação política em atender a demandas paralímpicas.\nC) importância de uma política pública esportiva para a inclusão.\nD) eficiência das iniciativas de inclusão em megaeventos esportivos.\nE) escassez de investimento em práticas corporais de aventura na natureza.",
+    "resposta": "{\n  \"answer\": \"C\"\n}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 349,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "O Ministério do Esporte no Brasil lançou o programa Maré Inclusiva, em 2024, ano dos Jogos Paralímpicos de Paris. Esse programa visa ampliar as oportunidades para pessoas com deficiência que desejam praticar o surf. O parasurf é a prática do surf adaptada para permitir que pessoas com deficiência pratiquem o esporte em todas as suas categorias, modalidades e manifestações. Para a Secretaria Nacional do Paradesporto, a iniciativa é mais do que um programa de esporte, é uma iniciativa que busca transformar vidas e promover a inclusão por meio do parasurf, criando um legado de igualdade e respeito. Disponível em: www.gov.br/esporte. Acesso em: 6 set. 2024 (adaptado).",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nO Ministério do Esporte no Brasil lançou o programa Maré Inclusiva, em 2024, ano dos Jogos Paralímpicos de Paris. Esse programa visa ampliar as oportunidades para pessoas com deficiência que desejam praticar o surf. O parasurf é a prática do surf adaptada para permitir que pessoas com deficiência pratiquem o esporte em todas as suas categorias, modalidades e manifestações. Para a Secretaria Nacional do Paradesporto, a iniciativa é mais do que um programa de esporte, é uma iniciativa que busca transformar vidas e promover a inclusão por meio do parasurf, criando um legado de igualdade e respeito. Disponível em: www.gov.br/esporte. Acesso em: 6 set. 2024 (adaptado).\n\nPergunta:\nDe acordo com esse texto, o programa voltado ao estímulo da prática do parasurf evidencia a\n\nAlternativas:\nA) adesão de diferentes países a programas inclusivos.\nB) preocupação política em atender a demandas paralímpicas.\nC) importância de uma política pública esportiva para a inclusão.\nD) eficiência das iniciativas de inclusão em megaeventos esportivos.\nE) escassez de investimento em práticas corporais de aventura na natureza.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 339,
+      "total_tokens": 349,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001916",
+    "system": "",
+    "pergunta": "No texto, ao refletir sobre a atividade de cronista, a autora questiona características do gênero crônica, como\n\nA) relação distanciada entre os interlocutores.\nB) articulação de vários núcleos narrativos.\nC) brevidade no tratamento da temática.\nD) descrição minuciosa dos personagens.\nE) público leitor exclusivo.",
+    "resposta": "{\"answer\":\"A\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 490,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "C",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Sei que não sou, mas tenho meditado ligeiramente no assunto. Crônica é um relato? É uma conversa? É um resumo de um estado de espírito? Não sei, pois antes de começar a escrever para o Jornal do Brasil, eu só tinha escrito romances e contos. E também sem perceber, à medida que escrevia para aqui, ia me tornando pessoal demais, correndo o risco de em breve publicar minha vida passada e presente, o que não pretendo. Outra coisa notei: basta eu saber que estou escrevendo para o jornal, isto é, para algo aberto facilmente por todo o mundo, e não para um livro, que só é aberto por quem realmente quer, para que, sem mesmo sentir, o modo de escrever se transforme. Não é que me desagrade mudar, pelo contrário. Mas queria que fossem mudanças mais profundas e interiores que não viessem a se refletir no escrever. Mas mudar só porque isso é uma coluna ou uma crônica? Ser mais leve só porque o leitor assim o quer? Divertir? Fazer passar uns minutos de leitura? E outra coisa: nos meus livros quero profundamente a comunicação profunda comigo e com o leitor. Aqui no jornal apenas falo com o leitor e agrada-me que ele fique agradado. Vou dizer a verdade: não estou contente.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nSei que não sou, mas tenho meditado ligeiramente no assunto. Crônica é um relato? É uma conversa? É um resumo de um estado de espírito? Não sei, pois antes de começar a escrever para o Jornal do Brasil, eu só tinha escrito romances e contos. E também sem perceber, à medida que escrevia para aqui, ia me tornando pessoal demais, correndo o risco de em breve publicar minha vida passada e presente, o que não pretendo. Outra coisa notei: basta eu saber que estou escrevendo para o jornal, isto é, para algo aberto facilmente por todo o mundo, e não para um livro, que só é aberto por quem realmente quer, para que, sem mesmo sentir, o modo de escrever se transforme. Não é que me desagrade mudar, pelo contrário. Mas queria que fossem mudanças mais profundas e interiores que não viessem a se refletir no escrever. Mas mudar só porque isso é uma coluna ou uma crônica? Ser mais leve só porque o leitor assim o quer? Divertir? Fazer passar uns minutos de leitura? E outra coisa: nos meus livros quero profundamente a comunicação profunda comigo e com o leitor. Aqui no jornal apenas falo com o leitor e agrada-me que ele fique agradado. Vou dizer a verdade: não estou contente.\n\nPergunta:\nNo texto, ao refletir sobre a atividade de cronista, a autora questiona características do gênero crônica, como\n\nAlternativas:\nA) relação distanciada entre os interlocutores.\nB) articulação de vários núcleos narrativos.\nC) brevidade no tratamento da temática.\nD) descrição minuciosa dos personagens.\nE) público leitor exclusivo.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 484,
+      "total_tokens": 490,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001917",
+    "system": null,
+    "pergunta": "Considerando o argumento apresentado, a discriminação racial no Brasil tem como origem\n\nA) identidades regionais.\nB) segregação oficial.\nC) vínculos matrimoniais.\nD) traços fenotípicos.\nE) status ocupacional.",
+    "resposta": "{\n  \"answer\": \"C\"\n}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 300,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "D",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Em escala, o negro é o negro retinto, o mulato já é o pardo e como tal meio branco, e se a pele é um pouco mais clara, já passa a incorporar a comunidade branca. A forma desse racismo no Brasil decorre de uma situação em que a mestiçagem não é punida, mas louvada. Com efeito, as uniões inter-raciais, aqui, nunca foram tidas como crime ou pecado. Nós surgimos, efetivamente, do cruzamento de uns poucos brancos com multidões de mulheres índias e negras.\nRIBEIRO, D. O povo brasileiro: formação e sentido do Brasil. São Paulo: Cia. das Letras, 2004 (adaptado).",
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 290,
+      "total_tokens": 300,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001918",
+    "system": "",
+    "pergunta": "Usando o carregador com corrente máxima, o tempo total de recarga dessa bateria totalmente descarregada, em hora, é\n\nA) 1/6\nB) 5/6\nC) 4.\nD) 6.\nE) 8.",
+    "resposta": "{\"answer\":\"A\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 244,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "C",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Carregadores elétricos são projetados para fornecerem energia a baterias recarregáveis, como as usadas em aparelhos celulares e máquinas fotográficas. As especificações típicas de um desses dispositivos são:\n\nCarregador:\nEntrada AC 100-240 V / 200 mA / 50-60 Hz\nSaída DC 5,0 V / 1 000 mA\n\nBateria recarregável:\n1,5 V / 4 000 mAh",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nCarregadores elétricos são projetados para fornecerem energia a baterias recarregáveis, como as usadas em aparelhos celulares e máquinas fotográficas. As especificações típicas de um desses dispositivos são:\n\nCarregador:\nEntrada AC 100-240 V / 200 mA / 50-60 Hz\nSaída DC 5,0 V / 1 000 mA\n\nBateria recarregável:\n1,5 V / 4 000 mAh\n\nPergunta:\nUsando o carregador com corrente máxima, o tempo total de recarga dessa bateria totalmente descarregada, em hora, é\n\nAlternativas:\nA) 1/6\nB) 5/6\nC) 4.\nD) 6.\nE) 8.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 238,
+      "total_tokens": 244,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001919",
+    "system": "",
+    "pergunta": "A incorporação de um trecho da obra para flauta solo de Johann Sebastian Bach na música de MC Fioti demonstra a\n\nA) influência permanente da cultura eurocêntrica nas produções musicais brasileiras.\nB) homenagem aos referenciais estéticos que deram origem às produções da música popular.\nC) necessidade de divulgar a música de concerto nos meios populares nas periferias das grandes cidades.\nD) utilização desintencional de uma música excessivamente distante da realidade cultural dos jovens brasileiros.\nE) inter-relação de elementos culturais vindos de realidades distintas na construção de uma nova proposta musical.",
+    "resposta": "{\"answer\":\"E\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 421,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Leandro Aparecido Ferreira, o MC Fioti, compôs em 2017 a música Bum bum tam tam, que gerou, em nove meses, 480 milhões de visualizações no YouTube. É o funk brasileiro mais ouvido na história do site. A partir de uma gravação da flauta que achou na internet, MC Fioti fez tudo sozinho: compôs, cantou e produziu em uma noite só. “Comecei a pesquisar alguns tipos de flauta, coisas antigas. E nisso eu achei a ‘flautinha do Sebastian Bach’”, conta. A descoberta foi por acaso: Fioti não sabia quem era o músico alemão e não sabe tocar o instrumento. A “flauta envolvente” da música é um trecho da Partita em Lá menor, escrita pelo alemão Johann Sebastian Bach por volta de 1723.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nLeandro Aparecido Ferreira, o MC Fioti, compôs em 2017 a música Bum bum tam tam, que gerou, em nove meses, 480 milhões de visualizações no YouTube. É o funk brasileiro mais ouvido na história do site. A partir de uma gravação da flauta que achou na internet, MC Fioti fez tudo sozinho: compôs, cantou e produziu em uma noite só. “Comecei a pesquisar alguns tipos de flauta, coisas antigas. E nisso eu achei a ‘flautinha do Sebastian Bach’”, conta. A descoberta foi por acaso: Fioti não sabia quem era o músico alemão e não sabe tocar o instrumento. A “flauta envolvente” da música é um trecho da Partita em Lá menor, escrita pelo alemão Johann Sebastian Bach por volta de 1723.\n\nPergunta:\nA incorporação de um trecho da obra para flauta solo de Johann Sebastian Bach na música de MC Fioti demonstra a\n\nAlternativas:\nA) influência permanente da cultura eurocêntrica nas produções musicais brasileiras.\nB) homenagem aos referenciais estéticos que deram origem às produções da música popular.\nC) necessidade de divulgar a música de concerto nos meios populares nas periferias das grandes cidades.\nD) utilização desintencional de uma música excessivamente distante da realidade cultural dos jovens brasileiros.\nE) inter-relação de elementos culturais vindos de realidades distintas na construção de uma nova proposta musical.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 415,
+      "total_tokens": 421,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001920",
+    "system": null,
+    "pergunta": "O biocombustível a que se refere o texto é o\n\nA) etanol.\nB) biogás.\nC) butano.\nD) metanol.\nE) biodiesel.",
+    "resposta": "{\"answer\":\"B\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 288,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Com o aumento da população de suínos no Brasil, torna-se necessária a adoção de métodos para reduzir o potencial poluidor dos resíduos dessa agroindústria, uma vez que, comparativamente ao esgoto doméstico, os dejetos suínos são 200 vezes mais poluentes. Sendo assim, a utilização desses resíduos como matéria-prima na obtenção de combustíveis é uma alternativa que permite diversificar a matriz energética nacional, ao mesmo tempo em que parte dos recursos hídricos do país são preservados.\n\nBECK, A. M. Resíduos suínos como alternativa energética sustentável. XXVII Encontro Nacional de Engenharia de Produção. Anais ENEGEP, Foz do Iguaçu, 2007 (adaptado).",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 282,
+      "total_tokens": 288,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001921",
+    "system": "",
+    "pergunta": "Na análise contida no texto, a representação cartográfica da América foi marcada por\n\nA) asserção da cultura dos nativos.\nB) avanço dos estudos do ambiente.\nC) afirmação das formas de dominação.\nD) exatidão da demarcação das regiões.\nE) aprimoramento do conceito de fronteira.",
+    "resposta": "{\"answer\":\"C\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 283,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Afirmar que a cartografia da época moderna integrou o processo de invenção da América por parte dos europeus significa que os conhecimentos dos ameríndios sobre o território foram ignorados pela cartografia europeia ou que eles foram privados de sua representação territorial e da autoridade que seus conhecimentos tinham sobre o espaço.\nOLIVEIRA, T. K. Desconstruindo mapas, revelando espacializações: reflexões sobre o uso da cartografia em estudos sobre o Brasil colonial. Revista Brasileira de História, n. 68, 2014 (adaptado).",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nAfirmar que a cartografia da época moderna integrou o processo de invenção da América por parte dos europeus significa que os conhecimentos dos ameríndios sobre o território foram ignorados pela cartografia europeia ou que eles foram privados de sua representação territorial e da autoridade que seus conhecimentos tinham sobre o espaço.\nOLIVEIRA, T. K. Desconstruindo mapas, revelando espacializações: reflexões sobre o uso da cartografia em estudos sobre o Brasil colonial. Revista Brasileira de História, n. 68, 2014 (adaptado).\n\nPergunta:\nNa análise contida no texto, a representação cartográfica da América foi marcada por\n\nAlternativas:\nA) asserção da cultura dos nativos.\nB) avanço dos estudos do ambiente.\nC) afirmação das formas de dominação.\nD) exatidão da demarcação das regiões.\nE) aprimoramento do conceito de fronteira.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 277,
+      "total_tokens": 283,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001922",
+    "system": null,
+    "pergunta": "O texto considera a promoção da justiça como um mecanismo de\n\nA) manutenção da ordem agrária.\nB) legitimação da propriedade privada.\nC) hegemonia das classes dominantes.\nD) revisão das desigualdades econômicas.\nE) homogeneização da distribuição fundiária.",
+    "resposta": "{\"answer\":\"D\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 332,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Do ponto de vista administrativo e judicial, a desapropriação da fazenda Cabaceiras, localizada na região sul do estado do Pará, é a primeira da história motivada pelo desrespeito à função social de um imóvel rural, como prevê a Constituição Federal de 1988, em decorrência da exploração de “trabalho em condições análogas à escravidão”. Na realidade, essa desapropriação não se deu apenas pela ocorrência de relações de trabalho extremamente degradantes, mas também pelas graves infrações ambientais verificadas na fazenda — o que também configura um ataque à função social da terra, de acordo com os preceitos constitucionais.\nBARROS, C. J. A conquista da fazenda Cabaceiras. Disponível em: www.agb.org.br. Acesso em: 15 maio 2023.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 326,
+      "total_tokens": 332,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001923",
+    "system": "",
+    "pergunta": "Considere p1, p2 e p3 as probabilidades de se descobrirem ao acaso, na primeira tentativa, as senhas dos tipos I, II e III, respectivamente. Nessas condições, o tipo de senha que apresenta a menor probabilidade de ser descoberta ao acaso, na primeira tentativa, é o\n\nA) tipo I, pois p1 < p2 < p3.\nB) tipo I, pois tem menor quantidade de caracteres.\nC) tipo II, pois tem maior quantidade de letras.\nD) tipo III, pois p3 < p2 < p1.\nE) tipo III, pois tem maior quantidade de caracteres.",
+    "resposta": "We need to parse the problem. It's about passwords for an investment app. Allowed characters: digits 0-9 (10), lowercase letters (26), uppercase letters (26), special characters ! @ # $ * & (6). So total allowed characters = 10 + 26 + 26 + 6 = 68.\n\nThree types of password structures:\n\n- Type I: formed by any four distinct characters, chosen among the permitted ones.\n- Type II: formed by five distinct characters, starting with three letters, followed by a digit, and ending with a special character.\n- Type III: formed by six distinct characters, starting with two letters, then two digits, and ending with two special characters.\n\nWe are asked: Consider p1, p2, p3 as probabilities of being discovered on the first attempt if we randomly pick a password? Actually \"p1, p2 e p3 as probabilidades de se descobrirem ao acaso, na primeira tentativa, as senhas dos tipos I, II e III, respectivamente.\" Means probability that a random guess matches one of those passwords? Or maybe they ask which type has smallest probability of being discovered at random in the first try. Typically, lower number of possible combinations yields higher probability? Wait: If you have many possible passwords, chance to guess correctly is low. But here each type defines a specific pattern; perhaps there is only one such password per type? Or maybe they consider the set of all possible passwords of that type? Usually, when asking \"probability of discovering the password at random\" given the structure, it would be 1 divided by total number of possibilities of that type. So smaller number of possibilities => larger probability? Let's think: The question: \"Considere p1, p2 e p3 as probabilidades de se descobrirem ao acaso, na primeira tentativa, as senhas dos tipos I, II e III, respectivamente. Nessas condições, o tipo de senha que apresenta a menor probabilidade de ser descoberta ao acaso, na primeira tentativa, é o\". They ask which type has the lowest probability of being discovered on the first trial. Lower probability means harder to discover, i.e., fewer possible passwords or more constraints making it less likely to match a random guess. So we need to compute the number of possible passwords for each type, then probabilities = 1 / (number of possible passwords) assuming uniform random selection from all allowed characters. Then find which type has smallest probability (i.e., largest denominator). So we need to count distinct strings meeting criteria for each type.\n\nLet's define:\n\nAllowed characters: digits (0-9): 10; lowercase (a-z): 26; uppercase (A-Z): 26; special (!@#$*&): 6. Total 68.\n\nType I: \"formada por quaisquer quatro caracteres distintos, escolhidos dentre os permitidos\". Means any four distinct characters (no repeats). Order matters? Usually a password is a sequence, so order matters. So number of possible passwords of length 4 where all characters are distinct. That is permutations of 4 distinct choices from 68 characters: P(68,4) = 68 * 67 * 66 * 65. However, does \"quaisquer quatro caracteres distintos\" imply just set of four distinct characters without regard to order? Typically password is ordered string. We'll assume order matters because typical password. Also \"quaisquer\" suggests any combination, not necessarily positions. But let's examine other types: Type II: \"formada por cinco caracteres distintos, iniciando por três letras, seguidas por um algarismo e, ao final, um caractere especial\". This describes a specific pattern: first three characters are letters (any case?), next one is a digit, last one is a special character. And all five characters must be distinct. So order matters within pattern. Similarly Type III: six characters: starts with two letters, then two digits, ends with two special characters. Distinctness across all six.\n\nThus we should treat them as sequences with specified positions and categories.\n\nSo compute counts:\n\nTotal characters: L (lowercase) = 26, U (uppercase) = 26, D (digits) = 10, S (special) = 6.\n\nFor Type I: choose any 4 distinct characters from the 68, arrange them in any order? Since no restrictions on position, but \"quaisquer quatro caracteres distintos\" could mean any arrangement of four distinct characters. So number = number of ways to select 4 distinct characters times number of permutations of these 4 = C(68,4)*4! = P(68,4). Equivalent to 68P4 = 68*67*66*65.\n\nCompute approximate values later.\n\nType II: Five distinct characters, starting with three letters, then a digit, then a special character. So positions: 1-3: letters (L or U); position 4: digit; position 5: special. Must be all distinct overall. So we need to count number of sequences of length 5 satisfying: pos1,pos2,pos3 ∈ {lowercase, uppercase} (total 52 letters). pos4 ∈ digits (10). pos5 ∈ specials (6). All five characters distinct. Additionally, the categories may overlap? For example, a letter cannot equal a digit or special char obviously. So we need to ensure no repetition across categories. Since categories are disjoint sets (letters vs digits vs specials), distinctness reduces to ensuring within each category the selected characters are distinct and also not repeated across categories (but since categories are different sets, can't repeat anyway). So basically we need to pick 3 distinct letters from 52, 1 distinct digit from 10, 1 distinct special from 6, and assign them to positions: first three positions get the three letters in some order; fourth gets the digit; fifth gets the special. So number = (choose 3 letters out of 52) * (order them in first three positions: 3! ways) * (choose 1 digit out of 10) * (choose 1 special out of 6) * (the digit goes to position 4 fixed, special to position 5 fixed). So total = C(52,3) * 3! * 10 * 6.\n\nSimplify: C(52,3) = 52*51*50/6 = (52*51*50)/6. Compute later.\n\nC(52,3) = 22100? Let's calculate precisely: 52 choose 3 = 52*51*50/(3*2*1)= (52*51*50)/6. 52*51=2652; 2652*50=132600; divide by 6 = 22100. Yes 22,100.\n\nTimes 3! = 6 gives 22,100 * 6 = 132,600. Multiply by 10 * 6 = 60. So total = 132,600 * 60 = 7,956,000? Let's compute: 132,600 * 60 = 132,600*6*10 = 795,600*10 = 7,956,000. Yes.\n\nThus p2 (type II) number of possibilities = 7,956,000.\n\nBut check: Are we double counting due to ordering of letters? Already accounted via 3! factor. Good.\n\nNow Type III: Six distinct characters, starting with two letters, then two digits, ending with two special characters. Pattern: positions 1-2: letters; positions 3-4: digits; positions 5-6: specials. All six distinct. Letters: 52 options; digits: 10; specials: 6. Need to pick 2 distinct letters from 52, 2 distinct digits from 10, 2 distinct specials from 6. Arrange them: first two positions are letters (ordered), next two are digits (ordered), last two are specials (ordered). So number = [choose 2 letters from 52] * (2! arrangements) * [choose 2 digits from 10] * (2! arrangements) * [choose 2 specials from 6] * (2! arrangements). So total = C(52,2) * 2! * C(10,2) * 2! * C(6,2) * 2!.\n\nCompute each:\n\nC(52,2) = 52*51/2 = 1326.\n\n2! = 2.\n\nC(10,2) = 45.\n\n2! = 2.\n\nC(6,2) = 15.\n\n2! = 2.\n\nMultiply: 1326 * 2 = 2652. Times 45 * 2 = 90? Wait stepwise: Let's do product: C(52,2)*2! = 1326*2 = 2652. C(10,2)*2! = 45*2 = 90. C(6,2)*2! = 15*2 = 30.\n\nNow multiply all three results: 2652 * 90 * 30.\n\nFirst 2652*90 = 2652*9*10 = (2652*9)*10. 2652*9 = 23,868? Let's compute: 2600*9=23,400; 52*9=468; sum=23,868. Times 10 = 238,680.\n\nThen 238,680 * 30 = 238,680*3*10 = 716,040*10 = 7,160,400? Wait compute: 238,680*3 = 716,040. Times 10 = 7,160,400. Yes.\n\nThus total possibilities for type III ≈ 7,160,400.\n\nAlternatively, we might have missed something like the letters can be same case? No restriction besides distinctness. Our calculation uses distinct letters irrespective of case. That seems fine.\n\nNow compare numbers:\n\n- Type I: P(68,4) = 68*67*66*65. Let's compute: 68*67 = 4556? Actually 68*67 = (60+8)*(67) = 60*67 + 8*67 = 4020 + 536 = 4556. Multiply by 66: 4556*66 = 4556* (60+6) = 4556*60 + 4556*6 = 273,360 + 27,336 = 300,696. Multiply by 65: 300,696*65 = 300,696*(13*5)? Let's do directly: 300,696*60 = 18,041,760; plus 300,696*5 = 1,503,480; total = 19,545,240. So P(68,4) = 19,545,240.\n\nCheck: Another way: 68P4 = 68!/(68-4)! = 68*67*66*65 = indeed above. So approx 19.5 million.\n\n- Type II: 7,956,000.\n\n- Type III: 7,160,400.\n\nThus ranking of counts: Type I > Type III > Type II? Actually Type I ~19.5M, Type III ~7.16M, Type II ~7.96M. So Type II has slightly higher than Type III? Wait 7.96M > 7.16M. So order: Type I highest (most combos), Type II middle (~7.96M), Type III lowest (~7.16M). Therefore probability of guessing correctly (1/count) is smallest for the type with most combos? No, probability = 1/count. Smaller probability corresponds to larger count. So the type with greatest number of possible passwords has lowest chance of being discovered on first try. That appears to be Type I (19.5M) > Type II (7.96M) > Type III (7.16M). So Type I has highest count, thus lowest probability (since 1/19.5M < 1/7.96M < 1/7.16M). So answer should be type I.\n\nBut look at alternatives:\n\nA) tipo I, pois p1 < p2 < p3. (means p1 < p2 < p3, i.e., probability of type I is less than type II less than type III). That says p1 smallest, meaning type I easiest to discover? Not matching our conclusion. B) tipo I, pois tem menor quantidade de caracteres. (less characters?) Not correct. C) tipo II, pois tem maior quantidade de letras. (more letters?). D) tipo III, pois p3 < p2 < p1. E) tipo III, pois tem maior quantidade de caracteres.\n\nOur analysis suggests type I has the most possibilities, giving lowest probability. Option A states type I, but reason \"pois p1 < p2 < p3\" which claims p1 is smallest probability, but actually p1 would be largest? Let's see: If p1 is probability of discovery for type I, then p1 = 1 / (#possibilities type I). Since #possibilities type I is biggest, p1 is smallest. So p1 < p2 < p3? Let's test numeric approximations: p1 = 1/19,545,240 ≈ 5.11e-8. p2 = 1/7,956,000 ≈ 1.257e-7. p3 = 1/7,160,400 ≈ 1.397e-7. Indeed p1 < p2 < p3 holds numerically. So option A says \"tipo I, pois p1 < p2 < p3\". That matches our computed ordering: p1 is smallest, p2 middle, p3 largest. So option A's reasoning is \"because p1 < p2 < p3\", which aligns with our calculations. Option D says type III, p3 < p2 < p1 (reverse). Option E says type III, greater characters. Option C says type II etc.\n\nThus correct answer appears to be A.\n\nBut we need to verify the counts again thoroughly, especially type II and III. Because small differences matter. Let's recompute carefully.\n\nGiven allowed characters: digits (0-9) = 10; lowercase = 26; uppercase = 26; special = 6. Total 68.\n\nType I: any four distinct characters, any order. Number of possible passwords = number of 4-length strings with all entries distinct. That's permutations of 4 distinct elements from 68: 68P4 = 68*67*66*65. Let's recalc exactly:\n\n68*67 = 4556 (yes).\n4556*66 = 4556*60 + 4556*6 = 273,360 + 27,336 = 300,696 (yes).\n300,696*65 = 300,696* (13*5)? Let's do direct multiplication: 300,696*60 = 18,041,760; 300,696*5 = 1,503,480; sum = 19,545,240. So yes.\n\nThus p1 = 1/19,545,240 ≈ 5.111e-8.\n\nType II: five distinct characters, start with three letters, then a digit, then a special. So positions: 1-3 letters, 4 digit, 5 special. All distinct. Counting approach earlier gave C(52,3)*3! * 10 * 6. Let's re-evaluate.\n\nNumber of ways to choose 3 distinct letters from 52 (lower+upper). Choose 3 letters: C(52,3) = 52*51*50/6 = (52*51*50)/6. Compute: 52*51=2652; 2652*50=132,600; divide by 6 = 22,100. Yes.\n\nOrder them in first three positions: 3! = 6. So letter part contributes 22,100 * 6 = 132,600.\n\nDigits: choose 1 digit from 10: 10 ways. Only one position (position 4). So factor 10.\n\nSpecial: choose 1 special from 6: 6 ways. Position 5. Factor 6.\n\nThus total = 132,600 * 10 * 6 = 132,600 * 60 = 7,956,000. Same as before.\n\nThus p2 = 1/7,956,000 ≈ 1.258e-7.\n\nType III: six distinct characters, start with two letters, then two digits, end with two specials. Positions: 1-2 letters, 3-4 digits, 5-6 specials. All distinct.\n\nCount: Choose 2 distinct letters from 52: C(52,2) = 52*51/2 = 1326. Order them in first two positions: 2! = 2 → 1326*2 = 2652.\n\nChoose 2 distinct digits from 10: C(10,2) = 45. Order them in positions 3-4: 2! = 2 → 45*2 = 90.\n\nChoose 2 distinct specials from 6: C(6,2) = 15. Order them in positions 5-6: 2! = 2 → 15*2 = 30.\n\nMultiply: 2652 * 90 * 30 = ?\n\n2652*90 = 2652*9*10 = (23,868)*10 = 238,680. Then *30 = 238,680*3*10 = 716,040*10 = 7,160,400. Yes.\n\nThus p3 = 1/7,160,400 ≈ 1.398e-7.\n\nThus ordering p1 < p2 < p3 holds: 5.11e-8 < 1.258e-7 < 1.398e-7. So type I has smallest probability.\n\nOption A: \"tipo I, pois p1 < p2 < p3.\" That matches.\n\nOption B: \"tipo I, pois tem menor quantidade de caracteres.\" Wrong reason.\n\nOption C: \"tipo II, pois tem maior quantidade de letras.\" Wrong.\n\nOption D: \"tipo III, pois p3 < p2 < p1.\" Wrong direction.\n\nOption E: \"tipo III, pois tem maior quantidade de caracteres.\" Wrong.\n\nTherefore answer is A.\n\nThus output JSON: {\"answer\":\"A\"}.\n\nMake sure no extra text. Return strictly valid JSON.</think>{\"answer\":\"A\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 4400,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Ao realizar o cadastro em um aplicativo de investimentos, foi solicitado ao usuário que criasse uma senha, sendo permitido o uso somente dos seguintes caracteres:\n• algarismos de 0 a 9;\n• 26 letras minúsculas do alfabeto;\n• 26 letras maiúsculas do alfabeto;\n• 6 caracteres especiais !, @, #, $, *, &.\nTrês tipos de estruturas para senha foram apresentadas ao usuário:\n• tipo I: formada por quaisquer quatro caracteres distintos, escolhidos dentre os permitidos;\n• tipo II: formada por cinco caracteres distintos, iniciando por três letras, seguidas por um algarismo e, ao final, um caractere especial;\n• tipo III: formada por seis caracteres distintos, iniciando por duas letras, seguidas por dois algarismos e, ao final, dois caracteres especiais.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nAo realizar o cadastro em um aplicativo de investimentos, foi solicitado ao usuário que criasse uma senha, sendo permitido o uso somente dos seguintes caracteres:\n• algarismos de 0 a 9;\n• 26 letras minúsculas do alfabeto;\n• 26 letras maiúsculas do alfabeto;\n• 6 caracteres especiais !, @, #, $, *, &.\nTrês tipos de estruturas para senha foram apresentadas ao usuário:\n• tipo I: formada por quaisquer quatro caracteres distintos, escolhidos dentre os permitidos;\n• tipo II: formada por cinco caracteres distintos, iniciando por três letras, seguidas por um algarismo e, ao final, um caractere especial;\n• tipo III: formada por seis caracteres distintos, iniciando por duas letras, seguidas por dois algarismos e, ao final, dois caracteres especiais.\n\nPergunta:\nConsidere p1, p2 e p3 as probabilidades de se descobrirem ao acaso, na primeira tentativa, as senhas dos tipos I, II e III, respectivamente. Nessas condições, o tipo de senha que apresenta a menor probabilidade de ser descoberta ao acaso, na primeira tentativa, é o\n\nAlternativas:\nA) tipo I, pois p1 < p2 < p3.\nB) tipo I, pois tem menor quantidade de caracteres.\nC) tipo II, pois tem maior quantidade de letras.\nD) tipo III, pois p3 < p2 < p1.\nE) tipo III, pois tem maior quantidade de caracteres.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 3981,
+      "prompt_tokens": 419,
+      "total_tokens": 4400,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001924",
+    "system": null,
+    "pergunta": "Para calcular o valor da entalpia dessa reação, um estudante consultou dados tabelados sobre os reagentes utilizados e o produto obtido. Esses dados são referentes ao(a)\n\nA) densidade\nB) calor latente\nC) volume molar\nD) calor específico\nE) energia de ligação",
+    "resposta": "{\"answer\":\"E\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 286,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "A entalpia é uma função de estado que permite obter informações sobre as variações de energia, isto é, o calor trocado entre o sistema e a vizinhança, à pressão constante. Assim, é possível saber se uma reação química libera ou absorve calor. A reação entre hidrogênio e cloro gasosos, apresentada na equação, libera 43 kcal de energia. Consequentemente, a variação de entalpia da reação por mol de cloreto de hidrogênio formado é de −21,5 kcal.\n\nH2 (g) + Cl2 (g) → 2 HCl (g)",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 280,
+      "total_tokens": 286,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001925",
+    "system": "",
+    "pergunta": "A ação governamental descrita é possibilitada por meio da seguinte estratégia:\n\nA) Redução do valor das contas de luz.\nB) Estímulo à geração de energia limpa.\nC) Diminuição de produção da matriz hidrelétrica.\nD) Distribuição da eletricidade de modo equitativo.\nE) Aproveitamento do fotoperíodo de forma estendida.",
+    "resposta": "{\"answer\":\"E\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 270,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "O horário brasileiro de verão consiste em adiantar em uma hora a hora legal (oficial) de determinados estados. Ele é adotado por iniciativa do Poder Executivo com vistas a limitar a máxima carga a que o sistema fica sujeito no período do ano de maior consumo, aumentando, assim, sua confiabilidade, constituída pelas linhas de transmissão e pelas usinas que atendem as regiões Sul, Sudeste, Centro-Oeste e parte da Região Norte.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nO horário brasileiro de verão consiste em adiantar em uma hora a hora legal (oficial) de determinados estados. Ele é adotado por iniciativa do Poder Executivo com vistas a limitar a máxima carga a que o sistema fica sujeito no período do ano de maior consumo, aumentando, assim, sua confiabilidade, constituída pelas linhas de transmissão e pelas usinas que atendem as regiões Sul, Sudeste, Centro-Oeste e parte da Região Norte.\n\nPergunta:\nA ação governamental descrita é possibilitada por meio da seguinte estratégia:\n\nAlternativas:\nA) Redução do valor das contas de luz.\nB) Estímulo à geração de energia limpa.\nC) Diminuição de produção da matriz hidrelétrica.\nD) Distribuição da eletricidade de modo equitativo.\nE) Aproveitamento do fotoperíodo de forma estendida.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 264,
+      "total_tokens": 270,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001926",
+    "system": null,
+    "pergunta": "Após ser ajustada, a vazão σ1, em termos do volume VT, é expressa por\n\nA) σ1 = (VT / 2) * (VT + 100)\nB) σ1 = (VT / 2) * (VT - 100)\nC) σ1 = (2VT) / (VT - 100)\nD) σ1 = (2VT) / (VT + 100)\nE) σ1 = VT / (VT - 50)",
+    "resposta": "{\"answer\":\"D\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 406,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "C",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Pretende-se utilizar uma bomba de combustível para abastecer, simultaneamente, duas aeronaves (A1 e A2), usando para isso vazões σ1 > 0 e σ2 > 0, respectivamente. A aeronave A2 tem um volume de 100 litros de combustível antes do início do abastecimento, mas A1 está sem combustível. Portanto, passados t segundos a partir do início do abastecimento, os volumes de combustível nas aeronaves são dados por V1 = σ1t e V2 = σ2t + 100. A vazão σ1 é ajustável, mas a vazão σ2 deve ser mantida a um valor fixo de 2 litros por segundo, conforme especificado pelo fabricante de A2. O abastecimento das duas aeronaves se inicia no mesmo instante, e o operador da bomba foi orientado para programá-la de modo que A1 e A2 tenham o mesmo volume VT de combustível após 10 minutos de abastecimento.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 400,
+      "total_tokens": 406,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001927",
+    "system": "",
+    "pergunta": "A medida apontada nesse texto para combater o racismo de forma efetiva no futebol é\n\nA) internacionalizar o debate sobre a questão.\nB) estimular a mudança de atitudes em jogo.\nC) enrijecer legislações sobre o tema.\nD) expor as práticas discriminatórias.\nE) envolver instituições esportivas.",
+    "resposta": "{\n  \"answer\": \"D\"\n}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 389,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "O caso Vinícius Júnior acendeu um alerta em praticamente todo o mundo contra manifestações de preconceito nos campos de futebol. No entanto, as ofensas não ocorrem apenas na Europa, mas também no Brasil — e têm aumentado nos últimos anos. Segundo um levantamento do Observatório da Discriminação Racial do Futebol, o Brasil viveu um aumento no número de ocorrências de racismo nos últimos anos. Em 2021, o Observatório registrou 64 situações de racismo. Já em 2022, foram comprovadas 90 situações — um aumento de 40%. A alta se dá porque os atletas têm tomado consciência da necessidade de fazer denúncias contra as ofensas. “O jogador de futebol compreendeu que aquilo que acontece em campo, que ele dizia que deveria morrer em campo, ele já entende que isso é crime, que o racismo é crime, não pode morrer em campo e precisa ser denunciado”, diz o diretor-executivo do Observatório.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nO caso Vinícius Júnior acendeu um alerta em praticamente todo o mundo contra manifestações de preconceito nos campos de futebol. No entanto, as ofensas não ocorrem apenas na Europa, mas também no Brasil — e têm aumentado nos últimos anos. Segundo um levantamento do Observatório da Discriminação Racial do Futebol, o Brasil viveu um aumento no número de ocorrências de racismo nos últimos anos. Em 2021, o Observatório registrou 64 situações de racismo. Já em 2022, foram comprovadas 90 situações — um aumento de 40%. A alta se dá porque os atletas têm tomado consciência da necessidade de fazer denúncias contra as ofensas. “O jogador de futebol compreendeu que aquilo que acontece em campo, que ele dizia que deveria morrer em campo, ele já entende que isso é crime, que o racismo é crime, não pode morrer em campo e precisa ser denunciado”, diz o diretor-executivo do Observatório.\n\nPergunta:\nA medida apontada nesse texto para combater o racismo de forma efetiva no futebol é\n\nAlternativas:\nA) internacionalizar o debate sobre a questão.\nB) estimular a mudança de atitudes em jogo.\nC) enrijecer legislações sobre o tema.\nD) expor as práticas discriminatórias.\nE) envolver instituições esportivas.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 379,
+      "total_tokens": 389,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001928",
+    "system": null,
+    "pergunta": "Uma das aspirações do Cinema Novo, movimento cinematográfico brasileiro dos anos 1960, incorporadas pela letra da canção e detectáveis no texto de Glauber Rocha, está na\n\nA) retomada das aspirações antropofágicas pela prática intertextual.\nB) problematização do conceito de arte provocada pela geração tropicalista.\nC) materialização do passado como instrumento de percepção do contemporâneo.\nD) síntese da cultura popular em sintonia com as manifestações artísticas da época.\nE) formulação de uma identidade brasileira calcada na tradição cultural e na crítica social.",
+    "resposta": "{\"answer\":\"E\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 540,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "TEXTO I\nCinema Novo\nO filme quis dizer: \"Eu sou o samba\"\nA voz do morro rasgou a tela do cinema\nE começaram a se configurar\nVisões das coisas grandes e pequenas\nQue nos formaram e estão a nos formar\nTodas e muitas: Deus e o diabo, vidas secas, os fuzis,\nOs cafajestes, o padre e a moça, a grande feira, o desafio\nOutras conversas, outras conversas sobre os jeitos do Brasil\nVELOSO, C.; GIL, G. In: Tropicália 2. Rio de Janeiro: Polygram, 1993 (fragmento).\nTEXTO II\nO cinema brasileiro partiu da consciência do subdesenvolvimento e da necessidade de\nsuperá-lo de maneira total, em sentido estético, filosófico, econômico: superar o\nsubdesenvolvimento com os meios do subdesenvolvimento. Tropicalismo é o nome dessa\noperação; por isso existe um cinema antes e depois do Tropicalismo. Agora nós não temos\nmais medo de afrontar a realidade brasileira, a nossa realidade, em todos os sentidos e a\ntodas as profundidades.\nROCHA, G. Tropicalismo, antropologia, mito, ideograma. In: Revolução do Cinema Novo. Rio de Janeiro: Alhambra;\nEmbrafilme, 1981 (adaptado).",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 534,
+      "total_tokens": 540,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001929",
+    "system": null,
+    "pergunta": "Qual resultado laboratorial favorecerá a nova proprietária no julgamento?\n\nA) IgM positivo e IgG positivo, com baixa avidez.\nB) IgM negativo e IgG negativo, com baixa avidez.\nC) IgM negativo e IgG positivo, independentemente da avidez.\nD) IgM positivo e IgG positivo, independentemente da avidez.\nE) IgM positivo e IgG negativo, independentemente da avidez.",
+    "resposta": "{\"answer\":\"A\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 361,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "C",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "A proprietária de um haras comprou um cavalo e, após alguns dias, descobriu que o animal apresentava uma doença viral séria. Sentindo-se prejudicada, iniciou uma disputa judicial para determinar se o cavalo já foi comprado infectado ou se ele adquiriu a doença na nova propriedade. Nesses casos, os anticorpos podem auxiliar na decisão do juiz, pois sabe-se que a presença da imunoglobulina M (IgM), primeira classe de anticorpo a ser secretada, refere-se a infecções recentes (primárias ou recorrentes), e que a imunoglobulina G (IgG) refere-se a infecções um pouco mais antigas. Além das classes, a força de ligação do anticorpo (avidez) também poderá trazer informações importantes, porque quanto maior a avidez, mais antiga é a infecção inicial.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 355,
+      "total_tokens": 361,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001930",
+    "system": null,
+    "pergunta": "O poema aborda a trajetória familiar do eu lírico para ressaltar a questão\n\nA) da ameaça ambiental.\nB) da hegemonia linguística.\nC) da competição profissional.\nD) dos percursos educacionais.\nE) das manifestações artísticas.",
+    "resposta": "{\"answer\":\"B\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 268,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "My father speaks Urdu\nlanguage of dancing peacocks\nrosewater fountains\neven its curses are beautiful.\nHe speaks Hindi\nsuave and melodic\nearthy Punjabi\nsalty rich as saag paneer\ncoastal Kiswahili\nlaced with Arabic,\nhe speaks Gujarati\nsolid ancestral pride.\nFive languages\nfive different worlds\nyet English\nshrinks\nhim\ndown\nbefore white men\nwho think their flat cold spiky words\nmake the only reality.\n\nPATEL, S. Migritude. San Francisco: Kaya Books, 2010.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 262,
+      "total_tokens": 268,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001931",
+    "system": null,
+    "pergunta": "O valor de A1/A2 é\n\nA) 1.\nB) 2.\nC) 3.\nD) 4.\nE) 9.",
+    "resposta": "{\"answer\":\"B\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 254,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "E",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Em uma sala escura há um ponto luminoso, a mais de 3 metros de distância de uma parede, e um disco pendurado, paralelo à parede, entre ela e o ponto luminoso. O disco encontra-se a 1 metro de distância do ponto luminoso, projetando uma sombra S1, em formato de círculo, na parede. Esse disco é afastado mais 2 m do ponto luminoso, em direção à sombra e sem encostar na parede, projetando outra sombra S2, também no formato de um círculo. Sejam A1 a área de S1 e A2 a área de S2.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 248,
+      "total_tokens": 254,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001932",
+    "system": null,
+    "pergunta": "Segundo o autor, qual é a origem do conhecimento humano?\n\nA) A potência inata da mente.\nB) A revelação da inspiração divina.\nC) O estudo das tradições filosóficas.\nD) A vivência dos fenômenos do mundo.\nE) O desenvolvimento do raciocínio abstrato.",
+    "resposta": "{\"answer\":\"D\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 311,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Adão, ainda que supuséssemos que suas faculdades racionais fossem inteiramente perfeitas desde o início, não poderia ter inferido da fluidez e transparência da água que ela o sufocaria, nem da luminosidade e calor do fogo que este poderia consumi-lo. Nenhum objeto jamais revela, pelas qualidades que aparecem aos sentidos, nem as causas que o produziram, nem os efeitos que dele provirão; e tampouco nossa razão é capaz de extrair, sem auxílio da experiência, qualquer conclusão referente à existência efetiva de coisas ou questões de fato.\nHUME, D. Uma investigação sobre o entendimento humano. São Paulo: Unesp, 2003.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 305,
+      "total_tokens": 311,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001933",
+    "system": null,
+    "pergunta": "Conforme o trecho filosófico, a pessoa capaz de bem decidir é dotada de uma qualidade\n\nA) teórica, voltada para o rigor da pesquisa.\nB) racional, voltada para a orientação das escolhas.\nC) pragmática, voltada para o desenvolvimento de projetos.\nD) filosófica, voltada para a delimitação de opiniões.\nE) social, voltada para a criação da arte.",
+    "resposta": "{\"answer\":\"B\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 330,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Pensa-se que é característico de uma pessoa de discernimento ser capaz de deliberar bem acerca do que é bom e conveniente para si mesma, não em relação a um aspecto particular — por exemplo, quando se quer saber quais as espécies de coisas que concorrem para a saúde e para o vigor físico —, e sim acerca das espécies de coisas que nos levam a viver bem de um modo geral. O discernimento deve ser então uma qualidade que leva à verdade no tocante às ações relacionadas com os bens humanos.\nARISTÓTELES. Ética a Nicômaco. In: MARCONDES, D. (Org.). Textos básicos de Ética. Rio de Janeiro: Zahar, 2008 (adaptado).",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 324,
+      "total_tokens": 330,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001934",
+    "system": null,
+    "pergunta": "De acordo com o texto, na produção e circulação da tradição cultural e religiosa descrita, são mobilizados elementos de natureza\n\nA) literária e ética.\nB) histórica e midiática.\nC) botânica e universal.\nD) científica e astrológica.\nE) etnográfica e astronômica.",
+    "resposta": "{\"answer\":\"B\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 347,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "São Nicolau, bispo de Mira, viveu no século IV e ficou conhecido como santo protetor das crianças. Na Idade Média, no dia 6 de dezembro, dia de São Nicolau, em Flandres, na Lorena e nos Países Baixos, um menino com uma barba branca e fantasiado de bispo passeava carregando presentes para as crianças. O nome holandês do santo, Sinter Klass, foi importado para a América pelos imigrantes, transformando-se em Santa Claus. Papai Noel é o que restou de São Nicolau, ou melhor, o que restava antes da transformação operada pela publicidade, que o representou de calças vermelhas, e não mais com a roupa longa \"de bispo\".\nFRUGONI, C. Invenções da Idade Média. Rio de Janeiro: Zahar, 2007 (adaptado).",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 341,
+      "total_tokens": 347,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001935",
+    "system": null,
+    "pergunta": "Com base nos trechos do decreto, as finalidades do órgão criado permitiram ao governo promover o(a)\n\nA) diversificação da opinião pública.\nB) mercantilização da cultura popular.\nC) controle das organizações sindicais.\nD) cerceamento da liberdade de expressão.\nE) privatização dos meios de comunicação.",
+    "resposta": "{\n  \"answer\": \"A\"\n}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 358,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "D",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "Decreto-Lei n. 1 949, de 27/12/1937\nArt. 1º Fica criado o Departamento de Imprensa e Propaganda (DIP), diretamente subordinado ao presidente da República.\nArt. 2º O DIP tem por fim:\n\nh) coordenar e incentivar as relações da imprensa com os poderes públicos no sentido de maior aproximação da mesma com os fatos que se ligam aos interesses nacionais;\n\nn) autorizar mensalmente a devolução dos depósitos efetuados pelas empresas jornalísticas para a importação de papel para imprensa, uma vez demonstrada, a seu juízo, a eficiência e a utilidade pública dos jornais ou periódicos por elas administrados ou dirigidos.\n\nBRASIL apud CARONE, E. A Terceira República (1937-1945). São Paulo: Difel, 1982 (adaptado).",
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 348,
+      "total_tokens": 358,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001936",
+    "system": "",
+    "pergunta": "A restauração do objeto de prata ocorre por causa do(a)\n\nA) prata, que reduz o enxofre.\nB) íon sulfeto, que sofre oxidação.\nC) íon hidróxido, que atua como agente oxidante.\nD) alumínio, que atua como agente redutor no processo.\nE) variação do pH do meio reacional, que aumenta durante a reação.",
+    "resposta": "{\n  \"answer\": \"D\"\n}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 350,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Os objetos de prata tendem a escurecer com o tempo, em contato com compostos de enxofre, por causa da formação de uma película superficial de sulfeto de prata (Ag2S), que é escuro. Um método muito simples para restaurar a superfície original desses objetos é mergulhá-los em uma solução diluída aquecida de hidróxido de sódio (NaOH), contida em uma panela comum de alumínio. A equação química que ilustra esse processo é: 3 Ag2S (s) + 2 Al (s) + 8 NaOH (aq) → 6 Ag (s) + 3 Na2S (aq) + 2 NaAlO2 (aq) + 4 H2O (l)",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nOs objetos de prata tendem a escurecer com o tempo, em contato com compostos de enxofre, por causa da formação de uma película superficial de sulfeto de prata (Ag2S), que é escuro. Um método muito simples para restaurar a superfície original desses objetos é mergulhá-los em uma solução diluída aquecida de hidróxido de sódio (NaOH), contida em uma panela comum de alumínio. A equação química que ilustra esse processo é: 3 Ag2S (s) + 2 Al (s) + 8 NaOH (aq) → 6 Ag (s) + 3 Na2S (aq) + 2 NaAlO2 (aq) + 4 H2O (l)\n\nPergunta:\nA restauração do objeto de prata ocorre por causa do(a)\n\nAlternativas:\nA) prata, que reduz o enxofre.\nB) íon sulfeto, que sofre oxidação.\nC) íon hidróxido, que atua como agente oxidante.\nD) alumínio, que atua como agente redutor no processo.\nE) variação do pH do meio reacional, que aumenta durante a reação.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 340,
+      "total_tokens": 350,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001937",
+    "system": "",
+    "pergunta": "O texto de Agualusa tematiza o preconceito em relação ao português brasileiro. Com base no trecho citado pelo autor, infere-se que esse preconceito se deve\n\nA) à dificuldade de consolidação da literatura brasileira em outros países.\nB) aos diferentes graus de instrução formal entre os falantes de língua portuguesa.\nC) à existência de uma língua ideal que alguns falantes lusitanos creem ser a falada em Portugal.\nD) ao intercâmbio cultural que ocorre entre os povos dos diferentes países de língua portuguesa.\nE) à distância territorial entre os falantes do português que vivem em Portugal e no Brasil.",
+    "resposta": "{\"answer\":\"C\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 467,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "De quem é esta língua? Uma pequena editora brasileira, a Urutau, acaba de lançar em Lisboa uma “antologia antirracista de poetas estrangeiros em Portugal”, com o título Volta para a tua terra. O livro denuncia as diversas formas de racismo a que os imigrantes estão sujeitos. Alguns dos poetas brasileiros antologiados queixam-se do desdém com que um grande número de portugueses acolhe o português brasileiro. É uma queixa frequente. “Aqui em Portugal eles dizem / — eles dizem — / que nosso português é errado, que nós não falamos português”, escreve a poetisa paulista Maria Giulia Pinheiro, para concluir: “Se a sua linguagem, a lusitana, / ainda conserva a palavra da opressão / ela não é a mais bonita do mundo./ Ela é uma das mais violentas”. AGUALUSA, J. E. Disponível em: https://oglobo.globo.com. Acesso em: 22 nov. 2021 (adaptado).",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nDe quem é esta língua? Uma pequena editora brasileira, a Urutau, acaba de lançar em Lisboa uma “antologia antirracista de poetas estrangeiros em Portugal”, com o título Volta para a tua terra. O livro denuncia as diversas formas de racismo a que os imigrantes estão sujeitos. Alguns dos poetas brasileiros antologiados queixam-se do desdém com que um grande número de portugueses acolhe o português brasileiro. É uma queixa frequente. “Aqui em Portugal eles dizem / — eles dizem — / que nosso português é errado, que nós não falamos português”, escreve a poetisa paulista Maria Giulia Pinheiro, para concluir: “Se a sua linguagem, a lusitana, / ainda conserva a palavra da opressão / ela não é a mais bonita do mundo./ Ela é uma das mais violentas”. AGUALUSA, J. E. Disponível em: https://oglobo.globo.com. Acesso em: 22 nov. 2021 (adaptado).\n\nPergunta:\nO texto de Agualusa tematiza o preconceito em relação ao português brasileiro. Com base no trecho citado pelo autor, infere-se que esse preconceito se deve\n\nAlternativas:\nA) à dificuldade de consolidação da literatura brasileira em outros países.\nB) aos diferentes graus de instrução formal entre os falantes de língua portuguesa.\nC) à existência de uma língua ideal que alguns falantes lusitanos creem ser a falada em Portugal.\nD) ao intercâmbio cultural que ocorre entre os povos dos diferentes países de língua portuguesa.\nE) à distância territorial entre os falantes do português que vivem em Portugal e no Brasil.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 461,
+      "total_tokens": 467,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001938",
+    "system": "",
+    "pergunta": "No Brasil, a tradição mencionada no texto foi responsável pela\n\nA) preservação do tráfico humano.\nB) ampliação do sistema migratório.\nC) diversidade do patrimônio cultural.\nD) variedade do conhecimento autóctone.\nE) multiplicidade do comércio estrangeiro.",
+    "resposta": "{\n  \"answer\": \"C\"\n}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 272,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "\"Pretuguês\" é o termo cunhado por Lélia Gonzalez para se referir à tradição africana presente na língua portuguesa falada no Brasil; a característica tonal e rítmica do português seria uma herança das línguas dos povos africanos que vieram escravizados para o país. A autora destaca que a presença do \"r\" no lugar do \"l\" (quando se diz \"framengo\", por exemplo) pode remeter à ausência da letra \"l\" em certos idiomas africanos do tronco linguístico bantu.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\n\"Pretuguês\" é o termo cunhado por Lélia Gonzalez para se referir à tradição africana presente na língua portuguesa falada no Brasil; a característica tonal e rítmica do português seria uma herança das línguas dos povos africanos que vieram escravizados para o país. A autora destaca que a presença do \"r\" no lugar do \"l\" (quando se diz \"framengo\", por exemplo) pode remeter à ausência da letra \"l\" em certos idiomas africanos do tronco linguístico bantu.\n\nPergunta:\nNo Brasil, a tradição mencionada no texto foi responsável pela\n\nAlternativas:\nA) preservação do tráfico humano.\nB) ampliação do sistema migratório.\nC) diversidade do patrimônio cultural.\nD) variedade do conhecimento autóctone.\nE) multiplicidade do comércio estrangeiro.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 262,
+      "total_tokens": 272,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001939",
+    "system": null,
+    "pergunta": "No texto, há uma crítica ao modo de ocupação do espaço amazônico pautada na\n\nA) discrepância entre engenharia ambiental e equilíbrio da fauna.\nB) incoerência entre maquinaria estrangeira e controle da floresta.\nC) incompatibilidade entre investimento estatal e proteção aos nativos.\nD) competição entre farmacologia internacional e produtos da fitoterapia.\nE) contradição entre desenvolvimento nacional e respeito aos trabalhadores.",
+    "resposta": "{\"answer\":\"E\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 371,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Na construção da ferrovia Madeira-Mamoré, o que dizer dos doentes, eternos moribundos a vagar entre delírios febris, doses de quinino e corredores da morte? O Hospital da Candelária era santuário e túmulo, monumento ao progresso científico e preâmbulo da escuridão. Foi ali, com suas instalações moderníssimas, que médicos e sanitaristas dirigiram seu combate aos males tropicais. As maiores vítimas, contudo, permaneceriam na sombra à margem do palco, cobaias sem consolo, credores sem nome de uma sociedade que não lhes concedera tempo algum para ser decifrada.\nFOOT HARDMAN, F. Trem fantasma: modernidade na selva. São Paulo: Cia. das Letras, 1988 (adaptado).",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 365,
+      "total_tokens": 371,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001940",
+    "system": "",
+    "pergunta": "Nessa situação, o preço a ser pago ao aplicativo para uma hospedagem de n diárias pode ser obtido pela expressão\n\nA) P = d n + L + d n s\nB) P = d n + L + d s\nC) P = d + L + s\nD) P = d n s + L\nE) P = d n + L + s",
+    "resposta": "{\"answer\":\"A\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 270,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Aplicativos que gerenciam serviços de hospedagem têm ganhado espaço no Brasil e no mundo por oferecer opções diferenciadas em termos de localização e valores de hospedagem. Em um desses aplicativos, o preço P a ser pago pela hospedagem é calculado considerando um preço por diária d, acrescido de uma taxa fixa de limpeza L e de uma taxa de serviço. Essa taxa de serviço é um valor percentual s calculado sobre o valor pago pelo total das diárias.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nAplicativos que gerenciam serviços de hospedagem têm ganhado espaço no Brasil e no mundo por oferecer opções diferenciadas em termos de localização e valores de hospedagem. Em um desses aplicativos, o preço P a ser pago pela hospedagem é calculado considerando um preço por diária d, acrescido de uma taxa fixa de limpeza L e de uma taxa de serviço. Essa taxa de serviço é um valor percentual s calculado sobre o valor pago pelo total das diárias.\n\nPergunta:\nNessa situação, o preço a ser pago ao aplicativo para uma hospedagem de n diárias pode ser obtido pela expressão\n\nAlternativas:\nA) P = d n + L + d n s\nB) P = d n + L + d s\nC) P = d + L + s\nD) P = d n s + L\nE) P = d n + L + s\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 264,
+      "total_tokens": 270,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001941",
+    "system": "",
+    "pergunta": "A interação dinâmica entre as forças naturais citadas favorece a ocupação do espaço geográfico, na medida em que provoca a formação de\n\nA) solos vulcânicos.\nB) dorsais oceânicas.\nC) relevos escarpados.\nD) superfícies lateríticas.\nE) dobramentos modernos.",
+    "resposta": "{\n  \"answer\": \"C\"\n}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 240,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "A",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "As forças tectônicas dentro da litosfera, controladas pelo calor interno das profundezas, geram terremotos, erupções e soerguimento de montanhas. As forças meteorológicas dentro da atmosfera e da hidrosfera, controladas pelo calor do Sol, produzem tempestades, inundações, geleiras e outros agentes de erosão.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nAs forças tectônicas dentro da litosfera, controladas pelo calor interno das profundezas, geram terremotos, erupções e soerguimento de montanhas. As forças meteorológicas dentro da atmosfera e da hidrosfera, controladas pelo calor do Sol, produzem tempestades, inundações, geleiras e outros agentes de erosão.\n\nPergunta:\nA interação dinâmica entre as forças naturais citadas favorece a ocupação do espaço geográfico, na medida em que provoca a formação de\n\nAlternativas:\nA) solos vulcânicos.\nB) dorsais oceânicas.\nC) relevos escarpados.\nD) superfícies lateríticas.\nE) dobramentos modernos.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 230,
+      "total_tokens": 240,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001942",
+    "system": null,
+    "pergunta": "A condição social, discutida no texto, demonstra que a ordem burguesa tinha como pressuposto a\n\nA) contestação dos valores tradicionais do cristianismo.\nB) eliminação dos afazeres do lar.\nC) importância da divisão sexual do trabalho.\nD) remuneração das atividades femininas.\nE) relevância das práticas recreativas.",
+    "resposta": "{\"answer\":\"C\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 322,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "C",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "C"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "A dona de casa está investida de todos os tipos de função. Primeiramente, dar à luz e criar filhos e, a partir do momento em que sabem andar, acompanharem-na por toda a parte. A mulher e seus filhos são figuras familiares profusamente reproduzidas pela iconografia da época. Segunda função: a manutenção da família, as “tarefas domésticas”, expressão que tem um sentido muito amplo, incluindo a alimentação, a educação, a limpeza da casa etc. A sociedade do século XIX não poderia crescer e se reproduzir sem a contribuição dessas mulheres. PERROT, M. Os excluídos da história: operários, mulheres e prisioneiros. São Paulo: Paz e Terra, 1992 (adaptado).",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 316,
+      "total_tokens": 322,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001943",
+    "system": "",
+    "pergunta": "Qual medida promove a participação social descrita no texto?\n\nA) Redução dos impostos municipais.\nB) Privatização dos espaços públicos.\nC) Adensamento das áreas de comércio.\nD) Valorização dos condomínios fechados.\nE) Fortalecimento das associações de bairro.",
+    "resposta": "{\n  \"answer\": \"E\"\n}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 284,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "E",
+        "gold": "E",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "A participação social no planejamento e na gestão urbanos ganhou impulso a partir do Estatuto da Cidade (Lei n. 10.257/2001), que estabeleceu condições para elaboração de planos diretores participativos, instrumentos indutores da expansão urbana e do ordenamento territorial que, a princípio, devem buscar representar os interesses dos diversos segmentos da sociedade. No entanto, é notório o limite à representação dos interesses das camadas sociais menos favorecidas nesse processo. Este rumo deve ser corrigido e deve-se continuar buscando mecanismos de inclusão dos interesses de toda a sociedade.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nA participação social no planejamento e na gestão urbanos ganhou impulso a partir do Estatuto da Cidade (Lei n. 10.257/2001), que estabeleceu condições para elaboração de planos diretores participativos, instrumentos indutores da expansão urbana e do ordenamento territorial que, a princípio, devem buscar representar os interesses dos diversos segmentos da sociedade. No entanto, é notório o limite à representação dos interesses das camadas sociais menos favorecidas nesse processo. Este rumo deve ser corrigido e deve-se continuar buscando mecanismos de inclusão dos interesses de toda a sociedade.\n\nPergunta:\nQual medida promove a participação social descrita no texto?\n\nAlternativas:\nA) Redução dos impostos municipais.\nB) Privatização dos espaços públicos.\nC) Adensamento das áreas de comércio.\nD) Valorização dos condomínios fechados.\nE) Fortalecimento das associações de bairro.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 274,
+      "total_tokens": 284,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001944",
+    "system": "",
+    "pergunta": "Nas histórias apresentadas, o exercício pleno da soberania nacional das plataformas mencionadas foi limitado pela ausência do seguinte fator:\n\nA) Moeda própria.\nB) População nativa.\nC) Legislação inclusiva.\nD) Mercado consumidor.\nE) Reconhecimento externo.",
+    "resposta": "{\"answer\":\"C\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 863,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "C",
+        "gold": "E",
+        "correct": false,
+        "unknown": false
+      },
+      "resposta_referencia": "E"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 0,
+    "total_tokens_julgamento": 0,
+    "contexto": "TEXTO I\nNo final da década de 1960, o criativo engenheiro Giorgio Rosa decide construir uma plataforma marítima, fincá-la a míseros metros além do limite do mar territorial italiano (portanto, já em “águas internacionais”, que, em tese, não pertencem a país algum), e proclamá-la uma nação independente, livre de regras e burocracias.\nLogo, a exótica “ilha”, feita de tijolos e concreto sobre pilares de aço, que, na sua essência, traduzia o mais fiel significado da expressão de liberdade, virou uma espécie de Meca para os jovens daqueles acalorados anos de rebeldia social, e passou a ter cada vez mais movimento (além de pedidos de “cidadania”), o que incomodou demais o governo italiano, que decidiu agir com inesperado rigor.\nApesar dos seus ideais de “completa independência e liberdade”, Rosa nunca negou que sua ilha desempenharia, também, papel comercial e turístico, gerando dinheiro para os envolvidos — razão pela qual se resumia a um bar, um pequeno restaurante e uma lojinha de souvenires — que, por estarem fora da jurisdição da Itália, tampouco pagavam impostos.\nIlha das Rosas não foi destruída numa só investida da Marinha italiana. Ao contrário, foi preciso duas sequências de explosivos, ao longo de dois dias.\nSOUZA, J. O que há de real na história do homem que construiu uma ilha e virou filme. Disponível em: https://historiasdomar.blogosfera.uol.com.br. Acesso em: 5 nov. 2021 (adaptado).\nTEXTO II\nEm 2 de setembro de 1967, Bates “tomou posse” de uma espécie de plataforma em pleno Mar do Norte, a cerca de sete milhas da costa inglesa e sem nenhum grão de terra firme, e declarou criado o Principado de Sealand. Em seguida, criou um hino, uma bandeira e passou a vender títulos de nobreza para quem quisesse virar cidadão da sua micronação, como forma de ganhar algum dinheiro.\nPara Bates, o fato de a pequena fortaleza de Roughs Tower ficar sobre águas internacionais e ter sido abandonada pela Inglaterra a tornava sem dono e, portanto, passível de ser pleiteada por qualquer pessoa, dentro dos princípios jurídicos de terra nullius.\nObviamente, o governo inglês tentou reagir contra aquele absurdo. Mas a localização da plataforma, que havia sido construída de forma ilegal em águas internacionais, impedia uma ação mais efetiva. Mesmo assim, manobras militares inglesas nas proximidades tentaram intimidar os Bates. Mas eles não moveram os pés do “seu país” nem quando dois outros “invasores” tentaram conquistá-la à força.\nSOUZA, J. A plataforma marítima que virou país. Disponível em: https://historiasdomar.com. Acesso em: 5 nov. 2021 (adaptado).",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nTEXTO I\nNo final da década de 1960, o criativo engenheiro Giorgio Rosa decide construir uma plataforma marítima, fincá-la a míseros metros além do limite do mar territorial italiano (portanto, já em “águas internacionais”, que, em tese, não pertencem a país algum), e proclamá-la uma nação independente, livre de regras e burocracias.\nLogo, a exótica “ilha”, feita de tijolos e concreto sobre pilares de aço, que, na sua essência, traduzia o mais fiel significado da expressão de liberdade, virou uma espécie de Meca para os jovens daqueles acalorados anos de rebeldia social, e passou a ter cada vez mais movimento (além de pedidos de “cidadania”), o que incomodou demais o governo italiano, que decidiu agir com inesperado rigor.\nApesar dos seus ideais de “completa independência e liberdade”, Rosa nunca negou que sua ilha desempenharia, também, papel comercial e turístico, gerando dinheiro para os envolvidos — razão pela qual se resumia a um bar, um pequeno restaurante e uma lojinha de souvenires — que, por estarem fora da jurisdição da Itália, tampouco pagavam impostos.\nIlha das Rosas não foi destruída numa só investida da Marinha italiana. Ao contrário, foi preciso duas sequências de explosivos, ao longo de dois dias.\nSOUZA, J. O que há de real na história do homem que construiu uma ilha e virou filme. Disponível em: https://historiasdomar.blogosfera.uol.com.br. Acesso em: 5 nov. 2021 (adaptado).\nTEXTO II\nEm 2 de setembro de 1967, Bates “tomou posse” de uma espécie de plataforma em pleno Mar do Norte, a cerca de sete milhas da costa inglesa e sem nenhum grão de terra firme, e declarou criado o Principado de Sealand. Em seguida, criou um hino, uma bandeira e passou a vender títulos de nobreza para quem quisesse virar cidadão da sua micronação, como forma de ganhar algum dinheiro.\nPara Bates, o fato de a pequena fortaleza de Roughs Tower ficar sobre águas internacionais e ter sido abandonada pela Inglaterra a tornava sem dono e, portanto, passível de ser pleiteada por qualquer pessoa, dentro dos princípios jurídicos de terra nullius.\nObviamente, o governo inglês tentou reagir contra aquele absurdo. Mas a localização da plataforma, que havia sido construída de forma ilegal em águas internacionais, impedia uma ação mais efetiva. Mesmo assim, manobras militares inglesas nas proximidades tentaram intimidar os Bates. Mas eles não moveram os pés do “seu país” nem quando dois outros “invasores” tentaram conquistá-la à força.\nSOUZA, J. A plataforma marítima que virou país. Disponível em: https://historiasdomar.com. Acesso em: 5 nov. 2021 (adaptado).\n\nPergunta:\nNas histórias apresentadas, o exercício pleno da soberania nacional das plataformas mencionadas foi limitado pela ausência do seguinte fator:\n\nAlternativas:\nA) Moeda própria.\nB) População nativa.\nC) Legislação inclusiva.\nD) Mercado consumidor.\nE) Reconhecimento externo.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 857,
+      "total_tokens": 863,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001945",
+    "system": null,
+    "pergunta": "Ao reprovar a ação da indústria da felicidade e um comportamento humano, o texto associa a\n\nA) ansiedade recorrente ao lançamento de novidades no mercado.\nB) visita frequente ao shopping à resolução de problemas cotidianos.\nC) atitude impensada ao atendimento de necessidades emergenciais.\nD) postura consumista à crença na promessa ilusória de anúncios publicitários.\nE) vantagem econômica à venda de produtos falsificados no mercado ambulante.",
+    "resposta": "{\"answer\":\"D\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 469,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "D",
+        "gold": "D",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "D"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Indústria cultural da felicidade\nTornou-se perigoso o emprego da palavra felicidade desde seu mau uso pela propaganda. Os que se negam a usá-la acreditam liberar os demais dos desvios das falsas necessidades, das bugigangas que se podem comprar em shoppings grã-finos ou em camelôs na beira da calçada, que, juntos, sustentam a indústria cultural da felicidade à qual foi reduzido o que, antes, era o ideal ético de uma vida justa. Infelicidade poderia ser o nome próprio desse novo estado da alma humana que se perdeu de si ao perder-se do sentido do que está a fazer. Desespero é um termo ainda mais agudo quando se trata da perda do sentido das ações pela perda da capacidade de reflexão sobre o que se faz. A felicidade publicitária está ao alcance dos dedos e não promete um depois. Resulta disso a massa de “desesperados” trafegando como zumbis nos shoppings e nas farmácias do país em busca de alento.\nTIBURI, M. Disponível em: http://revistacult.uol.com.br. Acesso em: 12 nov. 2014 (adaptado).",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 463,
+      "total_tokens": 469,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001946",
+    "system": "",
+    "pergunta": "Nessa passagem, a situação de tensão entre os personagens revela a\n\nA) contradição social decorrente de diferenças de classe.\nB) dificuldade inerente às condições de vida do trabalhador.\nC) indiferença do idoso em relação ao constrangimento vivido.\nD) determinação pessoal no enfrentamento de conflitos sociais.\nE) priorização no atendimento da clientela em razão de seu gênero.",
+    "resposta": "{\"answer\":\"A\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 394,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "A",
+        "gold": "A",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "A"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "O velho da roça perguntou: — Quanto é a batata, moço? — É dez. — Lá embaixo tem de oito, falou querendo mais parecer cidadão. — Por que não comprou lá embaixo, então? O velho acomodou aquilo como pôde na capanga vazia e engoliu em seco, de repente mais fino, mais murcho, a cabeça dele parecendo a cabecinha de um boneco com um chapéu. Deu um passo atrás, ainda olhando pro dono, e saiu como um cachorro. Glória largou suas compras no balcão, enojada de suas batatas, de seu pacote de manteiga, do seu miserável poder de comprar coisas a Cr$ 10,00 o quilo e ser tratada como primeira-ministra pelo boçal avarento.\nPRADO, A. Cacos para um vitral. São Paulo: Siciliano, 1991.",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nO velho da roça perguntou: — Quanto é a batata, moço? — É dez. — Lá embaixo tem de oito, falou querendo mais parecer cidadão. — Por que não comprou lá embaixo, então? O velho acomodou aquilo como pôde na capanga vazia e engoliu em seco, de repente mais fino, mais murcho, a cabeça dele parecendo a cabecinha de um boneco com um chapéu. Deu um passo atrás, ainda olhando pro dono, e saiu como um cachorro. Glória largou suas compras no balcão, enojada de suas batatas, de seu pacote de manteiga, do seu miserável poder de comprar coisas a Cr$ 10,00 o quilo e ser tratada como primeira-ministra pelo boçal avarento.\nPRADO, A. Cacos para um vitral. São Paulo: Siciliano, 1991.\n\nPergunta:\nNessa passagem, a situação de tensão entre os personagens revela a\n\nAlternativas:\nA) contradição social decorrente de diferenças de classe.\nB) dificuldade inerente às condições de vida do trabalhador.\nC) indiferença do idoso em relação ao constrangimento vivido.\nD) determinação pessoal no enfrentamento de conflitos sociais.\nE) priorização no atendimento da clientela em razão de seu gênero.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 388,
+      "total_tokens": 394,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001947",
+    "system": null,
+    "pergunta": "No texto, o personagem vincula ao carnaval atitudes e reações coletivas diante das quais expressa\n\nA) consagração da alegria do povo.\nB) atração e asco perante atitudes libertinas.\nC) espanto com a quantidade de foliões nas ruas.\nD) intenção de confraternizar com desconhecidos.\nE) reconhecimento da festa como manifestação cultural.",
+    "resposta": "{\"answer\":\"B\"}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 431,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "— [...] Na terça desliguei-me do grupo e caí no mar alto da depravação, só, com uma roupa leve por cima da pele e todos os maus instintos fustigados. De resto a cidade inteira estava assim. É o momento em que por trás das máscaras as meninas confessam paixões aos rapazes, é o instante em que as ligações mais secretas transparecem, em que a virgindade é dúbia, e todos nós a achamos inútil, a honra uma caceteação, o bom senso uma fadiga. Nesse momento tudo é possível, os maiores absurdos, os maiores crimes; nesse momento há um riso que galvaniza os sentidos e o beijo se desata naturalmente. Eu estava trepidante, com uma ânsia de acanalhar-me, quase mórbida. Nada de raparigas do galarim perfumadas e por demais conhecidas, nada do contato familiar, mas o deboche anônimo, o deboche ritual de chegar, pegar, acabar, continuar. Era ignóbil. Felizmente muita gente sofre do mesmo mal no carnaval.",
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 425,
+      "total_tokens": 431,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001948",
+    "system": "",
+    "pergunta": "O poema expressa os sentimentos de uma chicana nos Estados Unidos. Nesse cenário, o eu lírico faz um apelo fundamentado na\n\nA) criação de uma sociedade chicana livre das dificuldades.\nB) necessidade dos chicanos de valorizarem suas origens.\nC) possibilidade de recuperação das terras chicanas.\nD) morte de chicanos pela ganância dos invasores.\nE) revolta contra a atitude resignada dos chicanos.",
+    "resposta": "{\"answer\":\"B\"}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 456,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "No se raje, chicanita (para Missy Anzaldúa)\nNo se raje, mi prietita,\napriétese la faja aguántese.\nSu linaje es antiquísimo,\nsus raíces como las de los mesquites,\nbien plantadas, horadando bajo tierra\na esa corriente, el alma de tierra madre —\ntu origen.\n[…]\nY sí, nos han quitado las tierras.\nYa no nos queda ni el camposanto\ndonde enterraron a Don Urbano tu vis-visabuelo.\nTiempos duros como pastura los cargamos\nderechitas caminamos.\nPero nunca quitarán ese orgullo\nde ser mexicana — chicana — tejana\nni el espíritu indio.\nY cuando los gringos se acaban —\nmira como se matan unos a los otros —\naquí vamos a parecer\npero una nueva especie\npiel entre negra y bronces\nsegunda pestaña bajo la primera\ncon el poder de mirar al sol ojos desnudos.\nY vivas, m’ijita, retevivas.\nANZALDÚA, G. Borderlands/la frontera: the new mestiza. San Francisco: Aunt Lute Books, 1987 (fragmento).",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nNo se raje, chicanita (para Missy Anzaldúa)\nNo se raje, mi prietita,\napriétese la faja aguántese.\nSu linaje es antiquísimo,\nsus raíces como las de los mesquites,\nbien plantadas, horadando bajo tierra\na esa corriente, el alma de tierra madre —\ntu origen.\n[…]\nY sí, nos han quitado las tierras.\nYa no nos queda ni el camposanto\ndonde enterraron a Don Urbano tu vis-visabuelo.\nTiempos duros como pastura los cargamos\nderechitas caminamos.\nPero nunca quitarán ese orgullo\nde ser mexicana — chicana — tejana\nni el espíritu indio.\nY cuando los gringos se acaban —\nmira como se matan unos a los otros —\naquí vamos a parecer\npero una nueva especie\npiel entre negra y bronces\nsegunda pestaña bajo la primera\ncon el poder de mirar al sol ojos desnudos.\nY vivas, m’ijita, retevivas.\nANZALDÚA, G. Borderlands/la frontera: the new mestiza. San Francisco: Aunt Lute Books, 1987 (fragmento).\n\nPergunta:\nO poema expressa os sentimentos de uma chicana nos Estados Unidos. Nesse cenário, o eu lírico faz um apelo fundamentado na\n\nAlternativas:\nA) criação de uma sociedade chicana livre das dificuldades.\nB) necessidade dos chicanos de valorizarem suas origens.\nC) possibilidade de recuperação das terras chicanas.\nD) morte de chicanos pela ganância dos invasores.\nE) revolta contra a atitude resignada dos chicanos.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 6,
+      "prompt_tokens": 450,
+      "total_tokens": 456,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001949",
+    "system": null,
+    "pergunta": "O problema apontado no texto demanda o planejamento das cidades para\n\nA) diversificar parques industriais.\nB) reestruturar redes de drenagem.\nC) redimensionar áreas de comércio.\nD) padronizar modais de transporte público.\nE) flexibilizar regras de verticalização urbana.",
+    "resposta": "{\n  \"answer\": \"B\"\n}",
+    "parametros_inferencia": {
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "perfil_registrado_da_execucao"
+    },
+    "total_tokens": 257,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Se o aquecimento global aumentar pelo menos 2 °C, as projeções para uma ampla área do Brasil é de mais chuvas concentradas. No Sudeste e no Sul, onde vive 60% da população brasileira, tem ocorrido um aumento claro no nível de pluviosidade média e de episódios extremos de chuvas desde os anos 1960, tendências que devem se intensificar nas próximas décadas caso o planeta aqueça 2 °C.",
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 247,
+      "total_tokens": 257,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  },
+  {
+    "id": "001950",
+    "system": "",
+    "pergunta": "Essa resistência tem ocorrido porque os(as)\n\nA) bactérias patogênicas se multiplicam de maneira acelerada.\nB) antibióticos são utilizados pela população de maneira indiscriminada.\nC) bactérias possuem plasmídeos que contêm genes relacionados à virulência.\nD) bactérias podem ser transmitidas para um indivíduo utilizando várias estratégias.\nE) serviços de saúde precários constituem importantes focos de bactérias patogênicas.",
+    "resposta": "{\n  \"answer\": \"B\"\n}",
+    "parametros_inferencia": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "min_p": 0.0,
+      "presence_penalty": 0.0,
+      "repetition_penalty": 1.1,
+      "max_tokens": null,
+      "chat_template_kwargs": {
+        "preserve_thinking": false,
+        "enable_thinking": false
+      },
+      "context_length": 262144,
+      "reasoning_parser": "qwen3",
+      "tool_parser": "qwen3_coder",
+      "origem": "requisicao_efetiva"
+    },
+    "total_tokens": 341,
+    "custo": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "geracao_local_sem_custo_de_api_gpu_excluida"
+    },
+    "julgamento": {
+      "tipo": "deterministico",
+      "modelo": null,
+      "veredito": {
+        "prediction": "B",
+        "gold": "B",
+        "correct": true,
+        "unknown": false
+      },
+      "resposta_referencia": "B"
+    },
+    "parametros_inferencia_julgamento": null,
+    "custo_julgamento": {
+      "valor": 0,
+      "moeda": "USD",
+      "origem": "correcao_deterministica_sem_api"
+    },
+    "score": 100,
+    "total_tokens_julgamento": 0,
+    "contexto": "Nas últimas décadas vários países, inclusive o Brasil, têm testemunhado uma grande proliferação de bactérias patogênicas, envolvidas em uma variedade de doenças e que apresentam resistência a múltiplos antibióticos. Atualmente têm se destacado as superbactérias que acumularam vários genes determinantes de resistência, a ponto de se tornarem resistentes a praticamente todos os antimicrobianos.\nFERREIRA, F. A.; CRUZ, R. S.; FIGUEIREDO, A. M. S. O problema da resistência a antibióticos. Ciência Hoje, v.48, n.287, 2011 (adaptado).",
+    "mensagens_enviadas": [
+      {
+        "role": "user",
+        "content": "Texto de apoio:\nNas últimas décadas vários países, inclusive o Brasil, têm testemunhado uma grande proliferação de bactérias patogênicas, envolvidas em uma variedade de doenças e que apresentam resistência a múltiplos antibióticos. Atualmente têm se destacado as superbactérias que acumularam vários genes determinantes de resistência, a ponto de se tornarem resistentes a praticamente todos os antimicrobianos.\nFERREIRA, F. A.; CRUZ, R. S.; FIGUEIREDO, A. M. S. O problema da resistência a antibióticos. Ciência Hoje, v.48, n.287, 2011 (adaptado).\n\nPergunta:\nEssa resistência tem ocorrido porque os(as)\n\nAlternativas:\nA) bactérias patogênicas se multiplicam de maneira acelerada.\nB) antibióticos são utilizados pela população de maneira indiscriminada.\nC) bactérias possuem plasmídeos que contêm genes relacionados à virulência.\nD) bactérias podem ser transmitidas para um indivíduo utilizando várias estratégias.\nE) serviços de saúde precários constituem importantes focos de bactérias patogênicas.\n\nRetorne estritamente um JSON válido no formato {\"answer\":\"A\"}. O valor de answer deve ser somente A, B, C, D ou E. Não inclua markdown, texto extra ou justificativa."
+      }
+    ],
+    "tokens": {
+      "completion_tokens": 10,
+      "prompt_tokens": 331,
+      "total_tokens": 341,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null,
+      "reasoning_tokens": 0
+    },
+    "motivo_encerramento": "stop"
+  }
+]

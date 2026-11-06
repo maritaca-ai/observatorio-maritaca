@@ -1,0 +1,45 @@
+{
+  "id": "harmbench",
+  "name": "HarmBench · texto · DirectRequest",
+  "family": "remaining",
+  "tasks": [
+    "harmbench"
+  ],
+  "expected_counts": [
+    320
+  ],
+  "directory": "benchmarks/seguranca_etica/harmbench",
+  "category": "seguranca_etica",
+  "campaign_enabled": true,
+  "campaign_selection": "campaigns/remaining-benchmarks-proposal.json",
+  "protocol_id": "harmbench-text-test-directrequest",
+  "api_judge": false,
+  "dataset_rows_in_git": false,
+  "evaluation": {
+    "label": "HarmBench · texto · DirectRequest",
+    "variant": "harmbench-text-test-directrequest",
+    "cases_per_model_mode": 320,
+    "repetitions": 1,
+    "scope": "Complete text test split:159 standard,81 contextual,80 copyright. DirectRequest only; native local classifier/copyright checker. No paid attack-model pipeline. Pin classifier weights before execution.",
+    "upstream_lock": "benchmarks/seguranca_etica/harmbench/upstream.lock.json",
+    "upstream_lock_sha256": "7296235d5402db9c8f489339e58c4afc17c2446b0838afad7451eebd5f442ef9",
+    "integration_status": "integrated_validated_offline",
+    "selection": {
+      "inputs": [
+        {
+          "path": "data/behavior_datasets/harmbench_behaviors_text_test.csv",
+          "sha256": "75d257b3e7428c52eb7b0154318f455af3e01b09a3794b5e2f3d36054f3c0e29",
+          "url": "https://raw.githubusercontent.com/centerforaisafety/HarmBench/8e1604d1171fe8a48d8febecd22f600e462bdcdd/data/behavior_datasets/harmbench_behaviors_text_test.csv"
+        }
+      ],
+      "id_field": "BehaviorID",
+      "method": "all",
+      "population_rows": 320,
+      "selected_rows": 320,
+      "selected_ids_sha256": "e8c2c21f6e900865121d1f07a774b06721762b32f2afa6357b9b972e063a3ef0"
+    },
+    "classifier_lock": "locks/harmbench-classifier.json"
+  },
+  "results_output": "results/<modelo>/<benchmark>/<instruct|thinking>",
+  "profile_plan": "profiles/plan.json"
+}

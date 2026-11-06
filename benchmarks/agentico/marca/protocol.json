@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "marca",
+  "name": "MARCA public",
+  "tasks": [
+    "marca_public"
+  ],
+  "expected_counts": [
+    104
+  ],
+  "family": "public",
+  "summary": "52 PT +52 EN; public basic agent; 40 iterations; k=1; GPT-4.1-2025-04-14 judge.",
+  "score_final_content_only": true,
+  "seed": null,
+  "dataset_rows_in_git": false,
+  "api_judge": true,
+  "protocol": {
+    "agent": "public basic",
+    "tools": [
+      "search",
+      "page_scraper"
+    ],
+    "k": 1,
+    "max_iterations": 40,
+    "judge": "gpt-4.1-2025-04-14",
+    "judge_parameters": "public source defaults",
+    "dataset_sizes": {
+      "marca_pt": 52,
+      "marca_en": 52
+    },
+    "aggregation": "mean of per-question checklist fractions; PT and EN equally weighted",
+    "dynamic_checklists": "public native resolver with owned Serper key; frozen at first evaluation"
+  },
+  "category": "agentico",
+  "directory": "benchmarks/agentico/marca",
+  "campaign_enabled": true,
+  "results_output": "results/<modelo>/<benchmark>/<instruct|thinking>",
+  "profile_plan": "profiles/plan.json"
+}
