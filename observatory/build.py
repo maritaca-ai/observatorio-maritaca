@@ -292,7 +292,7 @@ def build(output, from_git=False, only=None, max_bytes=1_000_000_000, cache=None
                     if not same(x['valor'], y['valor']) or any(x[k] != y[k] for k in ['n', 'total', 'benchmarks']):
                         raise ValueError('Average differs from verified reference: '+selection)
         (output/'data.json').write_bytes(encoded(data))
-        for name in ['index.html', 'styles.css', 'home.js', 'home.css', 'model-controls.js', 'averages.js', 'experience.css']:
+        for name in ['index.html', 'styles.css', 'home.js', 'home.css', 'model-controls.js', 'averages.js', 'experience.css', 'en.js', 'i18n.js']:
             (output/name).write_bytes(repo.bytes('observatory/'+name))
         for dest, names in [('app.js', ['scatter.js', 'method.js', 'app.js']),
                             ('experience.js', ['case-performance.js', 'experience.js'])]:

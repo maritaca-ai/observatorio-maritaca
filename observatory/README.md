@@ -20,6 +20,14 @@ e posições com `verifier/reported.json`. Divergências interrompem a construç
 Não é necessário acessar APIs, servidores de inferência ou arquivos de outra
 campanha.
 
+O endereço sem parâmetro de idioma abre em português, independentemente do
+idioma do navegador ou de visitas anteriores. O seletor **Português / English**
+no topo mantém a escolha na URL (`?lang=pt` ou `?lang=en`), junto aos filtros e
+à página aberta. A interface, descrições e explicações das notas têm tradução
+local em `en.js`; não há serviço externo de tradução. Perguntas, respostas,
+evidências dos juízes, registros técnicos e arquivos baixados preservam o
+conteúdo original. Esses trechos usam `translate="no"` ou blocos de código.
+
 O site inclui as respostas finais e correções selecionadas dos 11 modelos.
 Entradas extensas e conversas de ferramentas são carregadas sob demanda. No
 LongBench, trechos idênticos de entradas de uma mesma questão são armazenados uma
@@ -72,12 +80,15 @@ python -m unittest discover -s observatory/tests -p 'test_*.py'
 node --test observatory/tests/case-performance.test.cjs
 node observatory/tests/verify-averages.cjs .runs/observatory/data.json
 python observatory/tests/browser.py --url http://127.0.0.1:8080
+python observatory/tests/i18n.py --url http://127.0.0.1:8080
 ```
 
-O último comando usa Playwright e uma instalação local do Chrome; dependências
-opcionais em `envs/requirements-observatory-qa.txt`. Verifica rankings e médias em
-todos os 66 recortes, filtros, respostas, comparação às cegas, erros de rede e
-layout móvel, sem enviar dados externos.
+Os dois últimos comandos usam Playwright e uma instalação local do Chrome;
+dependências opcionais em `envs/requirements-observatory-qa.txt`. `browser.py`
+verifica rankings e médias nos 66 recortes, filtros, respostas, comparação às
+cegas, erros de rede e layout móvel. `i18n.py` verifica o português como padrão,
+a troca de idioma, navegação, filtros, layout móvel e preservação dos dados e
+das evidências nos 24 benchmarks. Nenhum dos testes envia dados externos.
 
 Para desenvolvimento rápido, `--benchmarks capitu conduta_bench` monta somente
 esses casos. Essa opção é exclusiva de QA; o workflow publica sempre o conjunto
