@@ -43,6 +43,14 @@ function originBadge(m) {
   return "";
 }
 function modelName(m) { return `${esc(m.name)} ${originBadge(m)}`; }
+function modelWeightsUrl(m, mode) {
+  const url = m.weights_by_mode?.[mode] || m.model_card;
+  return url ? url.replace(/\/blob\/.*$/, "") : "";
+}
+function modelWeightsLink(m, mode) {
+  const url = modelWeightsUrl(m, mode);
+  return url ? `<a href="${safeLink(url)}" target="_blank" rel="noopener noreferrer" title="Pesos na Hugging Face ↗">${modelName(m)}</a>` : modelName(m);
+}
 function optionName(m) { return `${m.brazilian_project || m.id === "tucano" ? "🇧🇷 " : ""}${esc(m.name)} · ${esc(i18n.t(m.size_label))}`; }
 function sizeControls() {
   return `<section class="size-controls" aria-label="Filtrar modelos por tamanho"><div class="size-heading"><strong>Tamanho dos modelos</strong><span>🇧🇷 projeto brasileiro</span></div><div class="size-buttons">${Object.entries(sizeGroups).map(([id, group]) => `<button data-size-group="${id}" aria-pressed="${state.size === id}"><span>${group.label}</span><small>${D.models.filter((m) => inSizeGroup(m,id)).length}</small></button>`).join("")}</div><p>${esc(sizeGroups[state.size].detail)} <button class="text-button" data-size-help>Entenda os tamanhos</button></p></section>`;

@@ -35,7 +35,7 @@ function renderHomeAverages() {
   averagesState.cells.clear();
   const best = Object.fromEntries(columns.map(([g]) => [g, Math.max(...values.map(r => r.cells[g].value ?? -Infinity))]));
   const rows = values.map(({variant,cells,rank}) => {
-    return `<tr data-average-model="${variant.model.id}" data-ranking-mode="${variant.mode}" data-rank="${rank ?? ''}" class="${variant.model.id === 'candidate' ? 'home-candidate' : ''}"><th><div class="home-model-name">${averageRankLabel(variant,rank)}${modelName(variant.model)}</div><small>${esc(i18n.t(variant.model.size_label))} · ${modeName(variant.mode)}</small></th>${columns.map(([g]) => {
+    return `<tr data-average-model="${variant.model.id}" data-ranking-mode="${variant.mode}" data-rank="${rank ?? ''}" class="${variant.model.id === 'candidate' ? 'home-candidate' : ''}"><th><div class="home-model-name">${averageRankLabel(variant,rank)}${modelWeightsLink(variant.model, variant.mode)}</div><small>${esc(i18n.t(variant.model.size_label))} · ${modeName(variant.mode)}</small></th>${columns.map(([g]) => {
       const c = cells[g], id = `home:${variant.id}:${g}`;
       averagesState.cells.set(id,{...c,model:variant.model,mode:variant.mode,group:g});
       const winner = c.value !== null && c.value === best[g];
