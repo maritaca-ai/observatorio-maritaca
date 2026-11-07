@@ -219,8 +219,6 @@ window.OBSERVATORY_EN = {
     "Contexto na campanha": "Context window in this campaign",
     "Ver perfil por execução": "See per-run profile",
     "Comparar com S5-nano →": "Compare with S5-nano →",
-    "Fonte ↗": "Source ↗",
-    "“Disponível” descreve o acesso ao checkpoint. Licenças, restrições e documentação variam.": "“Available” describes access to the checkpoint. Licenses, restrictions and documentation vary.",
     "Brasil": "Brazil",
     "Estados Unidos": "United States",
     "China": "China",
