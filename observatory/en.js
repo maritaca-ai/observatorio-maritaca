@@ -579,7 +579,6 @@ window.OBSERVATORY_EN = {
     "Entrada de 3.750 tokens pelo corte central nativo; contexto de 4.096, sem segundo corte.": "3,750-token input after native middle truncation; 4,096-token context window, without a second truncation.",
     "Esses grupos ajudam a navegar. Não afirmam mesmo consumo de memória, velocidade, custo ou protocolo.": "These groups help with navigation. They do not imply equal memory use, speed, cost or evaluation protocol.",
     "Esta execução usa orçamento de entrada de 3.750 tokens, conforme o perfil 4K.": "This run uses a 3,750-token input budget, as specified by the 4K profile.",
-    "Estimativa a partir dos pesos BF16 servidos e da configuração textual; não inclui encoder de visão.": "Estimated from the served BF16 weights and the text configuration; excludes the vision encoder.",
     "Estouros de contexto na geração": "Generation context overflows",
     "Execução com parser tucano_explicit_think_v1 e vLLM 0.31.0. O perfil efetivo desta execução está registrado nos parâmetros.": "Run with the tucano_explicit_think_v1 parser and vLLM 0.31.0. The effective profile is recorded in the parameters.",
     "Extrator gpt-4o-mini-2024-07-18, temperatura 0 e orçamento nativo; 823 extrações por modelo no conjunto, incluindo 164 históricas.": "gpt-4o-mini-2024-07-18 extractor, temperature 0 and native budget; 823 extractions per model across the set, including 164 historical extractions.",
