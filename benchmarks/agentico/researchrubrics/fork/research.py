@@ -14,7 +14,8 @@ def capped_answer(attempt_dir, body, ceiling):
         saved=dict(row.get('request') or {})
         limit=saved.get('max_tokens',0)
         saved['max_tokens']=body['max_tokens'];saved.pop('cache_control',None)
-        if (saved==body and limit>=ceiling
+        if (saved==body and limit==ceiling
+            and data.get('model')==body.get('model') and not data.get('error')
             and choice.get('finish_reason')=='length'
             and not choice.get('message',{}).get('tool_calls')
             and response_text(data).strip()):

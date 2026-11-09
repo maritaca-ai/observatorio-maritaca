@@ -199,3 +199,59 @@ def test_local_candidate_url_and_provider_validation():
     args.openrouter_provider = 'vendor'
     with pytest.raises(ValueError, match='openrouter-provider'):
         rr.generation_config(args)
+
+
+def test_wrong_model_truncated_response_is_not_accepted(tmp_path):
+    from research import PROTOCOL, research
+    async def run():
+        requests = []
+        def reply(request):
+            requests.append(request)
+            return httpx.Response(200, json=dict(model='unexpected-model', choices=[dict(
+                finish_reason='length', message=dict(role='assistant', content='Visible but wrong model.'))]))
+        client = rr.Client('maritaca', 'synthetic-test-value', output_ceiling=50)
+        await client.http.aclose()
+        client.http = httpx.AsyncClient(transport=httpx.MockTransport(reply))
+        config = dict(model='S5', provider='maritaca', effort='none', max_tokens=50,
+                      output_ceiling=50, input_byte_budget=10000, research_protocol=PROTOCOL)
+        try:
+            with pytest.raises(RuntimeError):
+                await research(client, None, tmp_path, 'one', config, 'Question.')
+            assert len(requests) == 1
+            assert not (tmp_path/'research_sessions/one/complete.json').exists()
+            assert (tmp_path/'generation_attempts/one/0000/0001.json').exists()
+        finally:
+            await client.close()
+    asyncio.run(run())
+
+
+@pytest.mark.parametrize('invalid_response', [
+    dict(model='unexpected-model', choices=[dict(finish_reason='stop', message=dict(content=json.dumps(grade())))]),
+    dict(model='S5', choices=[]),
+])
+def test_invalid_judge_receipt_does_not_block_resume(tmp_path, invalid_response):
+    async def run():
+        calls = []
+        def reply(request):
+            calls.append(request)
+            return httpx.Response(200, json=dict(model='S5', choices=[dict(
+                finish_reason='stop', message=dict(content=json.dumps(grade())))]))
+        client = rr.Client('maritaca', 'synthetic-test-value', output_ceiling=65536, json_fallback=True)
+        await client.http.aclose()
+        client.http = httpx.AsyncClient(transport=httpx.MockTransport(reply))
+        path = tmp_path/'vote.json'; prompt = [dict(role='user', content='Grade.')]
+        endpoint, body = rr.body_for(rr.DEFAULT_JUDGE, prompt)
+        previous = path.parent/'attempts/vote/0001.json'
+        rr.write_json(previous, dict(status='error', request=body, response=invalid_response,
+                                    provider='maritaca', seconds=1))
+        previous_bytes = previous.read_bytes()
+        try:
+            first = await rr.saved_grade(client, rr.DEFAULT_JUDGE, prompt, path)
+            assert first['parsed'] == grade()
+            second = await rr.saved_grade(client, rr.DEFAULT_JUDGE, prompt, path)
+            assert second == first and len(calls) == 1
+            assert previous.read_bytes() == previous_bytes
+            assert (path.parent/'attempts/vote/0002.json').exists()
+        finally:
+            await client.close()
+    asyncio.run(run())

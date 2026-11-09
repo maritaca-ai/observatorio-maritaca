@@ -125,32 +125,34 @@ async def saved_grade(client, spec, prompt, path, parser=parse_grade):
         raise ValueError(f'Missing judgment: {path}; run --phase judge first')
     endpoint, body = body_for(spec, prompt)
     attempts = path.parent/'attempts'/path.stem
-    recovered = None
     for prior in sorted(attempts.glob('[0-9][0-9][0-9][0-9].json')):
         receipt = read_json(prior)
-        actual = dict(receipt['request'])
-        actual['max_tokens'] = body['max_tokens']
-        actual.setdefault('response_format', {'type': 'json_object'})
-        response = receipt.get('response')
-        if actual != body or not response or response['choices'][0]['finish_reason'] != 'stop':
-            continue
         try:
+            response = receipt.get('response')
+            if not response:
+                continue
             parsed = parser(response_text(response))
-        except (ValueError, KeyError, TypeError):
+            row = vote_record(spec, prompt, parsed, response, str(prior), receipt['seconds'], parser)
+        except (ValueError, KeyError, IndexError, TypeError):
+            # A failed receipt is an attempt, not a completed verdict. Keep it
+            # intact and recover only a fully validated subsequent judgment.
             continue
-        recovered = parsed, response, str(prior), receipt['seconds']
-        break
-    if recovered is None:
-        parsed, data, attempt, seconds = await client.request(endpoint, body, attempts, parser)
-    else:
-        parsed, data, attempt, seconds = recovered
+        write_json(path, row)
+        return row
+    parsed, data, attempt, seconds = await client.request(endpoint, body, attempts, parser)
+    row = vote_record(spec, prompt, parsed, data, attempt, seconds, parser)
+    write_json(path, row)
+    return row
+
+
+def vote_record(spec, prompt, parsed, data, attempt, seconds, parser=parse_grade):
+    _, body = body_for(spec, prompt)
     actual = read_json(attempt)['request']
     row = dict(spec=spec, text=response_text(data), text_sha256=digest(response_text(data)), parsed=parsed,
                request_sha256=digest(body), actual_request_sha256=digest(actual),
                json_transport_fallback='response_format' not in actual,
                usage=data.get('usage'), attempt=attempt, seconds=seconds)
     check_vote(row, spec, prompt, parser)
-    write_json(path, row)
     return row
 
 

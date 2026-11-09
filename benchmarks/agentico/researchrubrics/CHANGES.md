@@ -10,3 +10,8 @@ explícitas desta implementação. Não se afirma equivalência ao leaderboard d
 autores. Configurações distintas devem permanecer identificadas separadamente.
 
 Os runners não incluem datasets, respostas nem julgamentos pré-executados.
+
+Na retomada, somente recibos de julgamento que passam pela validação completa
+podem ser selecionados. Tentativas inválidas são preservadas, e veredictos válidos
+são reutilizados. A recuperação de uma resposta final truncada também exige o
+modelo solicitado e o mesmo teto de saída. Prompts, rubricas e cálculo não mudam.
