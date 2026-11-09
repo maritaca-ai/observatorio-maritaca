@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "draco",
+  "name": "DRACO",
+  "tasks": [
+    "draco"
+  ],
+  "expected_counts": [
+    100
+  ],
+  "criteria": 3934,
+  "family": "deep_research",
+  "category": "agentico",
+  "directory": "benchmarks/agentico/draco",
+  "api_judge": true,
+  "dataset_rows_in_git": false,
+  "score_final_content_only": true,
+  "campaign_enabled": false,
+  "execution": "standalone run.sh; not part of the historical run_all plan",
+  "author_protocol_parity": "not_claimed",
+  "protocol_id": "draco-serper-s5-none-v1",
+  "judge": {
+    "model": "S5",
+    "reasoning_effort": "none",
+    "grades_per_criterion": 1
+  },
+  "research": {
+    "backend": "serper",
+    "max_tool_calls": 30,
+    "page_chunk_chars": 10000,
+    "location": "Brazil"
+  },
+  "score_scale": "0-100",
+  "scoring": "Signed weights divided by positive weights, clipped per question to [0,100], macro mean",
+  "summary": "Complete public dataset; Serper research agent and S5 Instruct judge."
+}
