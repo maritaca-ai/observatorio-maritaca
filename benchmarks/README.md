@@ -50,3 +50,21 @@ python scripts/verify_sources.py
 O diretório `fork/` conserva o subconjunto de código utilizado. Não inclui o
 histórico Git do projeto original, pesos de modelos nem dependências sem uso na
 avaliação. Dados necessários à execução são preparados nas revisões fixadas.
+
+## Runners disponíveis para novas avaliações
+
+As implementações abaixo podem gerar, importar e julgar relatórios. Não há
+resultados novos incluídos nesta entrega, nem alteração da matriz histórica.
+
+| Benchmark | População | Execução e protocolo |
+|---|---:|---|
+| DRACO | 100 perguntas; 3.934 critérios | [Instruções](agentico/draco/README.md) · [Protocolo](agentico/draco/protocol.json) |
+| ResearchRubrics | 101 perguntas; 2.593 critérios | [Instruções](agentico/researchrubrics/README.md) · [Protocolo](agentico/researchrubrics/protocol.json) |
+
+Teste offline dos runners (sem inferência, busca ou julgamento):
+
+```bash
+PYTHONPATH=benchmarks/agentico/draco/fork uv run --no-project --python 3.13 \
+  --with pytest --with httpx --with numpy --with scipy \
+  python -m pytest tests/deep_research --import-mode=importlib -q
+```
