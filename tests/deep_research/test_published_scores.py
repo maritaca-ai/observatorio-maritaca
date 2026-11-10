@@ -2,6 +2,9 @@
 from pathlib import Path
 import sys
 import unittest
+import json
+import shutil
+import tempfile
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
@@ -9,7 +12,7 @@ sys.path.insert(0, str(ROOT/'benchmarks/agentico/draco/fork'))
 from draco_benchmark.core import score as native_draco
 sys.path.insert(0, str(ROOT/'benchmarks/agentico/researchrubrics/fork'))
 from run_eval import question_score as native_researchrubrics
-from verifier.verify import item_score, verify_supplemental
+from verifier.verify import item_score, verify_supplemental, check_group
 
 
 def row(benchmark, weights, values):
@@ -44,9 +47,33 @@ class ResearchPublicationTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             item_score('researchrubrics', value)
 
+    def test_partial_draco_cannot_be_promoted_or_drop_failures(self):
+        source = ROOT/'results/tucano2-qwen-3.7b/draco/instruct'
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)/'instruct'
+            shutil.copytree(source, folder)
+            summary = json.loads((folder/'resumo.json').read_text())
+            self.assertEqual(check_group(folder, summary, 'draco'), (None, 48))
+            for changes in ({'status': 'final', 'score': summary['score_parcial']},
+                            {'score': 0}, {'denominador_agregado': 100},
+                            {'score_parcial': 0}):
+                with self.subTest(changes=changes), self.assertRaises(ValueError):
+                    check_group(folder, dict(summary, **changes), 'draco')
+            missing_path = folder/'casos-sem-nota.json'
+            missing = json.loads(missing_path.read_text())
+            missing_path.write_text(json.dumps(missing[:-1]))
+            with self.assertRaises(ValueError):
+                check_group(folder, summary, 'draco')
+            missing_path.write_text(json.dumps(missing))
+            summary['uso_ferramentas']['buscas_web'] += 1
+            with self.assertRaises(ValueError):
+                check_group(folder, summary, 'draco')
+
     def test_published_population_and_scores(self):
         report = verify_supplemental(ROOT/'results')
-        self.assertGreaterEqual(report['conjuntos'], 6)
+        self.assertGreaterEqual(report['conjuntos'], 8)
+        for mode in ('instruct', 'thinking'):
+            self.assertIsNone(report['notas'][f'tucano2-qwen-3.7b/draco/{mode}'])
         expected = {'gaia-4b/draco/instruct': 16.590807759896006,
                     'gaia-4b/researchrubrics/instruct': 23.62975414021194,
                     'lumi-4b/draco/instruct': 13.860375308877487,

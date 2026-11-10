@@ -150,6 +150,43 @@ def check_group(folder, summary, benchmark):
     require(len({r['id'] for r in rows}) == len(rows), f'{folder}: IDs duplicados')
     if benchmark in SUPPLEMENTAL:
         _, population, criteria_count = SUPPLEMENTAL[benchmark]
+        if summary['status'] == 'parcial':
+            require(benchmark == 'draco' and summary['score'] is None,
+                    f'{folder}: parcial não pode ter nota final')
+            require(0 < len(rows) < population and summary['populacao_esperada'] == population
+                    and summary['denominador_agregado'] == len(rows),
+                    f'{folder}: cobertura parcial inválida')
+            expected_ids = summary['ids_esperados']
+            require(len(expected_ids) == len(set(expected_ids)) == population,
+                    f'{folder}: população esperada inválida')
+            require(summary['casos_sem_nota'] == 'casos-sem-nota.json',
+                    f'{folder}: arquivo de casos sem nota inválido')
+            missing_path = folder/'casos-sem-nota.json'
+            require(not missing_path.is_symlink(), f'{folder}: link externo não permitido')
+            missing = read(missing_path)
+            ids, missing_ids = {r['id'] for r in rows}, {r['id'] for r in missing}
+            require(len(missing_ids) == len(missing) and not ids & missing_ids
+                    and ids | missing_ids == set(expected_ids),
+                    f'{folder}: casos ausentes, sobrepostos ou duplicados')
+            require(all(r['score'] is None and r['motivo'] in
+                        ('context_overflow', 'output_length', 'no_final_answer')
+                        and type(r['criterios']) is int and r['criterios'] > 0 for r in missing),
+                    f'{folder}: motivo ou nota de falha inválido')
+            judged = sum(len(r['julgamento']['veredito']['criterios']) for r in rows)
+            require(judged == summary['criterios_avaliados']
+                    and judged + sum(r['criterios'] for r in missing) ==
+                    summary['criterios_esperados'] == criteria_count,
+                    f'{folder}: rubricas parciais incompletas')
+            require(same(float(aggregate(benchmark, rows)), summary['score_parcial']),
+                    f'{folder}: média parcial divergente')
+            calls_by_case = [[t['chamada']['name'] for t in r['chamadas_ferramentas']] for r in rows]
+            calls_by_case += [[t['nome'] for t in r['ferramentas_executadas']] for r in missing]
+            usage = summary['uso_ferramentas']
+            require(usage['buscas_web'] == sum(c.count('web_search') for c in calls_by_case)
+                    and usage['leituras_paginas'] == sum(c.count('webpage_scraping') for c in calls_by_case)
+                    and usage['casos_com_busca'] == sum('web_search' in c for c in calls_by_case),
+                    f'{folder}: contagem de ferramentas divergente')
+            return None, len(rows)
         require(len(rows) == population and summary['denominador_agregado'] == population,
                 f'{folder}: população do benchmark incompleta')
         require(sum(len(r['julgamento']['veredito']['criterios']) for r in rows) ==
