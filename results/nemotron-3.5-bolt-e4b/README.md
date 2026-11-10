@@ -30,3 +30,5 @@ NVIDIA · 8B total · 4B efetivos
 | [OAB-Bench · 210 · completo](oab-bench/README.md) | [50.43](oab-bench/thinking/README.md) | [49.43](oab-bench/instruct/README.md) |
 | [Magis-Bench · 74 · completo](magis-bench/README.md) | [21.86](magis-bench/thinking/README.md) | [22.56](magis-bench/instruct/README.md) |
 | [CondutaBench · 140](conduta-bench/README.md) | [57.27](conduta-bench/thinking/README.md) | [49.39](conduta-bench/instruct/README.md) |
+| [DRACO](draco/README.md) | [28.5964](draco/thinking/README.md) | [23.9862](draco/instruct/README.md) |
+| [ResearchRubrics](researchrubrics/README.md) | [30.6489](researchrubrics/thinking/README.md) | [26.4877](researchrubrics/instruct/README.md) |

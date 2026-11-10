@@ -30,3 +30,5 @@ Liquid AI · 1,73B total
 | [OAB-Bench · 210 · completo](oab-bench/README.md) | [27.93](oab-bench/thinking/README.md) | [24.92](oab-bench/instruct/README.md) |
 | [Magis-Bench · 74 · completo](magis-bench/README.md) | [7.81](magis-bench/thinking/README.md) | [4.93](magis-bench/instruct/README.md) |
 | [CondutaBench · 140](conduta-bench/README.md) | [42.81](conduta-bench/thinking/README.md) | [25.85](conduta-bench/instruct/README.md) |
+| [DRACO](draco/README.md) | [43.3202](draco/thinking/README.md) | [39.5482](draco/instruct/README.md) |
+| [ResearchRubrics](researchrubrics/README.md) | [46.4674](researchrubrics/thinking/README.md) | [41.5175](researchrubrics/instruct/README.md) |

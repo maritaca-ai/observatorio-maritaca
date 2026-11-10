@@ -27,6 +27,8 @@ const json = (data) => esc(JSON.stringify(data, null, 2));
 const icon = (model, extra = "") =>
   `<span class="model-symbol ${extra}" style="--model-color:${esc(model.color)}">${esc(model.symbol)}</span>`;
 let D, models, benchmarks, records, app, toastTimer;
+const snapshotDate = () => new Date(D.updated_at).toLocaleDateString(
+  i18n.locale, /^\d{4}-\d{2}-\d{2}$/.test(D.updated_at) ? {timeZone: "UTC"} : undefined);
 const state = {
   view: "inicio",
   focusModel: null,
@@ -78,7 +80,7 @@ const uses = [
     icon: "⌕",
     title: "Pesquisar e reunir informações",
     text: "Usar ferramentas de busca e leitura para resolver tarefas com múltiplas etapas.",
-    tasks: ["marca_public", "browsecomp_plus"],
+    tasks: ["marca_public", "browsecomp_plus", "draco", "researchrubrics"],
     category: "agentico",
     limit:
       "MARCA usa web; BrowseComp-Plus usa um corpus com busca BM25. Resultados dependem das ferramentas e não garantem informações atuais.",
@@ -299,7 +301,13 @@ function modeControl() {
     .join("")}</div>`;
 }
 function renderPanorama() {
-  return `<header class="results-heading"><div><h1>Resultados</h1><p>${D.models.filter((m) => m.result_count).length} modelos · ${tableBenchmarks().length} avaliações · ${new Date(D.updated_at).toLocaleDateString(i18n.locale)}</p></div><a class="results-demo" href="#descobrir?size=${state.size}"><span>Como eles responderam?</span><strong>Leia as respostas lado a lado <span aria-hidden="true">↗</span></strong></a></header>
+  const categoryName = D.categories[state.category];
+  const tasks = tableBenchmarks().filter(b=>matchesCategory(b,state.category));
+  const responseParams = new URLSearchParams({size:state.size, mode:state.mode});
+  if (state.category !== "all") responseParams.set("category",state.category);
+  const firstWithCases = tasks.find(b=>D.case_catalog.benchmarks[b.id]);
+  if (firstWithCases && state.category !== "all") responseParams.set("task",firstWithCases.id);
+  return `<header class="results-heading"><div><h1>${categoryName ? esc(categoryName) : "Resultados"}</h1><p>${D.models.filter((m) => m.result_count).length} modelos · ${tasks.length} avaliações · ${snapshotDate()}</p>${state.category === 'deep_research' ? '<p>Buscar fontes, cruzar informações e responder com evidências.</p>' : ''}</div>${categoryName ? `<div class="head-actions"><a class="btn" href="#descobrir?${responseParams}">Respostas lado a lado ↗</a><a class="btn primary" href="#descobrir?${responseParams}&tab=blind">Escolher às cegas ↗</a></div>` : `<a class="results-demo" href="#descobrir?${responseParams}"><span>Como eles responderam?</span><strong>Leia as respostas lado a lado <span aria-hidden="true">↗</span></strong></a>`}</header>
   ${sizeControls()}
   <section aria-labelledby="results-title"><div class="section-head results-tools"><div><h2 id="results-title">Notas e médias</h2><p>Clique em uma nota para abrir a correção e o protocolo.</p></div><div class="head-actions"><button class="btn" data-action="share">Copiar link</button><button class="btn primary" data-action="export-csv">Baixar tabela ↓</button></div></div>
   <div class="control-bar">${modeControl()}<div class="filters"><input id="benchmark-search" class="search" type="search" placeholder="Buscar uma avaliação…" aria-label="Buscar avaliações" value="${esc(state.query)}"><details class="model-filter"><summary class="btn">Escolher modelos <span>${sizeModels().filter((m) => state.selected.has(m.id)).length}</span> ⌄</summary><div class="model-options"><button class="btn small" data-action="select-all">Todos</button> <button class="btn small" data-action="select-none">Limpar</button>${sizeModels().map((m) => `<label><input type="checkbox" data-model="${esc(m.id)}" ${state.selected.has(m.id) ? "checked" : ""}>${modelName(m)}<small>${esc(i18n.t(m.size_label))}</small></label>`).join("")}</div></details></div></div>
@@ -432,6 +440,7 @@ function detail(id) {
     <div class="eyebrow">${esc(b.name)} · ${modeName(r.mode)}</div>
     <h2 id="detail-title">${esc(m.name)}</h2><p class="small muted">${esc(i18n.t(b.description))}</p>
     <div class="detail-score">${r.capability_gate ? "Sem nota de segurança" : number(r.score)}<small>${r.capability_gate ? "0 controles benignos concluídos" : b.direction === "lower" ? "↓ menor é melhor" : "↑ maior é melhor"}</small></div><p class="small muted">${esc(i18n.t(b.metric))}</p>
+    ${r.score_note ? `<div class="callout" data-card-section="score-note"><strong>Observação sobre a nota</strong><p>${esc(i18n.t(r.score_note))}</p></div>` : ""}
     ${auditSection(r)}
     <div class="detail-grid">
       <div data-detail-meta="population"><span>População da execução</span>${integer(r.n)} ${r.task === "prosa_pt" ? "conversas" : "itens"}</div>
@@ -513,9 +522,32 @@ function readableAnswer(text) {
     .replace(/`([^`\n]+)`/g, "<code>$1</code>")
     .trim();
 }
+function researchJudgmentView(c, r) {
+  const parsed = r.judgment.text ? JSON.parse(r.judgment.text) : {};
+  const policy = parsed.politica_resposta_vazia;
+  if (r.judgment.kind === "generation_failure" || policy) {
+    const reasons = {
+      context_overflow: "A entrada ultrapassou a janela de contexto do modelo.",
+      input_byte_budget: "A conversa excedeu o orçamento de entrada configurado.",
+      output_length: "A saída atingiu o limite e não foi aceita como resposta final pelo runner.",
+      no_final_answer: "O limite de saída foi atingido sem resposta final.",
+      "empty-final-after-three-attempts-zero-v1": "Três tentativas do mesmo pedido terminaram sem resposta final.",
+      "native-context-exhausted-no-final-zero-v1": "A geração esgotou a janela de contexto sem resposta final.",
+    };
+    const reason = reasons[r.judgment.reason || policy?.politica];
+    return `<div class="callout"><strong>Nota zero pela política de geração.</strong><p>${esc(reason || "Falha de geração registrada.")}</p><p>O caso permanece no denominador. Não houve julgamento por rubrica neste caso.</p></div>${policy ? `<details><summary>Registro da política aplicada</summary><pre>${json(policy)}</pre></details>` : ""}`;
+  }
+  const votes = new Map(parsed.criterios.map(v => [v.indice, v.veredito]));
+  return `<p class="small muted">Juiz: ${esc(r.judgment.judge)}. Critérios negativos detectam erros, não acertos.</p><div class="criteria-list">${c.criteria.map((criterion, i) => {
+    const vote = votes.get(i), hit = vote.criterion_status === "MET" || vote.score === 1;
+    const negative = criterion.weight < 0, good = negative ? !hit : hit;
+    return `<div class="criterion"><span class="pill ${good ? "" : "warn"}">${negative ? (hit ? "Erro detectado" : "Erro não detectado") : hit ? "Atendido" : "Não atendido"}</span><p translate="no"><strong>${esc(criterion.text)}</strong></p><p translate="no">${esc(vote.explanation || vote.reasoning || "")}</p>${vote.evidence_quotes?.length ? `<details><summary>Trechos citados pelo juiz</summary>${vote.evidence_quotes.map(q => `<blockquote translate="no">${esc(q)}</blockquote>`).join("")}</details>` : ""}<small>Peso ${criterion.weight > 0 ? "+" : ""}${esc(criterion.weight)} · <span translate="no">${esc(criterion.type)}</span></small></div>`;
+  }).join("")}</div><details><summary>Julgamento original preservado</summary><pre>${esc(r.judgment.text)}</pre></details>`;
+}
 function judgmentView(c, r) {
   if (!r.judgment)
     return '<p class="small muted">Este registro não contém a correção detalhada.</p>';
+  if (["research", "generation_failure"].includes(r.judgment.kind)) return researchJudgmentView(c, r);
   if (r.judgment.kind === "native") {
     let readable = r.judgment.text;
     try {
@@ -798,7 +830,7 @@ async function start() {
     readHash();
     render();
     $("#snapshot-date").textContent =
-      `Dados de ${new Date(D.updated_at).toLocaleDateString(i18n.locale)}`;
+      `Dados de ${snapshotDate()}`;
   } catch (error) {
     app.innerHTML = `<div class="page-intro"><h1>Não foi possível abrir os resultados.</h1><p>${esc(error.message)}</p><p>Confira se o build foi concluído e se esta pasta está sendo servida por HTTP.</p></div>`;
   }
@@ -807,7 +839,7 @@ window.addEventListener("observatory-languagechange", () => {
   if (!D) return;
   const scroll = {left:scrollX, top:scrollY};
   render();
-  $("#snapshot-date").textContent = `${i18n.t("Dados de")} ${new Date(D.updated_at).toLocaleDateString(i18n.locale)}`;
+  $("#snapshot-date").textContent = `${i18n.t("Dados de")} ${snapshotDate()}`;
   window.scrollTo({...scroll, behavior:"instant"});
 });
 start();

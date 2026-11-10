@@ -10,6 +10,9 @@ import sys
 from .scores import aggregate
 
 ROOT = Path(__file__).resolve().parents[1]
+SUPPLEMENTAL = {"draco": ("DRACO", 100, 3934),
+                "researchrubrics": ("ResearchRubrics", 101, 2593)}
+
 ORIGINS = ("native_br", "translated_pt", "international", "total")
 
 
@@ -34,9 +37,119 @@ def same(actual, expected):
             and math.isclose(actual, expected, rel_tol=0, abs_tol=1e-8))
 
 
+def check_generation_failure(row, config, benchmark):
+    """Zero de consolidação por falha de geração; nunca um voto do juiz."""
+    require(row.get('fase') == 'geracao' and row.get('julgamento') is None,
+            'Zero de geração não pode representar erro ou veredito do juiz')
+    evidence = row.get('evidencia_sha256')
+    require(isinstance(evidence, str) and len(evidence) == 64
+            and all(c in '0123456789abcdef' for c in evidence), 'Evidência de falha ausente')
+    if benchmark == 'draco':
+        require(row.get('status_execucao') == 'error', 'Zero exige falha da execução nativa')
+        limit = config['context_length']
+        if row['motivo'] == 'context_overflow':
+            require(type(row.get('input_tokens')) is int and row['input_tokens'] > limit
+                    and row.get('context_length') == limit
+                    and row.get('excess_tokens') == row['input_tokens'] - limit,
+                    'Zero por contexto exige input maior que a janela nativa')
+        else:
+            attempts = row.get('tentativas_rejeitadas', [])
+            require(row['motivo'] == 'output_length' and row.get('finish_reason') == 'length'
+                    and len(attempts) == 3, 'Zero DRACO por saída exige tentativas nativas rejeitadas')
+            for attempt in attempts:
+                usage = attempt.get('tokens') or {}
+                prompt, completion = usage.get('prompt_tokens'), usage.get('completion_tokens')
+                require(attempt.get('status') == 'error' and attempt.get('finish_reason') == 'length'
+                        and type(prompt) is int and prompt > 0
+                        and type(completion) is int and completion > 0
+                        and prompt + completion == usage.get('total_tokens') == limit,
+                        'Zero DRACO por saída exige rejeição no contexto nativo')
+        return
+    if row['motivo'] == 'input_byte_budget':
+        require(row.get('input_byte_budget') == config['input_byte_budget']
+                and row.get('context_length') == config['context_length']
+                and row.get('erro_runner') ==
+                'Model conversation exceeds its reserved context even after source trimming',
+                'Zero por orçamento exige o erro de geração correspondente')
+    else:
+        require(row['motivo'] in ('output_length', 'no_final_answer')
+                and row.get('finish_reason') == 'length'
+                and row.get('max_tokens') == row.get('completion_tokens') == config['max_tokens'],
+                'Zero por saída exige teto atingido, não erro de transporte')
+        require(type(row.get('content_chars')) is int and row['content_chars'] >= 0
+                and type(row.get('chamadas_ferramentas_pendentes')) is int
+                and (row['content_chars'] == 0 if row['motivo'] == 'no_final_answer'
+                     else row['content_chars'] > 0 and row['chamadas_ferramentas_pendentes'] > 0),
+                'Resposta final utilizável deve ser julgada, não receber zero por falha')
+
+
 def item_score(benchmark, row):
     """Aritmética dos vereditos finais; não substitui um julgamento semântico."""
     j = row['julgamento']['veredito']
+    if benchmark in SUPPLEMENTAL:
+        votes = j['criterios']
+        require(bool(votes), 'Rubricas ausentes')
+        require([v['indice'] for v in votes] == list(range(len(votes))),
+                'Índices de rubrica ausentes ou duplicados')
+        weights = [v['criterio']['weight'] for v in votes]
+        require(all(type(w) in (int, float) and math.isfinite(w) for w in weights),
+                'Peso de rubrica inválido')
+        policy = j.get('politica_resposta_vazia')
+        if policy is not None:
+            attempts = policy.get('tentativas', [])
+            context_zero = policy.get('politica') == 'native-context-exhausted-no-final-zero-v1'
+            expected_attempts = 1 if context_zero else 3
+            require(policy.get('politica') in ('empty-final-after-three-attempts-zero-v1',
+                                               'native-context-exhausted-no-final-zero-v1')
+                    and policy.get('mesmo_pedido') is True
+                    and len(attempts) == expected_attempts
+                    and [a.get('tentativa') for a in attempts] == list(range(1, expected_attempts+1)),
+                    'Zero exige comprovação da política aplicada')
+            request_hash = policy.get('pedido_sha256')
+            require(isinstance(request_hash, str) and len(request_hash) == 64
+                    and all(c in '0123456789abcdef' for c in request_hash)
+                    and all(a.get('pedido_sha256') == request_hash for a in attempts),
+                    'Pedidos das três tentativas divergem')
+            require(isinstance(row['resposta'], str) and not row['resposta'].strip()
+                    and all(isinstance(a.get('resposta'), str) and not a['resposta'].strip()
+                            and a.get('motivo_encerramento') == ('length' if context_zero else 'stop')
+                            and a.get('chamadas_ferramentas') == [] for a in attempts),
+                    'Falha ou resposta não vazia não pode receber zero por esta política')
+            if context_zero:
+                limit = row['parametros_inferencia']['context_length']
+                usage = attempts[0].get('tokens') or {}
+                prompt, completion = usage.get('prompt_tokens'), usage.get('completion_tokens')
+                cap = row['parametros_inferencia'].get('max_tokens')
+                require(type(prompt) is int and type(completion) is int and completion > 0
+                        and prompt + completion == usage.get('total_tokens') == limit
+                        and policy.get('context_length') == policy.get('total_tokens') == limit
+                        and policy.get('prompt_tokens') == prompt and policy.get('completion_tokens') == completion
+                        and policy.get('effective_max_tokens') == cap
+                        and (cap is None or completion <= cap),
+                        'Zero por contexto exige esgotamento comprovado do contexto nativo')
+            require(row['julgamento'].get('tipo') == 'politica_resposta_vazia'
+                    and row['julgamento'].get('modelo') is None
+                    and row['julgamento'].get('chamadas') == []
+                    and all(v.get('veredito') is None for v in votes)
+                    and row['total_tokens_julgamento'] == 0
+                    and row['custo_julgamento']['valor'] == 0,
+                    'Zero por resposta vazia não pode simular julgamento')
+            require(sum(w for w in weights if w > 0) > 0, 'Denominador de rubricas inválido')
+            return 0.0
+        if benchmark == 'draco':
+            labels = [v['veredito']['criterion_status'] for v in votes]
+            require(all(v in ('MET', 'UNMET') for v in labels), 'Veredito DRACO inválido')
+            values = [int(v == 'MET') for v in labels]
+        else:
+            values = [v['veredito']['score'] for v in votes]
+            require(all(type(v) in (int, float) and v in (0, 1) for v in values),
+                    'Veredito ResearchRubrics inválido')
+            require(all(v['veredito']['verdict'] == ('Satisfied' if x else 'Not Satisfied')
+                        for v, x in zip(votes, values)), 'Veredito binário inconsistente')
+        denominator = sum(w for w in weights if w > 0)
+        require(denominator > 0, 'Denominador de rubricas inválido')
+        value = 100 * sum(w * v for w, v in zip(weights, values)) / denominator
+        return max(0, min(100, value)) if benchmark == 'draco' else value
     if benchmark == 'arena-hard-v2':
         return None  # A preferência ponderada é calculada no conjunto de confrontos.
     if benchmark == 'assin2-rte':
@@ -86,13 +199,16 @@ def item_score(benchmark, row):
     raise ValueError('Benchmark sem regra de verificação: ' + benchmark)
 
 
-def check_group(folder, summary, benchmark):
+def check_group(folder, summary, benchmark, *, load_json=None, response_files=None):
+    load_json = load_json or read
     required = {'id', 'system', 'pergunta', 'resposta', 'parametros_inferencia',
                 'total_tokens', 'custo', 'julgamento', 'parametros_inferencia_julgamento',
                 'total_tokens_julgamento', 'custo_julgamento', 'score'}
     files = summary.get('arquivos', [])
     require(len({x['arquivo'] for x in files}) == len(files), f'{folder}: arquivos repetidos')
-    require({p.name for p in folder.glob('respostas-*.json')} == {f['arquivo'] for f in files},
+    inventory = ({p.name for p in folder.glob('respostas-*.json')}
+                 if response_files is None else set(response_files))
+    require(inventory == {f['arquivo'] for f in files},
             f'{folder}: inventário de respostas divergente')
     rows = []
     for entry in files:
@@ -101,7 +217,7 @@ def check_group(folder, summary, benchmark):
                 f'{folder}: nome de arquivo inválido')
         path = folder / name
         require(not path.is_symlink(), f'{path}: link externo não permitido')
-        batch = read(path)
+        batch = load_json(path)
         require(isinstance(batch, list) and len(batch) == entry['registros'], f'{path}: contagem divergente')
         for r in batch:
             context = f'{path}: item {r.get("id")}'
@@ -123,8 +239,77 @@ def check_group(folder, summary, benchmark):
         rows.extend(batch)
     require(len(rows) == summary['registros'], f'{folder}: população incompleta')
     require(len({r['id'] for r in rows}) == len(rows), f'{folder}: IDs duplicados')
+    if benchmark in SUPPLEMENTAL:
+        _, population, criteria_count = SUPPLEMENTAL[benchmark]
+        zero_failures = summary.get('politica_falha_geracao')
+        if zero_failures is not None:
+            require(zero_failures == 'attempted-generation-failure-zero-v1'
+                    and summary['status'] == 'final',
+                    f'{folder}: política de falha de geração inválida')
+        if summary['status'] == 'parcial' or zero_failures:
+            require(zero_failures or summary['score'] is None,
+                    f'{folder}: parcial não pode ter nota final')
+            require(0 < len(rows) < population and summary['populacao_esperada'] == population
+                    and summary['denominador_agregado'] == (population if zero_failures else len(rows)),
+                    f'{folder}: cobertura parcial inválida')
+            expected_ids = summary['ids_esperados']
+            require(len(expected_ids) == len(set(expected_ids)) == population,
+                    f'{folder}: população esperada inválida')
+            field, filename = (('casos_zerados', 'casos-zerados.json') if zero_failures
+                               else ('casos_sem_nota', 'casos-sem-nota.json'))
+            require(summary[field] == filename, f'{folder}: arquivo de falhas inválido')
+            missing_path = folder/filename
+            require(not missing_path.is_symlink(), f'{folder}: link externo não permitido')
+            missing = load_json(missing_path)
+            ids, missing_ids = {r['id'] for r in rows}, {r['id'] for r in missing}
+            require(len(missing_ids) == len(missing) and not ids & missing_ids
+                    and ids | missing_ids == set(expected_ids),
+                    f'{folder}: casos ausentes, sobrepostos ou duplicados')
+            require(all((type(r['score']) in (int, float) and r['score'] == 0
+                         if zero_failures else r['score'] is None) and r['motivo'] in
+                        (('context_overflow', 'output_length', 'no_final_answer', 'input_byte_budget')
+                         if benchmark == 'researchrubrics' else
+                         ('context_overflow', 'output_length', 'no_final_answer'))
+                        and type(r['criterios']) is int and r['criterios'] > 0 for r in missing),
+                    f'{folder}: motivo ou nota de falha inválido')
+            judged = sum(len(r['julgamento']['veredito']['criterios']) for r in rows)
+            require(judged == summary['criterios_avaliados']
+                    and judged + sum(r['criterios'] for r in missing) ==
+                    summary['criterios_esperados'] == criteria_count,
+                    f'{folder}: rubricas parciais incompletas')
+            if zero_failures:
+                require(summary['falhas_zeradas'] == len(missing)
+                        and summary['criterios_zerados'] == sum(r['criterios'] for r in missing),
+                        f'{folder}: contagem de zeros divergente')
+                for failure in missing:
+                    check_generation_failure(failure, summary['configuracao_geracao'], benchmark)
+            mean_key = 'media_respostas_julgadas' if zero_failures else 'score_parcial'
+            require(same(float(aggregate(benchmark, rows)), summary[mean_key]),
+                    f'{folder}: média parcial divergente')
+            calls_by_case = [[t['chamada']['name'] for t in r['chamadas_ferramentas']] for r in rows]
+            calls_by_case += [[t['nome'] for t in r['ferramentas_executadas']] for r in missing]
+            usage = summary['uso_ferramentas']
+            require(usage['buscas_web'] == sum(c.count('web_search') for c in calls_by_case)
+                    and usage['leituras_paginas'] == sum(c.count('webpage_scraping') for c in calls_by_case)
+                    and usage['casos_com_busca'] == sum('web_search' in c for c in calls_by_case),
+                    f'{folder}: contagem de ferramentas divergente')
+            if zero_failures:
+                score = sum(r['score'] for r in rows) / population
+                require(same(score, summary['score']), f'{folder}: nota com zeros divergente')
+                return score, len(rows)
+            return None, len(rows)
+        require(len(rows) == population and summary['denominador_agregado'] == population,
+                f'{folder}: população do benchmark incompleta')
+        require(sum(len(r['julgamento']['veredito']['criterios']) for r in rows) ==
+                criteria_count == summary['criterios_avaliados'], f'{folder}: rubricas incompletas')
+        policy_count = sum(len(r['julgamento']['veredito']['criterios']) for r in rows
+                           if r['julgamento']['veredito'].get('politica_resposta_vazia') is not None)
+        if policy_count or 'criterios_pontuados_por_politica' in summary:
+            require(summary.get('criterios_pontuados_por_politica') == policy_count
+                    and summary.get('criterios_julgados') == criteria_count - policy_count,
+                    f'{folder}: contagem de critérios julgados e zeros por política diverge')
     if benchmark == 'lumen-pt':
-        control = read(folder/'controles-capacidade.json')
+        control = load_json(folder/'controles-capacidade.json')
         require(len(control) == 22, f'{folder}: faltam controles de capacidade')
         successes = sum(r['julgamento']['veredito']['benign_success'] is True for r in control)
         require((successes == 0) == (summary['status'] == 'sem_capacidade_demonstrada'),
@@ -178,11 +363,15 @@ def verify(root=ROOT, results=None, compare_reported=True):
     models, metrics = read(results/'modelos.json'), read(root/'benchmarks/metrics.json')
     require({p.name for p in results.iterdir() if p.is_dir()} == set(models), 'Catálogo de modelos divergente')
     for model in models:
-        require({p.name for p in (results/model).iterdir() if p.is_dir()} == set(metrics),
+        folders = {p.name for p in (results/model).iterdir() if p.is_dir()}
+        required_metrics = {k for k, v in metrics.items() if not v.get('allow_missing_results')}
+        require(required_metrics <= folders <= set(metrics) | set(SUPPLEMENTAL),
                 model + ': catálogo de benchmarks divergente')
     scores, populations, count = {}, {}, 0
     for path in sorted(results.glob('*/*/*/resumo.json')):
         summary = read(path)
+        if path.parent.parent.name in SUPPLEMENTAL and path.parent.parent.name not in metrics:
+            continue  # A standalone benchmark enters the ranking only through the catalog.
         rel = path.parent.relative_to(results)
         model, benchmark, mode = rel.parts
         require(mode in ('thinking', 'instruct'), str(rel) + ': modo inválido')
@@ -219,9 +408,39 @@ def verify(root=ROOT, results=None, compare_reported=True):
                 a, e = row['medias'][origin], reference['medias'][origin]
                 require(same(a['valor'], e['valor']) and a['n'] == e['n'] and a['total'] == e['total']
                         and a['benchmarks'] == e['benchmarks'], context + '/' + origin + ': média divergente')
-    return {'conjuntos': len(scores), 'respostas': count,
+    if set(SUPPLEMENTAL) <= set(metrics):
+        research_scores = {k: v for k, v in scores.items() if k.split('/')[1] in SUPPLEMENTAL}
+        supplemental = dict(conjuntos=len(research_scores), notas=research_scores,
+                            respostas=sum(populations[k] for k in research_scores))
+    else:
+        supplemental = verify_supplemental(results)
+    return {'resultados_complementares': supplemental, 'conjuntos': len(scores), 'respostas': count,
             'notas_recalculadas': sum(v is not None for v in scores.values()),
             'recortes_de_medias': len(averages), 'notas': scores, 'medias': averages}
+
+
+def verify_supplemental(results):
+    """Validate published research results without changing the current catalog/ranking."""
+    models = read(results/'modelos.json')
+    scores, count = {}, 0
+    for benchmark in SUPPLEMENTAL:
+        for folder in results.glob(f'*/{benchmark}/*'):
+            if folder.is_dir():
+                require((folder/'resumo.json').is_file(), f'{folder}: resumo ausente')
+    for path in sorted(results.glob('*/*/*/resumo.json')):
+        model, benchmark, mode = path.parent.relative_to(results).parts
+        if benchmark not in SUPPLEMENTAL:
+            continue
+        summary = read(path)
+        require(model in models and mode in models[model]['modos_avaliados'],
+                f'{path}: modelo/modo não registrado')
+        require((summary['modelo'], summary['benchmark'], summary['modo']) ==
+                (models[model]['nome'], SUPPLEMENTAL[benchmark][0], mode),
+                f'{path}: identificação divergente')
+        score, n = check_group(path.parent, summary, benchmark)
+        scores[f'{model}/{benchmark}/{mode}'] = score
+        count += n
+    return {'conjuntos': len(scores), 'respostas': count, 'notas': scores}
 
 
 def main(argv=None):
@@ -229,9 +448,12 @@ def main(argv=None):
     parser.add_argument('--results', type=Path, default=ROOT/'results')
     parser.add_argument('--output', type=Path, help='Gravar relatório recalculado em JSON')
     parser.add_argument('--new-run', action='store_true', help='Validar uma nova execução sem exigir as notas históricas')
+    parser.add_argument('--supplemental-only', action='store_true',
+                        help='Validar apenas DRACO e ResearchRubrics, sem recalcular o ranking')
     args = parser.parse_args(argv)
     try:
-        report = verify(results=args.results, compare_reported=not args.new_run)
+        report = (verify_supplemental(args.results) if args.supplemental_only else
+                  verify(results=args.results, compare_reported=not args.new_run))
         if args.output:
             args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n')

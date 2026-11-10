@@ -30,3 +30,5 @@ Liquid AI · 23,97B total · ≈2B ativos
 | [OAB-Bench · 210 · completo](oab-bench/README.md) | [40.83](oab-bench/thinking/README.md) | [Modo não avaliado](oab-bench/instruct/README.md) |
 | [Magis-Bench · 74 · completo](magis-bench/README.md) | [15.42](magis-bench/thinking/README.md) | [Modo não avaliado](magis-bench/instruct/README.md) |
 | [CondutaBench · 140](conduta-bench/README.md) | [70.98](conduta-bench/thinking/README.md) | [Modo não avaliado](conduta-bench/instruct/README.md) |
+| [DRACO](draco/README.md) | [35.9472](draco/thinking/README.md) | Não disponível |
+| [ResearchRubrics](researchrubrics/README.md) | [41.6973](researchrubrics/thinking/README.md) | Não disponível |

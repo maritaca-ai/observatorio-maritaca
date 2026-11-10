@@ -19,13 +19,17 @@ function readExperienceHash(params) {
   experience.tab = state.view === "casos" ? "blind" : ["examples", "blind"].includes(params.get("tab")) ? params.get("tab") : "examples";
   if (experience.tab === "blind" && previousTab !== "blind") { experience.round = null; experience.focusRound = true; }
   experience.mode = ["all", "thinking", "instruct"].includes(params.get("mode")) ? params.get("mode") : "all";
+  experience.caseCategory = D.categories[params.get("category")] ? params.get("category") : "all";
   if (experienceTasks[params.get("task")]) {
     experience.task = params.get("task");
     if (!matchesCategory(benchmarks.get(experience.task), experience.caseCategory)) experience.caseCategory="all";
   }
+  if (!matchesCategory(benchmarks.get(experience.task), experience.caseCategory)) {
+    experience.task = Object.keys(experienceTasks).find(id=>matchesCategory(benchmarks.get(id), experience.caseCategory));
+  }
   for (const side of ["a", "b"]) if (models.has(params.get(side))) experience[side] = params.get(side);
   if (params.has("case")) experience.key = params.get("case");
-  if (D.categories[params.get("category")]) experience.category = params.get("category");
+  experience.category = experience.caseCategory;
   experience.resultFilter = ["different", "a_better", "b_better"].includes(params.get("result")) ? params.get("result") : "all";
   // Preserve previously shared chart links after moving that view to Comparar.
   if (params.get("tab") === "map") {
@@ -36,6 +40,7 @@ function readExperienceHash(params) {
 function experienceURL() {
   const p = new URLSearchParams({ tab: experience.tab, mode: experience.mode, size: state.size });
   p.set("task", experience.task);
+  if (experience.caseCategory !== "all") p.set("category", experience.caseCategory);
   if (experience.tab !== "blind") {
     p.set("a", experience.a); p.set("b", experience.b);
     if (experience.tab === "examples" && experience.key) p.set("case", experience.key);
@@ -386,7 +391,7 @@ document.addEventListener("click", (event) => {
   if (action === "compare-pair") {
     if (experience.tab === "blind" && experience.round) [experience.a, experience.b] = experience.round.pair.map((v) => v.split(":")[0]);
     state.mode=experience.mode; state.selected=new Set([experience.a,experience.b]);
-    state.scatter=experience.task; state.category="all"; navigate("comparar"); return;
+    state.scatter=experience.task; state.category=experience.caseCategory; navigate("comparar"); return;
   }
   if (action === "mode-help") {
     $("#detail-content").innerHTML = '<h2 id="detail-title">Dois modos de responder</h2><p><strong>Com raciocínio (thinking)</strong>: o modelo recebe a instrução de raciocinar antes da resposta final.</p><p><strong>Direto (instruct)</strong>: usa o modo sem raciocínio separado, quando o modelo oferece essa opção.</p><p>Só a resposta final recebe nota. O modo pode alterar qualidade e consumo; aqui você compara resultados de avaliações já realizadas.</p>';
@@ -411,7 +416,7 @@ document.addEventListener("change", async (event) => {
   const t = event.target;
   if (t.id === "case-performance") { experience.resultFilter=t.value;experience.key=null;experience.caseLimit=100;refreshExperience(); }
   if (t.id==="case-benchmark") { experience.task=t.value;experience.query="";experience.caseLimit=100;experience.round=null;experience.key=null;refreshExperience(); }
-  if (t.id==="case-category") { experience.caseCategory=t.value;experience.caseLimit=100;const available=Object.keys(experienceTasks).filter(id=>matchesCategory(benchmarks.get(id),t.value));if (!available.includes(experience.task)) experience.task=available[0];experience.round=null;experience.key=null;refreshExperience(); }
+  if (t.id==="case-category") { experience.caseCategory=t.value;experience.category=t.value;experience.caseLimit=100;const available=Object.keys(experienceTasks).filter(id=>matchesCategory(benchmarks.get(id),t.value));if (!available.includes(experience.task)) experience.task=available[0];experience.round=null;experience.key=null;refreshExperience(); }
   if (t.dataset.experienceModel) { experience[t.dataset.experienceModel] = t.value; refreshExperience(); }
   if (t.id === "experience-highlight") { experience.highlights = t.checked; refreshExperience(); }
   if (t.id === "experience-file" && t.files?.[0]) {
@@ -436,6 +441,7 @@ function lazyEvidence(ref, label) {
   return `<details class="source-context lazy-evidence" data-evidence-file="${ref.file}" data-evidence-sha="${ref.sha256}"><summary>${esc(label)} ↗</summary><div class="lazy-body"><button class="text-button" data-load-evidence>Carregar conteúdo preservado</button></div></details>`;
 }
 function renderCaseFinal(r, other, visible) {
+  if (r.final_status === "not_recorded") return '<em>Resposta final não registrada.</em>';
   const answer=text=>text ? `<span translate="no">${experience.highlights ? highlightedAnswer(text,other.final) : readableAnswer(text)}</span>` : '<em>Resposta final vazia, preservada na avaliação.</em>';
   if (r.turns?.length>1) return r.turns.map(t=>`<section class="saved-turn"><span class="eyebrow">Turno ${Number(t.turn)+ (Number(r.turns[0].turn)===0 ? 1 : 0)}</span><details><summary>Pergunta deste turno</summary><p translate="no">${esc(t.question)}</p></details><div>${answer(t.final)}</div></section>`).join("");
   return answer(r.final);

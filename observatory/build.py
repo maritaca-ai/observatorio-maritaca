@@ -13,8 +13,9 @@ ROOT = Path(__file__).resolve().parents[1]
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 from observatory.repository import Repository
+from observatory import research
 from verifier.scores import aggregate
-from verifier.verify import item_score, same, calculate_averages
+from verifier.verify import item_score, same, calculate_averages, check_group
 
 GITHUB = 'https://github.com/maritaca-ai/observatorio-maritaca'
 
@@ -85,6 +86,8 @@ def input_blob(output, value, bases, identity, cache=None):
 def table_record(catalog, summary, profile, model, mode, task, slug):
     identity = f'{model}:{mode}:{task}'
     r = copy.deepcopy(catalog['annotations'].get(identity, {}))
+    if task in research.TASKS:
+        r.setdefault('audit_summary', {'fields': []})
     if 'audit_summary' in r:
         r['audit_summary']['fields'] = [copy.deepcopy(catalog['audit_fields'][key])
                                        for key in r['audit_summary']['fields']]
@@ -93,6 +96,8 @@ def table_record(catalog, summary, profile, model, mode, task, slug):
     r.update(id=identity, model_id=model, mode=mode, task=task, score=summary['score'],
              n=summary['registros'], score_denominator=summary.get('denominador_agregado'),
              source=source, profile=displayed_profile(profile), as_of=catalog['updated_at'])
+    if summary.get('observacao_nota'):
+        r['score_note'] = summary['observacao_nota']
     if summary['status'] != 'final':
         r.update(status='unavailable', status_label='Sem capacidade demonstrada',
                  details={'reason': 'Nenhum dos 22 controles benignos foi concluído; não há nota de segurança.'})
@@ -108,7 +113,8 @@ def table_record(catalog, summary, profile, model, mode, task, slug):
 def question_identity(task, row, occurrence):
     # Do not pair distinct prompts merely because their sequential IDs match.
     inputs = dict(question=row['pergunta'], context=row.get('contexto') or '',
-                  criteria=row['julgamento'].get('criterios'))
+                  criteria=research.criteria(row) if task in research.TASKS
+                  else row['julgamento'].get('criterios'))
     source_id = digest(encoded(inputs))
     ordinal = occurrence[source_id]
     occurrence[source_id] += 1
@@ -138,6 +144,14 @@ def project_response(row, model, mode, summary, source_path):
         response['_tool_trace'] = row['conversa_com_ferramentas']
     if row.get('contexto_insuficiente'):
         response['metadata']['contexto_insuficiente'] = True
+    if summary.get('benchmark') in ('DRACO', 'ResearchRubrics'):
+        response['metric_name'] = 'Pontos por rubricas'
+        response['judgment']['kind'] = 'research'
+        response['metadata']['system'] = row['system']
+        if row.get('limites_saida_usados_por_turno'):
+            response['metadata']['limites_saida_usados_por_turno'] = row['limites_saida_usados_por_turno']
+        response['_tool_trace'] = dict(turnos_assistente=row.get('turnos_assistente', []),
+                                       chamadas_ferramentas=row.get('chamadas_ferramentas', []))
     return response
 
 
@@ -177,13 +191,20 @@ def build(output, from_git=False, only=None, max_bytes=1_000_000_000, cache=None
         records, partials, scores, counts, indexes = [], [], {}, {}, []
         model_lookup = catalog['model_directories']
         total_responses = 0
+        zero_generation_cases = 0
         for task, benchmark in tasks.items():
             cases = {}
             input_bases = {}
+            native_cases, pending_failures = {}, []
             for model, slug in model_lookup.items():
                 for mode in models[slug]['modos_avaliados']:
                     folder = f'results/{slug}/{benchmark}/{mode}'
-                    summary = repo.json(folder+'/resumo.json')
+                    try:
+                        summary = repo.json(folder+'/resumo.json')
+                    except FileNotFoundError:
+                        if metrics[benchmark].get('allow_missing_results'):
+                            continue
+                        raise
                     if summary['status'] not in ('final', 'sem_capacidade_demonstrada'):
                         old = catalog['annotations'].get(f'{model}:{mode}:{task}')
                         if old:
@@ -191,8 +212,25 @@ def build(output, from_git=False, only=None, max_bytes=1_000_000_000, cache=None
                             p.update(score=None, source={'url': GITHUB+'/tree/main/'+folder}, profile={})
                             partials.append(p)
                         continue
-                    profile = repo.json(summary['perfil_inferencia'])
+                    profile_path = summary.get('perfil_inferencia') or summary['proveniencia']['perfil']
+                    profile = repo.json(profile_path)
+                    research_parts = {}
+                    if task in research.TASKS:
+                        def load_part(path):
+                            relative = str(Path(path).relative_to(ROOT)) if Path(path).is_absolute() else str(path)
+                            if relative not in research_parts:
+                                research_parts[relative] = repo.json(relative)
+                            return research_parts[relative]
+                        check_group(ROOT/folder, summary, benchmark, load_json=load_part,
+                                    response_files=repo.response_files(folder))
+                        profile = research.effective_profile(profile, summary)
                     record = table_record(catalog, summary, profile, model, mode, task, slug)
+                    if task in research.TASKS:
+                        rows = [r for part in summary['arquivos'] for r in load_part(folder+'/'+part['arquivo'])]
+                        failures = load_part(folder+'/'+summary['casos_zerados']) if summary.get('casos_zerados') else []
+                        record.update(research.metadata(summary, rows, failures))
+                        record['audit_summary']['source'] = record['source']
+                        pending_failures.extend((r, model, mode, summary, folder) for r in failures)
                     (records if summary['status'] == 'final' else partials).append(record)
                     key = f'{slug}/{benchmark}/{mode}'
                     if not same(summary['score'], reported['notas'][key]) or summary['registros'] != reported['populacoes'][key]:
@@ -204,7 +242,7 @@ def build(output, from_git=False, only=None, max_bytes=1_000_000_000, cache=None
                     selected, ids = [], set()
                     for part in summary['arquivos']:
                         path = folder+'/'+part['arquivo']
-                        batch = repo.json(path)
+                        batch = load_part(path) if task in research.TASKS else repo.json(path)
                         if len(batch) != part['registros']:
                             raise ValueError('Incomplete result part: '+path)
                         for row in batch:
@@ -222,6 +260,11 @@ def build(output, from_git=False, only=None, max_bytes=1_000_000_000, cache=None
                                 case_key = digest(':'.join([task, case['protocol_id'], input_sha, case_id]).encode())
                                 cases[identity] = (case_key, case, {})
                             case_key, case, perf = cases[identity]
+                            if task in research.TASKS:
+                                previous = native_cases.get(row['id'])
+                                if previous and previous[0] != case_key:
+                                    raise ValueError('Research question or rubrics differ for the same ID: '+row['id'])
+                                native_cases[row['id']] = (case_key, case, perf)
                             response = project_response(row, model, mode, summary, path)
                             for field, target in [('_input_messages', 'input_messages_ref'), ('_tool_trace', 'tool_trace_ref')]:
                                 if field in response:
@@ -237,11 +280,22 @@ def build(output, from_git=False, only=None, max_bytes=1_000_000_000, cache=None
                         controls = repo.json(folder+'/controles-capacidade.json')
                         if len(controls) != 22 or any(r['julgamento']['veredito']['benign_success'] for r in controls):
                             raise ValueError('Lumen eligibility differs from saved controls')
-                    elif not same(float(aggregate(benchmark, selected)), summary['score']):
+                    elif task not in research.TASKS and not same(float(aggregate(benchmark, selected)), summary['score']):
                         raise ValueError('Aggregate differs from saved judgments: '+key)
                     total_responses += len(ids)
             if only and task not in only:
                 continue
+            for failure, model, mode, summary, folder in pending_failures:
+                _, case, perf = native_cases[failure['id']]
+                if failure['pergunta'] != case['question'] or failure['criterios'] != len(case['criteria']):
+                    raise ValueError('Failed-generation receipt differs from its question: '+failure['id'])
+                variant = f'{model}:{mode}'
+                if variant in perf:
+                    raise ValueError('Duplicate response/failure: '+variant+'/'+failure['id'])
+                case['responses'].append(research.project_failure(
+                    failure, model, mode, summary, GITHUB+'/blob/main/'+folder+'/'+summary['casos_zerados']))
+                perf[variant] = 0
+                zero_generation_cases += 1
             entries, chunk, pending, size = [], [], [], 0
             def flush():
                 if chunk:
@@ -277,6 +331,7 @@ def build(output, from_git=False, only=None, max_bytes=1_000_000_000, cache=None
                                    model_count=len(models), sha256=digest(directory))
         for b in data['benchmarks']:
             b['case_count'] = counts.get(b['id'], 0)
+            b['result_count'] = sum(r['task'] == b['id'] for r in records)
         # Keep the interface's own averages independently testable against verifier.
         averages = {selection: calculate_averages(scores, models, metrics, *selection.split('/'))
                     for selection in reported['medias']}
@@ -311,6 +366,7 @@ def build(output, from_git=False, only=None, max_bytes=1_000_000_000, cache=None
         receipt = dict(models=len(models), numeric_scores=len(records), benchmarks=len(tasks),
                        cases=sum(counts.values()), responses=total_responses, bytes=size,
                        sampled=False, only=only, model_calls=0, judge_calls=0)
+        receipt['generation_failures_projected'] = zero_generation_cases
         (output/'build.json').write_bytes(encoded(receipt))
         if max_bytes and size > max_bytes:
             raise ValueError(f'Artifact exceeds GitHub Pages size limit: {size} bytes; no cases were dropped')

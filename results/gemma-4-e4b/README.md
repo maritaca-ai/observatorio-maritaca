@@ -30,3 +30,5 @@ Google · 8B total · 4B efetivos
 | [OAB-Bench · 210 · completo](oab-bench/README.md) | [53.19](oab-bench/thinking/README.md) | [52.34](oab-bench/instruct/README.md) |
 | [Magis-Bench · 74 · completo](magis-bench/README.md) | [23.38](magis-bench/thinking/README.md) | [22.15](magis-bench/instruct/README.md) |
 | [CondutaBench · 140](conduta-bench/README.md) | [58.49](conduta-bench/thinking/README.md) | [53.58](conduta-bench/instruct/README.md) |
+| [DRACO](draco/README.md) | [28.2579](draco/thinking/README.md) | [25.7907](draco/instruct/README.md) |
+| [ResearchRubrics](researchrubrics/README.md) | [32.2481](researchrubrics/thinking/README.md) | [30.5068](researchrubrics/instruct/README.md) |
