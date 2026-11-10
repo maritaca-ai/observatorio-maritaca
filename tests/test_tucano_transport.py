@@ -126,6 +126,21 @@ class Protocol(unittest.TestCase):
         self.assertFalse(wire['skip_special_tokens'])
         self.assertFalse(wire['spaces_between_special_tokens'])
 
+    def test_opt_in_output_cap_preserves_prompt_and_sampling(self):
+        original = prepare_request(body(), self.p, self.t)
+        limited = prepare_request(body(), self.p, self.t, max_output_tokens=1024)
+        self.assertEqual(limited['raw_request']['max_tokens'], 1024)
+        self.assertEqual(limited['prompt_token_ids'], original['prompt_token_ids'])
+        self.assertEqual({k: limited['raw_request'][k] for k in SAMPLING}, SAMPLING)
+        self.assertEqual(limited['max_output_tokens'], 1024)
+        long_body = body() | {'messages': [dict(role='user', content='x' * 3900)]}
+        limited = prepare_request(long_body, self.p, self.t, max_output_tokens=1024)
+        self.assertEqual(limited['raw_request']['max_tokens'], 4096-len(limited['prompt_token_ids']))
+        self.assertLess(limited['raw_request']['max_tokens'], 1024)
+        for invalid in (0, -1, True, 1.5, '1024'):
+            with self.subTest(invalid=invalid), self.assertRaises(ValueError):
+                prepare_request(body(), self.p, self.t, max_output_tokens=invalid)
+
     def test_full_context_is_rejected_without_truncation(self):
         with self.assertRaisesRegex(ValueError, 'native model context'):
             prepare_request(body() | {'messages': [dict(role='user', content='x' * 4096)]}, self.p, self.t)
@@ -211,6 +226,26 @@ class Durability(unittest.TestCase):
 
     def tearDown(self):
         self.temp.cleanup()
+
+    def test_http_output_cap_reaches_upstream_and_audit(self):
+        calls = []
+        def upstream(req):
+            calls.append(req)
+            return response(req, 'Final')
+        server = ThreadingHTTPServer(('127.0.0.1', 0), make_handler(
+            self.p, self.t, self.root, upstream, max_output_tokens=1024))
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            result = json_http(f'http://127.0.0.1:{server.server_port}/v1/chat/completions', body(max_tokens=32768))
+            self.assertEqual(len(calls), 1)
+            self.assertEqual(calls[0]['max_tokens'], 1024)
+            self.assertEqual(result['choices'][0]['message']['content'], 'Final')
+            audit = json.loads(next(self.root.glob('*/request.json')).read_text())
+            self.assertEqual(audit['prepared']['max_output_tokens'], 1024)
+            self.assertEqual(audit['prepared']['raw_request']['max_tokens'], 1024)
+        finally:
+            server.shutdown();server.server_close();thread.join(timeout=5)
 
     def test_raw_is_durable_before_parser_failure_and_dispatch_is_single(self):
         calls = []

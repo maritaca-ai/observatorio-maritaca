@@ -134,8 +134,10 @@ def parse_output(text, *, thinking, tool_names=()):
                 tool_calls=calls, warnings=warnings)
 
 
-def prepare_request(body, profile, tokenizer):
+def prepare_request(body, profile, tokenizer, *, max_output_tokens=None):
     validate_profile(profile)
+    if max_output_tokens is not None and (type(max_output_tokens) is not int or max_output_tokens <= 0):
+        raise ValueError('Output cap must be a positive integer')
     if not isinstance(body, dict) or body.get('model') != profile['model']:
         raise ValueError('Unexpected candidate model')
     allowed = set(SAMPLING) | {
@@ -211,7 +213,7 @@ def prepare_request(body, profile, tokenizer):
     if not isinstance(stops, list) or not all(isinstance(s, str) and s for s in stops):
         raise ValueError('Invalid stop strings')
     raw = dict(model=profile['model'], prompt=ids, **profile['sampling'],
-               max_tokens=remaining, n=1, stream=False, echo=False,
+               max_tokens=min(remaining, max_output_tokens) if max_output_tokens is not None else remaining, n=1, stream=False, echo=False,
                stop=stops, skip_special_tokens=False, spaces_between_special_tokens=False,
                include_stop_str_in_output=True, return_token_ids=True)
     if body.get('seed') is not None:
@@ -219,7 +221,8 @@ def prepare_request(body, profile, tokenizer):
             raise ValueError('Seed must be an integer')
         raw['seed'] = body['seed']
     return dict(prompt=prompt, prompt_token_ids=ids, messages=messages,
-                tool_names=names if choice == 'auto' else [], raw_request=raw)
+                tool_names=names if choice == 'auto' else [], raw_request=raw,
+                max_output_tokens=max_output_tokens)
 
 
 def interpret_completion(response, prepared, profile, tokenizer):
@@ -277,8 +280,8 @@ def durable_json(path, value):
         os.close(directory)
 
 
-def complete(body, profile, tokenizer, audit_dir, upstream):
-    prepared = prepare_request(body, profile, tokenizer)
+def complete(body, profile, tokenizer, audit_dir, upstream, *, max_output_tokens=None):
+    prepared = prepare_request(body, profile, tokenizer, max_output_tokens=max_output_tokens)
     attempt = uuid.uuid4().hex
     folder = Path(audit_dir) / attempt
     folder.mkdir(mode=0o700, parents=True, exist_ok=False)
@@ -322,7 +325,7 @@ def check_upstream(base, profile, get=json_http):
         raise ValueError('Upstream model/context identity mismatch')
 
 
-def make_handler(profile, tokenizer, audit_dir, upstream):
+def make_handler(profile, tokenizer, audit_dir, upstream, *, max_output_tokens=None):
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, *args):
             pass
@@ -353,7 +356,7 @@ def make_handler(profile, tokenizer, audit_dir, upstream):
                 if not 0 < length <= 8 * 1024 * 1024:
                     raise ValueError('Invalid request length')
                 body = json.loads(self.rfile.read(length))
-                prepare_request(body, profile, tokenizer)  # Reject before dispatch.
+                prepare_request(body, profile, tokenizer, max_output_tokens=max_output_tokens)  # Reject before dispatch.
             except ContextWindowExceeded as exc:
                 self.send_json(400, dict(error=dict(message=str(exc),
                     type='invalid_request_error', code='context_length_exceeded',
@@ -364,7 +367,7 @@ def make_handler(profile, tokenizer, audit_dir, upstream):
                 self.send_json(400, dict(error='Invalid Tucano request; no generation dispatched'))
                 return
             try:
-                result = complete(body, profile, tokenizer, audit_dir, upstream)
+                result = complete(body, profile, tokenizer, audit_dir, upstream, max_output_tokens=max_output_tokens)
             except Exception as exc:
                 self.send_json(422, dict(error=dict(code='generation_audit_required',
                     message='Generation/interpretation failed; inspect durable attempt before any retry'),
@@ -382,7 +385,11 @@ def main():
     parser.add_argument('--audit-dir', type=Path, required=True)
     parser.add_argument('--upstream', default='http://127.0.0.1:8000')
     parser.add_argument('--port', type=int, default=8001)
+    parser.add_argument('--max-output-tokens', type=int,
+                        help='Optional output cap, including reasoning; default uses remaining native context')
     args = parser.parse_args()
+    if args.max_output_tokens is not None and args.max_output_tokens <= 0:
+        parser.error('--max-output-tokens must be positive')
     os.umask(0o077)
     profile = json.loads(args.profile.read_text())
     verify_assets(profile, args.model_dir)
@@ -394,9 +401,10 @@ def main():
     args.audit_dir.mkdir(parents=True, exist_ok=True)
     durable_json(args.audit_dir / ('startup-' + uuid.uuid4().hex + '.json'),
                  dict(profile=profile, backend='vllm', version=VLLM_VERSION,
-                      policy=POLICY, weights_verified=True, time=time.time()))
+                      policy=POLICY, max_output_tokens=args.max_output_tokens, weights_verified=True, time=time.time()))
     TucanoHTTPServer(('127.0.0.1', args.port), make_handler(profile, tokenizer,
-        args.audit_dir, lambda body: json_http(base + '/v1/completions', body))).serve_forever()
+        args.audit_dir, lambda body: json_http(base + '/v1/completions', body),
+        max_output_tokens=args.max_output_tokens)).serve_forever()
 
 
 if __name__ == '__main__':

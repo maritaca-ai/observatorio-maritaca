@@ -112,3 +112,16 @@ Para um limite preventivo de chamadas em USD, o mecanismo
 sem custo conhecido e para novos envios ao atingir a reserva. Não representa
 um teto de faturamento e não cobre cobranças em BRL da Maritaca. Os custos nos
 arquivos finais representam somente os julgamentos selecionados.
+
+### Teto de saída opcional no transporte Tucano
+
+`python -m s5_nano.tucano_transport --max-output-tokens 1024` limita cada
+resposta a 1.024 tokens, incluindo raciocínio, ou ao espaço restante no contexto
+nativo quando ele for menor. Sem essa opção, permanece a política dos perfis:
+usar o espaço restante da janela de 4.096 tokens. O teto é registrado no recibo
+de inicialização e em cada pedido; não altera o template nem a amostragem.
+
+Para um piloto ResearchRubrics com esse teto, configure também o runner com
+`--context-length 4096 --max-tokens 1024 --context-reserve 0`. O orçamento de
+entrada do runner é de 3.072 bytes UTF-8. Registre essa configuração como uma
+execução separada; ela não substitui resultados de outras configurações.
