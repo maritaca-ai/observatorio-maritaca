@@ -48,6 +48,48 @@ def item_score(benchmark, row):
         weights = [v['criterio']['weight'] for v in votes]
         require(all(type(w) in (int, float) and math.isfinite(w) for w in weights),
                 'Peso de rubrica inválido')
+        policy = j.get('politica_resposta_vazia')
+        if policy is not None:
+            attempts = policy.get('tentativas', [])
+            context_zero = policy.get('politica') == 'native-context-exhausted-no-final-zero-v1'
+            expected_attempts = 1 if context_zero else 3
+            require(policy.get('politica') in ('empty-final-after-three-attempts-zero-v1',
+                                               'native-context-exhausted-no-final-zero-v1')
+                    and policy.get('mesmo_pedido') is True
+                    and len(attempts) == expected_attempts
+                    and [a.get('tentativa') for a in attempts] == list(range(1, expected_attempts+1)),
+                    'Zero exige comprovação da política aplicada')
+            request_hash = policy.get('pedido_sha256')
+            require(isinstance(request_hash, str) and len(request_hash) == 64
+                    and all(c in '0123456789abcdef' for c in request_hash)
+                    and all(a.get('pedido_sha256') == request_hash for a in attempts),
+                    'Pedidos das três tentativas divergem')
+            require(isinstance(row['resposta'], str) and not row['resposta'].strip()
+                    and all(isinstance(a.get('resposta'), str) and not a['resposta'].strip()
+                            and a.get('motivo_encerramento') == ('length' if context_zero else 'stop')
+                            and a.get('chamadas_ferramentas') == [] for a in attempts),
+                    'Falha ou resposta não vazia não pode receber zero por esta política')
+            if context_zero:
+                limit = row['parametros_inferencia']['context_length']
+                usage = attempts[0].get('tokens') or {}
+                prompt, completion = usage.get('prompt_tokens'), usage.get('completion_tokens')
+                cap = row['parametros_inferencia'].get('max_tokens')
+                require(type(prompt) is int and type(completion) is int and completion > 0
+                        and prompt + completion == usage.get('total_tokens') == limit
+                        and policy.get('context_length') == policy.get('total_tokens') == limit
+                        and policy.get('prompt_tokens') == prompt and policy.get('completion_tokens') == completion
+                        and policy.get('effective_max_tokens') == cap
+                        and (cap is None or completion <= cap),
+                        'Zero por contexto exige esgotamento comprovado do contexto nativo')
+            require(row['julgamento'].get('tipo') == 'politica_resposta_vazia'
+                    and row['julgamento'].get('modelo') is None
+                    and row['julgamento'].get('chamadas') == []
+                    and all(v.get('veredito') is None for v in votes)
+                    and row['total_tokens_julgamento'] == 0
+                    and row['custo_julgamento']['valor'] == 0,
+                    'Zero por resposta vazia não pode simular julgamento')
+            require(sum(w for w in weights if w > 0) > 0, 'Denominador de rubricas inválido')
+            return 0.0
         if benchmark == 'draco':
             labels = [v['veredito']['criterion_status'] for v in votes]
             require(all(v in ('MET', 'UNMET') for v in labels), 'Veredito DRACO inválido')
@@ -191,6 +233,12 @@ def check_group(folder, summary, benchmark):
                 f'{folder}: população do benchmark incompleta')
         require(sum(len(r['julgamento']['veredito']['criterios']) for r in rows) ==
                 criteria_count == summary['criterios_avaliados'], f'{folder}: rubricas incompletas')
+        policy_count = sum(len(r['julgamento']['veredito']['criterios']) for r in rows
+                           if r['julgamento']['veredito'].get('politica_resposta_vazia') is not None)
+        if policy_count or 'criterios_pontuados_por_politica' in summary:
+            require(summary.get('criterios_pontuados_por_politica') == policy_count
+                    and summary.get('criterios_julgados') == criteria_count - policy_count,
+                    f'{folder}: contagem de critérios julgados e zeros por política diverge')
     if benchmark == 'lumen-pt':
         control = read(folder/'controles-capacidade.json')
         require(len(control) == 22, f'{folder}: faltam controles de capacidade')

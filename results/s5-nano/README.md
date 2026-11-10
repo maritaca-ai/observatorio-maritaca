@@ -30,3 +30,5 @@ Maritaca AI · ≈4,2B · texto
 | [OAB-Bench · 210 · completo](oab-bench/README.md) | [82.00](oab-bench/thinking/README.md) | [73.94](oab-bench/instruct/README.md) |
 | [Magis-Bench · 74 · completo](magis-bench/README.md) | [50.41](magis-bench/thinking/README.md) | [41.10](magis-bench/instruct/README.md) |
 | [CondutaBench · 140](conduta-bench/README.md) | [80.24](conduta-bench/thinking/README.md) | [77.00](conduta-bench/instruct/README.md) |
+| [DRACO](draco/README.md) | [61.4667](draco/thinking/README.md) | [60.7376](draco/instruct/README.md) |
+| [ResearchRubrics](researchrubrics/README.md) | [58.8541](researchrubrics/thinking/README.md) | [54.0319](researchrubrics/instruct/README.md) |

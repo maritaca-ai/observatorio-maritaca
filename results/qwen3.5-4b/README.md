@@ -30,3 +30,5 @@ Qwen · Alibaba · 4,66B · ≈4,2B texto
 | [OAB-Bench · 210 · completo](oab-bench/README.md) | [45.88](oab-bench/thinking/README.md) | [45.24](oab-bench/instruct/README.md) |
 | [Magis-Bench · 74 · completo](magis-bench/README.md) | [13.97](magis-bench/thinking/README.md) | [17.32](magis-bench/instruct/README.md) |
 | [CondutaBench · 140](conduta-bench/README.md) | [67.92](conduta-bench/thinking/README.md) | [50.93](conduta-bench/instruct/README.md) |
+| [DRACO](draco/README.md) | [53.6341](draco/thinking/README.md) | [39.7898](draco/instruct/README.md) |
+| [ResearchRubrics](researchrubrics/README.md) | [51.9996](researchrubrics/thinking/README.md) | [42.0017](researchrubrics/instruct/README.md) |

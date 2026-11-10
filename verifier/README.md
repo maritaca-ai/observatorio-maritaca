@@ -64,3 +64,17 @@ python -m verifier.export_readme --check
 As tabelas usam `reported.json`, mantêm Thinking e Instruct separados e ordenam
 pela média total. O restante do README, inclusive o espaço de citação, é
 preservado. `--check` apenas confere se as tabelas estão atualizadas.
+
+Os resultados adicionais de DRACO e ResearchRubrics podem ser conferidos com
+`python scripts/validate_results.py --supplemental-only`. O verificador mantém
+os pesos negativos e aplica o limite de pontuação por pergunta somente no DRACO.
+Quando a campanha atribui zero após três respostas finais vazias, exige as três
+tentativas concluídas, o mesmo pedido e ausência de vereditos fictícios. Esses
+casos continuam no denominador; os critérios pontuados pela política ficam
+separados dos critérios julgados por IA no resumo. Os resultados parciais do
+Tucano continuam sem nota final e não entram nas médias históricas.
+
+Um zero por contexto nativo exige uma resposta encerrada por `length`, sem
+conteúdo final, com a soma dos tokens de entrada e saída igual ao limite nativo
+do perfil. Um erro de transporte ou um teto menor de saída não satisfaz essa
+condição. Respostas finais não vazias continuam sendo julgadas.

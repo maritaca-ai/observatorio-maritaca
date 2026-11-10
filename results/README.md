@@ -94,12 +94,23 @@ comparações entre execuções equivalentes.
 ### Resultados disponíveis
 
 | Modelo | Modo | DRACO | ResearchRubrics |
-| --- | --- | --- | --- |
-| CEIA-UFG/Gemma-3-Gaia-PT-BR-4b-it | Instruct | [16,5908](gaia-4b/draco/instruct/README.md) | [23,6298](gaia-4b/researchrubrics/instruct/README.md) |
-| ceia-br/lumi-4b | Instruct | [13,8604](lumi-4b/draco/instruct/README.md) | [27,2689](lumi-4b/researchrubrics/instruct/README.md) |
-| ceia-br/lumi-4b | Thinking | [10,9877](lumi-4b/draco/thinking/README.md) | [22,8944](lumi-4b/researchrubrics/thinking/README.md) |
-| Polygl0t/Tucano2-qwen-3.7B-Instruct | Instruct | [Parcial: 48/100 julgados](tucano2-qwen-3.7b/draco/instruct/README.md) | Não executado |
-| Polygl0t/Tucano2-qwen-3.7B-Think | Thinking | [Parcial: 91/100 julgados](tucano2-qwen-3.7b/draco/thinking/README.md) | Não executado |
+| --- | --- | ---: | ---: |
+| S5-nano | Thinking | **[61,4667](s5-nano/draco/thinking/README.md)** | **[58,8541](s5-nano/researchrubrics/thinking/README.md)** |
+| S5-nano | Instruct | **[60,7376](s5-nano/draco/instruct/README.md)** | **[54,0319](s5-nano/researchrubrics/instruct/README.md)** |
+| Qwen3.5-4B | Thinking | [53,6341](qwen3.5-4b/draco/thinking/README.md) | [51,9996](qwen3.5-4b/researchrubrics/thinking/README.md) |
+| Qwen3.5-4B | Instruct | [39,7898](qwen3.5-4b/draco/instruct/README.md) | [42,0017](qwen3.5-4b/researchrubrics/instruct/README.md) |
+| Gemma 4 E4B | Thinking | [28,2579](gemma-4-e4b/draco/thinking/README.md) | [32,2481](gemma-4-e4b/researchrubrics/thinking/README.md) |
+| Gemma 4 E4B | Instruct | [25,7907](gemma-4-e4b/draco/instruct/README.md) | [30,5068](gemma-4-e4b/researchrubrics/instruct/README.md) |
+| Nemotron 3.5 Bolt E4B | Thinking | [28,5964](nemotron-3.5-bolt-e4b/draco/thinking/README.md) | [30,6489](nemotron-3.5-bolt-e4b/researchrubrics/thinking/README.md) |
+| Nemotron 3.5 Bolt E4B | Instruct | [23,9862](nemotron-3.5-bolt-e4b/draco/instruct/README.md) | [26,4877](nemotron-3.5-bolt-e4b/researchrubrics/instruct/README.md) |
+| LFM3-1.7B | Thinking | [43,3202](lfm3-1.7b/draco/thinking/README.md) | [46,4674](lfm3-1.7b/researchrubrics/thinking/README.md) |
+| LFM3-1.7B | Instruct | [39,5482](lfm3-1.7b/draco/instruct/README.md) | [41,5175](lfm3-1.7b/researchrubrics/instruct/README.md) |
+| LFM2.5-24B-A2B | Thinking | [35,9472](lfm2.5-24b-a2b/draco/thinking/README.md) | [41,6973](lfm2.5-24b-a2b/researchrubrics/thinking/README.md) |
+| Gaia 4B | Instruct | [16,5908](gaia-4b/draco/instruct/README.md) | [23,6298](gaia-4b/researchrubrics/instruct/README.md) |
+| Lumi 4B | Thinking | [10,9877](lumi-4b/draco/thinking/README.md) | [22,8944](lumi-4b/researchrubrics/thinking/README.md) |
+| Lumi 4B | Instruct | [13,8604](lumi-4b/draco/instruct/README.md) | [27,2689](lumi-4b/researchrubrics/instruct/README.md) |
+| Tucano2-qwen-3.7B | Thinking | [Parcial: 91/100 julgados](tucano2-qwen-3.7b/draco/thinking/README.md) | Não executado |
+| Tucano2-qwen-3.7B | Instruct | [Parcial: 48/100 julgados](tucano2-qwen-3.7b/draco/instruct/README.md) | Não executado |
 
 **Notas para o Observatório:** no DRACO, o Tucano Instruct realizou **274 buscas web**
 em 87 casos e 13 leituras de páginas. O Tucano Thinking realizou **zero buscas**,
@@ -108,7 +119,7 @@ Os 100 casos de cada modo foram tentados; os casos sem resposta pontuável não
 receberam zero. As médias parciais são 2,9967 (48 respostas) e 5,1528 (91 respostas),
 respectivamente, e não devem entrar como notas finais no placar.
 
-As seis notas completas acima cobrem a população completa do respectivo benchmark.
+As 28 notas completas acima cobrem a população completa do respectivo benchmark.
 Estes resultados adicionais ainda não integram o catálogo e as médias históricas
 do Observatório. A inclusão na interface será consolidada separadamente.
 
@@ -117,3 +128,15 @@ Para conferir somente estes arquivos, sem carregar os demais resultados:
 ```bash
 python scripts/validate_results.py --supplemental-only
 ```
+
+
+
+### Política das novas avaliações nativas
+
+S5-nano, Qwen3.5-4B, Gemma 4 E4B, Nemotron 3.5 Bolt E4B, LFM3-1.7B e LFM2.5-24B-A2B usam os perfis `*-deep-research.json`. Não há `reasoning_effort` no candidato; Thinking e Instruct são controlados pelo template nativo. O LFM2.5 oferece apenas Thinking.
+
+Três respostas finais vazias ao mesmo pedido encerram a pergunta com zero, dentro do denominador completo. Os registros preservam as três tentativas e distinguem essa regra de um julgamento por rubrica. Uma resposta final não vazia é julgada, inclusive se truncada; erros de transporte e do juiz precisam ser resolvidos. A regra foi aplicada a todos os modelos e modos desta campanha nativa.
+
+O esgotamento comprovado do contexto nativo sem resposta final recebe zero no denominador completo. A prova exige encerramento `length` e uso total de tokens igual ao limite de contexto do perfil; um erro HTTP ou um limite menor de saída não basta.
+
+Os perfis dos juízes estão em [DRACO](../profiles/judges/draco.json) e [ResearchRubrics](../profiles/judges/researchrubrics.json). Cada chamada selecionada registra seus parâmetros, tokens, resposta do juiz e veredito.
