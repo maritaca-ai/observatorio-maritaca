@@ -109,8 +109,8 @@ comparações entre execuções equivalentes.
 | Gaia 4B | Instruct | [16,5908](gaia-4b/draco/instruct/README.md) | [23,6298](gaia-4b/researchrubrics/instruct/README.md) |
 | Lumi 4B | Thinking | [10,9877](lumi-4b/draco/thinking/README.md) | [22,8944](lumi-4b/researchrubrics/thinking/README.md) |
 | Lumi 4B | Instruct | [13,8604](lumi-4b/draco/instruct/README.md) | [27,2689](lumi-4b/researchrubrics/instruct/README.md) |
-| Tucano2-qwen-3.7B | Thinking | [Parcial: 91/100 julgados](tucano2-qwen-3.7b/draco/thinking/README.md) | Não executado |
-| Tucano2-qwen-3.7B | Instruct | [Parcial: 48/100 julgados](tucano2-qwen-3.7b/draco/instruct/README.md) | Não executado |
+| Tucano2-qwen-3.7B | Thinking | [Parcial: 91/100 julgados](tucano2-qwen-3.7b/draco/thinking/README.md) | [Parcial: 88/101 julgados](tucano2-qwen-3.7b/researchrubrics/thinking/README.md) |
+| Tucano2-qwen-3.7B | Instruct | [Parcial: 48/100 julgados](tucano2-qwen-3.7b/draco/instruct/README.md) | [Parcial: 58/101 julgados](tucano2-qwen-3.7b/researchrubrics/instruct/README.md) |
 
 **Notas para o Observatório:** no DRACO, o Tucano Instruct realizou **274 buscas web**
 em 87 casos e 13 leituras de páginas. O Tucano Thinking realizou **zero buscas**,
@@ -118,6 +118,16 @@ apesar das ferramentas disponíveis no prompt: respondeu diretamente.
 Os 100 casos de cada modo foram tentados; os casos sem resposta pontuável não
 receberam zero. As médias parciais são 2,9967 (48 respostas) e 5,1528 (91 respostas),
 respectivamente, e não devem entrar como notas finais no placar.
+
+No ResearchRubrics, os 101 casos de cada modo do Tucano foram tentados. O
+Instruct concluiu **58/101** (média parcial **4,3932**) e realizou **176 buscas**;
+o Thinking concluiu **88/101** (média parcial **5,7955**) e não realizou buscas.
+Todos os 3.702 critérios das respostas disponíveis foram julgados. O Instruct
+teve 28 interrupções pelo orçamento de **3.072 bytes do runner** e 15 saídas
+limitadas a **1.024 tokens** ainda contendo chamadas de ferramentas. No Thinking,
+13 saídas consumiram esse teto sem resposta final. Esses limites configurados
+não comprovam esgotamento do contexto nativo de 4K; as falhas permanecem sem nota,
+com evidência por caso, e as médias parciais ficam fora do ranking.
 
 As 28 notas completas acima cobrem a população completa do respectivo benchmark.
 Estes resultados adicionais ainda não integram o catálogo e as médias históricas

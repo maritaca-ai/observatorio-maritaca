@@ -193,7 +193,7 @@ def check_group(folder, summary, benchmark):
     if benchmark in SUPPLEMENTAL:
         _, population, criteria_count = SUPPLEMENTAL[benchmark]
         if summary['status'] == 'parcial':
-            require(benchmark == 'draco' and summary['score'] is None,
+            require(summary['score'] is None,
                     f'{folder}: parcial não pode ter nota final')
             require(0 < len(rows) < population and summary['populacao_esperada'] == population
                     and summary['denominador_agregado'] == len(rows),
@@ -211,7 +211,9 @@ def check_group(folder, summary, benchmark):
                     and ids | missing_ids == set(expected_ids),
                     f'{folder}: casos ausentes, sobrepostos ou duplicados')
             require(all(r['score'] is None and r['motivo'] in
-                        ('context_overflow', 'output_length', 'no_final_answer')
+                        (('context_overflow', 'output_length', 'no_final_answer', 'input_byte_budget')
+                         if benchmark == 'researchrubrics' else
+                         ('context_overflow', 'output_length', 'no_final_answer'))
                         and type(r['criterios']) is int and r['criterios'] > 0 for r in missing),
                     f'{folder}: motivo ou nota de falha inválido')
             judged = sum(len(r['julgamento']['veredito']['criterios']) for r in rows)

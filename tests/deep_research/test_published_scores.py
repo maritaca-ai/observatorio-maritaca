@@ -132,6 +132,30 @@ class ResearchPublicationTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 check_group(folder, summary, 'draco')
 
+    def test_partial_researchrubrics_preserves_failures_and_has_no_final_score(self):
+        for mode in ('instruct', 'thinking'):
+            source = ROOT/'results/tucano2-qwen-3.7b/researchrubrics'/mode
+            with self.subTest(mode=mode), tempfile.TemporaryDirectory() as tmp:
+                folder = Path(tmp)/mode
+                shutil.copytree(source, folder)
+                summary = json.loads((folder/'resumo.json').read_text())
+                self.assertEqual(check_group(folder, summary, 'researchrubrics'),
+                                 (None, summary['registros']))
+                for changes in ({'status': 'final', 'score': summary['score_parcial']},
+                                {'score': 0}, {'denominador_agregado': 101},
+                                {'criterios_esperados': 2592}):
+                    with self.subTest(changes=changes), self.assertRaises(ValueError):
+                        check_group(folder, dict(summary, **changes), 'researchrubrics')
+                missing_path = folder/'casos-sem-nota.json'
+                missing = json.loads(missing_path.read_text())
+                missing_path.write_text(json.dumps(missing[:-1]))
+                with self.assertRaises(ValueError):
+                    check_group(folder, summary, 'researchrubrics')
+                missing[0]['score'] = 0
+                missing_path.write_text(json.dumps(missing))
+                with self.assertRaises(ValueError):
+                    check_group(folder, summary, 'researchrubrics')
+
     def test_published_population_and_scores(self):
         report = verify_supplemental(ROOT/'results')
         self.assertGreaterEqual(report['conjuntos'], 8)
