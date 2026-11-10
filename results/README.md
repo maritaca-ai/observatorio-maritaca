@@ -73,3 +73,20 @@ respostas inventadas.
 ## Conferência
 
 Execute `python scripts/validate_results.py` na raiz do repositório. O verificador usa NumPy para reproduzir o bootstrap do Arena-Hard e somente a biblioteca padrão para os demais testes. Não faz chamadas a modelos ou serviços.
+
+## DRACO e ResearchRubrics
+
+Os resultados destes benchmarks seguem a mesma estrutura por modelo e modo:
+`results/<modelo>/draco/<modo>/` e
+`results/<modelo>/researchrubrics/<modo>/`.
+
+| Benchmark | População completa | Protocolo |
+| --- | --- | --- |
+| DRACO | 100 perguntas; 3.934 critérios | [Geração e julgamento](../benchmarks/agentico/draco/README.md) |
+| ResearchRubrics | 101 perguntas; 2.593 critérios | [Geração e julgamento](../benchmarks/agentico/researchrubrics/README.md) |
+
+Cada publicação deve identificar o perfil do candidato, a configuração de busca
+e o juiz utilizado, além da cobertura de respostas e julgamentos. A nota agregada
+segue o respectivo runner; avaliações incompletas não recebem nota completa.
+As configurações de agente e juiz devem acompanhar as notas para permitir
+comparações entre execuções equivalentes.
