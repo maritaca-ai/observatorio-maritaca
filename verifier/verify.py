@@ -10,6 +10,9 @@ import sys
 from .scores import aggregate
 
 ROOT = Path(__file__).resolve().parents[1]
+SUPPLEMENTAL = {"draco": ("DRACO", 100, 3934),
+                "researchrubrics": ("ResearchRubrics", 101, 2593)}
+
 ORIGINS = ("native_br", "translated_pt", "international", "total")
 
 
@@ -37,6 +40,28 @@ def same(actual, expected):
 def item_score(benchmark, row):
     """Aritmética dos vereditos finais; não substitui um julgamento semântico."""
     j = row['julgamento']['veredito']
+    if benchmark in SUPPLEMENTAL:
+        votes = j['criterios']
+        require(bool(votes), 'Rubricas ausentes')
+        require([v['indice'] for v in votes] == list(range(len(votes))),
+                'Índices de rubrica ausentes ou duplicados')
+        weights = [v['criterio']['weight'] for v in votes]
+        require(all(type(w) in (int, float) and math.isfinite(w) for w in weights),
+                'Peso de rubrica inválido')
+        if benchmark == 'draco':
+            labels = [v['veredito']['criterion_status'] for v in votes]
+            require(all(v in ('MET', 'UNMET') for v in labels), 'Veredito DRACO inválido')
+            values = [int(v == 'MET') for v in labels]
+        else:
+            values = [v['veredito']['score'] for v in votes]
+            require(all(type(v) in (int, float) and v in (0, 1) for v in values),
+                    'Veredito ResearchRubrics inválido')
+            require(all(v['veredito']['verdict'] == ('Satisfied' if x else 'Not Satisfied')
+                        for v, x in zip(votes, values)), 'Veredito binário inconsistente')
+        denominator = sum(w for w in weights if w > 0)
+        require(denominator > 0, 'Denominador de rubricas inválido')
+        value = 100 * sum(w * v for w, v in zip(weights, values)) / denominator
+        return max(0, min(100, value)) if benchmark == 'draco' else value
     if benchmark == 'arena-hard-v2':
         return None  # A preferência ponderada é calculada no conjunto de confrontos.
     if benchmark == 'assin2-rte':
@@ -123,6 +148,12 @@ def check_group(folder, summary, benchmark):
         rows.extend(batch)
     require(len(rows) == summary['registros'], f'{folder}: população incompleta')
     require(len({r['id'] for r in rows}) == len(rows), f'{folder}: IDs duplicados')
+    if benchmark in SUPPLEMENTAL:
+        _, population, criteria_count = SUPPLEMENTAL[benchmark]
+        require(len(rows) == population and summary['denominador_agregado'] == population,
+                f'{folder}: população do benchmark incompleta')
+        require(sum(len(r['julgamento']['veredito']['criterios']) for r in rows) ==
+                criteria_count == summary['criterios_avaliados'], f'{folder}: rubricas incompletas')
     if benchmark == 'lumen-pt':
         control = read(folder/'controles-capacidade.json')
         require(len(control) == 22, f'{folder}: faltam controles de capacidade')
@@ -178,11 +209,14 @@ def verify(root=ROOT, results=None, compare_reported=True):
     models, metrics = read(results/'modelos.json'), read(root/'benchmarks/metrics.json')
     require({p.name for p in results.iterdir() if p.is_dir()} == set(models), 'Catálogo de modelos divergente')
     for model in models:
-        require({p.name for p in (results/model).iterdir() if p.is_dir()} == set(metrics),
+        folders = {p.name for p in (results/model).iterdir() if p.is_dir()}
+        require(set(metrics) <= folders <= set(metrics) | set(SUPPLEMENTAL),
                 model + ': catálogo de benchmarks divergente')
     scores, populations, count = {}, {}, 0
     for path in sorted(results.glob('*/*/*/resumo.json')):
         summary = read(path)
+        if path.parent.parent.name in SUPPLEMENTAL:
+            continue  # Validated separately; not included in the frozen ranking.
         rel = path.parent.relative_to(results)
         model, benchmark, mode = rel.parts
         require(mode in ('thinking', 'instruct'), str(rel) + ': modo inválido')
@@ -219,9 +253,34 @@ def verify(root=ROOT, results=None, compare_reported=True):
                 a, e = row['medias'][origin], reference['medias'][origin]
                 require(same(a['valor'], e['valor']) and a['n'] == e['n'] and a['total'] == e['total']
                         and a['benchmarks'] == e['benchmarks'], context + '/' + origin + ': média divergente')
-    return {'conjuntos': len(scores), 'respostas': count,
+    supplemental = verify_supplemental(results)
+    return {'resultados_complementares': supplemental, 'conjuntos': len(scores), 'respostas': count,
             'notas_recalculadas': sum(v is not None for v in scores.values()),
             'recortes_de_medias': len(averages), 'notas': scores, 'medias': averages}
+
+
+def verify_supplemental(results):
+    """Validate published research results without changing the current catalog/ranking."""
+    models = read(results/'modelos.json')
+    scores, count = {}, 0
+    for benchmark in SUPPLEMENTAL:
+        for folder in results.glob(f'*/{benchmark}/*'):
+            if folder.is_dir():
+                require((folder/'resumo.json').is_file(), f'{folder}: resumo ausente')
+    for path in sorted(results.glob('*/*/*/resumo.json')):
+        model, benchmark, mode = path.parent.relative_to(results).parts
+        if benchmark not in SUPPLEMENTAL:
+            continue
+        summary = read(path)
+        require(model in models and mode in models[model]['modos_avaliados'],
+                f'{path}: modelo/modo não registrado')
+        require((summary['modelo'], summary['benchmark'], summary['modo']) ==
+                (models[model]['nome'], SUPPLEMENTAL[benchmark][0], mode),
+                f'{path}: identificação divergente')
+        score, n = check_group(path.parent, summary, benchmark)
+        scores[f'{model}/{benchmark}/{mode}'] = score
+        count += n
+    return {'conjuntos': len(scores), 'respostas': count, 'notas': scores}
 
 
 def main(argv=None):
@@ -229,9 +288,12 @@ def main(argv=None):
     parser.add_argument('--results', type=Path, default=ROOT/'results')
     parser.add_argument('--output', type=Path, help='Gravar relatório recalculado em JSON')
     parser.add_argument('--new-run', action='store_true', help='Validar uma nova execução sem exigir as notas históricas')
+    parser.add_argument('--supplemental-only', action='store_true',
+                        help='Validar apenas DRACO e ResearchRubrics, sem recalcular o ranking')
     args = parser.parse_args(argv)
     try:
-        report = verify(results=args.results, compare_reported=not args.new_run)
+        report = (verify_supplemental(args.results) if args.supplemental_only else
+                  verify(results=args.results, compare_reported=not args.new_run))
         if args.output:
             args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n')

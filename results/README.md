@@ -90,3 +90,21 @@ e o juiz utilizado, além da cobertura de respostas e julgamentos. A nota agrega
 segue o respectivo runner; avaliações incompletas não recebem nota completa.
 As configurações de agente e juiz devem acompanhar as notas para permitir
 comparações entre execuções equivalentes.
+
+### Resultados disponíveis
+
+| Modelo | Modo | DRACO | ResearchRubrics |
+| --- | --- | --- | --- |
+| CEIA-UFG/Gemma-3-Gaia-PT-BR-4b-it | Instruct | [16,5908](gaia-4b/draco/instruct/README.md) | [23,6298](gaia-4b/researchrubrics/instruct/README.md) |
+| ceia-br/lumi-4b | Instruct | [13,8604](lumi-4b/draco/instruct/README.md) | [27,2689](lumi-4b/researchrubrics/instruct/README.md) |
+| ceia-br/lumi-4b | Thinking | Sem nota completa | [22,8944](lumi-4b/researchrubrics/thinking/README.md) |
+
+As cinco notas acima cobrem a população completa do respectivo benchmark.
+Estes resultados adicionais ainda não integram o catálogo e as médias históricas
+do Observatório. A inclusão na interface será consolidada separadamente.
+
+Para conferir somente estes arquivos, sem carregar os demais resultados:
+
+```bash
+python scripts/validate_results.py --supplemental-only
+```
