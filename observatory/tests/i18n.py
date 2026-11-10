@@ -78,7 +78,7 @@ def main():
         go('metodo?section=benchmarks', 'en')
         descriptions = page.evaluate('D.benchmarks.map(b=>b.description)')
         assert page.evaluate('(xs)=>xs.every(s=>i18n.english(s)!==s)', descriptions)
-        assert page.locator('[data-method-benchmark]').count() == 24
+        assert page.locator('[data-method-benchmark]').count() == page.evaluate('D.benchmarks.length')
         go('panorama?size=all&mode=all', 'en')
         page.locator('[data-result="candidate:thinking:bluex_v2"]').click()
         assert 'Judge failures' in page.locator('.result-audit').inner_text()

@@ -199,13 +199,16 @@ def item_score(benchmark, row):
     raise ValueError('Benchmark sem regra de verificação: ' + benchmark)
 
 
-def check_group(folder, summary, benchmark):
+def check_group(folder, summary, benchmark, *, load_json=None, response_files=None):
+    load_json = load_json or read
     required = {'id', 'system', 'pergunta', 'resposta', 'parametros_inferencia',
                 'total_tokens', 'custo', 'julgamento', 'parametros_inferencia_julgamento',
                 'total_tokens_julgamento', 'custo_julgamento', 'score'}
     files = summary.get('arquivos', [])
     require(len({x['arquivo'] for x in files}) == len(files), f'{folder}: arquivos repetidos')
-    require({p.name for p in folder.glob('respostas-*.json')} == {f['arquivo'] for f in files},
+    inventory = ({p.name for p in folder.glob('respostas-*.json')}
+                 if response_files is None else set(response_files))
+    require(inventory == {f['arquivo'] for f in files},
             f'{folder}: inventário de respostas divergente')
     rows = []
     for entry in files:
@@ -214,7 +217,7 @@ def check_group(folder, summary, benchmark):
                 f'{folder}: nome de arquivo inválido')
         path = folder / name
         require(not path.is_symlink(), f'{path}: link externo não permitido')
-        batch = read(path)
+        batch = load_json(path)
         require(isinstance(batch, list) and len(batch) == entry['registros'], f'{path}: contagem divergente')
         for r in batch:
             context = f'{path}: item {r.get("id")}'
@@ -257,7 +260,7 @@ def check_group(folder, summary, benchmark):
             require(summary[field] == filename, f'{folder}: arquivo de falhas inválido')
             missing_path = folder/filename
             require(not missing_path.is_symlink(), f'{folder}: link externo não permitido')
-            missing = read(missing_path)
+            missing = load_json(missing_path)
             ids, missing_ids = {r['id'] for r in rows}, {r['id'] for r in missing}
             require(len(missing_ids) == len(missing) and not ids & missing_ids
                     and ids | missing_ids == set(expected_ids),
@@ -306,7 +309,7 @@ def check_group(folder, summary, benchmark):
                     and summary.get('criterios_julgados') == criteria_count - policy_count,
                     f'{folder}: contagem de critérios julgados e zeros por política diverge')
     if benchmark == 'lumen-pt':
-        control = read(folder/'controles-capacidade.json')
+        control = load_json(folder/'controles-capacidade.json')
         require(len(control) == 22, f'{folder}: faltam controles de capacidade')
         successes = sum(r['julgamento']['veredito']['benign_success'] is True for r in control)
         require((successes == 0) == (summary['status'] == 'sem_capacidade_demonstrada'),
@@ -361,13 +364,14 @@ def verify(root=ROOT, results=None, compare_reported=True):
     require({p.name for p in results.iterdir() if p.is_dir()} == set(models), 'Catálogo de modelos divergente')
     for model in models:
         folders = {p.name for p in (results/model).iterdir() if p.is_dir()}
-        require(set(metrics) <= folders <= set(metrics) | set(SUPPLEMENTAL),
+        required_metrics = {k for k, v in metrics.items() if not v.get('allow_missing_results')}
+        require(required_metrics <= folders <= set(metrics) | set(SUPPLEMENTAL),
                 model + ': catálogo de benchmarks divergente')
     scores, populations, count = {}, {}, 0
     for path in sorted(results.glob('*/*/*/resumo.json')):
         summary = read(path)
-        if path.parent.parent.name in SUPPLEMENTAL:
-            continue  # Validated separately; not included in the frozen ranking.
+        if path.parent.parent.name in SUPPLEMENTAL and path.parent.parent.name not in metrics:
+            continue  # A standalone benchmark enters the ranking only through the catalog.
         rel = path.parent.relative_to(results)
         model, benchmark, mode = rel.parts
         require(mode in ('thinking', 'instruct'), str(rel) + ': modo inválido')
@@ -404,7 +408,12 @@ def verify(root=ROOT, results=None, compare_reported=True):
                 a, e = row['medias'][origin], reference['medias'][origin]
                 require(same(a['valor'], e['valor']) and a['n'] == e['n'] and a['total'] == e['total']
                         and a['benchmarks'] == e['benchmarks'], context + '/' + origin + ': média divergente')
-    supplemental = verify_supplemental(results)
+    if set(SUPPLEMENTAL) <= set(metrics):
+        research_scores = {k: v for k, v in scores.items() if k.split('/')[1] in SUPPLEMENTAL}
+        supplemental = dict(conjuntos=len(research_scores), notas=research_scores,
+                            respostas=sum(populations[k] for k in research_scores))
+    else:
+        supplemental = verify_supplemental(results)
     return {'resultados_complementares': supplemental, 'conjuntos': len(scores), 'respostas': count,
             'notas_recalculadas': sum(v is not None for v in scores.values()),
             'recortes_de_medias': len(averages), 'notas': scores, 'medias': averages}

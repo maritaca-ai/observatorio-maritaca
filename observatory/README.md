@@ -85,10 +85,10 @@ python observatory/tests/i18n.py --url http://127.0.0.1:8080
 
 Os dois últimos comandos usam Playwright e uma instalação local do Chrome;
 dependências opcionais em `envs/requirements-observatory-qa.txt`. `browser.py`
-verifica rankings e médias nos 66 recortes, filtros, respostas, comparação às
+verifica rankings e médias nos 72 recortes, filtros, respostas, comparação às
 cegas, erros de rede e layout móvel. `i18n.py` verifica o português como padrão,
 a troca de idioma, navegação, filtros, layout móvel e preservação dos dados e
-das evidências nos 24 benchmarks. Nenhum dos testes envia dados externos.
+das evidências nos 26 benchmarks. Nenhum dos testes envia dados externos.
 
 Para desenvolvimento rápido, `--benchmarks capitu conduta_bench` monta somente
 esses casos. Essa opção é exclusiva de QA; o workflow publica sempre o conjunto
@@ -96,6 +96,15 @@ completo. Fontes e imagens estão em [assets](assets/).
 
 A ressalva `observacao_nota` do `resumo.json`, quando presente, aparece logo abaixo
 da nota no detalhe aberto ao clicar na célula. O build a projeta como `score_note`;
-não é necessário expandir a seção de observações. Os quatro resumos DRACO e
-ResearchRubrics do Tucano já incluem essa ressalva. A inclusão desses benchmarks
-no catálogo continua sendo uma etapa separada.
+não é necessário expandir a seção de observações. DRACO e ResearchRubrics entram
+nas médias, filtros, gráficos, metodologia, comparação de respostas e escolha às
+cegas. A categoria **Deep research** reúne BrowseComp-Plus, DRACO e
+ResearchRubrics; os três também pertencem a Agêntico. São filtros sobre as mesmas
+notas: cada benchmark conta uma única vez na média geral. As rubricas e perguntas
+precisam coincidir para parear respostas.
+
+O build confere os 32 conjuntos desses dois benchmarks com o mesmo verificador
+dos arquivos originais. Os 117 recibos de falha de geração do Tucano também
+aparecem nos casos, com zero e sem simular texto de resposta ou julgamento.
+Modelos sem avaliação continuam sem nota; não recebem zero. Os metadados
+distinguem rubricas julgadas e critérios pontuados por política de zero.

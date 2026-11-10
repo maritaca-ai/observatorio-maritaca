@@ -72,7 +72,11 @@ Quando a campanha atribui zero após três respostas finais vazias, exige as tr�
 tentativas concluídas, o mesmo pedido e ausência de vereditos fictícios. Esses
 casos continuam no denominador; os critérios pontuados pela política ficam
 separados dos critérios julgados por IA no resumo. Os resultados parciais do
-Tucano continuam sem nota final e não entram nas médias históricas.
+Tucano foram consolidados na PR com a população completa e os zeros registrados
+em `casos-zerados.json`; o verificador exige a comprovação de cada falha.
+DRACO e ResearchRubrics integram o catálogo, as notas reportadas e as médias de
+Agêntico, Não nativo e Total. Cada benchmark recebe o mesmo peso dos demais.
+Modelos sem execução desses testes permanecem sem nota, sem zeros presumidos.
 
 Um zero por contexto nativo exige uma resposta encerrada por `length`, sem
 conteúdo final, com a soma dos tokens de entrada e saída igual ao limite nativo

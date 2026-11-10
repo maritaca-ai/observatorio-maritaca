@@ -21,6 +21,8 @@ class Repository:
         self.process.stdin.write(('HEAD:'+path+'\n').encode())
         self.process.stdin.flush()
         header = self.process.stdout.readline().decode().split()
+        if len(header) == 2 and header[-1] == 'missing':
+            raise FileNotFoundError(path)
         if len(header) != 3 or header[1] != 'blob':
             raise ValueError('Missing Git blob: '+path)
         data = self.process.stdout.read(int(header[2]))
@@ -35,6 +37,15 @@ class Repository:
         except ImportError:
             return json.loads(data)
         return orjson.loads(data)
+
+    def response_files(self, folder):
+        """List the actual parts, independently of the summary's inventory."""
+        if self.process is None:
+            return {p.name for p in (self.root/folder).glob('respostas-*.json')}
+        names = subprocess.check_output(
+            ['git', 'ls-tree', '--name-only', 'HEAD:'+str(folder)], cwd=self.root, text=True)
+        return {name for name in names.splitlines()
+                if name.startswith('respostas-') and name.endswith('.json')}
 
     def close(self):
         if self.process:

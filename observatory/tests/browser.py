@@ -85,6 +85,30 @@ def main():
         assert 'Falhas do juiz' in page.locator('#detail-content').inner_text()
         page.keyboard.press('Escape')
 
+        # Deep research is an overlapping category, not duplicated score rows.
+        research_tasks = ['browsecomp_plus', 'draco', 'researchrubrics']
+        go('panorama?size=all&mode=all&category=deep_research')
+        assert page.locator('.results-heading h1').inner_text() == 'Deep research'
+        assert page.locator('.score-table tbody tr').count() == 3
+        page.locator('[data-average-detail="candidate:thinking:total"]').click()
+        assert page.locator('#detail-content .metric-breakdown tbody tr').count() == 3
+        page.keyboard.press('Escape')
+        page.locator('.results-heading a[href*="tab=blind"]').click()
+        page.locator('[data-arena-vote=tie]').wait_for()
+        assert page.locator('#case-category').input_value() == 'deep_research'
+        assert page.locator('#case-benchmark option').evaluate_all('(xs)=>xs.map(x=>x.value)') == research_tasks
+        assert 'category=deep_research' in page.url
+        page.reload(wait_until='networkidle')
+        page.locator('[data-arena-vote=tie]').wait_for()
+        assert page.locator('#case-category').input_value() == 'deep_research'
+        assert page.locator('.answer-score').count() == 0
+        go('comparar?size=all&mode=all&category=deep_research&task=draco')
+        assert page.locator('#compare-benchmark option').evaluate_all('(xs)=>xs.map(x=>x.value)') == research_tasks
+        go('metodo?section=benchmarks&mc=deep_research')
+        assert page.locator('[data-method-benchmark]').count() == 3
+        go('inicio?size=all&mode=all&category=deep_research')
+        assert page.locator('[data-home-category]').input_value() == 'deep_research'
+
         # A real saved response from every displayed benchmark must open.
         for task in data['case_catalog']['benchmarks']:
             go(f'descobrir?task={task}&mode=thinking&size=all&a=candidate&b=qwen35-4b')
@@ -131,6 +155,28 @@ def main():
         page.locator('[data-experience=round]').last.click()
         page.locator('[data-arena-vote=a]').wait_for()
         assert page.locator('.answer-score').count() == 0
+
+        # Research benchmarks participate in blind voting, with scores and
+        # rubric judgments revealed only after the choice; votes never rescore.
+        original_scores = page.evaluate('JSON.stringify(D.records.map(r=>[r.id,r.score]))')
+        for task in ('draco', 'researchrubrics'):
+            if task not in data['case_catalog']['benchmarks']:
+                continue
+            go(f'descobrir?task={task}&mode=all&size=all&a=candidate&b=qwen35-4b')
+            page.wait_for_function('''task => experience.task===task &&
+                experience.loadedTasks.has(task) && experience.cache.has(experience.key)''', arg=task)
+            assert page.locator('.response-pair').count() == 2, task
+            page.locator('[data-experience-tab=blind]').click()
+            page.locator('[data-arena-vote=tie]').wait_for()
+            assert page.locator('.response-card h3').all_text_contents() == ['Resposta A','Resposta B']
+            assert page.locator('.answer-score').count() == 0
+            assert page.locator('.answer-evidence').count() == 0
+            page.locator('[data-arena-vote=tie]').click()
+            assert page.locator('.reveal-summary').is_visible()
+            assert page.locator('.answer-score').count() == 2
+            page.locator('.answer-evidence details').first.locator(':scope > summary').click()
+            assert page.locator('.answer-evidence').first.inner_text()
+        assert page.evaluate('JSON.stringify(D.records.map(r=>[r.id,r.score]))') == original_scores
 
         go('comparar?models=candidate,gaia,qwen35-4b&mode=instruct&size=all&task=conduta_bench')
         assert page.locator('.plot-point').count() == 3

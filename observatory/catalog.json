@@ -1,13 +1,14 @@
 {
   "schema_version": 2,
   "title": "Maritaca · Observatório de modelos",
-  "updated_at": "2026-11-05T18:31:35.679395+00:00",
+  "updated_at": "2026-11-10",
   "categories": {
     "chat": "Chat",
     "instrucoes": "Instruções",
     "seguranca_etica": "Segurança e ética",
     "provas": "Provas e conhecimento",
     "agentico": "Agêntico",
+    "deep_research": "Deep research",
     "saida_estruturada": "Saída estruturada",
     "brasil_especifico": "Brasil e cultura",
     "contexto_longo": "Contexto longo",
@@ -16,7 +17,7 @@
   },
   "references": {
     "schema_version": 1,
-    "checked_at": "2026-11-05",
+    "checked_at": "2026-11-10",
     "benchmarks": {
       "arena_hard_v2": {
         "sources": [
@@ -376,6 +377,44 @@
         "correction": "Juiz aplica as rubricas clínicas nativas, com penalidades por condutas nocivas; a nota pode ser negativa.",
         "papers": [],
         "note": "Amostra fixa de 140 questões entre 715, estratificada pelas 14 diretrizes. Sem acesso às diretrizes durante a geração."
+      },
+      "draco": {
+        "sources": [
+          {
+            "label": "Dataset público",
+            "url": "https://huggingface.co/datasets/perplexity-ai/draco"
+          }
+        ],
+        "correction": "S5 Instruct julga cada critério. A nota soma os pesos atendidos, divide pela soma dos pesos positivos e é limitada a 0–100 por pergunta. A nota final é a média das 100 perguntas.",
+        "papers": [
+          {
+            "url": "https://arxiv.org/abs/2602.11685",
+            "title": "DRACO: a Cross-Domain Benchmark for Deep Research Accuracy, Completeness, and Objectivity",
+            "label": "Paper"
+          }
+        ],
+        "note": "Pesquisa com Serper, até 30 chamadas de ferramentas e juiz S5 com esforço none. Só a resposta final recebe nota. O agente e o juiz são os desta campanha; não se afirma reprodução do leaderboard dos autores. Os casos zerados e os limites de cada modelo estão nos detalhes da nota."
+      },
+      "researchrubrics": {
+        "sources": [
+          {
+            "label": "Dataset público",
+            "url": "https://huggingface.co/datasets/ScaleAI/researchrubrics"
+          },
+          {
+            "label": "Código e rubricas",
+            "url": "https://github.com/scaleapi/researchrubrics"
+          }
+        ],
+        "correction": "S5 Instruct julga cada critério. A nota soma os pesos atendidos e divide pela soma dos pesos positivos, preservando notas negativas. A nota final é a média das 101 perguntas.",
+        "papers": [
+          {
+            "url": "https://arxiv.org/abs/2511.07685",
+            "title": "ResearchRubrics: A Benchmark of Prompts and Rubrics For Evaluating Deep Research Agents",
+            "label": "Paper"
+          }
+        ],
+        "note": "Pesquisa com Serper, até 30 chamadas de ferramentas e juiz S5 com esforço none. Só a resposta final recebe nota. O agente e o juiz são os desta campanha; não se afirma reprodução do leaderboard dos autores. Os casos zerados e os limites de cada modelo estão nos detalhes da nota."
       }
     },
     "benchmark_aliases": {
@@ -1111,7 +1150,8 @@
       "population": "100 questões",
       "category": "agentico",
       "categories": [
-        "agentico"
+        "agentico",
+        "deep_research"
       ],
       "direction": "higher",
       "origin": "international",
@@ -1121,6 +1161,46 @@
       "table_visible": true,
       "protocol_url": "https://github.com/maritaca-ai/observatorio-maritaca/tree/main/benchmarks/agentico/browsecomp_plus",
       "result_count": 16
+    },
+    {
+      "id": "draco",
+      "name": "DRACO",
+      "language": "EN",
+      "description": "Pesquisa na web em diferentes áreas, com correção da precisão, completude, apresentação e citações por critérios.",
+      "metric": "Média de pontos por rubricas",
+      "population": "100 perguntas · 3.934 critérios",
+      "category": "agentico",
+      "categories": [
+        "agentico",
+        "deep_research"
+      ],
+      "direction": "higher",
+      "origin": "international",
+      "origin_label": "Não nativo",
+      "origin_note": null,
+      "primary_metric": true,
+      "table_visible": true,
+      "protocol_url": "https://github.com/maritaca-ai/observatorio-maritaca/blob/main/benchmarks/agentico/draco/protocol.json"
+    },
+    {
+      "id": "researchrubrics",
+      "name": "ResearchRubrics",
+      "language": "EN",
+      "description": "Pesquisa na web para responder perguntas complexas, avaliada por critérios escritos por especialistas.",
+      "metric": "Média de pontos por rubricas",
+      "population": "101 perguntas · 2.593 critérios",
+      "category": "agentico",
+      "categories": [
+        "agentico",
+        "deep_research"
+      ],
+      "direction": "higher",
+      "origin": "international",
+      "origin_label": "Não nativo",
+      "origin_note": null,
+      "primary_metric": true,
+      "table_visible": true,
+      "protocol_url": "https://github.com/maritaca-ai/observatorio-maritaca/blob/main/benchmarks/agentico/researchrubrics/protocol.json"
     },
     {
       "id": "sob",
@@ -1318,7 +1398,9 @@
         "browsecomp_plus",
         "sob",
         "culturalbench",
-        "longbench_v2"
+        "longbench_v2",
+        "draco",
+        "researchrubrics"
       ],
       "mixed": [
         "marca_public"
@@ -1337,7 +1419,9 @@
       "math_pt_br_mc": "https://huggingface.co/datasets/tiagoteixeira03/MATH-PT/blob/main/README.md",
       "assin_rte": "https://sites.google.com/view/assin2/",
       "marca_public": "https://arxiv.org/html/2604.14448v1#S3.SS1",
-      "lumen_pt": "https://arxiv.org/abs/2610.15134"
+      "lumen_pt": "https://arxiv.org/abs/2610.15134",
+      "draco": "https://arxiv.org/abs/2602.11685",
+      "researchrubrics": "https://arxiv.org/abs/2511.07685"
     }
   },
   "model_directories": {
@@ -1370,6 +1454,8 @@
     "math_pt_br_mc": "math-pt-br",
     "marca_public": "marca-public",
     "browsecomp_plus": "browsecomp-plus",
+    "draco": "draco",
+    "researchrubrics": "researchrubrics",
     "sob": "structured-output-benchmark",
     "broverbs": "broverbs",
     "assin_rte": "assin2-rte",
