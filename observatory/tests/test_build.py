@@ -21,9 +21,11 @@ class ResultProjection(unittest.TestCase):
 
     def test_score_note_comes_from_summary_without_changing_score(self):
         root=Path(__file__).resolve().parents[2]
+        repo=Repository(root,from_git=True)
+        self.addCleanup(repo.close)
         for benchmark in ('draco', 'researchrubrics'):
             for mode in ('instruct', 'thinking'):
-                summary=json.loads((root/'results/tucano2-qwen-3.7b'/benchmark/mode/'resumo.json').read_text())
+                summary=repo.json(f'results/tucano2-qwen-3.7b/{benchmark}/{mode}/resumo.json')
                 identity=f'tucano:{mode}:{benchmark}'
                 catalog=dict(annotations={identity: {'audit_summary': {'fields': []}}},
                              audit_fields={}, benchmark_directories={benchmark: benchmark}, updated_at='test')
