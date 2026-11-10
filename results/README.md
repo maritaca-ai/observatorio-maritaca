@@ -66,8 +66,8 @@ A nota do benchmark segue sua regra de agregação. Ela não é necessariamente 
 média dos `score` individuais: há pesos, grupos de questões, rubricas e métricas
 como F1. Os resumos preservam essas diferenças.
 
-Somente respostas e correções selecionadas para os resultados finais entram
-neste diretório. Modos sem avaliação têm seu estado identificado, sem notas ou
+Respostas e correções selecionadas entram neste diretório. Avaliações parciais
+são identificadas como tais, com os casos sem nota documentados separadamente. Modos sem avaliação têm seu estado identificado, sem notas ou
 respostas inventadas.
 
 ## Conferência
@@ -98,8 +98,17 @@ comparações entre execuções equivalentes.
 | CEIA-UFG/Gemma-3-Gaia-PT-BR-4b-it | Instruct | [16,5908](gaia-4b/draco/instruct/README.md) | [23,6298](gaia-4b/researchrubrics/instruct/README.md) |
 | ceia-br/lumi-4b | Instruct | [13,8604](lumi-4b/draco/instruct/README.md) | [27,2689](lumi-4b/researchrubrics/instruct/README.md) |
 | ceia-br/lumi-4b | Thinking | [10,9877](lumi-4b/draco/thinking/README.md) | [22,8944](lumi-4b/researchrubrics/thinking/README.md) |
+| Polygl0t/Tucano2-qwen-3.7B-Instruct | Instruct | [Parcial: 48/100 julgados](tucano2-qwen-3.7b/draco/instruct/README.md) | Não executado |
+| Polygl0t/Tucano2-qwen-3.7B-Think | Thinking | [Parcial: 91/100 julgados](tucano2-qwen-3.7b/draco/thinking/README.md) | Não executado |
 
-As seis notas acima cobrem a população completa do respectivo benchmark.
+**Notas para o Observatório:** no DRACO, o Tucano Instruct realizou **274 buscas web**
+em 87 casos e 13 leituras de páginas. O Tucano Thinking realizou **zero buscas**,
+apesar das ferramentas disponíveis no prompt: respondeu diretamente.
+Os 100 casos de cada modo foram tentados; os casos sem resposta pontuável não
+receberam zero. As médias parciais são 2,9967 (48 respostas) e 5,1528 (91 respostas),
+respectivamente, e não devem entrar como notas finais no placar.
+
+As seis notas completas acima cobrem a população completa do respectivo benchmark.
 Estes resultados adicionais ainda não integram o catálogo e as médias históricas
 do Observatório. A inclusão na interface será consolidada separadamente.
 
