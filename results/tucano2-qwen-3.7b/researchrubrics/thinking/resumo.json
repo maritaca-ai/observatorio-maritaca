@@ -2,9 +2,8 @@
   "modelo": "Tucano2-qwen-3.7B",
   "benchmark": "ResearchRubrics",
   "modo": "thinking",
-  "status": "parcial",
-  "score": null,
-  "score_parcial": 5.795497466872863,
+  "status": "final",
+  "score": 5.049542347374376,
   "populacao_esperada": 101,
   "criterios_esperados": 2593,
   "ids_esperados": [
@@ -110,13 +109,12 @@
     "6847465956a0f6376a6054cd",
     "6847465956a0f6376a6054d0"
   ],
-  "casos_sem_nota": "casos-sem-nota.json",
   "registros": 88,
-  "denominador_agregado": 88,
+  "denominador_agregado": 101,
   "unidade_denominador": "perguntas",
   "criterios_avaliados": 2253,
   "score_individual": "Nota por pergunta, sem clipping; pode ser negativa.",
-  "agregacao": "Média parcial por pergunta dos pesos satisfeitos / soma dos pesos positivos × 100; sem clipping. Não é nota completa do benchmark.",
+  "agregacao": "Soma das notas das respostas julgadas dividida por 101; geração sem resposta final recebe zero. Os zeros são política de consolidação, não julgamentos por rubrica.",
   "arquivos": [
     {
       "arquivo": "respostas-0001.json",
@@ -297,10 +295,12 @@
     "no_final_answer": 13
   },
   "observacoes": [
-    "Os 101 casos foram tentados. Não há nota completa; a média parcial usa somente respostas julgadas e não deve entrar no ranking como resultado final.",
+    "Os 101 casos foram tentados. 88 respostas foram julgadas; 13 falhas de geração recebem zero, mantendo 101 no denominador. Erros de transporte ou juiz não são zerados.",
     "Contexto nativo de 4096 tokens; teto explícito de 1024 tokens por saída, incluindo raciocínio. Reserva adicional zero e orçamento de entrada de 3072 bytes UTF-8 no runner.",
     "63 respostas visíveis atingiram o teto e foram julgadas como recebidas, sem regeneração para melhorar qualidade.",
-    "O Thinking não realizou buscas, apesar das ferramentas disponíveis. 13 casos consumiram o teto de saída sem produzir resposta final."
+    "O Thinking não realizou buscas, apesar das ferramentas disponíveis. 13 casos consumiram o teto de saída sem produzir resposta final.",
+    "A política inclui o orçamento em bytes e o teto de saída configurados no runner; isso não equivale a comprovar esgotamento do contexto nativo. Os motivos são publicados por caso. Não é uma regra original do scorer ResearchRubrics.",
+    "Esta política é mais ampla que a usada nas campanhas nativas deste PR: aqui também são zeradas falhas nos limites configurados de entrada e saída, sem exigir três respostas vazias nem esgotamento do contexto nativo. DRACO do Tucano permanece parcial e não foi recalculado por esta política."
   ],
   "publicacao_ferramentas": "Retornos web representados por URLs, títulos e SHA-256 do JSON canônico; sem texto integral de páginas.",
   "custos": {
@@ -308,5 +308,10 @@
     "inclui_gpu": false,
     "busca": "Custo de busca não incluído.",
     "julgamento": "null quando o provedor não informa custo; não significa zero."
-  }
+  },
+  "media_respostas_julgadas": 5.795497466872863,
+  "casos_zerados": "casos-zerados.json",
+  "falhas_zeradas": 13,
+  "criterios_zerados": 340,
+  "politica_falha_geracao": "attempted-generation-failure-zero-v1"
 }

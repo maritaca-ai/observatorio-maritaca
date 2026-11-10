@@ -37,6 +37,31 @@ def same(actual, expected):
             and math.isclose(actual, expected, rel_tol=0, abs_tol=1e-8))
 
 
+def check_generation_failure(row, config):
+    """Zero de consolidação por geração sem resposta final; nunca um voto do juiz."""
+    require(row.get('fase') == 'geracao' and row.get('julgamento') is None,
+            'Zero de geração não pode representar erro ou veredito do juiz')
+    evidence = row.get('evidencia_sha256')
+    require(isinstance(evidence, str) and len(evidence) == 64
+            and all(c in '0123456789abcdef' for c in evidence), 'Evidência de falha ausente')
+    if row['motivo'] == 'input_byte_budget':
+        require(row.get('input_byte_budget') == config['input_byte_budget']
+                and row.get('context_length') == config['context_length']
+                and row.get('erro_runner') ==
+                'Model conversation exceeds its reserved context even after source trimming',
+                'Zero por orçamento exige o erro de geração correspondente')
+    else:
+        require(row['motivo'] in ('output_length', 'no_final_answer')
+                and row.get('finish_reason') == 'length'
+                and row.get('max_tokens') == row.get('completion_tokens') == config['max_tokens'],
+                'Zero por saída exige teto atingido, não erro de transporte')
+        require(type(row.get('content_chars')) is int and row['content_chars'] >= 0
+                and type(row.get('chamadas_ferramentas_pendentes')) is int
+                and (row['content_chars'] == 0 if row['motivo'] == 'no_final_answer'
+                     else row['content_chars'] > 0 and row['chamadas_ferramentas_pendentes'] > 0),
+                'Resposta final utilizável deve ser julgada, não receber zero por falha')
+
+
 def item_score(benchmark, row):
     """Aritmética dos vereditos finais; não substitui um julgamento semântico."""
     j = row['julgamento']['veredito']
@@ -192,25 +217,33 @@ def check_group(folder, summary, benchmark):
     require(len({r['id'] for r in rows}) == len(rows), f'{folder}: IDs duplicados')
     if benchmark in SUPPLEMENTAL:
         _, population, criteria_count = SUPPLEMENTAL[benchmark]
-        if summary['status'] == 'parcial':
-            require(summary['score'] is None,
+        zero_failures = summary.get('politica_falha_geracao')
+        if zero_failures is not None:
+            require(benchmark == 'researchrubrics'
+                    and zero_failures == 'attempted-generation-failure-zero-v1'
+                    and summary['status'] == 'final',
+                    f'{folder}: política de falha de geração inválida')
+        if summary['status'] == 'parcial' or zero_failures:
+            require(zero_failures or summary['score'] is None,
                     f'{folder}: parcial não pode ter nota final')
             require(0 < len(rows) < population and summary['populacao_esperada'] == population
-                    and summary['denominador_agregado'] == len(rows),
+                    and summary['denominador_agregado'] == (population if zero_failures else len(rows)),
                     f'{folder}: cobertura parcial inválida')
             expected_ids = summary['ids_esperados']
             require(len(expected_ids) == len(set(expected_ids)) == population,
                     f'{folder}: população esperada inválida')
-            require(summary['casos_sem_nota'] == 'casos-sem-nota.json',
-                    f'{folder}: arquivo de casos sem nota inválido')
-            missing_path = folder/'casos-sem-nota.json'
+            field, filename = (('casos_zerados', 'casos-zerados.json') if zero_failures
+                               else ('casos_sem_nota', 'casos-sem-nota.json'))
+            require(summary[field] == filename, f'{folder}: arquivo de falhas inválido')
+            missing_path = folder/filename
             require(not missing_path.is_symlink(), f'{folder}: link externo não permitido')
             missing = read(missing_path)
             ids, missing_ids = {r['id'] for r in rows}, {r['id'] for r in missing}
             require(len(missing_ids) == len(missing) and not ids & missing_ids
                     and ids | missing_ids == set(expected_ids),
                     f'{folder}: casos ausentes, sobrepostos ou duplicados')
-            require(all(r['score'] is None and r['motivo'] in
+            require(all((type(r['score']) in (int, float) and r['score'] == 0
+                         if zero_failures else r['score'] is None) and r['motivo'] in
                         (('context_overflow', 'output_length', 'no_final_answer', 'input_byte_budget')
                          if benchmark == 'researchrubrics' else
                          ('context_overflow', 'output_length', 'no_final_answer'))
@@ -221,7 +254,14 @@ def check_group(folder, summary, benchmark):
                     and judged + sum(r['criterios'] for r in missing) ==
                     summary['criterios_esperados'] == criteria_count,
                     f'{folder}: rubricas parciais incompletas')
-            require(same(float(aggregate(benchmark, rows)), summary['score_parcial']),
+            if zero_failures:
+                require(summary['falhas_zeradas'] == len(missing)
+                        and summary['criterios_zerados'] == sum(r['criterios'] for r in missing),
+                        f'{folder}: contagem de zeros divergente')
+                for failure in missing:
+                    check_generation_failure(failure, summary['configuracao_geracao'])
+            mean_key = 'media_respostas_julgadas' if zero_failures else 'score_parcial'
+            require(same(float(aggregate(benchmark, rows)), summary[mean_key]),
                     f'{folder}: média parcial divergente')
             calls_by_case = [[t['chamada']['name'] for t in r['chamadas_ferramentas']] for r in rows]
             calls_by_case += [[t['nome'] for t in r['ferramentas_executadas']] for r in missing]
@@ -230,6 +270,10 @@ def check_group(folder, summary, benchmark):
                     and usage['leituras_paginas'] == sum(c.count('webpage_scraping') for c in calls_by_case)
                     and usage['casos_com_busca'] == sum('web_search' in c for c in calls_by_case),
                     f'{folder}: contagem de ferramentas divergente')
+            if zero_failures:
+                score = sum(r['score'] for r in rows) / population
+                require(same(score, summary['score']), f'{folder}: nota com zeros divergente')
+                return score, len(rows)
             return None, len(rows)
         require(len(rows) == population and summary['denominador_agregado'] == population,
                 f'{folder}: população do benchmark incompleta')

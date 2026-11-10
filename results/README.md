@@ -109,8 +109,8 @@ comparações entre execuções equivalentes.
 | Gaia 4B | Instruct | [16,5908](gaia-4b/draco/instruct/README.md) | [23,6298](gaia-4b/researchrubrics/instruct/README.md) |
 | Lumi 4B | Thinking | [10,9877](lumi-4b/draco/thinking/README.md) | [22,8944](lumi-4b/researchrubrics/thinking/README.md) |
 | Lumi 4B | Instruct | [13,8604](lumi-4b/draco/instruct/README.md) | [27,2689](lumi-4b/researchrubrics/instruct/README.md) |
-| Tucano2-qwen-3.7B | Thinking | [Parcial: 91/100 julgados](tucano2-qwen-3.7b/draco/thinking/README.md) | [Parcial: 88/101 julgados](tucano2-qwen-3.7b/researchrubrics/thinking/README.md) |
-| Tucano2-qwen-3.7B | Instruct | [Parcial: 48/100 julgados](tucano2-qwen-3.7b/draco/instruct/README.md) | [Parcial: 58/101 julgados](tucano2-qwen-3.7b/researchrubrics/instruct/README.md) |
+| Tucano2-qwen-3.7B | Thinking | [Parcial: 91/100 julgados](tucano2-qwen-3.7b/draco/thinking/README.md) | [5,0495†](tucano2-qwen-3.7b/researchrubrics/thinking/README.md) |
+| Tucano2-qwen-3.7B | Instruct | [Parcial: 48/100 julgados](tucano2-qwen-3.7b/draco/instruct/README.md) | [2,5228†](tucano2-qwen-3.7b/researchrubrics/instruct/README.md) |
 
 **Notas para o Observatório:** no DRACO, o Tucano Instruct realizou **274 buscas web**
 em 87 casos e 13 leituras de páginas. O Tucano Thinking realizou **zero buscas**,
@@ -119,17 +119,26 @@ Os 100 casos de cada modo foram tentados; os casos sem resposta pontuável não
 receberam zero. As médias parciais são 2,9967 (48 respostas) e 5,1528 (91 respostas),
 respectivamente, e não devem entrar como notas finais no placar.
 
-No ResearchRubrics, os 101 casos de cada modo do Tucano foram tentados. O
-Instruct concluiu **58/101** (média parcial **4,3932**) e realizou **176 buscas**;
-o Thinking concluiu **88/101** (média parcial **5,7955**) e não realizou buscas.
-Todos os 3.702 critérios das respostas disponíveis foram julgados. O Instruct
-teve 28 interrupções pelo orçamento de **3.072 bytes do runner** e 15 saídas
-limitadas a **1.024 tokens** ainda contendo chamadas de ferramentas. No Thinking,
-13 saídas consumiram esse teto sem resposta final. Esses limites configurados
-não comprovam esgotamento do contexto nativo de 4K; as falhas permanecem sem nota,
-com evidência por caso, e as médias parciais ficam fora do ranking.
+No ResearchRubrics, os 101 casos de cada modo do Tucano foram tentados. As notas
+**2,5228 (Instruct)** e **5,0495 (Thinking)** usam **101 no denominador**, com
+**43 e 13 falhas de geração pontuadas com zero**, respectivamente. As 58 e 88
+respostas disponíveis e seus 3.702 julgamentos por critério foram preservados.
+O Instruct realizou **176 buscas**; o Thinking não realizou buscas.
 
-As 28 notas completas acima cobrem a população completa do respectivo benchmark.
+A consolidação usa `attempted-generation-failure-zero-v1`: geração sem resposta
+final recebe zero, incluindo o limite em bytes do runner e a saída limitada com
+ferramentas pendentes. Os motivos e evidências ficam em `casos-zerados.json`;
+esses zeros não são votos do juiz nem uma regra original do scorer ResearchRubrics.
+Erros de infraestrutura ou julgamento não são convertidos em zero. A configuração
+permanece 4.096 tokens de contexto, saída máxima de 1.024 tokens, reserva adicional
+zero e orçamento de entrada de 3.072 bytes. O limite em bytes não comprova
+esgotamento do contexto nativo do modelo. Os testes posteriores com outros tetos
+não foram misturados nesta avaliação.
+
+**† Critério de falha diferente:** Esta política é mais ampla que a usada nas campanhas nativas deste PR: aqui também são zeradas falhas nos limites configurados de entrada e saída, sem exigir três respostas vazias nem esgotamento do contexto nativo. DRACO do Tucano permanece parcial e não foi recalculado por esta política.
+
+As 30 notas consolidadas acima usam a população completa do respectivo benchmark,
+incluindo os zeros explícitos nos dois conjuntos ResearchRubrics do Tucano.
 Estes resultados adicionais ainda não integram o catálogo e as médias históricas
 do Observatório. A inclusão na interface será consolidada separadamente.
 

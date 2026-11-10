@@ -132,29 +132,61 @@ class ResearchPublicationTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 check_group(folder, summary, 'draco')
 
-    def test_partial_researchrubrics_preserves_failures_and_has_no_final_score(self):
-        for mode in ('instruct', 'thinking'):
+    def test_researchrubrics_generation_failures_are_zero_in_full_population(self):
+        for mode,expected in (('instruct', 2.5228308993385857),
+                              ('thinking', 5.049542347374376)):
             source = ROOT/'results/tucano2-qwen-3.7b/researchrubrics'/mode
             with self.subTest(mode=mode), tempfile.TemporaryDirectory() as tmp:
                 folder = Path(tmp)/mode
                 shutil.copytree(source, folder)
                 summary = json.loads((folder/'resumo.json').read_text())
-                self.assertEqual(check_group(folder, summary, 'researchrubrics'),
-                                 (None, summary['registros']))
-                for changes in ({'status': 'final', 'score': summary['score_parcial']},
-                                {'score': 0}, {'denominador_agregado': 101},
-                                {'criterios_esperados': 2592}):
-                    with self.subTest(changes=changes), self.assertRaises(ValueError):
-                        check_group(folder, dict(summary, **changes), 'researchrubrics')
-                missing_path = folder/'casos-sem-nota.json'
-                missing = json.loads(missing_path.read_text())
-                missing_path.write_text(json.dumps(missing[:-1]))
+                actual, n = check_group(folder, summary, 'researchrubrics')
+                self.assertAlmostEqual(actual, expected)
+                self.assertEqual(n, summary['registros'])
+                for change in ({'score': summary['media_respostas_julgadas']},
+                               {'denominador_agregado': n}, {'falhas_zeradas': 0},
+                               {'criterios_esperados': 2592},
+                               {'politica_falha_geracao': 'unknown-policy'}):
+                    with self.subTest(change=change), self.assertRaises(ValueError):
+                        check_group(folder, dict(summary, **change), 'researchrubrics')
+                path = folder/'casos-zerados.json'
+                original = json.loads(path.read_text())
+                for change in ({'score': None}, {'score': True}, {'fase': 'juiz'},
+                               {'motivo': 'transport_error'}, {'evidencia_sha256': ''},
+                               {'julgamento': {'score': 0}}):
+                    altered = deepcopy(original); altered[0].update(change)
+                    path.write_text(json.dumps(altered))
+                    with self.subTest(change=change), self.assertRaises(ValueError):
+                        check_group(folder, summary, 'researchrubrics')
+                path.write_text(json.dumps(original[:-1]))
                 with self.assertRaises(ValueError):
                     check_group(folder, summary, 'researchrubrics')
-                missing[0]['score'] = 0
-                missing_path.write_text(json.dumps(missing))
-                with self.assertRaises(ValueError):
-                    check_group(folder, summary, 'researchrubrics')
+                path.write_text(json.dumps(original))
+                for index, failure in enumerate(original):
+                    key, value = (('erro_runner', 'timeout') if failure['motivo']=='input_byte_budget'
+                                  else ('completion_tokens', 500))
+                    altered=deepcopy(original);altered[index][key]=value
+                    path.write_text(json.dumps(altered))
+                    with self.subTest(reason=failure['motivo']), self.assertRaises(ValueError):
+                        check_group(folder, summary, 'researchrubrics')
+
+    def test_partial_researchrubrics_still_excludes_missing_without_zero_policy(self):
+        source = ROOT/'results/tucano2-qwen-3.7b/researchrubrics/instruct'
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp)/'instruct';shutil.copytree(source,folder)
+            summary=json.loads((folder/'resumo.json').read_text())
+            summary.pop('politica_falha_geracao')
+            summary.update(status='parcial', score=None,
+                           denominador_agregado=summary['registros'],
+                           score_parcial=summary['media_respostas_julgadas'],
+                           casos_sem_nota='casos-sem-nota.json')
+            failures=json.loads((folder/'casos-zerados.json').read_text())
+            for failure in failures:failure['score']=None
+            (folder/'casos-sem-nota.json').write_text(json.dumps(failures))
+            self.assertEqual(check_group(folder,summary,'researchrubrics'),(None,58))
+            failures[0]['score']=0
+            (folder/'casos-sem-nota.json').write_text(json.dumps(failures))
+            with self.assertRaises(ValueError):check_group(folder,summary,'researchrubrics')
 
     def test_published_population_and_scores(self):
         report = verify_supplemental(ROOT/'results')
