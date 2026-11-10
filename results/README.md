@@ -97,9 +97,9 @@ comparações entre execuções equivalentes.
 | --- | --- | --- | --- |
 | CEIA-UFG/Gemma-3-Gaia-PT-BR-4b-it | Instruct | [16,5908](gaia-4b/draco/instruct/README.md) | [23,6298](gaia-4b/researchrubrics/instruct/README.md) |
 | ceia-br/lumi-4b | Instruct | [13,8604](lumi-4b/draco/instruct/README.md) | [27,2689](lumi-4b/researchrubrics/instruct/README.md) |
-| ceia-br/lumi-4b | Thinking | Sem nota completa | [22,8944](lumi-4b/researchrubrics/thinking/README.md) |
+| ceia-br/lumi-4b | Thinking | [10,9877](lumi-4b/draco/thinking/README.md) | [22,8944](lumi-4b/researchrubrics/thinking/README.md) |
 
-As cinco notas acima cobrem a população completa do respectivo benchmark.
+As seis notas acima cobrem a população completa do respectivo benchmark.
 Estes resultados adicionais ainda não integram o catálogo e as médias históricas
 do Observatório. A inclusão na interface será consolidada separadamente.
 

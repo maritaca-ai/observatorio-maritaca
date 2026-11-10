@@ -46,10 +46,11 @@ class ResearchPublicationTests(unittest.TestCase):
 
     def test_published_population_and_scores(self):
         report = verify_supplemental(ROOT/'results')
-        self.assertGreaterEqual(report['conjuntos'], 5)
+        self.assertGreaterEqual(report['conjuntos'], 6)
         expected = {'gaia-4b/draco/instruct': 16.590807759896006,
                     'gaia-4b/researchrubrics/instruct': 23.62975414021194,
                     'lumi-4b/draco/instruct': 13.860375308877487,
+                    'lumi-4b/draco/thinking': 10.987681538695401,
                     'lumi-4b/researchrubrics/instruct': 27.2689294377907,
                     'lumi-4b/researchrubrics/thinking': 22.894405887993205}
         for key, value in expected.items():
