@@ -109,15 +109,19 @@ comparações entre execuções equivalentes.
 | Gaia 4B | Instruct | [16,5908](gaia-4b/draco/instruct/README.md) | [23,6298](gaia-4b/researchrubrics/instruct/README.md) |
 | Lumi 4B | Thinking | [10,9877](lumi-4b/draco/thinking/README.md) | [22,8944](lumi-4b/researchrubrics/thinking/README.md) |
 | Lumi 4B | Instruct | [13,8604](lumi-4b/draco/instruct/README.md) | [27,2689](lumi-4b/researchrubrics/instruct/README.md) |
-| Tucano2-qwen-3.7B | Thinking | [Parcial: 91/100 julgados](tucano2-qwen-3.7b/draco/thinking/README.md) | [5,0495†](tucano2-qwen-3.7b/researchrubrics/thinking/README.md) |
-| Tucano2-qwen-3.7B | Instruct | [Parcial: 48/100 julgados](tucano2-qwen-3.7b/draco/instruct/README.md) | [2,5228†](tucano2-qwen-3.7b/researchrubrics/instruct/README.md) |
+| Tucano2-qwen-3.7B | Thinking | [4,6890†](tucano2-qwen-3.7b/draco/thinking/README.md) | [5,0495†](tucano2-qwen-3.7b/researchrubrics/thinking/README.md) |
+| Tucano2-qwen-3.7B | Instruct | [1,4384†](tucano2-qwen-3.7b/draco/instruct/README.md) | [2,5228†](tucano2-qwen-3.7b/researchrubrics/instruct/README.md) |
 
 **Notas para o Observatório:** no DRACO, o Tucano Instruct realizou **274 buscas web**
 em 87 casos e 13 leituras de páginas. O Tucano Thinking realizou **zero buscas**,
 apesar das ferramentas disponíveis no prompt: respondeu diretamente.
-Os 100 casos de cada modo foram tentados; os casos sem resposta pontuável não
-receberam zero. As médias parciais são 2,9967 (48 respostas) e 5,1528 (91 respostas),
-respectivamente, e não devem entrar como notas finais no placar.
+Os 100 casos de cada modo foram tentados. As notas DRACO são **1,4384 (Instruct)**
+e **4,6890 (Thinking)**, com **100 no denominador** e **52/9 falhas de geração
+com zero**, respectivamente. As 48/91 respostas e os 5.404 julgamentos por critério
+foram preservados. No Instruct, 37 casos excederam o contexto e 15 atingiram o
+limite de saída; no Thinking, 9 atingiram o limite de saída. As falhas por saída
+podem conter texto truncado rejeitado pelo runner original após três tentativas:
+recebem zero por consolidação, não por julgamento de rubricas.
 
 No ResearchRubrics, os 101 casos de cada modo do Tucano foram tentados. As notas
 **2,5228 (Instruct)** e **5,0495 (Thinking)** usam **101 no denominador**, com
@@ -135,10 +139,10 @@ zero e orçamento de entrada de 3.072 bytes. O limite em bytes não comprova
 esgotamento do contexto nativo do modelo. Os testes posteriores com outros tetos
 não foram misturados nesta avaliação.
 
-**† Critério de falha diferente:** Esta política é mais ampla que a usada nas campanhas nativas deste PR: aqui também são zeradas falhas nos limites configurados de entrada e saída, sem exigir três respostas vazias nem esgotamento do contexto nativo. DRACO do Tucano permanece parcial e não foi recalculado por esta política.
+**† Critério de falha diferente:** Esta política é mais ampla que a usada nas campanhas nativas deste PR: aqui também são zeradas falhas nos limites configurados de entrada e saída, sem exigir três respostas vazias nem esgotamento do contexto nativo. A mesma política de consolidação é aplicada ao DRACO do Tucano.
 
-As 30 notas consolidadas acima usam a população completa do respectivo benchmark,
-incluindo os zeros explícitos nos dois conjuntos ResearchRubrics do Tucano.
+As 32 notas consolidadas acima usam a população completa do respectivo benchmark,
+incluindo os zeros explícitos nos quatro conjuntos DRACO/ResearchRubrics do Tucano.
 Estes resultados adicionais ainda não integram o catálogo e as médias históricas
 do Observatório. A inclusão na interface será consolidada separadamente.
 

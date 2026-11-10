@@ -116,6 +116,14 @@ class ResearchPublicationTests(unittest.TestCase):
             folder = Path(tmp)/'instruct'
             shutil.copytree(source, folder)
             summary = json.loads((folder/'resumo.json').read_text())
+            summary.pop('politica_falha_geracao')
+            summary.update(status='parcial', score=None,
+                           denominador_agregado=summary['registros'],
+                           score_parcial=summary['media_respostas_julgadas'],
+                           casos_sem_nota='casos-sem-nota.json')
+            failures=json.loads((folder/'casos-zerados.json').read_text())
+            for failure in failures: failure['score']=None
+            (folder/'casos-sem-nota.json').write_text(json.dumps(failures))
             self.assertEqual(check_group(folder, summary, 'draco'), (None, 48))
             for changes in ({'status': 'final', 'score': summary['score_parcial']},
                             {'score': 0}, {'denominador_agregado': 100},
@@ -131,6 +139,38 @@ class ResearchPublicationTests(unittest.TestCase):
             summary['uso_ferramentas']['buscas_web'] += 1
             with self.assertRaises(ValueError):
                 check_group(folder, summary, 'draco')
+
+    def test_draco_generation_failures_are_zero_in_full_population(self):
+        for mode, expected in (('instruct', 1.4384200746395916),
+                               ('thinking', 4.689005440149454)):
+            source=ROOT/'results/tucano2-qwen-3.7b/draco'/mode
+            with self.subTest(mode=mode), tempfile.TemporaryDirectory() as tmp:
+                folder=Path(tmp)/mode; shutil.copytree(source,folder)
+                summary=json.loads((folder/'resumo.json').read_text())
+                score,n=check_group(folder,summary,'draco')
+                self.assertAlmostEqual(score,expected)
+                for change in ({'score': summary['media_respostas_julgadas']},
+                               {'denominador_agregado': n}, {'falhas_zeradas': 0}):
+                    with self.subTest(change=change), self.assertRaises(ValueError):
+                        check_group(folder,dict(summary,**change),'draco')
+                path=folder/'casos-zerados.json'; original=json.loads(path.read_text())
+                for change in ({'score': None}, {'score': True}, {'fase': 'juiz'},
+                               {'motivo': 'transport_error'}, {'status_execucao': 'ok'}):
+                    altered=deepcopy(original); altered[0].update(change)
+                    path.write_text(json.dumps(altered))
+                    with self.subTest(change=change), self.assertRaises(ValueError):
+                        check_group(folder,summary,'draco')
+                path.write_text(json.dumps(original[:-1]))
+                with self.assertRaises(ValueError): check_group(folder,summary,'draco')
+                for index,failure in enumerate(original):
+                    altered=deepcopy(original)
+                    if failure['motivo']=='context_overflow':
+                        altered[index]['input_tokens']=4096
+                    else:
+                        altered[index]['tentativas_rejeitadas'][0]['tokens']['total_tokens']=4095
+                    path.write_text(json.dumps(altered))
+                    with self.subTest(index=index), self.assertRaises(ValueError):
+                        check_group(folder,summary,'draco')
 
     def test_researchrubrics_generation_failures_are_zero_in_full_population(self):
         for mode,expected in (('instruct', 2.5228308993385857),
@@ -191,9 +231,9 @@ class ResearchPublicationTests(unittest.TestCase):
     def test_published_population_and_scores(self):
         report = verify_supplemental(ROOT/'results')
         self.assertGreaterEqual(report['conjuntos'], 8)
-        for mode in ('instruct', 'thinking'):
-            self.assertIsNone(report['notas'][f'tucano2-qwen-3.7b/draco/{mode}'])
-        expected = {'gaia-4b/draco/instruct': 16.590807759896006,
+        expected = {'tucano2-qwen-3.7b/draco/instruct': 1.4384200746395916,
+                    'tucano2-qwen-3.7b/draco/thinking': 4.689005440149454,
+                    'gaia-4b/draco/instruct': 16.590807759896006,
                     'gaia-4b/researchrubrics/instruct': 23.62975414021194,
                     'lumi-4b/draco/instruct': 13.860375308877487,
                     'lumi-4b/draco/thinking': 10.987681538695401,

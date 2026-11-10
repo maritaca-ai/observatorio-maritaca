@@ -14,7 +14,7 @@ Busca Serper; juiz S5 Instruct. Esta configuração não reproduz o leaderboard 
 - O Instruct realizou 176 chamadas web_search. 28 casos excederam o orçamento em bytes do runner, antes de novo pedido ao modelo; 15 saídas atingiram o teto contendo chamadas de ferramentas e não concluíram a pesquisa.
 - A política inclui o orçamento em bytes e o teto de saída configurados no runner; isso não equivale a comprovar esgotamento do contexto nativo. Os motivos são publicados por caso. Não é uma regra original do scorer ResearchRubrics.
 
-- Esta política é mais ampla que a usada nas campanhas nativas deste PR: aqui também são zeradas falhas nos limites configurados de entrada e saída, sem exigir três respostas vazias nem esgotamento do contexto nativo. DRACO do Tucano permanece parcial e não foi recalculado por esta política.
+- Esta política é mais ampla que a usada nas campanhas nativas deste PR: aqui também são zeradas falhas nos limites configurados de entrada e saída, sem exigir três respostas vazias nem esgotamento do contexto nativo. A mesma política de consolidação é aplicada ao DRACO do Tucano.
 
 ## Respostas e julgamentos
 

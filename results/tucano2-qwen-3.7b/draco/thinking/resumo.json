@@ -2,9 +2,8 @@
   "modelo": "Tucano2-qwen-3.7B",
   "benchmark": "DRACO",
   "modo": "thinking",
-  "status": "parcial",
-  "score": null,
-  "score_parcial": 5.152753230933466,
+  "status": "final",
+  "score": 4.6890054401494545,
   "populacao_esperada": 100,
   "criterios_esperados": 3934,
   "ids_esperados": [
@@ -109,13 +108,12 @@
     "f6de7687-7cff-4f68-93ea-f632bf6266af",
     "faeeb64e-e5eb-4768-a9b9-8ef19de51473"
   ],
-  "casos_sem_nota": "casos-sem-nota.json",
   "score_individual": "Nota por pergunta, escala 0–100.",
   "registros": 91,
-  "denominador_agregado": 91,
+  "denominador_agregado": 100,
   "unidade_denominador": "perguntas",
   "criterios_avaliados": 3559,
-  "agregacao": "Média por pergunta dos pesos satisfeitos / soma dos pesos positivos × 100; limitada a [0, 100] por pergunta.",
+  "agregacao": "Soma das notas das respostas julgadas dividida por 100; falhas de geração recebem zero. Os zeros são política de consolidação, não votos de juiz.",
   "conferencia_numerica": "nota_recalculada_dos_julgamentos_salvos_com_scorer_nativo",
   "arquivos": [
     {
@@ -298,8 +296,10 @@
   },
   "observacoes": [
     "O Thinking realizou zero buscas e zero leituras de páginas, apesar de as ferramentas estarem presentes no prompt; respondeu diretamente.",
-    "Execução dos 100 casos encerrada. A média parcial usa apenas as respostas julgadas; os casos sem resposta pontuável não receberam zero nem nota imputada. Não há nota final da população completa.",
-    "9 casos esgotaram as tentativas por limite de saída."
+    "Os 100 casos foram tentados: 91 respostas julgadas e 9 falhas de geração com zero, mantendo 100 no denominador.",
+    "9 casos esgotaram as tentativas por limite de saída.",
+    "As falhas por limite de saída incluem texto truncado rejeitado pelo runner nativo após três tentativas; não significam necessariamente resposta vazia. Esses casos recebem zero por consolidação e não por julgamento de rubricas.",
+    "Política de consolidação attempted-generation-failure-zero-v1, também usada no ResearchRubrics do Tucano. É mais ampla que os critérios de resposta vazia/contexto das demais campanhas; não é regra original do scorer. Erros de transporte e juiz não são convertidos em zero."
   ],
   "uso_ferramentas": {
     "escopo": "todos_os_100_casos_incluindo_falhas",
@@ -308,5 +308,10 @@
     "casos_com_busca": 0,
     "erros_ferramentas": 0
   },
-  "publicacao_ferramentas": "Retornos web representados por URLs, títulos e SHA-256 do JSON canônico; texto integral preservado nos registros de origem."
+  "publicacao_ferramentas": "Retornos web representados por URLs, títulos e SHA-256 do JSON canônico; texto integral preservado nos registros de origem.",
+  "media_respostas_julgadas": 5.152753230933466,
+  "casos_zerados": "casos-zerados.json",
+  "falhas_zeradas": 9,
+  "criterios_zerados": 375,
+  "politica_falha_geracao": "attempted-generation-failure-zero-v1"
 }

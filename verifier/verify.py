@@ -37,13 +37,34 @@ def same(actual, expected):
             and math.isclose(actual, expected, rel_tol=0, abs_tol=1e-8))
 
 
-def check_generation_failure(row, config):
-    """Zero de consolidação por geração sem resposta final; nunca um voto do juiz."""
+def check_generation_failure(row, config, benchmark):
+    """Zero de consolidação por falha de geração; nunca um voto do juiz."""
     require(row.get('fase') == 'geracao' and row.get('julgamento') is None,
             'Zero de geração não pode representar erro ou veredito do juiz')
     evidence = row.get('evidencia_sha256')
     require(isinstance(evidence, str) and len(evidence) == 64
             and all(c in '0123456789abcdef' for c in evidence), 'Evidência de falha ausente')
+    if benchmark == 'draco':
+        require(row.get('status_execucao') == 'error', 'Zero exige falha da execução nativa')
+        limit = config['context_length']
+        if row['motivo'] == 'context_overflow':
+            require(type(row.get('input_tokens')) is int and row['input_tokens'] > limit
+                    and row.get('context_length') == limit
+                    and row.get('excess_tokens') == row['input_tokens'] - limit,
+                    'Zero por contexto exige input maior que a janela nativa')
+        else:
+            attempts = row.get('tentativas_rejeitadas', [])
+            require(row['motivo'] == 'output_length' and row.get('finish_reason') == 'length'
+                    and len(attempts) == 3, 'Zero DRACO por saída exige tentativas nativas rejeitadas')
+            for attempt in attempts:
+                usage = attempt.get('tokens') or {}
+                prompt, completion = usage.get('prompt_tokens'), usage.get('completion_tokens')
+                require(attempt.get('status') == 'error' and attempt.get('finish_reason') == 'length'
+                        and type(prompt) is int and prompt > 0
+                        and type(completion) is int and completion > 0
+                        and prompt + completion == usage.get('total_tokens') == limit,
+                        'Zero DRACO por saída exige rejeição no contexto nativo')
+        return
     if row['motivo'] == 'input_byte_budget':
         require(row.get('input_byte_budget') == config['input_byte_budget']
                 and row.get('context_length') == config['context_length']
@@ -219,8 +240,7 @@ def check_group(folder, summary, benchmark):
         _, population, criteria_count = SUPPLEMENTAL[benchmark]
         zero_failures = summary.get('politica_falha_geracao')
         if zero_failures is not None:
-            require(benchmark == 'researchrubrics'
-                    and zero_failures == 'attempted-generation-failure-zero-v1'
+            require(zero_failures == 'attempted-generation-failure-zero-v1'
                     and summary['status'] == 'final',
                     f'{folder}: política de falha de geração inválida')
         if summary['status'] == 'parcial' or zero_failures:
@@ -259,7 +279,7 @@ def check_group(folder, summary, benchmark):
                         and summary['criterios_zerados'] == sum(r['criterios'] for r in missing),
                         f'{folder}: contagem de zeros divergente')
                 for failure in missing:
-                    check_generation_failure(failure, summary['configuracao_geracao'])
+                    check_generation_failure(failure, summary['configuracao_geracao'], benchmark)
             mean_key = 'media_respostas_julgadas' if zero_failures else 'score_parcial'
             require(same(float(aggregate(benchmark, rows)), summary[mean_key]),
                     f'{folder}: média parcial divergente')
