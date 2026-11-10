@@ -7,7 +7,7 @@ import subprocess
 from tempfile import TemporaryDirectory
 import unittest
 
-from observatory.build import blob, encoded, input_blob, performance, project_response, question_identity
+from observatory.build import blob, encoded, input_blob, performance, project_response, question_identity, table_record
 from observatory.repository import Repository
 
 
@@ -18,6 +18,22 @@ class ResultProjection(unittest.TestCase):
                     score=100, parametros_inferencia={'temperature': 1}, total_tokens=12,
                     custo={'valor': None}, parametros_inferencia_julgamento=None,
                     total_tokens_julgamento=None, custo_julgamento={'valor': None})
+
+    def test_score_note_comes_from_summary_without_changing_score(self):
+        root=Path(__file__).resolve().parents[2]
+        for benchmark in ('draco', 'researchrubrics'):
+            for mode in ('instruct', 'thinking'):
+                summary=json.loads((root/'results/tucano2-qwen-3.7b'/benchmark/mode/'resumo.json').read_text())
+                identity=f'tucano:{mode}:{benchmark}'
+                catalog=dict(annotations={identity: {'audit_summary': {'fields': []}}},
+                             audit_fields={}, benchmark_directories={benchmark: benchmark}, updated_at='test')
+                record=table_record(catalog,summary,{},'tucano',mode,benchmark,'tucano2-qwen-3.7b')
+                self.assertEqual(record['score_note'],summary['observacao_nota'])
+                self.assertEqual(record['score'],summary['score'])
+                self.assertEqual(record['score_denominator'],summary['denominador_agregado'])
+                summary.pop('observacao_nota')
+                plain=table_record(catalog,summary,{},'tucano',mode,benchmark,'tucano2-qwen-3.7b')
+                self.assertNotIn('score_note',plain)
 
     def test_pairing_uses_content_not_sequential_id(self):
         first = self.row()

@@ -432,6 +432,7 @@ function detail(id) {
     <div class="eyebrow">${esc(b.name)} · ${modeName(r.mode)}</div>
     <h2 id="detail-title">${esc(m.name)}</h2><p class="small muted">${esc(i18n.t(b.description))}</p>
     <div class="detail-score">${r.capability_gate ? "Sem nota de segurança" : number(r.score)}<small>${r.capability_gate ? "0 controles benignos concluídos" : b.direction === "lower" ? "↓ menor é melhor" : "↑ maior é melhor"}</small></div><p class="small muted">${esc(i18n.t(b.metric))}</p>
+    ${r.score_note ? `<div class="callout" data-card-section="score-note"><strong>Observação sobre a nota</strong><p>${esc(i18n.t(r.score_note))}</p></div>` : ""}
     ${auditSection(r)}
     <div class="detail-grid">
       <div data-detail-meta="population"><span>População da execução</span>${integer(r.n)} ${r.task === "prosa_pt" ? "conversas" : "itens"}</div>

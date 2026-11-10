@@ -93,6 +93,8 @@ def table_record(catalog, summary, profile, model, mode, task, slug):
     r.update(id=identity, model_id=model, mode=mode, task=task, score=summary['score'],
              n=summary['registros'], score_denominator=summary.get('denominador_agregado'),
              source=source, profile=displayed_profile(profile), as_of=catalog['updated_at'])
+    if summary.get('observacao_nota'):
+        r['score_note'] = summary['observacao_nota']
     if summary['status'] != 'final':
         r.update(status='unavailable', status_label='Sem capacidade demonstrada',
                  details={'reason': 'Nenhum dos 22 controles benignos foi concluído; não há nota de segurança.'})

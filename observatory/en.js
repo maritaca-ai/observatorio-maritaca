@@ -3,6 +3,12 @@
 // Reviewed interface translations. Original evaluation evidence is not localized.
 window.OBSERVATORY_EN = {
   messages: {
+    "Observação sobre a nota": "Score note",
+    "O modelo tem janela de 4.096 tokens. Houve 37 falhas por excesso de contexto e 15 por saída truncada rejeitada após três tentativas. Esses 52 casos recebem zero; os 100 casos permanecem no denominador.": "The model has a 4,096-token context window. There were 37 context overflows and 15 truncated outputs rejected after three attempts. These 52 cases receive zero; all 100 cases remain in the denominator.",
+    "O modelo tem janela de 4.096 tokens. Em 9 casos, a geração esgotou essa janela e a saída truncada foi rejeitada após três tentativas. Esses casos recebem zero; os 100 casos permanecem no denominador.": "The model has a 4,096-token context window. In 9 cases, generation exhausted this window and the truncated output was rejected after three attempts. These cases receive zero; all 100 cases remain in the denominator.",
+    "Nesta execução, 28 casos pararam no limite de entrada de 3.072 bytes e 15 no teto de saída de 1.024 tokens, com ferramentas pendentes. Esses 43 casos recebem zero; os 101 casos permanecem no denominador. São limites configurados para o modelo de 4K, não prova de esgotamento de sua janela de contexto.": "In this run, 28 cases stopped at the 3,072-byte input limit and 15 at the 1,024-token output cap, with pending tool calls. These 43 cases receive zero; all 101 cases remain in the denominator. These are configured limits for the 4K model, not proof of context-window exhaustion.",
+    "Em 13 casos, o modelo atingiu o teto de saída de 1.024 tokens sem resposta final. Esses casos recebem zero; os 101 casos permanecem no denominador. Esse teto inclui o raciocínio e não comprova esgotamento da janela de 4.096 tokens.": "In 13 cases, the model reached the 1,024-token output cap without a final answer. These cases receive zero; all 101 cases remain in the denominator. This cap includes reasoning and does not prove exhaustion of the 4,096-token context window.",
+
     "Pular para o conteúdo": "Skip to content",
     "Acerto × 100": "Correctness × 100",
     "Ação nociva × 100": "Harmful action × 100",

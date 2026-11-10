@@ -93,3 +93,9 @@ das evidências nos 24 benchmarks. Nenhum dos testes envia dados externos.
 Para desenvolvimento rápido, `--benchmarks capitu conduta_bench` monta somente
 esses casos. Essa opção é exclusiva de QA; o workflow publica sempre o conjunto
 completo. Fontes e imagens estão em [assets](assets/).
+
+A ressalva `observacao_nota` do `resumo.json`, quando presente, aparece logo abaixo
+da nota no detalhe aberto ao clicar na célula. O build a projeta como `score_note`;
+não é necessário expandir a seção de observações. Os quatro resumos DRACO e
+ResearchRubrics do Tucano já incluem essa ressalva. A inclusão desses benchmarks
+no catálogo continua sendo uma etapa separada.
