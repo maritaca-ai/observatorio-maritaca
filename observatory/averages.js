@@ -1,8 +1,9 @@
 "use strict";
 
 // Equal weight per primary evaluation row. No averaging of modes or missing results.
-function calculateAverages(tasks, variants, rows) {
-  const eligible = tasks.filter((t) => t.primary_metric !== false);
+function calculateAverages(tasks, variants, rows, category = "all") {
+  const eligible = tasks.filter((t) => t.primary_metric !== false &&
+    (t.average_scope !== "category" || category !== "all"));
   const indexed = new Map(rows.map((r) => [r.id, r]));
   const valid = (r) => r && ["final", "reported"].includes(r.status) && Number.isFinite(r.score) && !r.averages_exclusion;
   const groups = ["native_br", "translated_pt", "international", "total"];
@@ -22,6 +23,8 @@ function calculateAverages(tasks, variants, rows) {
 }
 const averagesState = { cells: new Map() };
 const completeAverage = c => c.expected > 0 && c.n === c.expected;
+const unsupportedVisionAverage = model => state.category === "visao" && model.supports_vision === false;
+const unsupportedVisionLabel = '<span class="vision-unsupported">Não suporta visão</span>';
 // Rank every visible numeric average. Modes remain separate rows, never pooled.
 function rankAverages(results) {
   const scored = r => Number.isFinite(r.cells.total.value);
@@ -44,9 +47,9 @@ function averageRankLabel(variant, rank) {
 }
 function renderAverageTable(tasks, variants, rows) {
   const columns = [["native_br", "Nativo BR"], ["translated_pt", "Traduzido PT"], ["international", "Não nativo"], ["total", "Total"]];
-  const results = rankAverages(calculateAverages(tasks, variants, rows));
+  const results = rankAverages(calculateAverages(tasks, variants, rows, state.category));
   averagesState.cells.clear();
-  return `<section class="average-section" id="category-averages"><div class="average-head"><div><h2>Médias e ranking</h2><p>${state.category === "all" ? "Todas as categorias" : esc(D.categories[state.category])}</p></div></div><div class="table-frame"><div class="table-scroll"><table class="average-table"><thead><tr><th>Modelo / modo</th>${columns.map(([group, label]) => `<th${group === "total" ? ' aria-sort="descending"' : ""}>Avg · ${label}${group === "total" ? " ↓" : ""}</th>`).join("")}</tr></thead><tbody>${results.map(({ variant, cells, rank }) => `<tr><th>${averageRankLabel(variant, rank)}${icon(variant.model)}<span>${modelWeightsLink(variant.model, variant.mode)}<small>${esc(i18n.t(variant.model.size_label))} · ${modeName(variant.mode)}</small></span></th>${columns.map(([group]) => {
+  return `<section class="average-section" id="category-averages"><div class="average-head"><div><h2>Médias e ranking</h2><p>${state.category === "all" ? "Todas as categorias" : esc(D.categories[state.category])}</p></div></div><div class="table-frame"><div class="table-scroll"><table class="average-table"><thead><tr><th>Modelo / modo</th>${columns.map(([group, label]) => `<th${group === "total" ? ' aria-sort="descending"' : ""}>Avg · ${label}${group === "total" ? " ↓" : ""}</th>`).join("")}</tr></thead><tbody>${results.map(({ variant, cells, rank }) => `<tr><th>${averageRankLabel(variant, rank)}${icon(variant.model)}<span>${modelWeightsLink(variant.model, variant.mode)}<small>${esc(i18n.t(variant.model.size_label))} · ${modeName(variant.mode)}</small></span></th>${unsupportedVisionAverage(variant.model) ? `<td colspan="${columns.length}">${unsupportedVisionLabel}</td>` : columns.map(([group]) => {
     const cell = cells[group], id = `${variant.id}:${group}`;
     averagesState.cells.set(id, { ...cell, model: variant.model, mode: variant.mode, group });
     return `<td><button data-average-detail="${esc(id)}" aria-label="${esc(variant.model.name)}, ${modeName(variant.mode)}, média ${group}: ${number(cell.value)}"><strong>${number(cell.value)}</strong><small>${cell.n} de ${cell.expected} testes${cell.n && !completeAverage(cell) ? " · Parcial" : ""}</small></button></td>`;

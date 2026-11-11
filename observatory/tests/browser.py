@@ -1,6 +1,7 @@
 """Exercise a locally served static build, including a project-path prefix."""
 import argparse
 import json
+import re
 from pathlib import Path
 from urllib.parse import urlsplit
 from urllib.request import urlopen
@@ -27,7 +28,7 @@ def main():
         page.set_default_timeout(30000)
         page.on('pageerror', lambda error: errors.append(str(error)))
         page.on('request', lambda request: external.append(request.url)
-                if urlsplit(request.url).netloc != urlsplit(origin).netloc else None)
+                if urlsplit(request.url).netloc != urlsplit(origin).netloc and not (request.resource_type == 'image' and re.fullmatch(r'https://raw\.githubusercontent\.com/maritaca-ai/observatorio-maritaca/[0-9a-f]{40}/benchmarks/visao/(realworldqa|ocrbench)/images/\d+\.(jpg|jpeg|png|webp)', request.url)) else None)
 
         def go(route):
             page.goto(origin+'/#'+route, wait_until='networkidle')
@@ -57,7 +58,7 @@ def main():
               state.size=size;
               const variants=allVariants().filter(v=>inSizeGroup(v.model)&&(mode==='both'||v.mode===mode));
               const tasks=D.benchmarks.filter(b=>matchesCategory(b,category));
-              return rankAverages(calculateAverages(tasks,variants,D.records)).map(r=>({
+              return rankAverages(calculateAverages(tasks,variants,D.records,category)).map(r=>({
                 model:r.variant.model.id,mode:r.variant.mode,rank:r.rank,
                 cells:Object.fromEntries(Object.entries(r.cells).map(([k,c])=>[k,{
                   value:c.value,n:c.n,total:c.expected,benchmarks:c.entries.map(e=>e.task.id)}]))}));
@@ -214,7 +215,7 @@ def main():
         assert not external, external
         browser.close()
     print(json.dumps(dict(average_filters=len(reference['medias']), benchmarks_with_answers=checked_cases,
-                         browser_errors=errors, external_requests=external, passed=True)))
+                         browser_errors=errors, unexpected_external_requests=external, passed=True)))
 
 
 if __name__ == '__main__':

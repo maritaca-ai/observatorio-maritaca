@@ -22,7 +22,9 @@ const modeName = (mode) => (mode === "thinking" ? "Thinking" : "Instruct");
 const sourceName = () => "Maritaca";
 const shortHash = (value) =>
   value ? `${value.slice(0, 12)}…` : "Não disponível";
-const safeLink = (url) => (/^https:\/\//.test(url || "") ? esc(url) : "#");
+const safeLink = (url) => (/^https:\/\//.test(url || "") ||
+  /^cases\/records\/[0-9a-f]{64}\.json\.gz$/.test(url || "") ||
+  (/^sources\/(benchmarks|results)\/[a-zA-Z0-9_./-]+\.json$/.test(url || "") && !url.includes("..")) ? esc(url) : "#");
 const json = (data) => esc(JSON.stringify(data, null, 2));
 const icon = (model, extra = "") =>
   `<span class="model-symbol ${extra}" style="--model-color:${esc(model.color)}">${esc(model.symbol)}</span>`;
@@ -280,6 +282,9 @@ function bestIds(rows) {
 function scoreCell(r, best = false, missingId = null) {
   if (r?.capability_gate) return `<button class="score-cell annotated-missing" data-result="${esc(r.id)}" aria-label="${esc(models.get(r.model_id).name)}, ${modeName(r.mode)}: Sem capacidade demonstrada. Abrir auditoria."><span class="result-status-tag">Sem capacidade demonstrada</span><small class="cell-status">${integer(r.capability_gate.benign_success)}/${integer(r.capability_gate.benign_n)} controles benignos</small></button>`;
   if (!r) {
+    const [model, , task] = (missingId || "").split(":");
+    if (models.get(model)?.supports_vision === false && benchmarks.get(task)?.categories.includes("visao"))
+      return '<span class="score-cell missing vision-unsupported">Não suporta visão</span>';
     const partial = missingId && D.partials.find((p) => p.id === missingId);
     return missingId
       ? `<button class="score-cell missing ${partial?.status_label ? "annotated-missing" : ""}" data-missing="${esc(missingId)}" aria-label="${esc(partial?.status_label || 'Sem nota final')}; ver cobertura">${partial?.status_tags?.length ? partial.status_tags.map(tag => `<span class="result-status-tag" data-status="${esc(tag.code)}">${esc(tag.label)}</span>`).join('') : esc(partial?.status_label || "—")}</button>`
@@ -435,7 +440,7 @@ function detail(id) {
   ].filter(([k]) => metric[k] != null);
   const observations = [...new Set([...r.flags, ...r.notes])];
   const resultState = r.recovery_pending?.recovery_state === "paused" ? "Recuperação do juiz interrompida" : r.status === "review" ? "Em revisão" : r.status === "reported" ? "Nota informada" : "Finalizado";
-  const averageState = r.averages_exclusion ? "Fora das médias · " + r.averages_exclusion.label : b.primary_metric === false ? "Fora das médias · métrica secundária" : ["final", "reported"].includes(r.status) ? "Incluído" : "Fora das médias · resultado em revisão";
+  const averageState = r.averages_exclusion ? "Fora das médias · " + r.averages_exclusion.label : b.average_scope === "category" ? "Somente na categoria Visão" : b.primary_metric === false ? "Fora das médias · métrica secundária" : ["final", "reported"].includes(r.status) ? "Incluído" : "Fora das médias · resultado em revisão";
   $("#detail-content").innerHTML = `
     <div class="eyebrow">${esc(b.name)} · ${modeName(r.mode)}</div>
     <h2 id="detail-title">${esc(m.name)}</h2><p class="small muted">${esc(i18n.t(b.description))}</p>
@@ -494,6 +499,10 @@ function validateCasePack(pack) {
     ids.add(key);
     if (typeof c.question !== "string" || !Array.isArray(c.responses))
       throw Error("Pergunta ou respostas inválidas.");
+    if (c.image && (!validCaseImagePath(c.image.file) ||
+        !Number.isInteger(c.image.width) || c.image.width <= 0 ||
+        !Number.isInteger(c.image.height) || c.image.height <= 0))
+      throw Error("Imagem do caso inválida.");
     const variants = new Set();
     for (const r of c.responses) {
       const v = `${r.model_id}:${r.mode}`;
@@ -548,6 +557,11 @@ function judgmentView(c, r) {
   if (!r.judgment)
     return '<p class="small muted">Este registro não contém a correção detalhada.</p>';
   if (["research", "generation_failure"].includes(r.judgment.kind)) return researchJudgmentView(c, r);
+  if (r.judgment.kind === "vision") {
+    const verdict = JSON.parse(r.judgment.text);
+    const reference = Array.isArray(verdict.referencia) ? verdict.referencia : [verdict.referencia];
+    return `<p class="small muted">Correção determinística pelo código original. Não há juiz de IA.</p><table class="metric-breakdown"><tbody><tr><td>Resultado</td><td>${verdict.acerto ? "Acerto" : "Erro"}</td></tr><tr><td>Resposta de referência</td><td translate="no">${reference.map(esc).join(" · ")}</td></tr></tbody></table><details><summary>Veredito original</summary><pre translate="no">${json(verdict)}</pre></details>`;
+  }
   if (r.judgment.kind === "native") {
     let readable = r.judgment.text;
     try {
@@ -624,7 +638,7 @@ function exportCSV() {
     r.score_normalization?.native_denominator,
     r.score_normalization?.policy_id,
     r.score_normalization?.context_failures,
-    !r.averages_exclusion && ["final", "reported"].includes(r.status) && benchmarks.get(r.task).primary_metric !== false,
+    !r.averages_exclusion && ["final", "reported"].includes(r.status) && benchmarks.get(r.task).primary_metric !== false && benchmarks.get(r.task).average_scope !== "category",
     r.averages_exclusion?.label,
     JSON.stringify(r.audit_summary),
   ]);

@@ -106,6 +106,17 @@ class ResultProjection(unittest.TestCase):
                         reader.bytes(path)
             finally:
                 reader.close()
+            # Local previews combine edited/new files with unchanged sparse blobs.
+            (root/'result.json').write_text('{"score":75}')
+            (root/'new.json').write_text('{"score":50}')
+            reader = Repository(root, from_git=True, worktree_overlay=True)
+            try:
+                self.assertEqual(reader.json('result.json'), {'score':75})
+                self.assertEqual(reader.json('new.json'), {'score':50})
+                (root/'result.json').unlink()
+                self.assertEqual(reader.json('result.json'), {'score':100})
+            finally:
+                reader.close()
 
     def test_long_context_sharing_preserves_exact_bytes(self):
         import base64

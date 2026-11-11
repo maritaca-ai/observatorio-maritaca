@@ -40,6 +40,17 @@ const source=readFileSync(require.resolve('../averages.js'),'utf8');
 const context=vm.createContext({});
 vm.runInContext(source+';globalThis.calculate=calculateAverages;globalThis.rank=rankAverages;',context);
 const variant=id=>({id:`${id}:thinking`,model:{id,name:id},mode:'thinking'});
+test('vision scores are binary and stay out of the general text averages', () => {
+  const tasks=[{id:'text',origin:'native_br'}, {id:'ocrbench',origin:'international',average_scope:'category'}];
+  const rows=[{id:'candidate:thinking:text',score:70,status:'final'}, {id:'candidate:thinking:ocrbench',score:100,status:'final'}];
+  assert.equal(context.calculate(tasks,[variant('candidate')],rows)[0].cells.total.value,70);
+  assert.equal(context.calculate(tasks.slice(1),[variant('candidate')],rows,'visao')[0].cells.total.value,100);
+  for (const benchmark_id of ['ocrbench','realworldqa']) {
+    assert.equal(casePerformanceKind(benchmark_id),'binary');
+    assert.equal(casePerformance({benchmark_id},response(50)),null);
+    assert.equal(casePerformance({benchmark_id},{score:0,judgment:{kind:'vision'}}),0);
+  }
+});
 test('category averages use a fixed benchmark universe regardless of peer coverage', () => {
   const tasks=[{id:'a',origin:'native_br'},{id:'b',origin:'international'}];
   const rows=[{id:'candidate:thinking:a',score:100,status:'final'},{id:'candidate:thinking:b',score:0,status:'final'},{id:'other:thinking:a',score:80,status:'final'}];

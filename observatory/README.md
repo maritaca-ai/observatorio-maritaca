@@ -10,9 +10,31 @@ Na raiz do repositório:
 
 ```bash
 python -m pip install -r envs/requirements.txt
-python observatory/build.py --output .runs/observatory
+python observatory/build.py --output .runs/observatory --max-bytes 0
 python -m http.server 8080 --bind 127.0.0.1 --directory .runs/observatory
 ```
+
+Em checkout esparso, uma prévia de alterações locais pode usar
+`--from-git --worktree-overlay`: arquivos presentes no diretório de trabalho
+prevalecem; os demais são lidos do commit atual. Isso não publica alterações.
+
+As amostras de RealWorldQA e OCRBench aparecem na categoria **Visão** e nas
+comparações de respostas, inclusive às cegas. Cada uma tem 200 questões;
+as imagens originais são conferidas antes do build e carregadas somente ao
+abrir o caso. Essas notas entram na média de Visão, preservando as médias
+gerais de texto. Os protocolos, perfis visuais e corretores originais ficam
+em `benchmarks/visao/` e `profiles/models/*/*-vision.json`.
+O seletor **Texto / Visão** da página inicial mantém essas médias separadas;
+Texto é o padrão. Modelos sem entrada de imagem aparecem como **Não suporta
+visão**, sem nota numérica. As capacidades registradas distinguem falta de
+suporte de uma avaliação ainda não executada.
+
+A prévia local acima inclui as imagens originais. No Pages, o build usa
+`--from-git`: confere os mesmos bytes e gera links para
+os arquivos do repositório, fixados no commit usado no build. Assim, as imagens são
+carregadas quando um caso é aberto, sem duplicá-las no pacote do Pages. O limite
+padrão do pacote permanece ativo na publicação. Use `--image-source local`
+para incluir as imagens mesmo ao ler resultados pelo Git.
 
 Abra `http://127.0.0.1:8080`. Use uma pasta de saída vazia. O build lê todos os
 conjuntos finais em `results/`, refaz as notas com `verifier/` e confere as médias

@@ -5,9 +5,12 @@ import subprocess
 
 
 class Repository:
-    def __init__(self, root, from_git=False):
+    def __init__(self, root, from_git=False, worktree_overlay=False):
         self.root = Path(root)
         self.process = None
+        self.worktree_overlay = worktree_overlay
+        if worktree_overlay and not from_git:
+            raise ValueError('Worktree overlay requires a Git fallback')
         if from_git:
             self.process = subprocess.Popen(['git', 'cat-file', '--batch'], cwd=self.root,
                                             stdin=subprocess.PIPE, stdout=subprocess.PIPE)
@@ -16,7 +19,7 @@ class Repository:
         path = str(path)
         if Path(path).is_absolute() or '..' in Path(path).parts or '\n' in path:
             raise ValueError('Invalid repository path')
-        if self.process is None:
+        if self.process is None or (self.worktree_overlay and (self.root/path).is_file()):
             return (self.root/path).read_bytes()
         self.process.stdin.write(('HEAD:'+path+'\n').encode())
         self.process.stdin.flush()
@@ -40,7 +43,7 @@ class Repository:
 
     def response_files(self, folder):
         """List the actual parts, independently of the summary's inventory."""
-        if self.process is None:
+        if self.process is None or (self.worktree_overlay and any((self.root/folder).glob('respostas-*.json'))):
             return {p.name for p in (self.root/folder).glob('respostas-*.json')}
         names = subprocess.check_output(
             ['git', 'ls-tree', '--name-only', 'HEAD:'+str(folder)], cwd=self.root, text=True)
