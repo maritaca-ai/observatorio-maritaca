@@ -1,13 +1,13 @@
 # Observatório Maritaca
 
-**11 modelos de linguagem · 24 benchmarks · 1.081.170 instâncias de avaliação**
+**11 modelos de linguagem · 26 benchmarks · 1.086.570 instâncias de avaliação**
 
 [**Acessar o Observatório Maritaca →**](https://maritaca-ai.github.io/observatorio-maritaca/)
 
 A Maritaca avaliou o S5-nano e dez modelos brasileiros e internacionais em tarefas
 de conversa, seguimento de instruções, segurança, conhecimento, uso de ferramentas,
 saída estruturada e contexto longo, incluindo testes de cultura brasileira,
-direito e medicina. A comparação reúne avaliações nos modos Thinking e Instruct.
+direito, medicina e visão. A comparação reúne avaliações nos modos Thinking e Instruct.
 
 Este repositório contém as notas, as respostas dos modelos, os julgamentos e os
 protocolos usados em cada benchmark.
@@ -17,6 +17,8 @@ protocolos usados em cada benchmark.
 ## Resultados
 
 Médias e notas finais, separadas por modo. Os melhores valores de cada coluna de média ou linha de benchmark aparecem em **negrito**.
+
+As médias gerais incluem apenas texto. As amostras de visão têm média separada no Observatório.
 
 ### Thinking
 
@@ -62,6 +64,8 @@ Médias e notas finais, separadas por modo. Os melhores valores de cada coluna d
 | OAB-Bench · 210 · completo | **82,00** | 45,88 | 40,83 | 50,43 | 53,19 | 27,93 | 31,18 | 25,39 |
 | Magis-Bench · 74 · completo | **50,41** | 13,97 | 15,42 | 21,86 | 23,38 | 7,81 | 4,50 | 3,33 |
 | CondutaBench · 140 | **80,24** | 67,92 | 70,98 | 57,27 | 58,49 | 42,81 | 27,33 | 25,47 |
+| RealWorldQA · 200 | 73,50 | **82,00** | Não suporta visão | 66,50 | 66,50 | Não suporta visão | Não suporta visão | Não suporta visão |
+| OCRBench · 200 | 76,50 | **84,50** | Não suporta visão | 75,00 | 76,00 | Não suporta visão | Não suporta visão | Não suporta visão |
 
 </details>
 
@@ -111,6 +115,8 @@ Médias e notas finais, separadas por modo. Os melhores valores de cada coluna d
 | OAB-Bench · 210 · completo | **73,94** | 45,24 | 49,43 | 52,34 | 46,86 | 24,92 | 32,71 | 24,06 | 15,39 | 3,52 |
 | Magis-Bench · 74 · completo | **41,10** | 17,32 | 22,56 | 22,15 | 14,40 | 4,93 | 8,31 | 4,62 | 2,07 | 0,33 |
 | CondutaBench · 140 | **77,00** | 50,93 | 49,39 | 53,58 | 28,96 | 25,85 | 34,93 | 19,59 | 17,64 | -3,16 |
+| RealWorldQA · 200 | 72,00 | **77,00** | 61,50 | 60,50 | Não suporta visão | Não suporta visão | 44,00 | Não suporta visão | Não suporta visão | Não suporta visão |
+| OCRBench · 200 | 79,50 | **84,50** | 76,00 | 72,00 | Não suporta visão | Não suporta visão | 67,00 | Não suporta visão | Não suporta visão | Não suporta visão |
 
 </details>
 

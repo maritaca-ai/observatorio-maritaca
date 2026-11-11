@@ -1,7 +1,7 @@
 "use strict";
 
 // The camera selects models; star positions and brightness never encode scores.
-const home = { selected: "candidate", paused: false, zoom: 1, panX: 0, panY: 0, cleanup: null };
+const home = { selected: "candidate", paused: false, zoom: 1, panX: 0, panY: 0, cleanup: null, textCategory: "all" };
 function readSkyCamera(params) {
   const values = (params.get("sky") || "1,0,0").split(",").map(Number);
   const valid = values.length === 3 && values.every(Number.isFinite);
@@ -28,14 +28,18 @@ function selectedSkyModel() {
   return `<div class="sky-model-info"><span class="sky-info-label">${m.unavailable ? "Acesso solicitado · sem avaliação" : "Em observação"}</span><h2>${modelName(m)}</h2><p>${esc(m.organization)}</p><div class="sky-model-facts"><span>${esc(i18n.t(m.size_label))}</span><span>${m.result_count ? `${m.result_count} notas` : esc(m.availability_status)}</span></div>${homeModelLinks(m)}</div>`;
 }
 function renderHomeAverages() {
+  const vision = state.category === "visao";
+  if (!vision) home.textCategory = state.category;
+  const modalityControl = `<div class="segmented" aria-label="Modalidade das médias">${[["text","Texto"],["vision","Visão"]].map(([id,label]) => `<button data-home-modality="${id}" aria-pressed="${vision === (id === "vision")}">${label}</button>`).join("")}</div>`;
+  const categoryControl = vision ? "" : `<select data-home-category aria-label="Categoria das médias">${[["all","Todas as categorias"],...Object.entries(D.categories).filter(([id]) => id !== "visao")].map(([id,label]) => `<option value="${id}" ${state.category === id ? "selected" : ""}>${esc(label)}</option>`).join("")}</select>`;
   const variants = allVariants().filter(v => inSizeGroup(v.model) && state.selected.has(v.model.id) && (state.mode === "all" || v.mode === state.mode));
   const tasks = D.benchmarks.filter(b => matchesCategory(b, state.category));
-  const values = rankAverages(calculateAverages(tasks, variants, D.records));
+  const values = rankAverages(calculateAverages(tasks, variants, D.records, state.category));
   const columns = [["native_br", "Nativo BR"], ["translated_pt", "Traduzido PT"], ["international", "Não nativo"], ["total", "Total ↓"]];
   averagesState.cells.clear();
   const best = Object.fromEntries(columns.map(([g]) => [g, Math.max(...values.map(r => r.cells[g].value ?? -Infinity))]));
   const rows = values.map(({variant,cells,rank}) => {
-    return `<tr data-average-model="${variant.model.id}" data-ranking-mode="${variant.mode}" data-rank="${rank ?? ''}" class="${variant.model.id === 'candidate' ? 'home-candidate' : ''}"><th><div class="home-model-name">${averageRankLabel(variant,rank)}${modelWeightsLink(variant.model, variant.mode)}</div><small>${esc(i18n.t(variant.model.size_label))} · ${modeName(variant.mode)}</small></th>${columns.map(([g]) => {
+    return `<tr data-average-model="${variant.model.id}" data-ranking-mode="${variant.mode}" data-rank="${rank ?? ''}" class="${variant.model.id === 'candidate' ? 'home-candidate' : ''}"><th><div class="home-model-name">${averageRankLabel(variant,rank)}${modelWeightsLink(variant.model, variant.mode)}</div><small>${esc(i18n.t(variant.model.size_label))} · ${modeName(variant.mode)}</small></th>${unsupportedVisionAverage(variant.model) ? `<td colspan="${columns.length}">${unsupportedVisionLabel}</td>` : columns.map(([g]) => {
       const c = cells[g], id = `home:${variant.id}:${g}`;
       averagesState.cells.set(id,{...c,model:variant.model,mode:variant.mode,group:g});
       const winner = c.value !== null && c.value === best[g];
@@ -44,7 +48,7 @@ function renderHomeAverages() {
   }).join("");
   const query = new URLSearchParams({size:state.size,mode:state.mode,models:[...state.selected].join(",")});
   if (state.category !== "all") query.set("category",state.category);
-  return `<section class="home-results" aria-label="Médias dos resultados"><div class="home-results-heading"><div><span class="home-section-label">${state.category === "all" ? "RESULTADOS" : esc(D.categories[state.category])}</span><h2>Ranking dos modelos</h2></div><a href="#panorama?${query}">Tabela completa ↗</a></div><div class="home-filters"><div class="segmented" aria-label="Tamanho dos modelos">${Object.entries(sizeGroups).map(([id,g]) => `<button data-size-group="${id}" aria-pressed="${state.size === id}">${g.label}</button>`).join("")}</div><div class="segmented" aria-label="Modo das médias">${[["all","Ambos"],["thinking","Thinking"],["instruct","Instruct"]].map(([id,label]) => `<button data-mode="${id}" aria-pressed="${state.mode === id}">${label}</button>`).join("")}</div><select data-home-category aria-label="Categoria das médias">${[["all","Todas as categorias"],...Object.entries(D.categories)].map(([id,label]) => `<option value="${id}" ${state.category === id ? "selected" : ""}>${esc(label)}</option>`).join("")}</select></div><div class="home-average-scroll"><table class="home-average-table"><thead><tr><th>Modelo</th>${columns.map(([group,title]) => `<th${group === "total" ? ' aria-sort="descending"' : ""}>${title}</th>`).join("")}</tr></thead><tbody>${rows || '<tr><td colspan="5">Nenhum modelo com resultados neste campo. <button class="text-button" data-sky-reset>Recentrar</button></td></tr>'}</tbody></table></div></section>`;
+  return `<section class="home-results" aria-label="Médias dos resultados"><div class="home-results-heading"><div><span class="home-section-label">${state.category === "all" ? "RESULTADOS" : esc(D.categories[state.category])}</span><h2>Ranking dos modelos</h2></div><a href="#panorama?${query}">Tabela completa ↗</a></div><div class="home-filters">${modalityControl}<div class="segmented" aria-label="Tamanho dos modelos">${Object.entries(sizeGroups).map(([id,g]) => `<button data-size-group="${id}" aria-pressed="${state.size === id}">${g.label}</button>`).join("")}</div><div class="segmented" aria-label="Modo das médias">${[["all","Ambos"],["thinking","Thinking"],["instruct","Instruct"]].map(([id,label]) => `<button data-mode="${id}" aria-pressed="${state.mode === id}">${label}</button>`).join("")}</div>${categoryControl}</div><div class="home-average-scroll"><table class="home-average-table"><thead><tr><th>Modelo</th>${columns.map(([group,title]) => `<th${group === "total" ? ' aria-sort="descending"' : ""}>${title}</th>`).join("")}</tr></thead><tbody>${rows || '<tr><td colspan="5">Nenhum modelo com resultados neste campo. <button class="text-button" data-sky-reset>Recentrar</button></td></tr>'}</tbody></table></div></section>`;
 }
 function renderHome() {
   const visible = sizeModels();
@@ -55,6 +59,12 @@ function renderHome() {
 document.addEventListener("change", event => {
   if (!event.target.matches("[data-home-category]")) return;
   state.category = event.target.value; writeHash(); render();
+});
+document.addEventListener("click", event => {
+  const button = event.target.closest("[data-home-modality]");
+  if (!button || !D) return;
+  state.category = button.dataset.homeModality === "vision" ? "visao" : home.textCategory;
+  writeHash(); render();
 });
 function disposeSky() { if (home.cleanup) home.cleanup(); home.cleanup = null; }
 function initSky() {

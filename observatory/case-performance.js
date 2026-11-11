@@ -5,6 +5,7 @@ const binaryCaseTasks = new Set([
   "assin_rte", "broverbs", "browsecomp_plus", "capitu", "capitu_conversations",
   "culturalbench", "enade_qa", "enem_vl", "global_mmlu_pt", "ifbench",
   "longbench_v2", "math_pt_br_mc", "mmlu_pt_high_school", "mmlu_pt_undergraduate", "sob",
+  "realworldqa", "ocrbench",
 ]);
 function casePerformanceKind(task) {
   return binaryCaseTasks.has(task) ? "binary" : ["harmbench", "lumen_pt"].includes(task) ? "safety" : "graded";

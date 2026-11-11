@@ -12,12 +12,15 @@ BR = {'s5-nano', 'gaia-4b', 'manaca', 'tucano2-qwen-3.7b', 'lumi-4b'}
 def render():
     read = lambda path: json.loads((ROOT/path).read_text())
     models, metrics, reference = read('results/modelos.json'), read('benchmarks/metrics.json'), read('verifier/reported.json')
+    catalog = read('observatory/catalog.json')
+    vision_support = {catalog['model_directories'][m['id']]: m.get('supports_vision')
+                      for m in catalog['models'] if m['id'] in catalog['model_directories']}
     label = lambda model: models[model]['nome'] + (' 🇧🇷' if model in BR else '')
     def number(value, best):
         if value is None: return '—'
         text = f'{value:.2f}'.replace('.', ',')
         return f'**{text}**' if best is not None and abs(value-best) < 1e-8 else text
-    lines = ['## Resultados', '', 'Médias e notas finais, separadas por modo. Os melhores valores de cada coluna de média ou linha de benchmark aparecem em **negrito**.', '']
+    lines = ['## Resultados', '', 'Médias e notas finais, separadas por modo. Os melhores valores de cada coluna de média ou linha de benchmark aparecem em **negrito**.', '', 'As médias gerais incluem apenas texto. As amostras de visão têm média separada no Observatório.', '']
     origins = ['native_br', 'translated_pt', 'international', 'total']
     for mode, title in [('thinking', 'Thinking'), ('instruct', 'Instruct')]:
         rows = reference['medias']['all/all/'+mode]
@@ -34,7 +37,10 @@ def render():
         for benchmark, info in metrics.items():
             values = [reference['notas'].get(f'{r["modelo"]}/{benchmark}/{mode}') for r in rows]
             top = max((v for v in values if v is not None), default=None)
-            lines.append('| '+info['name']+' | '+' | '.join(number(v, top) for v in values)+' |')
+            cells = [('Não suporta visão' if v is None and info['category'] == 'visao'
+                      and vision_support.get(r['modelo']) is False else number(v, top))
+                     for r, v in zip(rows, values)]
+            lines.append('| '+info['name']+' | '+' | '.join(cells)+' |')
         lines += ['', '</details>', '']
     lines += ['[Explorar os registros finais](results/README.md) · [Conferir notas e médias](verifier/README.md)', '']
     return '\n'.join(lines)

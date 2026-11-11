@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "name": "s5-nano-thinking",
+  "mode": "thinking",
+  "enable_thinking": true,
+  "sampling": {
+    "min_p": 0.0,
+    "presence_penalty": 1.5,
+    "repetition_penalty": 1.0,
+    "temperature": 1.0,
+    "top_k": 20,
+    "top_p": 0.95
+  },
+  "max_tokens": 32768,
+  "reasoning_effort": null,
+  "context_length": 262144,
+  "reasoning_parser": "qwen3",
+  "tool_parser": "qwen3_coder",
+  "history_policy": "preserve actual assistant reasoning on subsequent turns",
+  "native_defaults_overridden": true,
+  "sampling_reference": "https://huggingface.co/Qwen/Qwen3.5-4B/blob/main/README.md",
+  "model": "maritaca-ai/S5-nano",
+  "references": [
+    "https://huggingface.co/Qwen/Qwen3.5-4B/blob/main/README.md",
+    "https://huggingface.co/maritaca-ai/S5-nano-GGUF"
+  ],
+  "revision": "6667286b667d988c61c11366e780e1dcf729a90a",
+  "template_adaptation": "Native multimodal template at the pinned revision; single-turn input.",
+  "output_budget_reference": "https://huggingface.co/Qwen/Qwen3.5-4B#best-practices",
+  "output_budget_basis": "Published recommendation for most queries; these benchmarks do not ask competition mathematics or programming.",
+  "precision": "bfloat16",
+  "chat_template_kwargs": {
+    "enable_thinking": true
+  }
+}

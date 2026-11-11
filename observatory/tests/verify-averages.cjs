@@ -17,7 +17,7 @@ for(const [selection,expected] of Object.entries(reference.medias)) {
     .flatMap(model=>model.modes.filter(m=>mode==='both'||m===mode)
       .map(mode=>({id:`${model.id}:${mode}`,model,mode})));
   const tasks=data.benchmarks.filter(b=>category==='all'||b.categories.includes(category));
-  const actual=context.rankAverages(context.calculateAverages(tasks,variants,data.records));
+  const actual=context.rankAverages(context.calculateAverages(tasks,variants,data.records,category));
   assert.equal(actual.length,expected.length,selection);
   actual.forEach((row,i)=>{
     const want=expected[i];

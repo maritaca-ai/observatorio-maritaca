@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "title": "Maritaca · Observatório de modelos",
-  "updated_at": "2026-11-10",
+  "updated_at": "2026-11-11",
   "categories": {
     "chat": "Chat",
     "instrucoes": "Instruções",
@@ -13,7 +13,8 @@
     "brasil_especifico": "Brasil e cultura",
     "contexto_longo": "Contexto longo",
     "juridico": "Jurídico",
-    "medico": "Medicina"
+    "medico": "Medicina",
+    "visao": "Visão"
   },
   "references": {
     "schema_version": 1,
@@ -415,6 +416,36 @@
           }
         ],
         "note": "Pesquisa com Serper, até 30 chamadas de ferramentas e juiz S5 com esforço none. Só a resposta final recebe nota. O agente e o juiz são os desta campanha; não se afirma reprodução do leaderboard dos autores. Os casos zerados e os limites de cada modelo estão nos detalhes da nota."
+      },
+      "realworldqa": {
+        "correction": "Comparação exata com a resposta de referência, após a normalização do corretor original. Só a resposta final recebe nota.",
+        "papers": [],
+        "sources": [
+          {
+            "label": "Dataset público",
+            "url": "https://huggingface.co/datasets/xai-org/RealworldQA"
+          },
+          {
+            "label": "Corretor original",
+            "url": "https://github.com/EvolvingLMMs-Lab/lmms-eval/tree/101f216d37ab618e7b7999eea316dbe29a405ea6"
+          }
+        ],
+        "note": "As notas correspondem à amostra de 200 questões, não ao conjunto completo. Entram somente na média de Visão."
+      },
+      "ocrbench": {
+        "correction": "O corretor original verifica as respostas de referência no texto final, com as regras específicas de cada conjunto. A nota é a proporção de acertos na amostra.",
+        "papers": [],
+        "sources": [
+          {
+            "label": "Dataset público",
+            "url": "https://huggingface.co/datasets/echo840/OCRBench"
+          },
+          {
+            "label": "Corretor original",
+            "url": "https://github.com/Yuliang-Liu/MultimodalOCR/tree/d1901a9500c7232040b5b5806df77a15312a3509"
+          }
+        ],
+        "note": "As notas correspondem à amostra de 200 questões, não ao conjunto completo. Entram somente na média de Visão."
       }
     },
     "benchmark_aliases": {
@@ -539,7 +570,7 @@
       "context": 262144,
       "color": "#1A3C34",
       "symbol": "nano",
-      "description": "Modelo da Maritaca AI, com pós-treino sobre Qwen3.5-4B; checkpoint textual.",
+      "description": "Modelo da Maritaca AI, com pós-treino sobre Qwen3.5-4B. O checkpoint aceita texto e imagens.",
       "reference": false,
       "model_card": "https://huggingface.co/maritaca-ai/S5-nano",
       "license": "Apache 2.0",
@@ -549,7 +580,8 @@
         "thinking",
         "instruct"
       ],
-      "result_count": 48
+      "result_count": 48,
+      "supports_vision": true
     },
     {
       "id": "qwen35-4b",
@@ -563,7 +595,7 @@
       "architecture": "Qwen3.5",
       "color": "#7A5AC8",
       "symbol": "Q",
-      "description": "Base do S5-nano. A campanha serve o componente de linguagem do checkpoint multimodal.",
+      "description": "Base do S5-nano, com entrada de texto e imagens.",
       "size_source": "Metadados safetensors da revisão fixada; total inclui visão.",
       "reference": false,
       "brazilian_project": false,
@@ -573,7 +605,8 @@
         "thinking",
         "instruct"
       ],
-      "result_count": 48
+      "result_count": 48,
+      "supports_vision": true
     },
     {
       "id": "gemma4-e4b",
@@ -597,7 +630,8 @@
         "thinking",
         "instruct"
       ],
-      "result_count": 48
+      "result_count": 48,
+      "supports_vision": true
     },
     {
       "id": "nemotron35-bolt-e4b",
@@ -621,7 +655,8 @@
         "thinking",
         "instruct"
       ],
-      "result_count": 48
+      "result_count": 48,
+      "supports_vision": true
     },
     {
       "id": "lfm3-1.7b",
@@ -645,7 +680,11 @@
         "thinking",
         "instruct"
       ],
-      "result_count": 48
+      "result_count": 48,
+      "supports_vision": false,
+      "vision_support_sources": [
+        "https://huggingface.co/LiquidAI/LFM3-1.7B/blob/main/config.json"
+      ]
     },
     {
       "id": "lfm25-24b-a2b",
@@ -668,7 +707,11 @@
       "modes": [
         "thinking"
       ],
-      "result_count": 24
+      "result_count": 24,
+      "supports_vision": false,
+      "vision_support_sources": [
+        "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B/blob/main/config.json"
+      ]
     },
     {
       "id": "gaia",
@@ -694,7 +737,8 @@
       "modes": [
         "instruct"
       ],
-      "result_count": 24
+      "result_count": 24,
+      "supports_vision": true
     },
     {
       "id": "manaca",
@@ -720,7 +764,11 @@
       "modes": [
         "instruct"
       ],
-      "result_count": 21
+      "result_count": 21,
+      "supports_vision": false,
+      "vision_support_sources": [
+        "https://huggingface.co/AIInstituteLNCC/manaca-1b-instruct/blob/main/config.json"
+      ]
     },
     {
       "id": "tucano",
@@ -750,7 +798,12 @@
         "thinking",
         "instruct"
       ],
-      "result_count": 48
+      "result_count": 48,
+      "supports_vision": false,
+      "vision_support_sources": [
+        "https://huggingface.co/Polygl0t/Tucano2-qwen-3.7B-Think/blob/main/config.json",
+        "https://huggingface.co/Polygl0t/Tucano2-qwen-3.7B-Instruct/blob/main/config.json"
+      ]
     },
     {
       "id": "lumi-hf",
@@ -777,7 +830,11 @@
         "thinking",
         "instruct"
       ],
-      "result_count": 48
+      "result_count": 48,
+      "supports_vision": false,
+      "vision_support_sources": [
+        "https://huggingface.co/ceia-br/lumi-4b/blob/main/config.json"
+      ]
     },
     {
       "id": "latamgpt",
@@ -802,7 +859,11 @@
       "modes": [
         "instruct"
       ],
-      "result_count": 21
+      "result_count": 21,
+      "supports_vision": false,
+      "vision_support_sources": [
+        "https://huggingface.co/latam-gpt/Llama-3.1-70B-LatamGPT-SFT-1.0/blob/main/config.json"
+      ]
     },
     {
       "id": "soberania",
@@ -1361,6 +1422,50 @@
       "table_visible": true,
       "protocol_url": "https://github.com/maritaca-ai/observatorio-maritaca/tree/main/benchmarks/medico/conduta_bench",
       "result_count": 18
+    },
+    {
+      "name": "RealWorldQA · 200",
+      "description": "Perguntas sobre fotografias: objetos, posições, quantidades e relações espaciais. Amostra uniforme de 200 questões.",
+      "category": "visao",
+      "categories": [
+        "visao"
+      ],
+      "origin": "international",
+      "primary_metric": true,
+      "direction": "higher",
+      "task": "realworldqa",
+      "allow_missing_results": true,
+      "average_scope": "category",
+      "id": "realworldqa",
+      "language": "EN",
+      "metric": "Acurácia nativa (%)",
+      "population": "200 de 765 questões",
+      "origin_label": "Não nativo",
+      "origin_note": null,
+      "table_visible": true,
+      "protocol_url": "sources/benchmarks/visao/realworldqa/protocol.json"
+    },
+    {
+      "name": "OCRBench · 200",
+      "description": "Leitura de texto em imagens, documentos, escrita à mão e expressões matemáticas. Amostra de 200 questões, estratificada pelas categorias originais.",
+      "category": "visao",
+      "categories": [
+        "visao"
+      ],
+      "origin": "international",
+      "primary_metric": true,
+      "direction": "higher",
+      "task": "ocrbench",
+      "allow_missing_results": true,
+      "average_scope": "category",
+      "id": "ocrbench",
+      "language": "EN · multilíngue",
+      "metric": "Acurácia nativa (%)",
+      "population": "200 de 1.000 questões",
+      "origin_label": "Não nativo",
+      "origin_note": null,
+      "table_visible": true,
+      "protocol_url": "sources/benchmarks/visao/ocrbench/protocol.json"
     }
   ],
   "origins": {
@@ -1463,7 +1568,9 @@
     "longbench_v2": "longbench-v2",
     "oab_bench_full": "oab-bench",
     "magis_bench": "magis-bench",
-    "conduta_bench": "conduta-bench"
+    "conduta_bench": "conduta-bench",
+    "realworldqa": "realworldqa",
+    "ocrbench": "ocrbench"
   },
   "annotations": {
     "candidate:instruct:arena_hard_v2": {
@@ -36791,6 +36898,348 @@
           "label": "Sem suporte a tool call"
         }
       ]
+    },
+    "gaia:instruct:ocrbench": {
+      "id": "gaia:instruct:ocrbench",
+      "model_id": "gaia",
+      "mode": "instruct",
+      "task": "ocrbench",
+      "protocol_id": "ocrbench-sample200-native-v1",
+      "comparison_key": "ocrbench-sample200-native-v1",
+      "judge": null,
+      "judge_effort": null,
+      "flags": [],
+      "notes": [],
+      "denominator_unit": "questões",
+      "scorer_variant": "native",
+      "scorer_overrides": {},
+      "metric": {},
+      "audit_summary": {
+        "fields": []
+      }
+    },
+    "gaia:instruct:realworldqa": {
+      "id": "gaia:instruct:realworldqa",
+      "model_id": "gaia",
+      "mode": "instruct",
+      "task": "realworldqa",
+      "protocol_id": "realworldqa-sample200-native-v1",
+      "comparison_key": "realworldqa-sample200-native-v1",
+      "judge": null,
+      "judge_effort": null,
+      "flags": [],
+      "notes": [],
+      "denominator_unit": "questões",
+      "scorer_variant": "native",
+      "scorer_overrides": {},
+      "metric": {},
+      "audit_summary": {
+        "fields": []
+      }
+    },
+    "gemma4-e4b:instruct:ocrbench": {
+      "id": "gemma4-e4b:instruct:ocrbench",
+      "model_id": "gemma4-e4b",
+      "mode": "instruct",
+      "task": "ocrbench",
+      "protocol_id": "ocrbench-sample200-native-v1",
+      "comparison_key": "ocrbench-sample200-native-v1",
+      "judge": null,
+      "judge_effort": null,
+      "flags": [],
+      "notes": [],
+      "denominator_unit": "questões",
+      "scorer_variant": "native",
+      "scorer_overrides": {},
+      "metric": {},
+      "audit_summary": {
+        "fields": []
+      }
+    },
+    "gemma4-e4b:thinking:ocrbench": {
+      "id": "gemma4-e4b:thinking:ocrbench",
+      "model_id": "gemma4-e4b",
+      "mode": "thinking",
+      "task": "ocrbench",
+      "protocol_id": "ocrbench-sample200-native-v1",
+      "comparison_key": "ocrbench-sample200-native-v1",
+      "judge": null,
+      "judge_effort": null,
+      "flags": [],
+      "notes": [],
+      "denominator_unit": "questões",
+      "scorer_variant": "native",
+      "scorer_overrides": {},
+      "metric": {},
+      "audit_summary": {
+        "fields": []
+      }
+    },
+    "gemma4-e4b:instruct:realworldqa": {
+      "id": "gemma4-e4b:instruct:realworldqa",
+      "model_id": "gemma4-e4b",
+      "mode": "instruct",
+      "task": "realworldqa",
+      "protocol_id": "realworldqa-sample200-native-v1",
+      "comparison_key": "realworldqa-sample200-native-v1",
+      "judge": null,
+      "judge_effort": null,
+      "flags": [],
+      "notes": [],
+      "denominator_unit": "questões",
+      "scorer_variant": "native",
+      "scorer_overrides": {},
+      "metric": {},
+      "audit_summary": {
+        "fields": []
+      }
+    },
+    "gemma4-e4b:thinking:realworldqa": {
+      "id": "gemma4-e4b:thinking:realworldqa",
+      "model_id": "gemma4-e4b",
+      "mode": "thinking",
+      "task": "realworldqa",
+      "protocol_id": "realworldqa-sample200-native-v1",
+      "comparison_key": "realworldqa-sample200-native-v1",
+      "judge": null,
+      "judge_effort": null,
+      "flags": [],
+      "notes": [],
+      "denominator_unit": "questões",
+      "scorer_variant": "native",
+      "scorer_overrides": {},
+      "metric": {},
+      "audit_summary": {
+        "fields": []
+      }
+    },
+    "nemotron35-bolt-e4b:instruct:ocrbench": {
+      "id": "nemotron35-bolt-e4b:instruct:ocrbench",
+      "model_id": "nemotron35-bolt-e4b",
+      "mode": "instruct",
+      "task": "ocrbench",
+      "protocol_id": "ocrbench-sample200-native-v1",
+      "comparison_key": "ocrbench-sample200-native-v1",
+      "judge": null,
+      "judge_effort": null,
+      "flags": [],
+      "notes": [],
+      "denominator_unit": "questões",
+      "scorer_variant": "native",
+      "scorer_overrides": {},
+      "metric": {},
+      "audit_summary": {
+        "fields": []
+      }
+    },
+    "nemotron35-bolt-e4b:thinking:ocrbench": {
+      "id": "nemotron35-bolt-e4b:thinking:ocrbench",
+      "model_id": "nemotron35-bolt-e4b",
+      "mode": "thinking",
+      "task": "ocrbench",
+      "protocol_id": "ocrbench-sample200-native-v1",
+      "comparison_key": "ocrbench-sample200-native-v1",
+      "judge": null,
+      "judge_effort": null,
+      "flags": [],
+      "notes": [],
+      "denominator_unit": "questões",
+      "scorer_variant": "native",
+      "scorer_overrides": {},
+      "metric": {},
+      "audit_summary": {
+        "fields": []
+      }
+    },
+    "nemotron35-bolt-e4b:instruct:realworldqa": {
+      "id": "nemotron35-bolt-e4b:instruct:realworldqa",
+      "model_id": "nemotron35-bolt-e4b",
+      "mode": "instruct",
+      "task": "realworldqa",
+      "protocol_id": "realworldqa-sample200-native-v1",
+      "comparison_key": "realworldqa-sample200-native-v1",
+      "judge": null,
+      "judge_effort": null,
+      "flags": [],
+      "notes": [],
+      "denominator_unit": "questões",
+      "scorer_variant": "native",
+      "scorer_overrides": {},
+      "metric": {},
+      "audit_summary": {
+        "fields": []
+      }
+    },
+    "nemotron35-bolt-e4b:thinking:realworldqa": {
+      "id": "nemotron35-bolt-e4b:thinking:realworldqa",
+      "model_id": "nemotron35-bolt-e4b",
+      "mode": "thinking",
+      "task": "realworldqa",
+      "protocol_id": "realworldqa-sample200-native-v1",
+      "comparison_key": "realworldqa-sample200-native-v1",
+      "judge": null,
+      "judge_effort": null,
+      "flags": [],
+      "notes": [],
+      "denominator_unit": "questões",
+      "scorer_variant": "native",
+      "scorer_overrides": {},
+      "metric": {},
+      "audit_summary": {
+        "fields": []
+      }
+    },
+    "qwen35-4b:instruct:ocrbench": {
+      "id": "qwen35-4b:instruct:ocrbench",
+      "model_id": "qwen35-4b",
+      "mode": "instruct",
+      "task": "ocrbench",
+      "protocol_id": "ocrbench-sample200-native-v1",
+      "comparison_key": "ocrbench-sample200-native-v1",
+      "judge": null,
+      "judge_effort": null,
+      "flags": [],
+      "notes": [],
+      "denominator_unit": "questões",
+      "scorer_variant": "native",
+      "scorer_overrides": {},
+      "metric": {},
+      "audit_summary": {
+        "fields": []
+      }
+    },
+    "qwen35-4b:thinking:ocrbench": {
+      "id": "qwen35-4b:thinking:ocrbench",
+      "model_id": "qwen35-4b",
+      "mode": "thinking",
+      "task": "ocrbench",
+      "protocol_id": "ocrbench-sample200-native-v1",
+      "comparison_key": "ocrbench-sample200-native-v1",
+      "judge": null,
+      "judge_effort": null,
+      "flags": [],
+      "notes": [],
+      "denominator_unit": "questões",
+      "scorer_variant": "native",
+      "scorer_overrides": {},
+      "metric": {},
+      "audit_summary": {
+        "fields": []
+      }
+    },
+    "qwen35-4b:instruct:realworldqa": {
+      "id": "qwen35-4b:instruct:realworldqa",
+      "model_id": "qwen35-4b",
+      "mode": "instruct",
+      "task": "realworldqa",
+      "protocol_id": "realworldqa-sample200-native-v1",
+      "comparison_key": "realworldqa-sample200-native-v1",
+      "judge": null,
+      "judge_effort": null,
+      "flags": [],
+      "notes": [],
+      "denominator_unit": "questões",
+      "scorer_variant": "native",
+      "scorer_overrides": {},
+      "metric": {},
+      "audit_summary": {
+        "fields": []
+      }
+    },
+    "qwen35-4b:thinking:realworldqa": {
+      "id": "qwen35-4b:thinking:realworldqa",
+      "model_id": "qwen35-4b",
+      "mode": "thinking",
+      "task": "realworldqa",
+      "protocol_id": "realworldqa-sample200-native-v1",
+      "comparison_key": "realworldqa-sample200-native-v1",
+      "judge": null,
+      "judge_effort": null,
+      "flags": [],
+      "notes": [],
+      "denominator_unit": "questões",
+      "scorer_variant": "native",
+      "scorer_overrides": {},
+      "metric": {},
+      "audit_summary": {
+        "fields": []
+      }
+    },
+    "candidate:instruct:ocrbench": {
+      "id": "candidate:instruct:ocrbench",
+      "model_id": "candidate",
+      "mode": "instruct",
+      "task": "ocrbench",
+      "protocol_id": "ocrbench-sample200-native-v1",
+      "comparison_key": "ocrbench-sample200-native-v1",
+      "judge": null,
+      "judge_effort": null,
+      "flags": [],
+      "notes": [],
+      "denominator_unit": "questões",
+      "scorer_variant": "native",
+      "scorer_overrides": {},
+      "metric": {},
+      "audit_summary": {
+        "fields": []
+      }
+    },
+    "candidate:thinking:ocrbench": {
+      "id": "candidate:thinking:ocrbench",
+      "model_id": "candidate",
+      "mode": "thinking",
+      "task": "ocrbench",
+      "protocol_id": "ocrbench-sample200-native-v1",
+      "comparison_key": "ocrbench-sample200-native-v1",
+      "judge": null,
+      "judge_effort": null,
+      "flags": [],
+      "notes": [],
+      "denominator_unit": "questões",
+      "scorer_variant": "native",
+      "scorer_overrides": {},
+      "metric": {},
+      "audit_summary": {
+        "fields": []
+      }
+    },
+    "candidate:instruct:realworldqa": {
+      "id": "candidate:instruct:realworldqa",
+      "model_id": "candidate",
+      "mode": "instruct",
+      "task": "realworldqa",
+      "protocol_id": "realworldqa-sample200-native-v1",
+      "comparison_key": "realworldqa-sample200-native-v1",
+      "judge": null,
+      "judge_effort": null,
+      "flags": [],
+      "notes": [],
+      "denominator_unit": "questões",
+      "scorer_variant": "native",
+      "scorer_overrides": {},
+      "metric": {},
+      "audit_summary": {
+        "fields": []
+      }
+    },
+    "candidate:thinking:realworldqa": {
+      "id": "candidate:thinking:realworldqa",
+      "model_id": "candidate",
+      "mode": "thinking",
+      "task": "realworldqa",
+      "protocol_id": "realworldqa-sample200-native-v1",
+      "comparison_key": "realworldqa-sample200-native-v1",
+      "judge": null,
+      "judge_effort": null,
+      "flags": [],
+      "notes": [],
+      "denominator_unit": "questões",
+      "scorer_variant": "native",
+      "scorer_overrides": {},
+      "metric": {},
+      "audit_summary": {
+        "fields": []
+      }
     }
   },
   "audit_fields": {

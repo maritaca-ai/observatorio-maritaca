@@ -1,6 +1,7 @@
 """Check both interface languages against a locally served static build."""
 import argparse
 import json
+import re
 from urllib.parse import urlsplit
 
 from playwright.sync_api import sync_playwright
@@ -21,7 +22,7 @@ def main():
         page.set_default_timeout(30000)
         page.on('pageerror', lambda error: errors.append(str(error)))
         page.on('request', lambda request: external.append(request.url)
-                if urlsplit(request.url).netloc != urlsplit(origin).netloc else None)
+                if urlsplit(request.url).netloc != urlsplit(origin).netloc and not (request.resource_type == 'image' and re.fullmatch(r'https://raw\.githubusercontent\.com/maritaca-ai/observatorio-maritaca/[0-9a-f]{40}/benchmarks/visao/(realworldqa|ocrbench)/images/\d+\.(jpg|jpeg|png|webp)', request.url)) else None)
 
         def go(route='inicio', lang=None):
             page.goto(origin + '/' + (f'?lang={lang}' if lang else '') + '#' + route, wait_until='networkidle')
@@ -135,7 +136,7 @@ def main():
         assert not external, external
         browser.close()
     print(json.dumps({'passed':True, 'languages':['pt','en'], 'benchmarks_with_unchanged_evidence':checked,
-                      'browser_errors':errors, 'external_requests':external}))
+                      'browser_errors':errors, 'unexpected_external_requests':external}))
 
 
 if __name__ == '__main__':

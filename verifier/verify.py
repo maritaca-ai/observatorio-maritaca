@@ -86,6 +86,12 @@ def check_generation_failure(row, config, benchmark):
 def item_score(benchmark, row):
     """Aritmética dos vereditos finais; não substitui um julgamento semântico."""
     j = row['julgamento']['veredito']
+    if benchmark in ('realworldqa', 'ocrbench'):
+        from .vision import score
+        actual = score(benchmark, j['item_original'], row['resposta'])
+        require(type(j['acerto']) is bool and j['acerto'] == bool(actual),
+                'Correção visual difere do corretor nativo')
+        return 100 * actual
     if benchmark in SUPPLEMENTAL:
         votes = j['criterios']
         require(bool(votes), 'Rubricas ausentes')
@@ -327,6 +333,7 @@ def check_group(folder, summary, benchmark, *, load_json=None, response_files=No
 
 def calculate_averages(scores, models, metrics, category='all', size='all', mode='both'):
     tasks = {k: v for k, v in metrics.items() if v.get('primary_metric') is not False
+             and (v.get('average_scope') != 'category' or category != 'all')
              and (category == 'all' or category in v.get('categories', [v['category']]))}
     rows = []
     for model, info in models.items():
@@ -346,7 +353,7 @@ def calculate_averages(scores, models, metrics, category='all', size='all', mode
                                  'n': len(values), 'total': len(population), 'benchmarks': entries}
             rows.append({'modelo': model, 'modo': variant, 'medias': cells})
     rows.sort(key=lambda r: (r['medias']['total']['valor'] is None,
-                            -(r['medias']['total']['valor'] or 0), models[r['modelo']]['nome'], r['modo']))
+                            -(r['medias']['total']['valor'] or 0), models[r['modelo']]['nome'].casefold(), r['modo']))
     previous = None
     rank = None
     for i, row in enumerate(rows, 1):

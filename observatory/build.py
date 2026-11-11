@@ -8,12 +8,13 @@ import hashlib
 import json
 from pathlib import Path
 import sys
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 from observatory.repository import Repository
-from observatory import research
+from observatory import research, vision
 from verifier.scores import aggregate
 from verifier.verify import item_score, same, calculate_averages, check_group
 
@@ -86,7 +87,7 @@ def input_blob(output, value, bases, identity, cache=None):
 def table_record(catalog, summary, profile, model, mode, task, slug):
     identity = f'{model}:{mode}:{task}'
     r = copy.deepcopy(catalog['annotations'].get(identity, {}))
-    if task in research.TASKS:
+    if task in research.TASKS | vision.TASKS:
         r.setdefault('audit_summary', {'fields': []})
     if 'audit_summary' in r:
         r['audit_summary']['fields'] = [copy.deepcopy(catalog['audit_fields'][key])
@@ -115,6 +116,8 @@ def question_identity(task, row, occurrence):
     inputs = dict(question=row['pergunta'], context=row.get('contexto') or '',
                   criteria=research.criteria(row) if task in research.TASKS
                   else row['julgamento'].get('criterios'))
+    if row.get('imagem'):
+        inputs['image'] = {k: row['imagem'][k] for k in ('sha256', 'largura', 'altura')}
     source_id = digest(encoded(inputs))
     ordinal = occurrence[source_id]
     occurrence[source_id] += 1
@@ -134,6 +137,10 @@ def project_response(row, model, mode, summary, source_path):
                       total_tokens_julgamento=row['total_tokens_julgamento'], custo_julgamento=row['custo_julgamento']))
     if kind == 'conduta':
         response['judgment']['hits'] = judgment['criterios_atingidos']
+    if row.get('imagem'):
+        response['judgment']['kind'] = 'vision'
+        response['metadata'].update({k: row.get(k) for k in
+            ('system', 'reasoning', 'tokens', 'finish_reason', 'resposta_final_vazia', 'resposta_truncada')})
     if row.get('turnos'):
         response['turns'] = [dict(turn=t.get('turno', i), question=t.get('pergunta') or next(
                                       (m.get('content', '') for m in reversed(t.get('mensagens_enviadas') or []) if m.get('role') == 'user'), ''),
@@ -160,12 +167,19 @@ def performance(row):
     return None if j.get('judge_error') or j.get('excluded') or j.get('valid') is False else row['score']
 
 
-def build(output, from_git=False, only=None, max_bytes=1_000_000_000, cache=None):
+def build(output, from_git=False, only=None, max_bytes=1_000_000_000, cache=None, worktree_overlay=False, image_source='auto'):
+    if image_source == 'auto':
+        image_source = 'github' if from_git and not worktree_overlay else 'local'
+    if image_source not in ('local', 'github'):
+        raise ValueError('Unknown image source')
+    if image_source == 'github' and (not from_git or worktree_overlay):
+        raise ValueError('GitHub images require committed results: use --from-git without an overlay')
+    image_revision = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip() if image_source == 'github' else None
     output = Path(output).resolve()
     if output.exists() and any(output.iterdir()):
         raise ValueError('Use an empty output directory to avoid retaining stale assets')
     output.mkdir(parents=True, exist_ok=True)
-    repo = Repository(ROOT, from_git)
+    repo = Repository(ROOT, from_git, worktree_overlay)
     try:
         catalog = repo.json('observatory/catalog.json')
         metrics = repo.json('benchmarks/metrics.json')
@@ -188,10 +202,13 @@ def build(output, from_git=False, only=None, max_bytes=1_000_000_000, cache=None
             if native_task == 'capitu_conversations': native_task = 'capitu'
             source_task = next((k for k, v in sources.items() if native_task in v['tasks']), native_task)
             benchmark['protocol_url'] = GITHUB+'/blob/main/'+sources[source_task]['directory']+'/protocol.json'
+            if benchmark['id'] in vision.TASKS:
+                benchmark['protocol_url'] = vision.document(repo, output, sources[source_task]['directory']+'/protocol.json')
         records, partials, scores, counts, indexes = [], [], {}, {}, []
         model_lookup = catalog['model_directories']
         total_responses = 0
         zero_generation_cases = 0
+        copied_images = set()
         for task, benchmark in tasks.items():
             cases = {}
             input_bases = {}
@@ -225,6 +242,10 @@ def build(output, from_git=False, only=None, max_bytes=1_000_000_000, cache=None
                                     response_files=repo.response_files(folder))
                         profile = research.effective_profile(profile, summary)
                     record = table_record(catalog, summary, profile, model, mode, task, slug)
+                    if task in vision.TASKS:
+                        record.update(vision.metadata(summary))
+                        record['source']['url'] = vision.document(repo, output, folder+'/resumo.json')
+                        record['audit_summary']['source'] = record['source']
                     if task in research.TASKS:
                         rows = [r for part in summary['arquivos'] for r in load_part(folder+'/'+part['arquivo'])]
                         failures = load_part(folder+'/'+summary['casos_zerados']) if summary.get('casos_zerados') else []
@@ -257,6 +278,8 @@ def build(output, from_git=False, only=None, max_bytes=1_000_000_000, cache=None
                                 case = dict(benchmark_id=task, protocol_id=task+'-final', case_id=case_id,
                                     input_sha256=input_sha, question=inputs['question'], context=inputs['context'],
                                     criteria=inputs['criteria'] or [], responses=[])
+                                if task in vision.TASKS:
+                                    case['image'] = vision.image_asset(repo, output, task, row['imagem'], copied_images, image_revision)
                                 case_key = digest(':'.join([task, case['protocol_id'], input_sha, case_id]).encode())
                                 cases[identity] = (case_key, case, {})
                             case_key, case, perf = cases[identity]
@@ -266,6 +289,9 @@ def build(output, from_git=False, only=None, max_bytes=1_000_000_000, cache=None
                                     raise ValueError('Research question or rubrics differ for the same ID: '+row['id'])
                                 native_cases[row['id']] = (case_key, case, perf)
                             response = project_response(row, model, mode, summary, path)
+                            if task in vision.TASKS:
+                                response['source_url'] = blob(output, 'records', row, cache)['file']
+                                response['source_local'] = True
                             for field, target in [('_input_messages', 'input_messages_ref'), ('_tool_trace', 'tool_trace_ref')]:
                                 if field in response:
                                     value = response.pop(field)
@@ -367,6 +393,8 @@ def build(output, from_git=False, only=None, max_bytes=1_000_000_000, cache=None
                        cases=sum(counts.values()), responses=total_responses, bytes=size,
                        sampled=False, only=only, model_calls=0, judge_calls=0)
         receipt['generation_failures_projected'] = zero_generation_cases
+        receipt['image_source'] = image_source
+        receipt['original_images_verified'] = len(copied_images)
         (output/'build.json').write_bytes(encoded(receipt))
         if max_bytes and size > max_bytes:
             raise ValueError(f'Artifact exceeds GitHub Pages size limit: {size} bytes; no cases were dropped')
@@ -379,11 +407,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--from-git', action='store_true', help='Read committed result blobs with a sparse checkout')
+    parser.add_argument('--worktree-overlay', action='store_true', help='Local preview: use working files before the Git fallback')
     parser.add_argument('--benchmarks', nargs='+', help='Local QA only; deployment requires the full catalog')
     parser.add_argument('--max-bytes', type=int, default=1_000_000_000)
     parser.add_argument('--cache', type=Path, help='Reuse verified compressed assets from a previous local build')
+    parser.add_argument('--image-source', choices=('auto', 'local', 'github'), default='auto', help='Auto uses pinned GitHub images with --from-git, local images for worktree previews')
     args = parser.parse_args()
-    print(json.dumps(build(args.output, args.from_git, args.benchmarks, args.max_bytes, args.cache), ensure_ascii=False))
+    print(json.dumps(build(args.output, args.from_git, args.benchmarks, args.max_bytes, args.cache, args.worktree_overlay, args.image_source), ensure_ascii=False))
 
 
 if __name__ == '__main__':
