@@ -233,7 +233,6 @@ window.OBSERVATORY_EN = {
     "Sobre o modelo": "About the model",
     "Nenhum modelo com resultados neste campo.": "No models with results in this field of view.",
     "Filtrar modelos por tamanho": "Filter models by size",
-    "🇧🇷 projeto brasileiro": "🇧🇷 Brazilian project",
     "Projeto brasileiro": "Brazilian project",
     "Modelo para português brasileiro": "Model for Brazilian Portuguese",
     "Modelo para português brasileiro · University of Bonn": "Model for Brazilian Portuguese · University of Bonn",
