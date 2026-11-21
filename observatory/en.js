@@ -162,6 +162,7 @@ window.OBSERVATORY_EN = {
     "observatório": "observatory",
     "Observatório": "Observatory",
     "Observatório Maritaca": "Maritaca Observatory",
+    "O Observatório Maritaca reúne avaliações de modelos de linguagem brasileiros e internacionais, com foco no português e no contexto brasileiro. Aqui você pode comparar resultados em diferentes tarefas, explorar as respostas dos modelos e consultar os critérios e protocolos usados em cada avaliação.": "The Maritaca Observatory brings together evaluations of Brazilian and international language models, with a focus on Portuguese and the Brazilian context. Here you can compare results across different tasks, explore model responses, and consult the criteria and protocols used in each evaluation.",
     "Observatório de modelos · Maritaca": "Model Observatory · Maritaca",
     "Navegação principal": "Main navigation",
     "Início": "Home",
