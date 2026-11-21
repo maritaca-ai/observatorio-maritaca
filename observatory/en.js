@@ -176,7 +176,6 @@ window.OBSERVATORY_EN = {
     "Usos": "Use cases",
     "Carregando resultados…": "Loading results…",
     "Explore modelos, resultados e protocolos de avaliação da Maritaca.": "Explore models, results and evaluation protocols from Maritaca.",
-    "Dados e metodologia ↗": "Data and methodology ↗",
     "Fechar detalhes": "Close details",
     "Dados de": "Data as of",
     "Ative JavaScript para explorar. Os agregados estão disponíveis em": "Enable JavaScript to explore. Aggregate results are available in",
