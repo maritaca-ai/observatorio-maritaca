@@ -172,6 +172,7 @@ window.OBSERVATORY_EN = {
     "Comparar": "Compare",
     "Modelos": "Models",
     "Como avaliamos": "How we evaluate",
+    "Avaliamos os modelos em tarefas de linguagem, raciocínio, uso de ferramentas e visão, seguindo o protocolo de cada benchmark. As respostas finais recebem notas de corretores automáticos ou modelos juízes, conforme os critérios de cada teste. Apresentamos os resultados de Thinking e Instruct separadamente e disponibilizamos respostas, parâmetros e regras de pontuação para que cada resultado possa ser consultado e verificado.": "We evaluate models on language, reasoning, tool use, and vision tasks, following each benchmark’s protocol. Final responses are scored by automated graders or judge models according to each test’s criteria. We report Thinking and Instruct results separately and make responses, parameters, and scoring rules available so each result can be inspected and verified.",
     "Usos": "Use cases",
     "Carregando resultados…": "Loading results…",
     "Explore modelos, resultados e protocolos de avaliação da Maritaca.": "Explore models, results and evaluation protocols from Maritaca.",
