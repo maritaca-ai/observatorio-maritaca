@@ -324,8 +324,7 @@ function renderPanorama() {
         `<button data-category="${id}" aria-pressed="${state.category === id}">${name}</button>`,
     )
     .join("")}</div>
-  ${state.use ? `<div class="callout green">Uso selecionado: <strong>${esc(uses.find((u) => u.id === state.use).title)}</strong>. <button class="btn small" data-action="clear-use">Ver todos os testes</button></div>` : ""}<div id="matrix">${renderMatrix()}</div></section>
-  <div class="results-footnote"><span>${D.coverage.total} resultados registrados</span><a href="#metodo">Protocolos e fontes ↗</a></div>`;
+  ${state.use ? `<div class="callout green">Uso selecionado: <strong>${esc(uses.find((u) => u.id === state.use).title)}</strong>. <button class="btn small" data-action="clear-use">Ver todos os testes</button></div>` : ""}<div id="matrix">${renderMatrix()}</div></section>`;
 
 }
 function renderMatrix() {
@@ -356,8 +355,7 @@ function renderMatrix() {
     )
     .join(
       "",
-    )}</tbody></table>${!variants.length || !tasks.length ? '<div class="empty">Nenhum resultado neste recorte. Ajuste os filtros.</div>' : ""}</div><div class="table-caption"><span><strong>${filtered.length} notas</strong> · ${variants.length} combinações de modelo e modo</span><span><strong>Negrito</strong>: melhor dentro de um protocolo comparável · † ressalvas · — sem nota</span></div></div>
-  <p class="helper-note"><a href="#metodo">Como calculamos as notas ↗</a></p>`;
+    )}</tbody></table>${!variants.length || !tasks.length ? '<div class="empty">Nenhum resultado neste recorte. Ajuste os filtros.</div>' : ""}</div><div class="table-caption"><span><strong>${filtered.length} notas</strong> · ${variants.length} combinações de modelo e modo</span><span><strong>Negrito</strong>: melhor dentro de um protocolo comparável · † ressalvas · — sem nota</span></div></div>`;
 }
 function renderUses() {
   return `<div class="page-intro"><div class="eyebrow"><span class="dot"></span>Comece pela sua tarefa</div><h1>O que você quer fazer?</h1><p>Não precisa conhecer o nome de um benchmark. Escolha uma situação e veja quais testes ajudam a comparar os modelos. São resultados de avaliações já realizadas.</p></div><div class="model-grid">${uses.map((u) => `<article class="model-card"><span class="model-symbol" style="--model-color:#1a3c34">${u.icon}</span><h3>${u.title}</h3><p>${u.text}</p><div><span class="label">Evidências relevantes</span>${u.tasks.map((t) => `<span class="pill gray">${esc(benchmarks.get(t).name)}</span> `).join("")}</div><p>${u.limit}</p><footer><button class="btn primary" data-use="${u.id}">Ver comparação →</button><a href="#casos">Explorar respostas</a></footer></article>`).join("")}</div><section class="panel"><h3>Thinking e instruct: qual é a diferença?</h3><p><strong>Thinking</strong> pede que o modelo raciocine antes da resposta final. <strong>Instruct</strong> pede a resposta sem esse raciocínio separado. Só a resposta final recebe nota. A modalidade pode mudar qualidade, tempo e consumo de tokens; este observatório não inventa estimativas de velocidade onde elas não foram medidas.</p><p>Uma nota de benchmark ajuda a escolher o que testar. Para adotar um modelo, confira exemplos reais da sua tarefa e valide os erros que seriam relevantes para você.</p></section>`;
