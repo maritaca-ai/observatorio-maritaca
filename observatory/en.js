@@ -3,6 +3,7 @@
 // Reviewed interface translations. Original evaluation evidence is not localized.
 window.OBSERVATORY_EN = {
   messages: {
+    "Notas e gráficos": "Scores and charts",
     "Modelo da Maritaca AI, com pós-treino sobre Qwen3.5-4B. O checkpoint aceita texto e imagens.": "A Maritaca AI model, post-trained on Qwen3.5-4B. The checkpoint accepts text and images.",
     "Base do S5-nano, com entrada de texto e imagens.": "The base model for S5-nano, accepting text and images.",
     "Texto": "Text",
