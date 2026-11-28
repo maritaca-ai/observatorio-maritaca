@@ -16,7 +16,8 @@ function initializeExperienceTasks() {
 }
 function readExperienceHash(params) {
   const previousTab = experience.tab;
-  experience.tab = state.view === "casos" ? "blind" : ["examples", "blind"].includes(params.get("tab")) ? params.get("tab") : "examples";
+  const legacyView = ["descobrir", "casos"].includes(state.view);
+  experience.tab = state.view === "casos" ? "blind" : ["scores", "examples", "blind"].includes(params.get("tab")) ? params.get("tab") : state.view === "comparar" ? "scores" : "examples";
   if (experience.tab === "blind" && previousTab !== "blind") { experience.round = null; experience.focusRound = true; }
   experience.mode = ["all", "thinking", "instruct"].includes(params.get("mode")) ? params.get("mode") : "all";
   experience.caseCategory = D.categories[params.get("category")] ? params.get("category") : "all";
@@ -27,19 +28,27 @@ function readExperienceHash(params) {
   if (!matchesCategory(benchmarks.get(experience.task), experience.caseCategory)) {
     experience.task = Object.keys(experienceTasks).find(id=>matchesCategory(benchmarks.get(id), experience.caseCategory));
   }
-  for (const side of ["a", "b"]) if (models.has(params.get(side))) experience[side] = params.get(side);
+  for (const side of ["a", "b"]) {
+    const model = params.get(side)?.split(":")[0];
+    if (models.has(model)) experience[side] = model;
+  }
   if (params.has("case")) experience.key = params.get("case");
   experience.category = experience.caseCategory;
   experience.resultFilter = ["different", "a_better", "b_better"].includes(params.get("result")) ? params.get("result") : "all";
-  // Preserve previously shared chart links after moving that view to Comparar.
+  if (legacyView) state.view = "comparar";
+  // Preserve previously shared chart links as well as response and blind links.
   if (params.get("tab") === "map") {
     state.mode=experience.mode; state.selected=new Set([experience.a,experience.b]);
-    state.scatter=experience.task; state.view="comparar"; writeHash();
+    state.scatter=experience.task; state.view="comparar"; experience.tab="scores";
   }
+  if (state.view === "comparar" && experience.tab === "scores" && !params.has("a") && !params.has("b")) syncExperiencePairFromScores();
+  if (legacyView || params.get("tab") === "map") writeHash();
 }
 function experienceURL() {
+  state.mode = experience.mode; state.category = experience.caseCategory; state.scatter = experience.task;
   const p = new URLSearchParams({ tab: experience.tab, mode: experience.mode, size: state.size });
   p.set("task", experience.task);
+  if (state.selected.size !== models.size) p.set("models", [...state.selected].join(","));
   if (experience.caseCategory !== "all") p.set("category", experience.caseCategory);
   if (experience.tab !== "blind") {
     p.set("a", experience.a); p.set("b", experience.b);
@@ -48,7 +57,36 @@ function experienceURL() {
   }
   history.replaceState(null, "", `#${state.view}?${p}`);
 }
-const experienceActive = () => ["descobrir", "casos"].includes(state.view);
+const experienceActive = () => state.view === "comparar" && ["examples", "blind"].includes(experience.tab);
+
+function renderComparisonHeader() {
+  return `<header class="workbench-heading"><h1>Comparar modelos</h1><div class="workbench-links"><a href="#panorama?size=${state.size}">Todas as notas ↗</a></div></header>
+  ${sizeControls()}
+  <div class="experience-tabs" role="tablist" aria-label="Como explorar">${[["scores", "≡", "Notas e gráficos"], ["examples", "↳", "Respostas"], ["blind", "◉", "Escolher às cegas"]].map(([id, n, title]) => `<button role="tab" id="tab-${id}" tabindex="${experience.tab === id ? 0 : -1}" aria-selected="${experience.tab === id}" aria-controls="experience-panel" data-experience-tab="${id}"><span class="tab-number" aria-hidden="true">${n}</span><strong>${title}</strong></button>`).join("")}</div>`;
+}
+
+function switchComparisonTab(tab) {
+  if (experience.tab === tab) return;
+  if (!experienceActive()) {
+    experience.mode = state.mode; experience.caseCategory = state.category;
+    experience.task = experienceTasks[state.scatter] ? state.scatter : Object.keys(experienceTasks).find(id => matchesCategory(benchmarks.get(id), state.category));
+  } else {
+    state.mode = experience.mode; state.category = experience.caseCategory; state.scatter = experience.task;
+  }
+  state.view = "comparar"; experience.tab = tab;
+  if (tab === "blind") { experience.round = null; experience.focusRound = true; }
+  ensureExperienceSelection();
+  // Subviews are shareable and can also be revisited with Back/Forward.
+  history.pushState(null, "", location.href);
+  writeHash(); render();
+  document.getElementById(`tab-${tab}`)?.focus({preventScroll:true});
+}
+function syncExperiencePairFromScores() {
+  const selected = sizeModels().filter(m => state.selected.has(m.id)).map(m => m.id);
+  if (selected.length < 2) return;
+  if (!selected.includes(experience.a)) experience.a = selected[0];
+  if (!selected.includes(experience.b) || experience.b === experience.a) experience.b = selected.find(id => id !== experience.a);
+}
 const experienceModes = () => experience.mode === "all" ? ["thinking", "instruct"] : [experience.mode];
 const variantId = (model, mode) => `${model}:${mode}`;
 const randomItem = (rows) => rows[Math.floor(Math.random() * rows.length)];
@@ -266,10 +304,7 @@ function renderExperience() {
   ensureExperienceSelection();
   const tab = experience.tab;
   const ready = experience.catalogState === "ready";
-  return `<header class="workbench-heading"><h1>${tab === "blind" ? "Qual resposta você prefere?" : "Compare as respostas"}</h1><div class="workbench-links"><a href="#panorama?size=${state.size}">Todas as notas ↗</a><span>${integer(D.case_catalog.total)} casos · ${D.case_catalog.model_count} modelos com respostas</span></div></header>
-  ${sizeControls()}
-  <div class="experience-tabs" role="tablist" aria-label="Como explorar">${[["examples", "↳", "Respostas"], ["blind", "◉", "Escolher às cegas"]].map(([id, n, title]) => `<button role="tab" id="tab-${id}" aria-selected="${tab === id}" aria-controls="experience-panel" data-experience-tab="${id}"><span class="tab-number" aria-hidden="true">${n}</span><strong>${title}</strong></button>`).join("")}</div>
-  <section id="experience-panel" class="experience-panel" role="tabpanel" aria-labelledby="tab-${tab}">${renderExperienceTasks()}${ready ? experienceToolbar() + renderExperienceCases() : renderExperienceUnavailable()}</section>
+  return `<section id="experience-panel" class="experience-panel" role="tabpanel" aria-labelledby="tab-${tab}">${renderExperienceTasks()}${ready ? experienceToolbar() + renderExperienceCases() : renderExperienceUnavailable()}</section>
   <div class="experience-footer"><span><i></i>Respostas já geradas nas avaliações. Nada é enviado a um modelo ao navegar.</span><a href="#metodo">Protocolo e fontes ↗</a></div>`;
 }
 function renderExperienceTasks() {
@@ -351,9 +386,7 @@ document.addEventListener("click", (event) => {
   const t = event.target.closest("[data-experience],[data-experience-tab],[data-experience-task],[data-experience-mode],[data-experience-case],[data-experience-category],[data-arena-vote],[data-arena-history]");
   if (!t || !D) return;
   if (t.dataset.experienceTab) {
-    experience.tab = t.dataset.experienceTab;
-    state.view = experience.tab === "blind" ? "casos" : "descobrir";
-    if (experience.tab === "blind") { experience.round = null; experience.focusRound = true; }
+    switchComparisonTab(t.dataset.experienceTab); return;
   }
   if (t.dataset.experienceTask) {
     experience.task = t.dataset.experienceTask; experience.query = ""; experience.round = null;
@@ -367,7 +400,7 @@ document.addEventListener("click", (event) => {
     const vote = experience.sessionVotes.find((v) => v.id === t.dataset.arenaHistory);
     if (!vote) return;
     experience.round = { ...vote }; experience.mode = vote.mode; experience.task = vote.task;
-    state.size = vote.size; experience.tab = "blind"; state.view = "casos"; experience.focusRound = true;
+    state.size = vote.size; experience.tab = "blind"; state.view = "comparar"; experience.focusRound = true;
     $("#detail-dialog").close();
   }
   if (t.dataset.arenaVote && experience.round && !experience.round.revealed) {
@@ -410,6 +443,13 @@ document.addEventListener("click", (event) => {
   refreshExperience();
 });
 document.addEventListener("keydown", (event) => {
+  const tab = event.target.closest("[data-experience-tab]");
+  if (tab && ["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) {
+    event.preventDefault();
+    const tabs = ["scores", "examples", "blind"], index = tabs.indexOf(tab.dataset.experienceTab);
+    switchComparisonTab(tabs[event.key === "Home" ? 0 : event.key === "End" ? 2 : (index + (event.key === "ArrowRight" ? 1 : 2)) % 3]);
+    return;
+  }
   if (!experienceActive() || experience.tab !== "blind" || event.repeat || event.ctrlKey || event.altKey || event.metaKey ||
     event.target.closest("input,textarea,select,[contenteditable=true]") || document.querySelector("dialog[open]")) return;
   const vote = { "1": "a", "2": "b", "3": "tie", "4": "neither" }[event.key];

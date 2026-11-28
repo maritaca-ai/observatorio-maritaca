@@ -4,6 +4,12 @@ Interface estática para explorar as avaliações finais: céu interativo, médi
 ranking, resultados por benchmark, comparação de respostas e escolha às cegas.
 Os votos ficam apenas no navegador. Não há chamadas a modelos ou juízes.
 
+A aba **Comparar modelos** reúne **Notas e gráficos**, **Respostas** e
+**Escolher às cegas**, preservando benchmark, modo e tamanho ao alternar.
+As opções usam `#comparar?tab=scores`, `tab=examples` e `tab=blind`;
+links anteriores com `#descobrir` ou `#casos` continuam funcionando.
+O GitHub está disponível nos atalhos da página inicial.
+
 ## Construção local
 
 Na raiz do repositório:

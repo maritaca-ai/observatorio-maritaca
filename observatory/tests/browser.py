@@ -35,6 +35,8 @@ def main():
 
         go('inicio?size=all&mode=all')
         assert page.locator('#home-title').inner_text().replace('\n',' ') == 'Observatório Maritaca'
+        assert page.locator('.home-github').get_attribute('href') == 'https://github.com/maritaca-ai/observatorio-maritaca'
+        assert page.locator('#navigation [data-view=descobrir]').count() == 0
         moving = page.locator('#sky-canvas').evaluate('(e)=>e.toDataURL()')
         page.wait_for_timeout(200)
         assert page.locator('#sky-canvas').evaluate('(e)=>e.toDataURL()') != moving
@@ -183,6 +185,41 @@ def main():
         assert page.locator('.plot-point').count() == 3
         page.select_option('#compare-benchmark','enade_qa')
         assert page.locator('.plot-point').count() == 3
+
+        # Scores, answers and blind choices share one route and retain context.
+        go('comparar?models=candidate,qwen35-4b&mode=instruct&size=all&category=medico&task=conduta_bench')
+        page.locator('[data-experience-tab=examples]').click()
+        page.locator('.experience-answers').wait_for()
+        assert page.locator('#navigation [aria-current=page]').get_attribute('data-view') == 'comparar'
+        assert page.locator('#case-category').input_value() == 'medico'
+        assert page.locator('#case-benchmark').input_value() == 'conduta_bench'
+        page.select_option('[data-experience-model=b]', 'gaia')
+        page.select_option('#case-performance', 'different')
+        page.locator('.experience-answers').wait_for()
+        answer_state = page.evaluate('JSON.stringify([experience.a,experience.b,experience.key,experience.resultFilter])')
+        page.locator('[data-experience-tab=scores]').click()
+        assert page.locator('#compare-category').input_value() == 'medico'
+        assert page.locator('#compare-benchmark').input_value() == 'conduta_bench'
+        assert page.locator('[data-comparison-variant]').count() == 2
+        assert page.locator('[data-mode=instruct]').get_attribute('aria-pressed') == 'true'
+        page.reload(wait_until='networkidle')
+        page.locator('[data-experience-tab=examples]').click()
+        page.locator('.experience-answers').wait_for()
+        assert page.evaluate('JSON.stringify([experience.a,experience.b,experience.key,experience.resultFilter])') == answer_state
+        page.go_back(wait_until='networkidle')
+        assert page.locator('#tab-scores').get_attribute('aria-selected') == 'true'
+        page.go_forward(wait_until='networkidle')
+        assert page.locator('#tab-examples').get_attribute('aria-selected') == 'true'
+        page.locator('#tab-examples').focus()
+        page.keyboard.press('ArrowRight')
+        page.locator('[data-arena-vote=tie]').wait_for()
+        assert page.locator('#tab-blind').get_attribute('aria-selected') == 'true'
+        assert page.locator('.response-card h3').all_text_contents() == ['Resposta A', 'Resposta B']
+        for route, tab in [('descobrir', 'examples'), ('casos', 'blind'), ('descobrir?tab=map', 'scores')]:
+            go(route + ('&' if '?' in route else '?') + 'task=conduta_bench&mode=instruct&size=all')
+            page.wait_for_function("location.hash.startsWith('#comparar?')")
+            assert '#comparar?' in page.url
+            assert page.locator(f'#tab-{tab}').get_attribute('aria-selected') == 'true'
         for route in ['inicio','panorama','comparar','modelos','metodo','descobrir?task=conduta_bench']:
             page.set_viewport_size({'width':390,'height':844})
             go(route)

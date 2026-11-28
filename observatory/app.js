@@ -169,6 +169,7 @@ function readHash() {
   if (state.view === "inicio") readSkyCamera(params);
 }
 function writeHash() {
+  if (experienceActive()) { experienceURL(); return; }
   const params = new URLSearchParams();
   params.set("size", state.size);
   params.set("mode", state.mode);
@@ -178,7 +179,12 @@ function writeHash() {
   if (state.selected.size !== models.size)
     params.set("models", [...state.selected].join(","));
   if (state.view === "comparar") {
+    params.set("tab", "scores");
     params.set("task", state.scatter);
+    params.set("a", experience.a);
+    params.set("b", experience.b);
+    if (experience.key) params.set("case", experience.key);
+    if (experience.resultFilter !== "all") params.set("result", experience.resultFilter);
   }
   if (state.view === "inicio") writeSkyCamera(params);
   if (state.view === "metodo") writeMethodHash(params);
@@ -190,6 +196,7 @@ function writeHash() {
 }
 function navigate(view, updates = {}) {
   Object.assign(state, { view }, updates);
+  if (view === "comparar") experience.tab = "scores";
   writeHash();
   render();
   window.scrollTo({ top: 0, behavior: "instant" });
@@ -312,7 +319,7 @@ function renderPanorama() {
   if (state.category !== "all") responseParams.set("category",state.category);
   const firstWithCases = tasks.find(b=>D.case_catalog.benchmarks[b.id]);
   if (firstWithCases && state.category !== "all") responseParams.set("task",firstWithCases.id);
-  return `<header class="results-heading"><div><h1>${categoryName ? esc(categoryName) : "Resultados"}</h1><p>${D.models.filter((m) => m.result_count).length} modelos · ${tasks.length} avaliações · ${snapshotDate()}</p>${state.category === 'deep_research' ? '<p>Buscar fontes, cruzar informações e responder com evidências.</p>' : ''}</div>${categoryName ? `<div class="head-actions"><a class="btn" href="#descobrir?${responseParams}">Respostas lado a lado ↗</a><a class="btn primary" href="#descobrir?${responseParams}&tab=blind">Escolher às cegas ↗</a></div>` : `<a class="results-demo" href="#descobrir?${responseParams}"><span>Como eles responderam?</span><strong>Leia as respostas lado a lado <span aria-hidden="true">↗</span></strong></a>`}</header>
+  return `<header class="results-heading"><div><h1>${categoryName ? esc(categoryName) : "Resultados"}</h1><p>${D.models.filter((m) => m.result_count).length} modelos · ${tasks.length} avaliações · ${snapshotDate()}</p>${state.category === 'deep_research' ? '<p>Buscar fontes, cruzar informações e responder com evidências.</p>' : ''}</div>${categoryName ? `<div class="head-actions"><a class="btn" href="#comparar?tab=examples&${responseParams}">Respostas lado a lado ↗</a><a class="btn primary" href="#comparar?tab=blind&${responseParams}">Escolher às cegas ↗</a></div>` : `<a class="results-demo" href="#comparar?tab=examples&${responseParams}"><span>Como eles responderam?</span><strong>Leia as respostas lado a lado <span aria-hidden="true">↗</span></strong></a>`}</header>
   ${sizeControls()}
   <section aria-labelledby="results-title"><div class="section-head results-tools"><div><h2 id="results-title">Notas e médias</h2><p>Clique em uma nota para abrir a correção e o protocolo.</p></div><div class="head-actions"><button class="btn" data-action="share">Copiar link</button><button class="btn primary" data-action="export-csv">Baixar tabela ↓</button></div></div>
   <div class="control-bar">${modeControl()}<div class="filters"><input id="benchmark-search" class="search" type="search" placeholder="Buscar uma avaliação…" aria-label="Buscar avaliações" value="${esc(state.query)}"><details class="model-filter"><summary class="btn">Escolher modelos <span>${sizeModels().filter((m) => state.selected.has(m.id)).length}</span> ⌄</summary><div class="model-options"><button class="btn small" data-action="select-all">Todos</button> <button class="btn small" data-action="select-none">Limpar</button>${sizeModels().map((m) => `<label><input type="checkbox" data-model="${esc(m.id)}" ${state.selected.has(m.id) ? "checked" : ""}>${modelName(m)}<small>${esc(i18n.t(m.size_label))}</small></label>`).join("")}</div></details></div></div>
@@ -358,21 +365,22 @@ function renderMatrix() {
     )}</tbody></table>${!variants.length || !tasks.length ? '<div class="empty">Nenhum resultado neste recorte. Ajuste os filtros.</div>' : ""}</div><div class="table-caption"><span><strong>${filtered.length} notas</strong> · ${variants.length} combinações de modelo e modo</span><span><strong>Negrito</strong>: melhor dentro de um protocolo comparável · † ressalvas · — sem nota</span></div></div>`;
 }
 function renderUses() {
-  return `<div class="page-intro"><div class="eyebrow"><span class="dot"></span>Comece pela sua tarefa</div><h1>O que você quer fazer?</h1><p>Não precisa conhecer o nome de um benchmark. Escolha uma situação e veja quais testes ajudam a comparar os modelos. São resultados de avaliações já realizadas.</p></div><div class="model-grid">${uses.map((u) => `<article class="model-card"><span class="model-symbol" style="--model-color:#1a3c34">${u.icon}</span><h3>${u.title}</h3><p>${u.text}</p><div><span class="label">Evidências relevantes</span>${u.tasks.map((t) => `<span class="pill gray">${esc(benchmarks.get(t).name)}</span> `).join("")}</div><p>${u.limit}</p><footer><button class="btn primary" data-use="${u.id}">Ver comparação →</button><a href="#casos">Explorar respostas</a></footer></article>`).join("")}</div><section class="panel"><h3>Thinking e instruct: qual é a diferença?</h3><p><strong>Thinking</strong> pede que o modelo raciocine antes da resposta final. <strong>Instruct</strong> pede a resposta sem esse raciocínio separado. Só a resposta final recebe nota. A modalidade pode mudar qualidade, tempo e consumo de tokens; este observatório não inventa estimativas de velocidade onde elas não foram medidas.</p><p>Uma nota de benchmark ajuda a escolher o que testar. Para adotar um modelo, confira exemplos reais da sua tarefa e valide os erros que seriam relevantes para você.</p></section>`;
+  return `<div class="page-intro"><div class="eyebrow"><span class="dot"></span>Comece pela sua tarefa</div><h1>O que você quer fazer?</h1><p>Não precisa conhecer o nome de um benchmark. Escolha uma situação e veja quais testes ajudam a comparar os modelos. São resultados de avaliações já realizadas.</p></div><div class="model-grid">${uses.map((u) => `<article class="model-card"><span class="model-symbol" style="--model-color:#1a3c34">${u.icon}</span><h3>${u.title}</h3><p>${u.text}</p><div><span class="label">Evidências relevantes</span>${u.tasks.map((t) => `<span class="pill gray">${esc(benchmarks.get(t).name)}</span> `).join("")}</div><p>${u.limit}</p><footer><button class="btn primary" data-use="${u.id}">Ver comparação →</button><a href="#comparar?tab=blind">Explorar respostas</a></footer></article>`).join("")}</div><section class="panel"><h3>Thinking e instruct: qual é a diferença?</h3><p><strong>Thinking</strong> pede que o modelo raciocine antes da resposta final. <strong>Instruct</strong> pede a resposta sem esse raciocínio separado. Só a resposta final recebe nota. A modalidade pode mudar qualidade, tempo e consumo de tokens; este observatório não inventa estimativas de velocidade onde elas não foram medidas.</p><p>Uma nota de benchmark ajuda a escolher o que testar. Para adotar um modelo, confira exemplos reais da sua tarefa e valide os erros que seriam relevantes para você.</p></section>`;
 }
 function comparisonRows() {
   return visibleVariants().map(variant => ({ variant, record: records.get(`${variant.id}:${state.scatter}`) }));
 }
 function renderCompare() {
+  if (experienceActive()) return renderComparisonHeader() + renderExperience();
   const tasks = tableBenchmarks().filter(b => matchesCategory(b, state.category));
   if (!tasks.some(b => b.id === state.scatter)) state.scatter = tasks[0]?.id;
   const task = benchmarks.get(state.scatter), rows = comparisonRows();
   const scored = rows.filter(r => Number.isFinite(r.record?.score) && !r.record.averages_exclusion);
   const min = Math.min(0, ...scored.map(r => Math.floor(r.record.score / 10) * 10));
   const point = score => 100 * (score - min) / (100 - min);
-  return `<div class="page-intro compact-intro"><h1>Comparar modelos</h1></div>${sizeControls()}<div class="comparison-controls">${modeControl()}<label>Categoria<select id="compare-category">${[["all","Todas"],...Object.entries(D.categories)].map(([id,name])=>`<option value="${id}" ${state.category===id?'selected':''}>${esc(name)}</option>`).join("")}</select></label><label>Benchmark<select id="compare-benchmark">${tasks.map(b=>`<option value="${b.id}" ${state.scatter===b.id?'selected':''}>${esc(b.name)}</option>`).join("")}</select></label><details class="model-filter"><summary class="btn">Escolher modelos <span>${sizeModels().filter(m=>state.selected.has(m.id)).length}</span> ⌄</summary><div class="model-options"><button class="btn small" data-action="select-all">Todos</button> <button class="btn small" data-action="select-none">Limpar</button>${sizeModels().map(m=>`<label><input type="checkbox" data-model="${esc(m.id)}" ${state.selected.has(m.id)?'checked':''}>${modelName(m)}<small>${esc(i18n.t(m.size_label))}</small></label>`).join("")}</div></details></div>
+  return `${renderComparisonHeader()}<section id="experience-panel" role="tabpanel" aria-labelledby="tab-scores"><div class="comparison-controls">${modeControl()}<label>Categoria<select id="compare-category">${[["all","Todas"],...Object.entries(D.categories)].map(([id,name])=>`<option value="${id}" ${state.category===id?'selected':''}>${esc(name)}</option>`).join("")}</select></label><label>Benchmark<select id="compare-benchmark">${tasks.map(b=>`<option value="${b.id}" ${state.scatter===b.id?'selected':''}>${esc(b.name)}</option>`).join("")}</select></label><details class="model-filter"><summary class="btn">Escolher modelos <span>${sizeModels().filter(m=>state.selected.has(m.id)).length}</span> ⌄</summary><div class="model-options"><button class="btn small" data-action="select-all">Todos</button> <button class="btn small" data-action="select-none">Limpar</button>${sizeModels().map(m=>`<label><input type="checkbox" data-model="${esc(m.id)}" ${state.selected.has(m.id)?'checked':''}>${modelName(m)}<small>${esc(i18n.t(m.size_label))}</small></label>`).join("")}</div></details></div>
   <section class="multi-comparison"><div class="map-intro"><div><h2>${esc(task.name)}</h2><p>${esc(i18n.t(task.metric))} · ${task.direction==='lower'?'↓ menor é melhor':'↑ maior é melhor'}</p></div><span>${scored.length} notas</span></div><div class="difference-map"><div class="map-axis"><span>Modelo</span><div><span>${min}</span><span>${(100+min)/2}</span><span>100</span></div><span>Nota</span></div>${rows.map(({variant,record})=>`<div class="difference-row multi-model-row" data-comparison-variant="${variant.id}"><div class="difference-label"><strong>${modelName(variant.model)}</strong><small>${modeName(variant.mode)} · ${esc(i18n.t(variant.model.size_label))}</small></div><div class="difference-track">${record && !record.averages_exclusion ? `<span class="difference-line" style="left:0;width:${point(record.score)}%;background:${esc(variant.model.color)}33"></span><button class="difference-point" style="left:${point(record.score)}%;background:${esc(variant.model.color)}" data-result="${esc(record.id)}" aria-label="${esc(variant.model.name)}, ${modeName(variant.mode)}: ${number(record.score)}. Ver correção."><span>${number(record.score)}</span></button>` : ''}</div><div>${scoreCell(record,false,`${variant.id}:${task.id}`)}</div></div>`).join('') || '<div class="empty">Selecione os modelos que deseja comparar.</div>'}</div><p class="helper-note">As notas abrem o protocolo e a correção. Ausência de avaliação não é zero.</p></section>
-  <section class="panel scatter-panel"><div class="panel-top"><div><h3>Tamanho e resultado</h3><p>${esc(task.name)}</p></div></div><div id="size-result-chart">${renderScatter()}</div></section>`;
+  <section class="panel scatter-panel"><div class="panel-top"><div><h3>Tamanho e resultado</h3><p>${esc(task.name)}</p></div></div><div id="size-result-chart">${renderScatter()}</div></section></section>`;
 }
 function renderScatter() {
   return renderSizeScatter(comparisonRows(), benchmarks.get(state.scatter));
@@ -655,11 +663,9 @@ function exportCSV() {
 function render() {
   const views = {
     inicio: renderHome,
-    descobrir: renderExperience,
     panorama: renderPanorama,
     usos: renderUses,
     comparar: renderCompare,
-    casos: renderExperience,
     modelos: renderModels,
     metodo: renderMethod,
   };
@@ -668,11 +674,11 @@ function render() {
   document.body.classList.toggle("is-observatory-home", state.view === "inicio");
   if (state.view === "inicio") initSky();
   $$("#navigation a").forEach((a) => {
-    if (a.dataset.view === (state.view === "casos" ? "descobrir" : state.view)) a.setAttribute("aria-current", "page");
+    if (a.dataset.view === state.view) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
   });
-  document.title = i18n.t({ inicio: "Início", descobrir: "Respostas", panorama: "Resultados", usos: "Usos", comparar: "Comparar", casos: "Respostas", modelos: "Modelos", metodo: "Como avaliamos" }[state.view]) + " · " + i18n.t("Observatório Maritaca");
-  if (["descobrir", "casos"].includes(state.view)) queueMicrotask(loadExperience);
+  document.title = i18n.t({ inicio: "Início", panorama: "Resultados", usos: "Usos", comparar: "Comparar modelos", modelos: "Modelos", metodo: "Como avaliamos" }[state.view]) + " · " + i18n.t("Observatório Maritaca");
+  if (experienceActive()) queueMicrotask(loadExperience);
   if (state.view === "modelos" && state.focusModel) queueMicrotask(() => document.getElementById(`model-card-${state.focusModel}`)?.scrollIntoView({block:"center",behavior:"instant"}));
 }
 
@@ -759,6 +765,7 @@ document.addEventListener("click", async (event) => {
   }
   if (action === "select-all" || action === "select-none") {
     state.selected = new Set(action === "select-all" ? models.keys() : []);
+    if (state.view === "comparar") syncExperiencePairFromScores();
     writeHash();
     render();
   }
@@ -784,6 +791,7 @@ document.addEventListener("change", async (event) => {
   if (t.dataset.model) {
     if (t.checked) state.selected.add(t.dataset.model);
     else state.selected.delete(t.dataset.model);
+    if (state.view === "comparar") syncExperiencePairFromScores();
     writeHash();
     if (state.view === "comparar") {
       const open = $(".model-filter")?.open; render(); if (open) $(".model-filter").open=true;
